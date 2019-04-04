@@ -161,7 +161,7 @@ You can override most of the Charting Library properties (which also may be edit
 
 ```javascript
 overrides: {
-    "symbolWatermarkProperties.color": "rgba(0, 0, 0, 0)"
+    "mainSeriesProperties.style": 0
 }
 ```
 
@@ -185,13 +185,17 @@ var widget = new TradingView.widget({
 
 This URL is used to send a POST request with base64-encoded chart snapshots when a user presses the snapshot button. This endpoint should return the full URL of the saved image in the the response.
 
-### indicators_file_name
+### custom_indicators_getter
 
-Path to the file that contains your compiled indicators. See more details [here](Creating-Custom-Studies).
+Function that returns a Promise object with an array of your custom indicators.
+
+`PineJS` variable will be passed as the first argument of this function and can be used inside your indicators to access internal helper functions.
+
+See more details [here](Creating-Custom-Studies).
 
 ### preset
 
-`preset` is a name of predefined widget settings. For now, the only value supported in the `preset` is  `mobile`. The example of this `preset` is [available here](https://demo_chart.tradingview.com/mobile_black.html).
+`preset` is a name of predefined widget settings. For now, the only value supported in the `preset` is  `mobile`. The example of this `preset` is [available here](https://charting-library.tradingview.com).
 
 ### studies_overrides
 

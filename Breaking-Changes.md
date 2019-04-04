@@ -6,12 +6,42 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 1.15
+
+- Featureset `show_logo_on_all_charts` has been removed.
+- Action `magnetAction` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed. Use [magnetEnabled](Widget-Methods#magnetenabled) instead.
+- `callback` argument of [createStudy](Chart-Methods#createstudyname-forceoverlay-lock-inputs-overrides-options) has been removed.
+- [createStudy](Chart-Methods#createstudyname-forceoverlay-lock-inputs-overrides-options) returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) instead of `entityId`.
+
+**Trading Terminal**
+
+We've changed the broker's interaction flow. Please read the following carefully to understand what changes should be made in your code to switch to the new version.
+
+Till now the Trading Terminal called broker adapter's methods (e.g. `placeOrder`, `modifyOrder`) when user clicked on Buy/Sell/Modify buttons. When calling these methods the Trading Terminal passed a `silently` argument. When `silently` was set to `true`, the broker adapter could send an order without showing the dialog. When it was set to `false`, the broker adapter had to invoke a method from the `host` to show the order ticket (or the Edit Position dialog).
+
+Starting from 1.15 the Trading Terminal shows all dialogs by itself and invokes broker adapter's methods to send an order or a position to the broker's server. The reason for this change is that we've added an order panel that can be used to place an order at any time.
+If you use your own order dialog then you still need to make changes in your broker adapter's methods, but additionally you need to use `metainfo` to pass the dialog constructor to the Trading Terminal.
+
+- Argument `silently` was removed from `placeOrder`, `modifyOrder`, `reversePosition`, `closePosition`, `closeTrade`, `cancelOrder`, `cancelOrders` methods of the [Broker API](Broker-API).
+
+- Arguments `handler` and `options` were removed from `showOrderDailog` method of the [Trading Host](Trading-Host).
+
+- Argument `handler` was removed from `showPositionBracketsDailog` method of the [Trading Host](Trading-Host).
+
+- `supportCustomPlaceOrderTradableCheck` flag is no longer supported.
+
+- Override `symbolWatermarkProperties` is not supported anymore. You can use [settings_adapter](Widget-Constructor#settings_adapter) with `symbolWatermark` key.
+
 ## Version 1.14
 
 - [createButton](Widget-Methods#createButtonoptions) returns `HTMLElement` instead of `JQuery`.
 - [createButton](Widget-Methods#createButtonoptions) must be used after [headerReady()](Widget-Methods#headerready) `Promise` is resolved.
 - [getVisibleRange](Chart-Methods#getVisibleRange) returns `{from, to}` in the UTC timezone (it was a timezone selected on a chart before).
 - Method `onready` was removed. You can use `window.addEventListener('DOMContentLoaded', callback, false)` instead.
+- `saveAsSnapshot` parameter was removed from [saveChartToServer](Widget-Methods#savecharttoserveroncompletecallback-onfailcallback-options)
+- `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
+  We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
+  You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
 
 **TypeScript type definitions**
 
@@ -94,7 +124,7 @@ The following items are still supported in Trading Terminal, but will be depreca
 
 - The chart can no longer show active orders only. Appropriate methods have been removed.
 - `showOrderDialog` receives an object instead of arguments list
-- `showSampleOrderDialog` removed, use [showOrderDialog](Trading-Host#showorderdialogorder-handler-focus-promise) instead
+- `showSampleOrderDialog` removed, use [showOrderDialog](Trading-Host#showorderdialogorder-focus-promise) instead
 - `showOrderDialog` removed from [Broker API](Broker-API), use `placeOrder` and `modifyOrder` receive `silently` argument instead
 - `reversePosition`, `closePosition`, `cancelOrder` have an additional argument `silently`.
 

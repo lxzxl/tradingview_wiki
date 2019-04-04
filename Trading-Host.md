@@ -4,10 +4,9 @@ Trading Host is an API for interaction between [Broker API](Broker-API) and the 
 
 ## Commands
 
-### showOrderDialog(order, handler, focus) : Promise
+### showOrderDialog(order, focus) : Promise
 
 1. `order` to be placed or modified
-1. `handler` is a function to process buy/sell/modify. It should return Promise
 1. `focus` - [Focus constant](Trading-Objects-and-Constants#orderticketfocuscontrol).
 
 Shows standard order dialog to create or modify an order and executes handler if Buy/Sell/Modify is pressed.
@@ -42,12 +41,11 @@ Shows a confirmation dialog and executes handler if YES/OK is pressed.
 
 Shows a confirmation dialog and executes handler if YES/OK is pressed.
 
-### showPositionBracketsDialog([position](Trading-Objects-and-Constants#position), [brackets](Trading-Objects-and-Constants#brackets), focus, handler) : Promise
+### showPositionBracketsDialog([position](Trading-Objects-and-Constants#position), [brackets](Trading-Objects-and-Constants#brackets), focus) : Promise
 
 1. `position` to be modified
 1. `brackets` (optional) new [brackets](Trading-Objects-and-Constants#brackets)
 1. `focus` - [Focus constant](Trading-Objects-and-Constants#orderticketfocuscontrol).
-1. `handler` is a function to process modification of brackets. It should return Promise
 
 Shows a default edit brackets dialog and executes handler if MODIFY is pressed.
 
@@ -71,9 +69,11 @@ Triggers show active orders.
 
 Returns a [Formatter](Trading-Objects-and-Constants#formatter) with the specified number of decimal places.
 
-### defaultFormatter(symbol)
+### defaultFormatter(symbol: string, alignToMinMove?: boolean = true)
 
 Returns a default [Formatter](Trading-Objects-and-Constants#formatter) formatter for the specified instrument. This formatter is created based on [SymbolInfo](Symbology#symbolinfo-structure).
+
+By default, the formatter rounds a price to the minimum price movement, but sometimes you may want to disable this rounding. For example, the average price of a position should not be rounded to the minimum price movement. Let’s assume that we placed one trade at `100.25` and another trade at `100.50`. The average price of the position is going to be `100.375`. If you get a formatter using `defaultFormatter(symbol)`, then this formatter will round this price to `100.38`, but if you set the second argument to `false`, then the price will be rounded to `100.50`.
 
 ### factory
 
@@ -99,7 +99,15 @@ Returns quotes of a symbol.
 
 ### floatingTradingPanelVisibility: [WatchedValue](WatchedValue)
 
-Returns whether floatingTradingPanel is visible or not.
+Returns whether the floating trading panel is visible or not.
+
+### domVisibility: [WatchedValue](WatchedValue)
+
+Returns whether DOM is visible or not.
+
+### orderPanelVisibility: [WatchedValue](WatchedValue)
+
+Returns whether the order panel is visible or not.
 
 ### showPricesWithZeroVolume: [WatchedValue](WatchedValue)
 
@@ -138,6 +146,8 @@ You can add/remove default action from the result using `options`:
 1. `tradingProperties`: boolean;
 1. `selectAnotherBroker`: boolean;
 1. `disconnect`: boolean;
+1. `showDOM`: boolean;
+1. `showOrderPanel`: boolean;
 
 ## Data Updates
 
@@ -175,7 +185,11 @@ Call this method when a broker connection has received a PL update. This method 
 
 ### equityUpdate(equity)
 
-Call this method when a broker connection has received an equity update. This method is required by the standard order dialog.
+Call this method when a broker connection has received an equity update. This method is required by the standard order dialog to calculate risks.
+
+### marginAvailableUpdate(marginAvailable)
+
+Call this method when a broker connection has received a margin available update. This method is required by the standard order dialog to display the margin meter. This method should be used when `supportMargin` flag is set in `configFlags`. The Trading Terminal subscribes to margin available updates using [subscribeMarginAvailable](Broker-API#subscribemarginavailable).
 
 ### tradeUpdate ([trade](Trading-Objects-and-Constants#trade))
 
@@ -188,3 +202,12 @@ Call this method when a trade is not changed, but fields that you added to the t
 ### tradePLUpdate(tradeId, pl)
 
 Call this method when a broker connection has received a trade PL update.
+
+### pipValueUpdate(symbol, pipValues)
+
+Call this method when a broker connection has a `pipValue` update. The library subscribes to `pipValue` updates using [subscribePipValue](Broker-API#subscribepipvalue).
+
+`pipValues` is an object with the following fields:
+
+1. `buyPipValue` - value of 1 pip if you buy `symbol`
+1. `sellPipValue` - value of 1 pip if you sell `symbol`

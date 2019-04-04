@@ -35,6 +35,12 @@ This is an object that should be passed in the constructor of the Trading Termin
     Broker provides PL for a position. If the broker calculates profit/loss by itself it should call [plUpdate](Trading-Host#plupdatepositionid-pl) as soon as PL is changed.
     Otherwise Chart will calculate PL as a difference between the current trade and an average price of the position.
 
+* `supportMargin`
+
+    *Default:* `false`
+
+    Broker supports margin. If the broker supports margin it should call [marginAvailableUpdate](Trading-Host#marginavailableupdatemarginavailable) when the Trading Terminal subscribes using [subscribeMarginAvailable](Broker-API#subscribemarginavailable).
+
 * `supportOrderBrackets`
 
     *Default:* `false`
@@ -135,15 +141,23 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Using this flag you can disable modification of the existing order. It is enabled by default.
 
+* `cancellingBracketCancelsParentOrder`
+
+    Broker cancels the base order if a stop loss or a take profit is cancelled.
+
+* `cancellingOnePositionBracketsCancelsOther`
+
+    Broker cancels the second protection order (stop loss or take profit) as well if the first one is cancelled by a user.
+
 ### durations: array of objects
 
 List of expiration options of orders. It is optional. Do not set it if you don't want the durations to be displayed in the order ticket.
-The objects have two keys: `{ name, value }`.
+The objects have the following keys: `{ name, value, hasDatePicker?, hasTimePicker?, default? }`.
 
 Example:
 
 ```javascript
-durations: [{ name: 'DAY', value: 'DAY' }, { name: 'GTC', value: 'GTC' }]
+durations: [{ name: 'DAY', value: 'DAY' }, { name: 'WEEK', value: 'WEEK', default: true }, { name: 'GTC', value: 'GTC' }]
 ```
 
 ### customNotificationFields: array of strings
@@ -154,6 +168,53 @@ For example, if you have field `additionalType` in orders and you want the chart
 
 ```javascript
 customNotificationFields: ['additionalType']
+```
+
+### orderDialogOptions
+
+Optional field. An object with options for the order ticket. Using these options you can customize the order ticket.
+
+* `showTotal`: boolean
+
+    Using this flag you can change `Trade Value` to `Total` in the Order Info section of the order ticket.
+
+* `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+
+    Using `customFields` you can add additional input fields to the order ticket.
+
+Example:
+
+```javascript
+customFields: [
+    {
+        inputType: 'TextWithCheckBox',
+        id: '2410',
+        title: 'Digital Signature',
+        placeHolder: 'Enter your personal digital signature',
+        value: {
+            text: '',
+            checked: false,
+        },
+        customInfo: {
+            asterix: true,
+            checkboxTitle: 'Save',
+        },
+    }
+]
+```
+
+### customUI
+
+This optional field can be used to replace the standard Order Ticket and the Add Protection dialogs with your own.
+Values of the following two fields are functions that are called by the Trading Terminal to show the dialogs. Each function shows a dialog and returns a ```Promise``` object that should be resolved when the operation is finished or cancelled.
+
+**NOTE:** The returned ```Promise``` object should be resolved with either `true` or `false` value.
+
+```ts
+customUI: {
+    createOrderDialog?: (order: Order, focus?: OrderTicketFocusControl) => Promise<boolean>;
+    createPositionDialog?: (position: Position | Trade, brackets: Brackets, focus?: OrderTicketFocusControl) => Promise<boolean>;
+}
 ```
 
 ## Order
@@ -174,6 +235,7 @@ Describes a single order.
 * `parentId` : String. If order is a bracket parentOrderId should contain base order/position id.
 * `parentType`: [ParentType](#parenttype)
 * `duration`: [OrderDuration](#orderduration)
+* `customFields`: [CustomInputFieldsValues](#custominputfieldsvalues)
 
 ## Position
 
@@ -304,3 +366,76 @@ OrderTicketFocusControl.TakeProfit = 3 // focus take profit control
 ## Formatter
 
 An object with `format` method that can be used to format the number to a string.
+
+## CustomInputFieldsValues
+
+An object that contains the results of broker specific user inputs (for example a digital signature). There are two possible kinds of custom fields: an input field with a checkbox and a custom combobox.
+
+```javascript
+{
+    [fieldId: string]: TextWithCheckboxValue | string
+}
+```
+
+`TextWithCheckboxValue` is an object that is used for the input field with a checkbox and has two properties:
+
+* `text`: string
+* `checked`: boolean
+
+The result of a custom combobox is always a `string` that is entered by a user.
+
+## TextWithCheckboxFieldMetaInfo
+
+An object that decribes a custom input field with a checkbox.
+
+* `inputType`: 'TextWithCheckBox'
+* `id`: string
+* `title`: string
+* `placeHolder?`: string
+* `value`: TextWithCheckboxValue
+* `validator?`: (value: string) => PositiveBaseInputFieldValidatorResult | NegativeBaseInputFieldValidatorResult
+* `customInfo`: TextWithCheckboxFieldCustomInfo
+
+## TextWithCheckboxValue
+
+An object that contains initial values for the custom input field with a checkbox.
+
+* `text`: string
+* `checked`: boolean
+
+## TextWithCheckboxFieldCustomInfo
+
+An object that describes additional settings for the custom input field with a checkbox.
+Using `asterix` property you can manage input type. If `asterix` is set to `true` then a password input will be rendered.
+
+* `checkboxTitle`: string
+* `asterix`: boolean
+
+## CustomComboBoxMetaInfo
+
+An object that describes a custom combobox.
+
+* `inputType`: 'ComboBox'
+* `id`: string
+* `title`: string
+* `items`: CustomComboBoxItem[]
+
+## CustomComboBoxItem
+
+An object that describes an item of the custom combobox.
+
+* `text`: string
+* `value`: string
+
+## PositiveBaseInputFieldValidatorResult
+
+An object that describes a positive validation result.
+
+* `valid`: true
+
+## NegativeBaseInputFieldValidatorResult
+
+An object that describes a negative validation result.
+
+* `valid`: false
+* `errorMessage`: string

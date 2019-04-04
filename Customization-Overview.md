@@ -48,7 +48,6 @@ var widget = new TradingView.widget({
     enabled_features: ["move_logo_to_main_pane"],
     overrides: {
         "mainSeriesProperties.style": 0,
-        "symbolWatermarkProperties.color" : "#944",
         "volumePaneSize": "tiny"
     },
     studies_overrides: {

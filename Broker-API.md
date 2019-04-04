@@ -42,9 +42,11 @@ ConnectionStatus.Disconnected = 3
 ConnectionStatus.Error = 4
 ```
 
-### isTradable(symbol)
+### isTradable(symbol): Promise<boolean | IsTradableResult>
 
 This function is required for the Floating Trading Panel. The ability to trade via the panel depends on the result of this function: `true` or `false`. You don't need to implement this method if all symbols can be traded.
+
+If you want to show a custom message with the reason why the symbol cannot be traded then you can return an object `IsTradableResult`. It has only two keys: tradable (`true` or `false`) and reason (`string`).
 
 ### accountManagerInfo()
 
@@ -57,21 +59,17 @@ This function is requested by the chart when a user creates or modifies an order
 
 You have the ability to use your own dialog and manage it as you see fit.
 
-### placeOrder([order](Trading-Objects-and-Constants#order), silently)
+### placeOrder([order](Trading-Objects-and-Constants#order))
 
 Method is requested when a user wants to place an order. Order is pre-filled with partial or complete information.
 
-If `silently` is `true` no order dialog should be shown.
-
-### modifyOrder([order](Trading-Objects-and-Constants#order), silently, focus)
+### modifyOrder([order](Trading-Objects-and-Constants#order))
 
 1. `order` is an order object to modify
-1. `silently` - if it is `true` no order dialog should be shown
-1. `focus` - [OrderTicketFocusControl constants](Trading-Objects-and-Constants#orderticketfocuscontrol). It can be already initialized by the chart.
 
 Method is requested when a user wants to modify an existing order.
 
-### cancelOrder(orderId, silently)
+### cancelOrder(orderId)
 
 This method is requested to cancel a single order with a given `id`.
 
@@ -87,35 +85,31 @@ If `silently` is `true` no dialogs should be shown.
 
 This method is requested to cancel multiple orders for a `symbol` and `side`.
 
-### editPositionBrackets(positionId, focus)
+### editPositionBrackets(positionId, [brackets](Trading-Objects-and-Constants#brackets))
 
 1. `positionId` is an ID of an existing position to be modified
-1. `focus` - [Focus constant](Trading-Objects-and-Constants#orderticketfocuscontrol).
+1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
 
 This method is requested if `supportPositionBrackets` configuration flag is on. It shows a dialog that enables take profit and stop loss editing.
 
-### closePosition(positionId, silently)
+### closePosition(positionId)
 
 This method is requested if `supportClosePosition` configuration flag is on. It allows to close the position by id.
-If `silently` is `true` no dialogs should be shown.
 
-### reversePosition(positionId, silently)
+### reversePosition(positionId)
 
 This method is requested if `supportReversePosition` configuration flag is on. It allows to reverse the position by id.
-If `silently` is `true` no dialogs should be shown.
 
-### editTradeBrackets(tradeId, focus)
+### editTradeBrackets(tradeId, [brackets](Trading-Objects-and-Constants#brackets))
 
 1. `tradeId` is ID of existing trade to be modified
-1. `focus` - [Focus constant](Trading-Objects-and-Constants#orderticketfocuscontrol).
+1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
 
 This method is requested if `supportTradeBrackets` configuration flag is on. It displays a dialog that enables take profit and stop loss editing.
 
-### closeTrade(tradeId, silently)
+### closeTrade(tradeId)
 
 This method is requested if `supportCloseTrade` configuration flag is on. It allows to close the trade by id.
-
-If `silently` is `true` no dialogs should be shown.
 
 ### symbolInfo(symbol) : Deferred (or Promise)
 
@@ -126,12 +120,13 @@ This method is requested by the internal Order Dialog, DOM panel and floating tr
 The result is an object with the following data:
 
 - `qty` - object with fields `min`, `max` and `step` that specifies Quantity, field step and boundaries.
-- `pipSize` - size of 1 pip (e.g., 0.0001 for EURUSD)
-- `pipValue` - values of 1 pip in account currency (e.g., 1 for EURUSD for an account in USD)
+- `pipSize` - size of 1 pip (e.g., 0.0001 for EURUSD).
+- `pipValue` - value of 1 pip for the instrument in the account currency.
 - `minTick` - minimal price change (e.g., 0.00001 for EURUSD). Used for price fields.
-- `description` - a description to be displayed in the dialog
-- `type` - instrument type, only `forex` matters - it enables negative pips. You can check that in the order dialog
-- `domVolumePrecision` - number of decimal places of DOM asks/bids volume (optional, 0 by default)
+- `description` - a description to be displayed in the dialog.
+- `type` - instrument type, only `forex` matters - it enables negative pips. You can check that in the order dialog.
+- `domVolumePrecision` - number of decimal places of DOM asks/bids volume (optional, 0 by default).
+- `marginRate` - the margin requirement for the instrument. A 3% margin rate should be represented as 0.03.
 
 ### accountInfo() : Deferred (or Promise)
 
@@ -144,15 +139,39 @@ Once this method is called the broker should stop providing profit/loss.
 
 ### subscribeEquity()
 
-The method should be implemented if you use a standard order dialog and support stop loss.
+The method should be implemented if you use the standard order dialog and support stop loss. Equity is used to calculate Risk in Percent.
 
-Once this method is called the broker should provide equity updates via [equityUpdate](Trading-Host#equityupdateequity) method.
+Once this method is called the broker should provide equity (Balance + P/L) updates via [equityUpdate](Trading-Host#equityupdateequity) method.
 
 ### unsubscribeEquity()
 
-The method should be implemented if you use a standard order dialog and support stop loss.
+The method should be implemented if you use the standard order dialog and support stop loss.
 
 Once this method is called the broker should stop providing equity updates.
+
+### subscribeMarginAvailable()
+
+The method should be implemented if you use the standard order dialog and want to show the margin meter.
+
+Once this method is called the broker should provide margin available updates via [marginAvailableUpdate](Trading-Host#marginavailableupdatemarginavailable) method.
+
+### unsubscribeMarginAvailable()
+
+The method should be implemented if you use the standard order dialog want to show the margin meter.
+
+Once this method is called the broker should stop providing margin available updates.
+
+### subscribePipValue()
+
+The method should be implemented if you use a standard order dialog. `pipValues` is displayed in the Order info and it is used to calculate the Trade Value and risks. If this method is not implemented then `pipValue` from the `symbolInfo` is used in the order panel/dialog.
+
+Once this method is called the broker should provide `pipValue` updates via [pipValueUpdate](Trading-Host#pipvalueupdatesymbol-pipValues) method.
+
+### unsubscribePipValue()
+
+The method should be implemented if you use a standard order dialog and implement `subscribePipValue`.
+
+Once this method is called the broker should stop providing `pipValue` updates.
 
 ## See Also
 

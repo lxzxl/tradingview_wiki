@@ -108,7 +108,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 |-------|---------------|------------------|------------
 | support_multicharts | on | | Enables context menu actions (Clone, Sync) related to Multiple Chart Layout
 | header_layouttoggle | on | | Shows the Select Layout button in the header
-| show_logo_on_all_charts | off | |Shows the logo on every single chart of the multichart layout
 | chart_crosshair_menu    | on  | 1.7 |Enables the "plus" button on the price scale for quick trading
 | add_to_watchlist | on | 1.9 | Enables "Add symbol to Watchlist" item in the menu
 | footer_screenshot | on | 1.11 | Shows a screenshot button in the footer (Account Manager)

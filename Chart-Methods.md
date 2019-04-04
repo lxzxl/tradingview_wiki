@@ -28,7 +28,7 @@ Here is a list of methods supported by the chart.
   * [getAllShapes()](#getallshapes)
   * [getAllStudies()](#getallstudies)
   * [setEntityVisibility(id, isVisible)](#setentityvisibilityid-isvisible) [obsolete]
-  * [createStudy(name, forceOverlay, lock, inputs, callback, overrides, options)](#createstudyname-forceoverlay-lock-inputs-callback-overrides-options)
+  * [createStudy(name, forceOverlay, lock, inputs, overrides, options)](#createstudyname-forceoverlay-lock-inputs-overrides-options)
   * [getStudyById(entityId)](#getstudybyidentityid)
   * [createShape(point, options)](#createshapepoint-options)
   * [createMultipointShape(points, options)](#createmultipointshapepoints-options)
@@ -54,6 +54,7 @@ Here is a list of methods supported by the chart.
   * [chartType()](#charttype)
 * [Other](#other)
   * [exportData(options)](#exportdataoptions)
+  * [selection()](#selection)
 
 ## Subscribing To Chart Events
 
@@ -168,7 +169,6 @@ Executes an action according to its id.
 * `showRightAxis`
 * `scaleSeriesOnly`
 * `drawingToolbarAction`
-* `magnetAction`
 * `stayInDrawingModeAction`
 * `hideAllMarks`
 * `showCountdown`
@@ -196,7 +196,7 @@ widget.chart().executeActionById("drawingToolbarAction"); // hides or shows the 
 
 1. `actionId`: string
 
-Get a checkable action state (e.g. `stayInDrawingModeAction`, `magnetAction`) according to its ID (see the IDs of actions above)
+Get a checkable action state (e.g. `stayInDrawingModeAction`, `showSymbolLabelsAction`) according to its ID (see the IDs of actions above)
 
 ### refreshMarks()
 
@@ -281,13 +281,12 @@ Sets visibility of an entity with a passed ID.
 
 **Deprecated**: Use a shape/study API instead (`getShapeById`/`getStudyById`). This is going to be removed in future releases.
 
-### createStudy(name, forceOverlay, lock, inputs, callback, overrides, options)
+### createStudy(name, forceOverlay, lock, inputs, overrides, options)
 
 1. `name`: string, name of an indicator as shown in the `Indicators` widget
 1. `forceOverlay`: forces the Charting Library to place the created study on the main pane
 1. `lock`: boolean, shows whether a user will be able to remove/change/hide the study or not
 1. `inputs`: (starting from version `1.2`) an array of study inputs. This array is expected to contain input values in the same order as in the study properties dialog.
-1. `callback`: function(`entityId`)
 1. `overrides`: (starting from version `1.2`) an object [containing properties](Studies-Overrides) you'd like to set for your new study. Note that you should not specify the study name. Start a property path with a plot name.
 1. `options`: object with the the following keys:
     * `checkLimit` - if it is `true` then the study limit dialog will be shown if the limit is exceeded.
@@ -296,6 +295,10 @@ Sets visibility of an entity with a passed ID.
         * `right` - attach the study to the right price scale
         * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
         * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable the study is added to the pane with the main series)
+
+See [here|(Panes-And-Scales-Behavior)] more information about panes and scales behavior in relation to studies..
+
+Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `entityId` of the created study.
 
 **Starting from v 1.12 the function returns the result immediately. Callback is kept to maintain compatibility.**
 
@@ -719,6 +722,12 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 1. `chart.exportData({ includeTime: false, includeSeries: true, to: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data before `2018-01-01`.
 1. `chart.exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data in the range before `2018-01-01`.
 1. `chart.exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000, to: Date.UTC(2018, 1, 1) / 1000 })` - to export series' data in the range between `2018-01-01` and `2018-02-01`.
+
+### selection()
+
+*Starting from version 1.15.*
+
+Returns [SelectionApi](Selection-Api) to that can be used to change the chart selection and subscribe to chart selection changes.
 
 ## See Also
 

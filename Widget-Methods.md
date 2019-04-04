@@ -30,12 +30,14 @@ widget.onChartReady(function() {
   * [takeScreenshot()](#takescreenshot)
   * [lockAllDrawingTools](#lockalldrawingtools)
   * [hideAllDrawingTools](#hidealldrawingtools)
+  * [magnetEnabled](#magnetenabled)
+  * [magnetMode](#magnetmode)
 * [Saving/Loading Charts](#savingloading-charts)
   * [save(callback)](#savecallback)
   * [load(state)](#loadstate)
   * [getSavedCharts(callback)](#getsavedchartscallback)
   * [loadChartFromServer(chartRecord)](#loadchartfromserverchartrecord)
-  * [saveChartToServer(onCompleteCallback, onFailCallback, saveAsSnapshot, options)](#savecharttoserveroncompletecallback-onfailcallback-saveassnapshot-options)
+  * [saveChartToServer(onCompleteCallback, onFailCallback, options)](#savecharttoserveroncompletecallback-onfailcallback-options)
   * [removeChartFromServer(chartId, onCompleteCallback)](#removechartfromserverchartid-oncompletecallback)
 * [Custom UI Controls](#custom-ui-controls)
   * [onContextMenu(callback)](#oncontextmenucallback)
@@ -149,7 +151,7 @@ widget.onShortcut("alt+s", function() {
 | `mouse_down` | | |
 | `mouse_up` | | |
 | `drawing` | 1.7 | A drawing is added to a chart. The arguments contain an object with the `value` field that corresponds with the name of the drawing. |
-| `study` | 1.7 | An indicator is added to a chart.The arguments contain an object with the `value` field that corresponds with the name of the indicator. |
+| `study` | 1.7 | An indicator is added to a chart. The arguments contain an object with the `value` field that corresponds with the name of the indicator. |
 | `undo` | 1.7 | |
 | `redo` | 1.7 | |
 | `undo_redo_state_changed` | 1.14 | The Undo/Redo state has been changed. The arguments contain an object with the state of the Undo/Redo stack. This object has the same structure as the result of [UndoRedoState](Widget-Methods#undoredostate) method |
@@ -163,6 +165,8 @@ widget.onShortcut("alt+s", function() {
 | `onMarkClick` | | User clicked a [mark on a bar](Marks-On-Bars). Mark ID will be passed as an argument |
 | `onTimescaleMarkClick` | | User clicked a timescale mark. Mark ID will be passed as an argument |
 | `onSelectedLineToolChanged` | | Selected line tool is changed |
+| `study_event` | 1.14 | A study is removed from the chart. The callback function receives two arguments: a study ID and an event type (currently the only possible value for this argument is `remove`) |
+| `drawing_event` | 1.14 | Drawning was hidden, shown, moved, removed, or clicked. The callback function will receive two arguments: a drawning ID and an event type. Possible values of the event type argument are `hide`, `show`, `move`, `remove`, `click` |
 | `study_properties_changed` | 1.14 | Study properties are changed. Entity ID will be passed as an argument |
 | :chart: `layout_about_to_be_changed` | | Amount or placement of the charts is about to be changed |
 | :chart: `layout_changed` | | Amount or placement of the charts is changed |
@@ -236,6 +240,19 @@ This method returns a [WatchedValue](WatchedValue) object that can be used to re
 
 This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of Hide All Drawing Tools button.
 
+### magnetEnabled()
+
+This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of the Magnet (enabled - `true` or disabled - `false`).
+
+### magnetMode()
+
+This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the mode of the Magnet.
+
+Available modes:
+
+* `0` - weak magnet mode
+* `1` - strong magnet mode
+
 ## Saving/Loading Charts
 
 ### save(callback)
@@ -273,11 +290,10 @@ Returns a list of chart descriptions saved to the server for the current user.
 
 Loads and displays a chart from the server.
 
-### saveChartToServer(onCompleteCallback, onFailCallback, saveAsSnapshot, options)
+### saveChartToServer(onCompleteCallback, onFailCallback, options)
 
 1. `onCompleteCallback`: function()
 1. `onFailCallback`: function()
-1. `saveAsSnapshot`: should be always `false`
 1. `options`: object `{ chartName }`
     * `chartName`: name of a chart. Should be specified for new charts and when renaming the chart.
     * `defaultChartName`: default name of a chart. It will be used if the current chart has no name.
@@ -436,7 +452,7 @@ You can also use the [theme](Widget-Constructor#theme) in the Widget Constructor
 
 ### addCustomCSSFile(url)
 
-1. `url` should be an absolute or relative path to the 'static` folder
+1. `url` should be an absolute or relative path to the `static` folder
 
 This method was introduced in version `1.3`.
 
@@ -525,11 +541,11 @@ Returns the amount of charts in the current layout.
 
 ### :chart: layout()
 
-Returns the current layout mode. Possible values are: `4`, `6`, `8`, `s`, `2h`, `2-1`, `2v`, `3h`, `3v`, `3s`.
+Returns the current layout mode. Possible values are: `4`, `6`, `8`, `s`, `2h`, `2-1`, `2v`, `3h`, `3v`, `3s`, `1-2`, `3r`, `4h`, `4v`, `4s`, `1-3`, `2-2`, `1-4`, `5s`, `6c`, `8c`.
 
 ### :chart: setLayout(layout)
 
-1. `layout`: Possible values are: `4`, `6`, `8`, `s`, `2h`, `2-1`, `2v`, `3h`, `3v`, `3s`.
+1. `layout`: Possible values are: `4`, `6`, `8`, `s`, `2h`, `2-1`, `2v`, `3h`, `3v`, `3s`, `1-2`, `3r`, `4h`, `4v`, `4s`, `1-3`, `2-2`, `1-4`, `5s`, `6c`, `8c`.
 
 Changes the current chart layout.
 

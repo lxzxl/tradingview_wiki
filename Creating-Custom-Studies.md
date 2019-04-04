@@ -108,22 +108,23 @@ The instruction below explains how to display chart data as an indicator. Please
     }
     ```
 
-1. Save the indicator into the custom indicators file with the following structure:
+1. Add [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) key to the widget constructor. Its value is a function that returns a Promise object with a list of custom indicators.
 
     ```javascript
-    __customIndicators = [
-        // *** your indicator object, created from the template ***
-    ];
+    {
+        custom_indicators_getter: function(PineJS) {
+            return Promise.resolve([
+                // *** your indicator object, created from the template ***
+            ]);
+        },
+    }
     ```
 
-    Note, that indicators file is a JavaScript source file that only defines an array of indicator objects. You are able to add several indicators to this file. You are also able to add the indicators that we compiled for you.
-
-1. Use [indicators_file_name](Widget-Constructor#indicators_file_name) option of widget's constructor to load custom indicators from the indicators file.
-1. Update your widget's initialization code to [create](Chart-Methods#createstudyname-forceoverlay-lock-inputs-callback-overrides-options) this indicator when the chart is ready.
+1. Update your widget's initialization code to [create](Chart-Methods#createstudyname-forceoverlay-lock-inputs-overrides-options) this indicator when the chart is ready.
 
 ## Examples
 
-1. Add the indicator to the Charting Library using [indicators_file_name](Widget-Constructor#indicators_file_name) option.
+1. Add the indicator to the Charting Library using [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) option.
 1. Change your widget's initialization code. Here is an example.
 
     ```javascript
@@ -144,162 +145,158 @@ Let's assume that you wish to display the equity curve on the chart. You will ha
 * Modify the indicator template mentioned above and create the indicators file (or add a new indicator to the existing indicators file). Here is an example:
 
 ```javascript
-__customIndicators = [
-    {
-        name: "Equity",
-        metainfo: {
-            "_metainfoVersion": 40,
-            "id": "Equity@tv-basicstudies-1",
-            "scriptIdPart": "",
-            "name": "Equity",
-            "description": "Equity",
-            "shortDescription": "Equity",
+{
+    name: "Equity",
+    metainfo: {
+        "_metainfoVersion": 40,
+        "id": "Equity@tv-basicstudies-1",
+        "scriptIdPart": "",
+        "name": "Equity",
+        "description": "Equity",
+        "shortDescription": "Equity",
 
-            "is_hidden_study": true,
-            "is_price_study": true,
-            "isCustomIndicator": true,
+        "is_hidden_study": true,
+        "is_price_study": true,
+        "isCustomIndicator": true,
 
-            "plots": [{"id": "plot_0", "type": "line"}],
-            "defaults": {
-                "styles": {
-                    "plot_0": {
-                        "linestyle": 0,
-                        "visible": true,
-
-                        // Make the line thinner
-                        "linewidth": 1,
-
-                        // Plot type is Line
-                        "plottype": 2,
-
-                        // Show price line
-                        "trackPrice": true,
-
-                        "transparency": 40,
-
-                        // Set the plotted line color to dark red
-                        "color": "#880000"
-                    }
-                },
-
-                // Precision is set to one digit, e.g. 777.7
-                "precision": 1,
-
-                "inputs": {}
-            },
+        "plots": [{"id": "plot_0", "type": "line"}],
+        "defaults": {
             "styles": {
                 "plot_0": {
-                    // Output name will be displayed in the Style window
-                    "title": "Equity value",
-                    "histogramBase": 0,
+                    "linestyle": 0,
+                    "visible": true,
+
+                    // Make the line thinner
+                    "linewidth": 1,
+
+                    // Plot type is Line
+                    "plottype": 2,
+
+                    // Show price line
+                    "trackPrice": true,
+
+                    "transparency": 40,
+
+                    // Set the plotted line color to dark red
+                    "color": "#880000"
                 }
             },
-            "inputs": [],
+
+            // Precision is set to one digit, e.g. 777.7
+            "precision": 1,
+
+            "inputs": {}
         },
-
-        constructor: function() {
-            this.init = function(context, inputCallback) {
-                this._context = context;
-                this._input = inputCallback;
-
-                var symbol = "#EQUITY";
-                this._context.new_sym(symbol, PineJS.Std.period(this._context), PineJS.Std.period(this._context));
-            };
-
-            this.main = function(context, inputCallback) {
-                this._context = context;
-                this._input = inputCallback;
-
-                this._context.select_sym(1);
-
-                var v = PineJS.Std.close(this._context);
-                return [v];
+        "styles": {
+            "plot_0": {
+                // Output name will be displayed in the Style window
+                "title": "Equity value",
+                "histogramBase": 0,
             }
+        },
+        "inputs": [],
+    },
+
+    constructor: function() {
+        this.init = function(context, inputCallback) {
+            this._context = context;
+            this._input = inputCallback;
+
+            var symbol = "#EQUITY";
+            this._context.new_sym(symbol, PineJS.Std.period(this._context), PineJS.Std.period(this._context));
+        };
+
+        this.main = function(context, inputCallback) {
+            this._context = context;
+            this._input = inputCallback;
+
+            this._context.select_sym(1);
+
+            var v = PineJS.Std.close(this._context);
+            return [v];
         }
     }
-];
+}
 ```
 
 ### Coloring bars
 
 ```javascript
-__customIndicators = [
-    {
-        name: "Bar Colorer Demo",
-        metainfo: {
-            _metainfoVersion: 42,
+{
+    name: "Bar Colorer Demo",
+    metainfo: {
+        _metainfoVersion: 42,
 
-            id: "BarColoring@tv-basicstudies-1",
+        id: "BarColoring@tv-basicstudies-1",
 
-            name: "BarColoring",
-            description: "Bar Colorer Demo",
-            shortDescription: "BarColoring",
-            scriptIdPart: "",
-            is_price_study: true,
-            is_hidden_study: false,
-            isCustomIndicator: true,
+        name: "BarColoring",
+        description: "Bar Colorer Demo",
+        shortDescription: "BarColoring",
+        scriptIdPart: "",
+        is_price_study: true,
+        is_hidden_study: false,
+        isCustomIndicator: true,
 
-            isTVScript: false,
-            isTVScriptStub: false,
-            defaults: {
-                precision: 4,
-                palettes: {
-                    palette_0: {
-                        // palette colors
-                        // change it to the default colors that you prefer,
-                        // but note that the user can change them in the Style tab
-                        // of indicator properties
-                        colors: [
-                            { color: "#FFFF00" },
-                            { color: "#0000FF" }
-                        ]
-                    }
-                }
-            },
-            inputs: [],
-            plots: [{
-                id: "plot_0",
-
-                // plot type should be set to 'bar_colorer'
-                type: "bar_colorer",
-
-                // this is the name of the palette that is defined
-                // in 'palettes' and 'defaults.palettes' sections
-                palette: "palette_0"
-            }],
+        isTVScript: false,
+        isTVScriptStub: false,
+        defaults: {
+            precision: 4,
             palettes: {
                 palette_0: {
+                    // palette colors
+                    // change it to the default colors that you prefer,
+                    // but note that the user can change them in the Style tab
+                    // of indicator properties
                     colors: [
-                        { name: "Color 0" },
-                        { name: "Color 1" }
-                    ],
-
-                    // the mapping between the values that
-                    // are returned by the script and palette colors
-                    valToIndex: {
-                        100: 0,
-                        200: 1
-                    }
+                        { color: "#FFFF00" },
+                        { color: "#0000FF" }
+                    ]
                 }
             }
         },
-        constructor: function() {
-            this.main = function(context, input) {
-                this._context = context;
-                this._input = input;
+        inputs: [],
+        plots: [{
+            id: "plot_0",
 
-                var valueForColor0 = 100;
-                var valueForColor1 = 200;
+            // plot type should be set to 'bar_colorer'
+            type: "bar_colorer",
 
-                // perform your calculations here and return one of the constants
-                // that is specified as a key in 'valToIndex' mapping
-                var result =
-                    Math.random() * 100 % 2 > 1 ? // we randomly select one of the color values
-                        valueForColor0 : valueForColor1;
+            // this is the name of the palette that is defined
+            // in 'palettes' and 'defaults.palettes' sections
+            palette: "palette_0"
+        }],
+        palettes: {
+            palette_0: {
+                colors: [
+                    { name: "Color 0" },
+                    { name: "Color 1" }
+                ],
 
-                return [result];
+                // the mapping between the values that
+                // are returned by the script and palette colors
+                valToIndex: {
+                    100: 0,
+                    200: 1
+                }
             }
         }
+    },
+    constructor: function() {
+        this.main = function(context, input) {
+            this._context = context;
+            this._input = input;
+
+            var valueForColor0 = 100;
+            var valueForColor1 = 200;
+
+            // perform your calculations here and return one of the constants
+            // that is specified as a key in 'valToIndex' mapping
+            var result =
+                Math.random() * 100 % 2 > 1 ? // we randomly select one of the color values
+                    valueForColor0 : valueForColor1;
+
+            return [result];
+        }
     }
-];
+}
 ```

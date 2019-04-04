@@ -22,17 +22,16 @@ paneProperties.crossHairProperties.width: 1
 paneProperties.crossHairProperties.style: LINESTYLE_DASHED
 
 // Margins (percentage). Used for auto scaling.
-paneProperties.topMargin: 5
-paneProperties.bottomMargin: 5
+paneProperties.topMargin: 10
+paneProperties.bottomMargin: 8
 
-// leftAxisProperties & rightAxisProperties
-paneProperties.leftAxisProperties.autoScale:true                    (see #749)
-paneProperties.leftAxisProperties.autoScaleDisabled:false           (see #749)
-paneProperties.leftAxisProperties.percentage:false
-paneProperties.leftAxisProperties.percentageDisabled:false
-paneProperties.leftAxisProperties.log:false
-paneProperties.leftAxisProperties.logDisabled:false
-paneProperties.leftAxisProperties.alignLabels:true
+paneProperties.axisProperties.autoScale: true
+paneProperties.axisProperties.lockScale: false
+paneProperties.axisProperties.percentage: false
+paneProperties.axisProperties.indexedTo100: false
+paneProperties.axisProperties.log: false
+paneProperties.axisProperties.alignLabels: true
+paneProperties.axisProperties.isInverted: false
 
 paneProperties.legendProperties.showStudyArguments: true
 paneProperties.legendProperties.showStudyTitles: true
@@ -43,8 +42,6 @@ paneProperties.legendProperties.showLegend: true
 paneProperties.legendProperties.showBarChange: true
 paneProperties.legendProperties.showOnlyPriceSource: true
 
-scalesProperties.showLeftScale : false
-scalesProperties.showRightScale : true
 scalesProperties.backgroundColor : "#ffffff"
 scalesProperties.fontSize: 11
 scalesProperties.lineColor : "#555"
@@ -93,76 +90,84 @@ mainSeriesProperties.priceAxisProperties.percentageDisabled:false
 mainSeriesProperties.priceAxisProperties.log:false
 mainSeriesProperties.priceAxisProperties.logDisabled:false
 
-symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
-
 // Different chart types defaults
 
 // Candles styles
-mainSeriesProperties.candleStyle.upColor: "#6ba583"
-mainSeriesProperties.candleStyle.downColor: "#d75442"
+mainSeriesProperties.candleStyle.upColor: "#26a69a"
+mainSeriesProperties.candleStyle.downColor: "#ef5350"
 mainSeriesProperties.candleStyle.drawWick: true
 mainSeriesProperties.candleStyle.drawBorder: true
 mainSeriesProperties.candleStyle.borderColor: "#378658"
-mainSeriesProperties.candleStyle.borderUpColor: "#225437"
-mainSeriesProperties.candleStyle.borderDownColor: "#5b1a13"
-mainSeriesProperties.candleStyle.wickUpColor: 'rgba( 115, 115, 117, 1)'
-mainSeriesProperties.candleStyle.wickDownColor: 'rgba( 115, 115, 117, 1)'
+mainSeriesProperties.candleStyle.borderUpColor: "#26a69a"
+mainSeriesProperties.candleStyle.borderDownColor: "#ef5350"
+mainSeriesProperties.candleStyle.wickUpColor: "#26a69a"
+mainSeriesProperties.candleStyle.wickDownColor: "#ef5350"
 mainSeriesProperties.candleStyle.barColorsOnPrevClose: false
 
 // Hollow Candles styles
-mainSeriesProperties.hollowCandleStyle.upColor: "#6ba583"
-mainSeriesProperties.hollowCandleStyle.downColor: "#d75442"
+mainSeriesProperties.hollowCandleStyle.upColor: "#26a69a"
+mainSeriesProperties.hollowCandleStyle.downColor: "#ef5350"
 mainSeriesProperties.hollowCandleStyle.drawWick: true
 mainSeriesProperties.hollowCandleStyle.drawBorder: true
 mainSeriesProperties.hollowCandleStyle.borderColor: "#378658"
-mainSeriesProperties.hollowCandleStyle.borderUpColor: "#225437"
-mainSeriesProperties.hollowCandleStyle.borderDownColor: "#5b1a13"
+mainSeriesProperties.hollowCandleStyle.borderUpColor: "#26a69a"
+mainSeriesProperties.hollowCandleStyle.borderDownColor: "#ef5350"
 mainSeriesProperties.hollowCandleStyle.wickColor: "#737375"
 
 // Heikin Ashi styles
-mainSeriesProperties.haStyle.upColor: "#6ba583"
-mainSeriesProperties.haStyle.downColor: "#d75442"
+mainSeriesProperties.haStyle.upColor: "#26a69a"
+mainSeriesProperties.haStyle.downColor: "#ef5350"
 mainSeriesProperties.haStyle.drawWick: true
 mainSeriesProperties.haStyle.drawBorder: true
 mainSeriesProperties.haStyle.borderColor: "#378658"
-mainSeriesProperties.haStyle.borderUpColor: "#225437"
-mainSeriesProperties.haStyle.borderDownColor: "#5b1a13"
+mainSeriesProperties.haStyle.borderUpColor: "#26a69a"
+mainSeriesProperties.haStyle.borderDownColor: "#ef5350"
 mainSeriesProperties.haStyle.wickColor: "#737375"
 mainSeriesProperties.haStyle.barColorsOnPrevClose: false
 
 // Bar styles
-mainSeriesProperties.barStyle.upColor: "#6ba583"
-mainSeriesProperties.barStyle.downColor: "#d75442"
+mainSeriesProperties.barStyle.upColor: "#26a69a"
+mainSeriesProperties.barStyle.downColor: "#ef5350"
 mainSeriesProperties.barStyle.barColorsOnPrevClose: false
 mainSeriesProperties.barStyle.dontDrawOpen: false
 
 // Line styles
-mainSeriesProperties.lineStyle.color: "#0303F7"
+mainSeriesProperties.lineStyle.color: "#2196f3"
 mainSeriesProperties.lineStyle.linestyle: LINESTYLE_SOLID
-mainSeriesProperties.lineStyle.linewidth: 1
+mainSeriesProperties.lineStyle.linewidth: 3
 mainSeriesProperties.lineStyle.priceSource: "close"
 
 // Area styles
-mainSeriesProperties.areaStyle.color1: "#606090"
-mainSeriesProperties.areaStyle.color2: "#01F6F5"
-mainSeriesProperties.areaStyle.linecolor: "#0094FF"
+mainSeriesProperties.areaStyle.color1: "#2196f3"
+mainSeriesProperties.areaStyle.color2: "#2196f3"
+mainSeriesProperties.areaStyle.linecolor: "#2196f3"
 mainSeriesProperties.areaStyle.linestyle: LINESTYLE_SOLID
 mainSeriesProperties.areaStyle.linewidth: 1
 mainSeriesProperties.areaStyle.priceSource: "close"
 
 // Baseline styles
 mainSeriesProperties.baselineStyle.baselineColor: "rgba( 117, 134, 150, 1)"
-mainSeriesProperties.baselineStyle.topFillColor1: "rgba( 83, 185, 135, 0.1)"
-mainSeriesProperties.baselineStyle.topFillColor2: "rgba( 83, 185, 135, 0.1)"
-mainSeriesProperties.baselineStyle.bottomFillColor1: "rgba( 235, 77, 92, 0.1)"
-mainSeriesProperties.baselineStyle.bottomFillColor2: "rgba( 235, 77, 92, 0.1)"
-mainSeriesProperties.baselineStyle.topLineColor: "rgba( 83, 185, 135, 1)"
-mainSeriesProperties.baselineStyle.bottomLineColor: "rgba( 235, 77, 92, 1)"
-mainSeriesProperties.baselineStyle.topLineWidth: 1
-mainSeriesProperties.baselineStyle.bottomLineWidth: 1
+mainSeriesProperties.baselineStyle.topFillColor1: "rgba( 38, 166, 154, 0.05)"
+mainSeriesProperties.baselineStyle.topFillColor2: "rgba( 38, 166, 154, 0.05)"
+mainSeriesProperties.baselineStyle.bottomFillColor1: "rgba( 239, 83, 80, 0.05)"
+mainSeriesProperties.baselineStyle.bottomFillColor2: "rgba( 239, 83, 80, 0.05)"
+mainSeriesProperties.baselineStyle.topLineColor: "rgba( 38, 166, 154, 1)"
+mainSeriesProperties.baselineStyle.bottomLineColor: "rgba( 239, 83, 80, 1)"
+mainSeriesProperties.baselineStyle.topLineWidth: 3
+mainSeriesProperties.baselineStyle.bottomLineWidth: 3
 mainSeriesProperties.baselineStyle.priceSource: "close"
 mainSeriesProperties.baselineStyle.transparency: 50
 mainSeriesProperties.baselineStyle.baseLevelPercentage: 50
+
+// Hi-Lo style
+mainSeriesProperties.hiloStyle.color: "#2196f3"
+mainSeriesProperties.hiloStyle.showBorders: true
+mainSeriesProperties.hiloStyle.borderColor: "#2196f3"
+mainSeriesProperties.hiloStyle.showLabels: true
+mainSeriesProperties.hiloStyle.labelColor: "#2196f3"
+mainSeriesProperties.hiloStyle.fontFamily: 'Trebuchet MS'
+mainSeriesProperties.hiloStyle.fontSize: 7
+
 ```
 
 #### LineStyles
