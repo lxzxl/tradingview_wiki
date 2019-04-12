@@ -90,6 +90,11 @@ mainSeriesProperties.priceAxisProperties.percentageDisabled:false
 mainSeriesProperties.priceAxisProperties.log:false
 mainSeriesProperties.priceAxisProperties.logDisabled:false
 
+// possible values are: description, ticker.
+mainSeriesProperties.statusViewStyle.symbolTextSource: 'description'
+
+symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
+
 // Different chart types defaults
 
 // Candles styles
