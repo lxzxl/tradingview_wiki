@@ -10,6 +10,20 @@ Returns current [mode](#pricescalemode) of the price scale.
 
 Changes current mode of the price scale.
 
+### isInverted()
+
+*Since version 1.15.*
+
+Returns whether the price scale is inverted or not.
+
+### setInverted(isInverted)
+
+*Since version 1.15.*
+
+1. `isInverted` - new inverted state for the price scale
+
+Changes current inverted state of the price scale.
+
 ## Primitive Types
 
 ### PriceScaleMode
