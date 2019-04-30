@@ -59,6 +59,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | adaptive_logo | on            | 1.11            | Allows you to hide 'charts by TradingView' text on small-screen devices |
 | show_dom_first_time                      | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
 | hide_left_toolbar_by_default             | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
+| chart_style_hilo                         | off           | 1.15            | Adds Hi-Lo option to chart style controls |
 
 ### Elements placement
 

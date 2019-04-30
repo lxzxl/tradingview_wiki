@@ -4,13 +4,13 @@
 
 Returns `true` if the pane contains the main series.
 
-### getLeftPriceScale()
+### getLeftPriceScales()
 
-Returns an instance of the [PriceScaleApi](Price-Scale-Api) that allows you to interact with left price scale.
+Returns an array of the [PriceScaleApi](Price-Scale-Api) instances that allows interaction with left price scales. The array may be empty if there is not any price scale on the left side of the pane.
 
-### getRightPriceScale()
+### getRightPriceScales()
 
-Returns an instance of the [PriceScaleApi](Price-Scale-Api) that allows you to interact with right price scale.
+Returns an array of the [PriceScaleApi](Price-Scale-Api) instances that allows interaction with right price scales. The array may be empty if there is not any price scale on the right side of the pane.
 
 ### getMainSourcePriceScale()
 
