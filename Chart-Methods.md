@@ -30,6 +30,7 @@ Here is a list of methods supported by the chart.
   * [setEntityVisibility(id, isVisible)](#setentityvisibilityid-isvisible) [obsolete]
   * [createStudy(name, forceOverlay, lock, inputs, overrides, options)](#createstudyname-forceoverlay-lock-inputs-overrides-options)
   * [getStudyById(entityId)](#getstudybyidentityid)
+  * [showPropertiesDialog(entityId)](#showpropertiesdialogentityId)
   * [createShape(point, options)](#createshapepoint-options)
   * [createMultipointShape(points, options)](#createmultipointshapepoints-options)
   * [getShapeById(entityId)](#getshapebyidentityid)
@@ -329,6 +330,12 @@ Creates a study on the main symbol. Here are the examples:
 1. `entityId`: object. Value that is returned when a study is created via API.
 
 Returns an instance of the [StudyApi](Study-Api) that allows you to interact with the study.
+
+### showPropertiesDialog(entityId)
+
+1. `entityId`: object. Value that is returned when a study or shape is created via API.
+
+Shows the properties dialog for specified study or shape for user interaction.
 
 ### createShape(point, options)
 

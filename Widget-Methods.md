@@ -165,8 +165,8 @@ widget.onShortcut("alt+s", function() {
 | `onMarkClick` | | User clicked a [mark on a bar](Marks-On-Bars). Mark ID will be passed as an argument |
 | `onTimescaleMarkClick` | | User clicked a timescale mark. Mark ID will be passed as an argument |
 | `onSelectedLineToolChanged` | | Selected line tool is changed |
-| `study_event` | 1.14 | A study is removed from the chart. The callback function receives two arguments: a study ID and an event type (currently the only possible value for this argument is `remove`) |
-| `drawing_event` | 1.14 | Drawning was hidden, shown, moved, removed, or clicked. The callback function will receive two arguments: a drawning ID and an event type. Possible values of the event type argument are `hide`, `show`, `move`, `remove`, `click` |
+| `study_event` | 1.15 | A study is removed from the chart. The callback function receives two arguments: a study ID and an event type (currently the only possible value for this argument is `remove`) |
+| `drawing_event` | 1.15 | Drawing was hidden, shown, moved, removed, or clicked. The callback function will receive two arguments: a drawing ID and an event type. Possible values of the event type argument are `hide`, `show`, `move`, `remove`, `click` |
 | `study_properties_changed` | 1.14 | Study properties are changed. Entity ID will be passed as an argument |
 | :chart: `layout_about_to_be_changed` | | Amount or placement of the charts is about to be changed |
 | :chart: `layout_changed` | | Amount or placement of the charts is changed |
