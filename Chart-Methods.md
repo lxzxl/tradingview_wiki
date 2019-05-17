@@ -56,6 +56,8 @@ Here is a list of methods supported by the chart.
 * [Other](#other)
   * [exportData(options)](#exportdataoptions)
   * [selection()](#selection)
+  * [setZoomEnabled(enabled)](#setzoomenabledenabled)
+  * [setScrollEnabled(enabled)](#setscrollenabledenabled)
 
 ## Subscribing To Chart Events
 
@@ -736,6 +738,18 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 *Starting from version 1.15.*
 
 Returns [SelectionApi](Selection-Api) to that can be used to change the chart selection and subscribe to chart selection changes.
+
+### setZoomEnabled(enabled)
+
+*Starting from version 1.15.*
+
+Enables (if the parameter is true) or disables (if the parameter is false) zooming of the chart.
+
+### setScrollEnabled(enabled)
+
+*Starting from version 1.15.*
+
+Enables (if the parameter is true) or disables (if the parameter is false) scrolling of the chart.
 
 ## See Also
 
