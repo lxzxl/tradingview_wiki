@@ -159,6 +159,7 @@ Executes an action according to its id.
 * `insertIndicator`
 * `symbolSearch`
 * `changeInterval`
+* `gotoDate`
 
 **Other actions:**
 
