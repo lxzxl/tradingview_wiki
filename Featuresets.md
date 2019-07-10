@@ -28,6 +28,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | left_toolbar                            | on            |                 |                                                            |
 | control_bar                             | on            |                 | Relates to the navigation buttons at the bottom of the chart            |
 | timeframes_toolbar                      | on            |                 |                                                            |
+| legend_widget                           | on            |      1.15       | Disabling this feature hides the legend widget             |
 | **edit_buttons_in_legend**              | on            |                 |                                                            |
 | - show_hide_button_in_legend            | on            |       1.7       |                                                            |
 | - format_button_in_legend               | on            |       1.7       |                                                            |
