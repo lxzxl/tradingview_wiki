@@ -53,69 +53,59 @@ If you want to show a custom message with the reason why the symbol cannot be tr
 This function should return the information that will be used to build an account manager.
 See [Account Manager](Account-Manager) for more information.
 
-### showOrderDialog([order](Trading-Objects-and-Constants#order))
-
-This function is requested by the chart when a user creates or modifies an order.
-
-You have the ability to use your own dialog and manage it as you see fit.
-
 ### placeOrder([order](Trading-Objects-and-Constants#order))
 
-Method is requested when a user wants to place an order. Order is pre-filled with partial or complete information.
+Method is called when a user wants to place an order. Order is pre-filled with partial or complete information.
 
 ### modifyOrder([order](Trading-Objects-and-Constants#order))
 
 1. `order` is an order object to modify
 
-Method is requested when a user wants to modify an existing order.
+Method is called when a user wants to modify an existing order.
 
 ### cancelOrder(orderId)
 
-This method is requested to cancel a single order with a given `id`.
+This method is called to cancel a single order with a given `id`.
 
-If `silently` is `true` no dialogs should be shown.
-
-### cancelOrders(symbol, side, ordersIds, silently)
+### cancelOrders(symbol, side, ordersIds)
 
 1. `symbol` - symbol string
 1. `side`: [Side constant](Trading-Objects-and-Constants#side) or `undefined`
 1. `ordersIds` - ids already collected by `symbol` and `side`
 
-If `silently` is `true` no dialogs should be shown.
-
-This method is requested to cancel multiple orders for a `symbol` and `side`.
+This method is called to cancel multiple orders for a `symbol` and `side`.
 
 ### editPositionBrackets(positionId, [brackets](Trading-Objects-and-Constants#brackets))
 
 1. `positionId` is an ID of an existing position to be modified
 1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
 
-This method is requested if `supportPositionBrackets` configuration flag is on. It shows a dialog that enables take profit and stop loss editing.
+This method is called if `supportPositionBrackets` configuration flag is on. It allows to edit or add brackets to the position.
 
 ### closePosition(positionId)
 
-This method is requested if `supportClosePosition` configuration flag is on. It allows to close the position by id.
+This method is called if `supportClosePosition` configuration flag is on. It allows to close the position by id.
 
 ### reversePosition(positionId)
 
-This method is requested if `supportReversePosition` configuration flag is on. It allows to reverse the position by id.
+This method is called if `supportReversePosition` configuration flag is on. It allows to reverse the position by id.
 
 ### editTradeBrackets(tradeId, [brackets](Trading-Objects-and-Constants#brackets))
 
 1. `tradeId` is ID of existing trade to be modified
 1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
 
-This method is requested if `supportTradeBrackets` configuration flag is on. It displays a dialog that enables take profit and stop loss editing.
+This method is called if `supportTradeBrackets` configuration flag is on. It allows to edit or add brackets to the trade.
 
 ### closeTrade(tradeId)
 
-This method is requested if `supportCloseTrade` configuration flag is on. It allows to close the trade by id.
+This method is called if `supportCloseTrade` configuration flag is on. It allows to close the trade by id.
 
 ### symbolInfo(symbol) : Deferred (or Promise)
 
 1. `symbol` - symbol string
 
-This method is requested by the internal Order Dialog, DOM panel and floating trading panel to get symbol information.
+This method is called by the internal Order Dialog, DOM panel and floating trading panel to get symbol information.
 
 The result is an object with the following data:
 
@@ -130,7 +120,7 @@ The result is an object with the following data:
 
 ### accountInfo() : Deferred (or Promise)
 
-This method is requested by the internal Order Dialog to get the account information.
+This method is called by the internal Order Dialog to get the account information.
 It should return only one field for now:
 
 1. currencySign: string - which is a sign of account currency
