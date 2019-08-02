@@ -30,6 +30,7 @@ Here is a list of methods supported by the chart.
   * [setEntityVisibility(id, isVisible)](#setentityvisibilityid-isvisible) [obsolete]
   * [createStudy(name, forceOverlay, lock, inputs, overrides, options)](#createstudyname-forceoverlay-lock-inputs-overrides-options)
   * [getStudyById(entityId)](#getstudybyidentityid)
+  * [getSeries()](#getseries)
   * [showPropertiesDialog(entityId)](#showpropertiesdialogentityId)
   * [createShape(point, options)](#createshapepoint-options)
   * [createMultipointShape(points, options)](#createmultipointshapepoints-options)
@@ -51,6 +52,8 @@ Here is a list of methods supported by the chart.
   * [resolution()](#resolution)
   * [getVisibleRange()](#getvisiblerange)
   * [getVisiblePriceRange()](#getvisiblepricerange)
+  * [scrollPosition()](#scrollposition)
+  * [defaultScrollPosition()](#defaultscrollposition)
   * [priceFormatter()](#priceformatter)
   * [chartType()](#charttype)
 * [Other](#other)
@@ -301,7 +304,7 @@ Sets visibility of an entity with a passed ID.
         * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
         * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable the study is added to the pane with the main series)
 
-See [here|(Panes-And-Scales-Behavior)] more information about panes and scales behavior in relation to studies..
+See [here](Panes-And-Scales-Behavior) more information about panes and scales behavior in relation to studies.
 
 Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `entityId` of the created study.
 
@@ -333,6 +336,10 @@ Creates a study on the main symbol. Here are the examples:
 1. `entityId`: object. Value that is returned when a study is created via API.
 
 Returns an instance of the [StudyApi](Study-Api) that allows you to interact with the study.
+
+### getSeries()
+
+Returns an instance of the [SeriesApi](Series-Api) that allows you to interact with the main series.
 
 ### showPropertiesDialog(entityId)
 
@@ -678,9 +685,22 @@ Returns the object `{from, to}`. `from` and `to` are Unix timestamps in the UTC 
 
 ### getVisiblePriceRange()
 
-*Starting from V 1.7.*
+*Starting from version 1.7.*
 
 Returns the object `{from, to}`. `from` and `to` are boundaries of the price scale visible range in main series area.
+
+### scrollPosition()
+
+*Starting from version 1.15.*
+
+Returns the distance from the right edge of the chart to the last bar, measured in bars.
+This is actually the current scrolling position of the chart, including the right margin.
+
+### defaultScrollPosition()
+
+*Starting from version 1.15.*
+
+Returns the default distance from the right edge of the chart to the last bar, measured in bars.
 
 ### priceFormatter()
 
