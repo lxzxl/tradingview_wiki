@@ -48,7 +48,7 @@ Unmerges the study down (if possible).
     * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
     * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable if the study and the main series are located on the same pane)
 
-Changes the price scale of the study. See [here|(Panes-And-Scales-Behavior)] more information about panes and scales behavior in relation to studies.
+Changes the price scale of the study. See [here](Panes-And-Scales-Behavior) more information about panes and scales behavior in relation to studies.
 
 ### isVisible()
 
