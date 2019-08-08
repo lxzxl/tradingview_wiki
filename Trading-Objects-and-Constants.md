@@ -212,8 +212,8 @@ Values of the following two fields are functions that are called by the Trading 
 
 ```ts
 customUI: {
-    createOrderDialog?: (order: Order, focus?: OrderTicketFocusControl) => Promise<boolean>;
-    createPositionDialog?: (position: Position | Trade, brackets: Brackets, focus?: OrderTicketFocusControl) => Promise<boolean>;
+    showOrderDialog?: (order: Order, focus?: OrderTicketFocusControl) => Promise<boolean>;
+    showPositionDialog?: (position: Position | Trade, brackets: Brackets, focus?: OrderTicketFocusControl) => Promise<boolean>;
 }
 ```
 
