@@ -24,6 +24,7 @@ Here is a list of methods supported by the chart.
   * [clearMarks()](#clearmarks)
   * [setChartType(type)](#setcharttypetype)
   * [setTimezone(timezone)](#settimezonetimezone)
+  * [getTimezone()](#gettimezone)
 * [Studies And Shapes](#studies-and-shapes)
   * [getAllShapes()](#getallshapes)
   * [getAllStudies()](#getallstudies)
@@ -254,6 +255,12 @@ widget.activeChart().setTimezone('Asia/Singapore');
 ```
 
 Makes the chart change its timezone.
+
+### getTimezone()
+
+*Since version 1.15.*
+
+Returns the current [timezone](Widget-Constructor#timezone) of the chart.
 
 ### canZoomOut()
 
