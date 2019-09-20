@@ -481,6 +481,8 @@ Property|Type|Supported Values|Default Value
 Price|Double|Double|0.0
 Text|String|String|""
 Tooltip|String|String|""
+Modify Tooltip|String|String|""
+Cancel Tooltip|String|String|""
 Quantity|String|String|""
 Editable|Boolean|Boolean|true
 
@@ -519,6 +521,9 @@ Example:
 
 ```javascript
 widget.chart().createOrderLine()
+    .setTooltip("Additional order information")
+    .setModifyTooltip("Modify order")
+    .setCancelTooltip("Cancel order")
     .onMove(function() {
         this.setText("onMove called");
     })
@@ -558,6 +563,9 @@ Property|Type|Supported Values|Default Value
 Price|Double|Double|0.0
 Text|String|String|""
 Tooltip|String|String|""
+Protect Tooltip|String|String|""
+Reverse Tooltip|String|String|""
+Close Tooltip|String|String|""
 Quantity|String|String|""
 
 **Horizontal line properties**:
@@ -608,6 +616,10 @@ widget.chart().createPositionLine()
         this.setText(text);
     })
     .setText("PROFIT: 71.1 (3.31%)")
+    .setTooltip("Additional position information")
+    .setProtectTooltip("Protect position")
+    .setCloseTooltip("Close position")
+    .setReverseTooltip("Reverse position")
     .setQuantity("8.235")
     .setPrice(15.5)
     .setExtendLeft(false)
