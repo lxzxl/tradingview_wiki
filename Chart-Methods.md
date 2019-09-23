@@ -709,6 +709,8 @@ Returns the object `{from, to}`. `from` and `to` are Unix timestamps in the UTC 
 
 *Starting from version 1.7.*
 
+Deprecated, use [Price Scale API](Price-Scale-Api#getVisiblePriceRange) instead.
+
 Returns the object `{from, to}`. `from` and `to` are boundaries of the price scale visible range in main series area.
 
 ### scrollPosition()

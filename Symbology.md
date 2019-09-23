@@ -133,6 +133,13 @@ Timezone of the exchange for this symbol. We expect to get the name of the time 
 - `Pacific/Norfolk`
 - `US/Mountain`
 
+## format
+
+Format of displaying labels on the price scale:
+
+- `price` - formats decimal or fractional numbers based on `minmov`, `pricescale`, `minmove2` and `fractional` values
+- `volume` - formats decimal numbers in thousands, millions or billions
+
 ## minmov, pricescale, minmove2, fractional
 
 These four keys have different meanings when used for common and fractional prices.

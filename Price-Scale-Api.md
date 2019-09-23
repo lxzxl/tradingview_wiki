@@ -24,6 +24,18 @@ Returns whether the price scale is inverted or not.
 
 Changes current inverted state of the price scale.
 
+### getVisiblePriceRange()
+
+*Starting from version 1.15.*
+
+Returns current visible price range of the price scale. The result is an object with `from` and `to`, which are the boundaries of the price scale visible range.
+
+### setVisiblePriceRange(range)
+
+*Starting from version 1.15.*
+
+Sets current visible price range of the price scale, `range` is an object with `from` and `to`, which are the boundaries of the price scale visible range.
+
 ## Primitive Types
 
 ### PriceScaleMode
