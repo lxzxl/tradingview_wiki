@@ -18,3 +18,27 @@ Returns:
 
 * an instance of the [PriceScaleApi](Price-Scale-Api) that allows you to interact with the price scale of the main source
 * `null` if the main source is not attached to any price scale (it is in 'No Scale' mode)
+
+### getHeight()
+
+*Starting from version 1.16.*
+
+Returns the pane's height.
+
+### setHeight()
+
+*Starting from version 1.16.*
+
+Sets the pane's height.
+
+### paneIndex()
+
+*Starting from version 1.16.*
+
+Returns the pane's index, it's a number between 0 and all panes count - 1.
+
+### moveTo(paneIndex)
+
+*Starting from version 1.16.*
+
+Moves the pane to a new position, `paneIndex` should be a number between 0 and all panes count - 1.

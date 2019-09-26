@@ -169,6 +169,8 @@ widget.onShortcut("alt+s", function() {
 | `drawing_event` | 1.15 | Drawing was hidden, shown, moved, removed, or clicked. The callback function will receive two arguments: a drawing ID and an event type. Possible values of the event type argument are `hide`, `show`, `move`, `remove`, `click` |
 | `study_properties_changed` | 1.14 | Study properties are changed. Entity ID will be passed as an argument |
 | `series_properties_changed` | 1.15 | Main series properties are changed. |
+| `panes_height_changed` | 1.16 | Panes' size is changed. |
+| `panes_order_changed` | 1.16 | Panes' order is changed. |
 | :chart: `layout_about_to_be_changed` | | Amount or placement of the charts is about to be changed |
 | :chart: `layout_changed` | | Amount or placement of the charts is changed |
 | :chart: `activeChartChanged` | | Active chart is changed |
