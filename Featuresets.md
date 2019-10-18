@@ -91,7 +91,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | chart_zoom                    | on    |   1.10          | Allows chart zooming
 | high_density_bars             | off   |   1.11          | Allows zooming out to show more than 60000 bars on a single screen
 | low_density_bars              | off   |   1.15          | Allows zooming in to show up to one bar in the viewport
-| cl_feed_return_all_data       | off   |   1.11          | Allows you to return more bars from the data feed than requested and displays it on a chart simultaneously
 | uppercase_instrument_names    | on    | 1.12            | Disabling this feature allows a user to enter case-sensitive symbols
 | no_min_chart_width            | off   | 1.14            | Disables minimum chart width limitation
 | fix_left_edge                 | off   | 1.14            | Prevents scrolling to the left of the first historical bar
