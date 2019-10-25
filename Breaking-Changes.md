@@ -36,6 +36,10 @@ If you use your own order dialog then you still need to make changes in your bro
 
 - Override `symbolWatermarkProperties` is not supported anymore. You can use [settings_adapter](Widget-Constructor#settings_adapter) with `symbolWatermark` key.
 
+- `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
+  We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
+  You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
+
 ## Version 1.14
 
 - [createButton](Widget-Methods#createButtonoptions) returns `HTMLElement` instead of `JQuery`.
@@ -43,9 +47,6 @@ If you use your own order dialog then you still need to make changes in your bro
 - [getVisibleRange](Chart-Methods#getVisibleRange) returns `{from, to}` in the UTC timezone (it was a timezone selected on a chart before).
 - Method `onready` was removed. You can use `window.addEventListener('DOMContentLoaded', callback, false)` instead.
 - `saveAsSnapshot` parameter was removed from [saveChartToServer](Widget-Methods#savecharttoserveroncompletecallback-onfailcallback-options)
-- `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
-  We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
-  You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
 
 **TypeScript type definitions**
 
