@@ -15,7 +15,7 @@ Here is the list of breaking changes:
 - [createStudy](Chart-Methods#createstudyname-forceoverlay-lock-inputs-overrides-options) returns [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) instead of `entityId`.
 - [Pane-Api](Pane-Api) method `getLeftPriceScale` is removed and replaced with `getLeftPriceScales` that returns an array of scales instead a single element.
 - [Pane-Api](Pane-Api) method `getRightPriceScale` is removed and replaced with `getRightPriceScales` that returns an array of scales instead a single element.
-- [setVisibleRange](Chart-Methods#setvisiblerangerange-applydefaultrightmargin) method now returns a Promise object and don't accept a callback as the last argument.
+- [setVisibleRange](Chart-Methods#setvisiblerangerange-options) method now returns a Promise object and don't accept a callback as the last argument.
 
 **Trading Terminal**
 

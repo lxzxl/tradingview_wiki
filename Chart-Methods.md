@@ -14,7 +14,7 @@ Here is a list of methods supported by the chart.
   * [crossHairMoved(callback)](#crosshairmovedcallback)
   * [onVisibleRangeChanged()](#onvisiblerangechanged)
 * [Chart Actions](#chart-actions)
-  * [setVisibleRange(range, applyDefaultRightMargin)](#setvisiblerangerange-applydefaultrightmargin)
+  * [setVisibleRange(range, options)](#setvisiblerangerange-options)
   * [setSymbol(symbol, callback)](#setsymbolsymbol-callback)
   * [setResolution(resolution, callback)](#setresolutionresolution-callback)
   * [resetData()](#resetdata)
@@ -116,11 +116,13 @@ You can subscribe using [Subscription](Subscription) object returned by this fun
 
 ## Chart Actions
 
-### setVisibleRange(range, applyDefaultRightMargin)
+### setVisibleRange(range, options)
 
 1. `range`: object, `{from to}`
     * `from`, `to`: unix timestamps, UTC
-1. `applyDefaultRightMargin`: `boolean`. Indicates whether the library should apply the default right margin to the right border if it points on the last bar.
+1. `options`: `{applyDefaultRightMargin, percentRightMargin}`
+    * `applyDefaultRightMargin`: indicates whether the library should apply the default right margin to the right border if it points on the last bar.
+    * `percentRightMargin`: indicates whether the library should apply the percent right margin to the right border if it points on the last bar.
 
 Forces the chart to adjust its parameters (scroll, scale) to make the selected time period fit the widget.
 
