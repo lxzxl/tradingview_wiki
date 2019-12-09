@@ -16,6 +16,7 @@ Here is the list of breaking changes:
 - [Pane-Api](Pane-Api) method `getLeftPriceScale` is removed and replaced with `getLeftPriceScales` that returns an array of scales instead a single element.
 - [Pane-Api](Pane-Api) method `getRightPriceScale` is removed and replaced with `getRightPriceScales` that returns an array of scales instead a single element.
 - [setVisibleRange](Chart-Methods#setvisiblerangerange-options) method now returns a Promise object and don't accept a callback as the last argument.
+- Priority of the [symbol](Widget-Constructor#symbol-interval) option has been made higher than the priority of the symbol from the [saved_data](Widget-Constructor#saved_data) option. Do not assign a value to the [symbol](Widget-Constructor#symbol-interval) option, if you don't want to override the symbol from [saved_data](Widget-Constructor#saved_data).
 
 **Trading Terminal**
 
