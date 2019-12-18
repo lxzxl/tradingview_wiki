@@ -182,7 +182,10 @@ Here is the list of default formatters:
 | `status` | It is used to format the `status`. |
 | `date` | Displays the date or time. |
 | `localDate` | Displays the local date or time. |
+| `dateOrDateTime` | Displays the date or date and time. This formatter accepts an object `{value: number, hasTime: boolean}`. If `hasTime` is set to `true` then the date and time are displayed. Otherwise only the date is displayed.|
+| `localDateOrDateTime` | The same as `dateOrDateTime`, but it displays time in the local timezone. |
 | `fixed` | Displays a number with 2 decimal places. |
+| `variablePrecision` | Displays a number with variable precision. |
 | `pips` | Displays a number with 1 decimal place. |
 | `profit` | Displays profit. It also adds the `+` sign, separates thousands and changes the cell text color to red or green. |
 

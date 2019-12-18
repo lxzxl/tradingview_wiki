@@ -90,6 +90,13 @@ Please note that the leading `-` characters are not part of the featureset name 
 | disable_resolution_rebuild    | off   |                 | Shows bar time exactly as provided by the data feed with no adjustments.
 | chart_scroll                  | on    |   1.10          | Allows chart scrolling
 | chart_zoom                    | on    |   1.10          | Allows chart zooming
+| horz_touch_drag_scroll        | on    |   1.16          | If enabled, the chart handles horizontal pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
+| vert_touch_drag_scroll        | on    |   1.16          | If enabled, the chart handles vertical pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
+| mouse_wheel_scroll            | on    |   1.16          | If enabled, chart scrolling with horizontal mouse wheel is enabled.
+| pressed_mouse_move_scroll     | on    |   1.16          | If enabled, chart scrolling with left mouse button pressed is allowed.
+| mouse_wheel_scale             | on    |   1.16          | If enabled, series scaling with a mouse wheel is enabled.
+| pinch_scale                   | on    |   1.16          | If enabled, series scaling with pinch/zoom gestures (this option is supported on touch devices) is enabled.
+| axis_pressed_mouse_move_scale | on    |   1.16          | If enabled, axis scaling with left mouse button pressed is allowed.
 | high_density_bars             | off   |   1.11          | Allows zooming out to show more than 60000 bars on a single screen
 | low_density_bars              | off   |   1.15          | Allows zooming in to show up to one bar in the viewport
 | uppercase_instrument_names    | on    | 1.12            | Disabling this feature allows a user to enter case-sensitive symbols

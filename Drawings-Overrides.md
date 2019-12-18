@@ -56,7 +56,6 @@ linetooltrendline: {
     showAngle: false
 },
 linetoolinfoline: {
-    clonable: true,
     linecolor: 'rgba( 21, 153, 128, 1)',
     linewidth: 1.0,
     linestyle: CanvasEx.LINESTYLE_SOLID,
@@ -164,7 +163,6 @@ linetooldaterange: {
     fontsize: 12,
     fillLabelBackground: true,
     labelBackgroundColor: 'rgba( 91, 133, 191, 0.9)',
-    labelBackgroundTransparency: 30,
     fillBackground: true,
     backgroundColor: 'rgba( 186, 218, 255, 0.4)',
     backgroundTransparency: 60,
@@ -179,7 +177,6 @@ linetoolpricerange: {
     fontsize: 12,
     fillLabelBackground: true,
     labelBackgroundColor: 'rgba( 91, 133, 191, 0.9)',
-    labelBackgroundTransparency: 30,
     fillBackground: true,
     backgroundColor: 'rgba( 186, 218, 255, 0.4)',
     backgroundTransparency: 60,
@@ -194,7 +191,6 @@ linetooldateandpricerange: {
     fontsize: 12,
     fillLabelBackground: true,
     labelBackgroundColor: 'rgba( 91, 133, 191, 0.9)',
-    labelBackgroundTransparency: 30,
     fillBackground: true,
     backgroundColor: 'rgba( 186, 218, 255, 0.4)',
     backgroundTransparency: 60,
@@ -209,7 +205,6 @@ linetoolriskrewardshort: {
     fontsize: 12,
     fillLabelBackground: true,
     labelBackgroundColor: 'rgba( 88, 88, 88, 1)',
-    labelBackgroundTransparency: 0,
     fillBackground: true,
     stopBackground: 'rgba( 255, 0, 0, 0.2)',
     profitBackground: 'rgba( 0, 160, 0, 0.2)',
@@ -226,7 +221,6 @@ linetoolriskrewardlong: {
     fontsize: 12,
     fillLabelBackground: true,
     labelBackgroundColor: 'rgba( 88, 88, 88, 1)',
-    labelBackgroundTransparency: 0,
     fillBackground: true,
     stopBackground: 'rgba( 255, 0, 0, 0.2)',
     profitBackground: 'rgba( 0, 160, 0, 0.2)',
@@ -332,7 +326,6 @@ linetoolvertline: {
     showTime: true
 },
 linetoolcrossline: {
-    clonable: true,
     linecolor: 'rgba(6, 160, 227, 1)',
     linewidth: 1.0,
     linestyle: CanvasEx.LINESTYLE_SOLID,
@@ -381,7 +374,6 @@ linetooltext: {
     borderColor: 'rgba( 102, 123, 139, 1)',
     bold:false,
     italic:false,
-    locked: false,
     fixedSize: true,
     wordWrap: false,
     wordWrapWidth: 400
@@ -399,7 +391,6 @@ linetooltextabsolute: {
     borderColor: 'rgba( 102, 123, 139, 1)',
     bold: false,
     italic: false,
-    locked: true,
     wordWrap: false,
     wordWrapWidth: 400
 },
@@ -476,7 +467,6 @@ linetoolnote: {
     fontSize: 12,
     bold: false,
     italic: false,
-    locked: false,
     fixedSize: true
 },
 
@@ -491,16 +481,9 @@ linetoolnoteabsolute: {
     fontSize: 12,
     bold: false,
     italic: false,
-    locked: true,
     fixedSize: true
 },
 
-linetoolthumbup: {
-    color: 'rgba( 0, 128, 0, 1)'
-},
-linetoolthumbdown: {
-    color: 'rgba( 255, 0, 0, 1)'
-},
 linetoolpricelabel: {
     color: 'rgba( 102, 123, 139, 1)',
     backgroundColor: 'rgba( 255, 255, 255, 0.7)',
@@ -969,24 +952,6 @@ linetoolinsidepitchfork: {
         linestyle: LINESTYLE_SOLID
     },
     level0-8: LEVELS_TYPE_C
-},
-linetoolvisibilities: {
-    intervalsVisibilities: {
-        seconds:true,
-        secondsFrom:1,
-        secondsTo:59,
-        minutes:true,
-        minutesFrom:1,
-        minutesTo:59,
-        hours:true,
-        hoursFrom:1,
-        hoursTo:24,
-        days:true,
-        daysFrom:1,
-        daysTo:366,
-        weeks:true,
-        months:true
-    }
 }
 ```
 

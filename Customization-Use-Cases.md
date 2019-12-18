@@ -44,8 +44,9 @@ You can add the chart as a web page element or use a fullscreen mode.
 
 Customize the colors of the chart so that it matches your site design.
 
-1. Toolbar color - [documentation](Widget-Constructor#toolbar_bg)
+1. Toolbar color (DEPRECATED) - [documentation](Widget-Constructor#toolbar_bg)
 1. Chart color - [documentation](Widget-Constructor#overrides)
+1. CSS Color Themes - [documentation](CSS-Color-Themes)
 
 #### Indicators
 

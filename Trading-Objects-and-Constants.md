@@ -13,7 +13,14 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `false`
 
     Broker supports reversing of a position.
-    If it is not supported by broker, Chart will have the reverse button, but it will place a reversing order.
+    If it is not supported by broker, the reverse position button will be hidden.
+
+* `supportNativeReversePosition`
+
+    *Default:* `false`
+
+    Broker natively supports reversing of a position.
+    If it is not natively supported by broker, Chart will place a reversing order.
 
 * `supportClosePosition`
 
@@ -61,6 +68,20 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Broker supports brackets for trades (take profit and stop loss orders).
     If this flag is set to `true` the Chart will display an Edit button for trades (individual positions) and add `Edit position...` to the context menu of a trade.
+
+* `supportTrailingStop`
+
+    *Default:* `false`
+
+    Broker supports trailing stop orders.
+    If this flag is set to `true`, then the chart displays trailing stop orders and a user can place a trailing stop order using the Order Ticket.
+
+* `supportPositions`
+
+    *Default:* `true`
+
+    Broker supports positions.
+    If it is set to `false`, the Positions tab in the Account Manager will be hidden.
 
 * `supportTrades`
 
@@ -141,6 +162,18 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Using this flag you can disable modification of the existing order. It is enabled by default.
 
+* `supportAddBracketsToExistingOrder`
+
+    *Default:* `true`
+
+    Using this flag you can disable adding brackets to the existing order. It is enabled by default.
+
+* `supportBalances`
+
+    *Default:* `false`
+
+    Using this flag you can disable adding brackets to the existing order. It is enabled by default.
+
 * `cancellingBracketCancelsParentOrder`
 
     Broker cancels the base order if a stop loss or a take profit is cancelled.
@@ -148,6 +181,24 @@ This is an object that should be passed in the constructor of the Trading Termin
 * `cancellingOnePositionBracketsCancelsOther`
 
     Broker cancels the second protection order (stop loss or take profit) as well if the first one is cancelled by a user.
+
+* `supportOrderPreview`
+
+    *Default:* `false`
+
+    Broker provides the estimated commission, fees, margin and other information for the order without it actually being placed.
+
+* `closePositionCancelsOrders`
+
+    *Default:* `false`
+
+    Closing a position cancels it's brackets.
+
+* `supportOnlyPairPositionBrackets`
+
+    *Default:* `false`
+
+    `Stop Loss` and `Take Profit` are added or removed only together.
 
 ### durations: array of objects
 
@@ -203,6 +254,14 @@ customFields: [
 ]
 ```
 
+### positionDialogOptions
+
+Optional field. An object with options for the position ticket. Using these options you can customize the position ticket.
+
+* `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+
+    Using `customFields` you can add additional input fields to the position ticket.
+
 ### customUI
 
 This optional field can be used to replace the standard Order Ticket and the Add Protection dialogs with your own.
@@ -234,6 +293,7 @@ Describes a single order.
 * `filledQty` : double
 * `parentId` : String. If order is a bracket parentOrderId should contain base order/position id.
 * `parentType`: [ParentType](#parenttype)
+* `stopType`: [StopType](#stoptype) It should be set to 1 (StopType.TrailingStop) for trailing stop orders.
 * `duration`: [OrderDuration](#orderduration)
 * `customFields`: [CustomInputFieldsValues](#custominputfieldsvalues)
 
@@ -281,6 +341,13 @@ Describes a single action to put it into a dropdown or a context menu. It is a s
 * `enabled`: Boolean
 * `action`: function. Action is executed when user clicks the item. It has 1 argument - value of the checkbox if exists.
 
+## OrderPreviewInfoItem
+
+Describes information for the order.
+
+* `title` : String
+* `value` : String
+
 ## OrderType
 
 Constants describing an order status.
@@ -308,6 +375,15 @@ Constants describing a bracket order.
 ```javascript
 ParentType.Order = 1
 ParentType.Position = 2
+```
+
+## StopType
+
+Constants describing a stop order type.
+
+```javascript
+StopType.StopLoss = 0
+StopType.TrailingStop = 1
 ```
 
 ## OrderStatus
@@ -353,15 +429,17 @@ Single DOM price level object.
 Constants that are used to set the focus when you open standard Order dialog or Position dialog.
 
 ```javascript
-OrderTicketFocusControl.StopLoss = 1 // focus stop loss control
-OrderTicketFocusControl.StopPrice = 2 // focus stop price for StopLimit orders
+OrderTicketFocusControl.LimitPrice = 1 // focus limit price for orders
+OrderTicketFocusControl.StopPrice = 2 // focus stop price for orders
 OrderTicketFocusControl.TakeProfit = 3 // focus take profit control
+OrderTicketFocusControl.StopLoss = 4 // focus stop loss control
 ```
 
 ## Brackets
 
 * `stopLoss`: double
 * `takeProfit`: double
+* `trailingStopPips`: double
 
 ## Formatter
 
@@ -414,11 +492,13 @@ Using `asterix` property you can manage input type. If `asterix` is set to `true
 ## CustomComboBoxMetaInfo
 
 An object that describes a custom combobox.
+The value of ComboBox will be saved and will be used as a default value the next time you open the order dialog or panel, if `saveToSettings` is set to `true`.
 
 * `inputType`: 'ComboBox'
 * `id`: string
 * `title`: string
 * `items`: CustomComboBoxItem[]
+* `saveToSettings?`: boolean;
 
 ## CustomComboBoxItem
 

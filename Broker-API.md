@@ -53,9 +53,19 @@ If you want to show a custom message with the reason why the symbol cannot be tr
 This function should return the information that will be used to build an account manager.
 See [Account Manager](Account-Manager) for more information.
 
-### placeOrder([order](Trading-Objects-and-Constants#order))
+### placeOrder([order](Trading-Objects-and-Constants#order), confirmId)
 
 Method is called when a user wants to place an order. Order is pre-filled with partial or complete information.
+
+`confirmId` is passed if `supportOrderPreview` configuration flag is on.
+
+### previewOrder([order](Trading-Objects-and-Constants#order))
+
+Returns estimated commission, fees, margin and other information for the order without it actually being placed. The method is called if `supportOrderPreview` configuration flag is on.
+The result will be an object with the following fields:
+
+- `confirmId` - a unique identifier that should be passed to `placeOrder` method
+- `info` - information about the order, which is a table that has the following structure: [OrderPreviewInfoItem](Trading-Objects-and-Constants#OrderPreviewInfoItem)[].
 
 ### modifyOrder([order](Trading-Objects-and-Constants#order))
 
@@ -75,12 +85,13 @@ This method is called to cancel a single order with a given `id`.
 
 This method is called to cancel multiple orders for a `symbol` and `side`.
 
-### editPositionBrackets(positionId, [brackets](Trading-Objects-and-Constants#brackets))
+### editPositionBrackets(positionId, [brackets](Trading-Objects-and-Constants#brackets), customFields)
 
 1. `positionId` is an ID of an existing position to be modified
-1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
+1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets).
+1. `customFields` - [CustomInputFieldsValues](Trading-Objects-and-Constants#CustomInputFieldsValues) or `undefined`
 
-This method is called if `supportPositionBrackets` configuration flag is on. It allows to edit or add brackets to the position.
+This method is called if `supportPositionBrackets` configuration flag is on. It shows a dialog that enables `take profit` and `stop loss` editing.
 
 ### closePosition(positionId)
 
@@ -88,14 +99,14 @@ This method is called if `supportClosePosition` configuration flag is on. It all
 
 ### reversePosition(positionId)
 
-This method is called if `supportReversePosition` configuration flag is on. It allows to reverse the position by id.
+This method is called if `supportNativeReversePosition` configuration flag is on. It allows to reverse the position by id.
 
 ### editTradeBrackets(tradeId, [brackets](Trading-Objects-and-Constants#brackets))
 
 1. `tradeId` is ID of existing trade to be modified
-1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets) (optional).
+1. `brackets` - new [brackets](Trading-Objects-and-Constants#brackets).
 
-This method is called if `supportTradeBrackets` configuration flag is on. It allows to edit or add brackets to the trade.
+This method is called if `supportTradeBrackets` configuration flag is on. It displays a dialog that enables take profit and stop loss editing.
 
 ### closeTrade(tradeId)
 
@@ -117,6 +128,9 @@ The result is an object with the following data:
 - `type` - instrument type, only `forex` matters - it enables negative pips. You can check that in the order dialog.
 - `domVolumePrecision` - number of decimal places of DOM asks/bids volume (optional, 0 by default).
 - `marginRate` - the margin requirement for the instrument. A 3% margin rate should be represented as 0.03.
+- `stopPriceStep` - minimal price change for stop price field of the Stop and Stop Limit order. If set it will override the minTick value.
+- `limitPriceStep` - minimal price change for limit price field of the Limit and Stop Limit order. If set it will override the minTick value.
+- `allowedDurations` - array of srtings with valid duration values. You can check that in the order dialog.
 
 ### accountInfo() : Deferred (or Promise)
 

@@ -40,6 +40,12 @@ Here is a list of methods supported by the chart.
   * [removeAllShapes()](#removeallshapes)
   * [removeAllStudies()](#removeallstudies)
   * [getPanes()](#getpanes)
+* [Z-order operations](#z-order-operations)
+  * [availableZOrderOperations(entities)](#availablezorderoperationsentities)
+  * [sendToBack(entities)](#sendtobackentities)
+  * [bringToFront(entities)](#bringtofrontentities)
+  * [bringForward(entities)](#bringforwardentities)
+  * [sendBackward(entities)](#sendbackwardentities)
 * [Study Templates](#study-templates)
   * [createStudyTemplate(options)](#createstudytemplateoptions)
   * [applyStudyTemplate(template)](#applystudytemplatetemplate)
@@ -163,7 +169,6 @@ Executes an action according to its id.
 * `chartProperties`
 * `compareOrAdd`
 * `scalesProperties`
-* `tmzProperties`
 * `paneObjectTree`
 * `insertIndicator`
 * `symbolSearch`
@@ -435,6 +440,49 @@ Removed all the studies from the chart.
 ### getPanes()
 
 Returns an array of instances of the [PaneApi](Pane-Api) that allows you to interact with the panes.
+
+### shapesGroupController()
+
+Returns an [API](Shapes-Group-Api) that can be used to work with groups of shapes.
+
+## Z-order operations
+
+### availableZOrderOperations(entities)
+
+1. `entities` is an array of identifiers
+
+Returns an object with operations available for the specified set of objects.
+
+This structure has the following fields:
+
+* `bringForwardEnabled`: true if one can bring specified entities forward
+* `bringToFrontEnabled`: true if one can bring specified entities to front
+* `sendBackwardEnabled`: true if one can send specified entities backward
+* `sendToBackEnabled`: true if one can send specified entities to back
+
+### sendToBack(entities)
+
+1. `entities` is an array of identifiers
+
+Sends specified entities to back.
+
+### bringToFront(entities)
+
+1. `entities` is an array of identifiers
+
+Brings specified entities to front.
+
+### bringForward(entities)
+
+1. `entities` is an array of identifiers
+
+Brings specified entities one step forward (makes it higher).
+
+### sendBackward(entities)
+
+1. `entities` is an array of identifiers
+
+Sends specified entities one step backward (makes it lower).
 
 ## Study Templates
 

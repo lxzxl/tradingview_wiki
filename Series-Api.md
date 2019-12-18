@@ -61,3 +61,13 @@ Places the main series on top of all other chart objects.
 ### sendToBack()
 
 Places the main series behind all other chart objects.
+
+### chartStyleProperties(chartStyle)
+
+Returns properties for specific chart style. See [this article](./Chart-Style-Properties) for returned type.
+
+### setChartStyleProperties(chartStyle, newPrefs)
+
+Sets properties for specific chart style.
+`newPrefs` should be subset of properties for `chartStyle` chart style.
+See [this article](./Chart-Style-Properties) for available values of properties for specific chart style.

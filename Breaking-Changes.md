@@ -6,6 +6,10 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 1.16
+
+- Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.
+
 ## Version 1.15
 
 - Featureset `show_logo_on_all_charts` has been removed.

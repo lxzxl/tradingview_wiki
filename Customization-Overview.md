@@ -76,3 +76,4 @@ More details are available in the [Widget Constructor Arguments article](Widget-
 * [Widget's Constructor Arguments](Widget-Constructor)
 * [Widget's Methods](Widget-Methods)
 * [Customization Use Cases](Customization-Use-Cases)
+* [Custom CSS Color Themes](CSS-Color-Themes)
