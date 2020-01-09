@@ -385,6 +385,7 @@ Shows the properties dialog for specified study or shape for user interaction.
         `top` places the line tool on top of all other chart objects while `bottom` places the line tool behind all other chart objects.
         If not specified the line tool is placed on top of all existing chart objects.
     * `showInObjectsTree`: Displays the shape in the Objects Tree dialog. The default value is `true`.
+    * `ownerStudyId`: optional argument of `EntityId` type. It can be used to bind a line tool to a study. For instance, it can be used to create a shape on an additional pane.
 
 The function returns `entityId` - unique ID of the shape if the creation was successful and `null` if it wasn't.
 
@@ -410,6 +411,7 @@ This call creates a shape at a specific point on the chart provided that it's wi
         `top` places the line tool on top of all other chart objects while `bottom` places the line tool behind all other chart objects.
         If not specified the line tool is placed on top of all existing chart objects.
     * `showInObjectsTree`: Displays the shape in the Objects Tree dialog. The default value is `true`.
+    * `ownerStudyId`: optional argument of `EntityId` type. It can be used to bind a line tool to a study. For instance, it can be used to create a shape on an additional pane.
 
 The function returns `entityId` - unique ID of the shape if the creation was successful and `null` if it wasn't.
 
