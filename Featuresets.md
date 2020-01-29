@@ -105,6 +105,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | lock_visible_time_range_on_resize | off   | 1.14        | Prevents changing visible time area on chart resizing
 | shift_visible_range_on_new_bar  | on   | 1.15        | If disabled, adding a new bar zooms out the chart preserving the first visible point. Otherwise the chart is scrolled one point to the left when a new bar comes.
 | custom_resolutions            | off   | 1.15            | If enabled, there is a possibility to add custom resolutions
+| end_of_period_timescale_marks | off | 1.16 | Toggles the timeline marks to display the bar's end time
 
 ### "Important features"
 
