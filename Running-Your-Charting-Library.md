@@ -55,7 +55,7 @@ Start `http-server` using the following command in the Charting Library folder:
 
 Once you are done running the HTTP server, you will have your Charting Library ready.
 
-Open `http://127.0.0.1:9090` in your browser.
+Open [http://127.0.0.1:9090](http://127.0.0.1:9090) in your browser.
 
 # Online Example
 

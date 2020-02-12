@@ -36,7 +36,7 @@ GOOG|0.1|Google
 
 Request: `GET /config`
 
-Response: Library expects to receive a JSON response of the same structure as a result of JS API [setup() call](JS-Api#onreadycallback).
+Response: Library expects to receive a JSON response of the same structure as a result of JS API [onReady() call](JS-Api#onreadycallback).
 
 Also there should be 2 additional properties:
 
@@ -45,7 +45,7 @@ Also there should be 2 additional properties:
 
 Either `supports_search` or `supports_group_request` should be set to `true`.
 
-**Remark**: If your data feed doesn't implement this call (doesn't respond or sends 404 error) then the default configuration is being used. Here is the default configuration:
+**Note:** if your data feed doesn't implement this call (doesn't respond or sends 404 error) then the default configuration is being used. Here is the default configuration:
 
 ```javascript
 {
@@ -61,7 +61,7 @@ Either `supports_search` or `supports_group_request` should be set to `true`.
 
 Request: `GET /symbol_info?group=<group_name>`
 
-1. `group_name`: string
+* `group_name`: string
 
 Example: `GET /symbol_info?group=NYSE`
 
@@ -111,24 +111,25 @@ Here is an example of data feed response to `GET /symbol_info?group=NYSE` reques
 }
 ```
 
-**Remark 1**: This call will be used if your data feed sent `supports_group_request: true` in the configuration data or didn't respond to the configuration request at all.
+**Notes:**
 
-**Remark 2**: In the event that your data feed does not support the requested symbol group (which should not happen if your response to request #1 (supported groups) is correct) you may expect a 404 error.
+1. This call will be used if your data feed sent `supports_group_request: true` in the configuration data or didn't respond to the configuration request at all.
 
-**Remark 3**: When using this mode of receiving data (getting large amount of symbol data) your browser will keep the data that wasn't even requested by the user.
-If your symbol list has more than a few items, please consider supporting symbol search / individual symbol resolve instead.
+2. In the event that your data feed does not support the requested symbol group (which should not happen if your response to request #1 (supported groups) is correct) you may expect a 404 error.
+
+3. When using this mode of receiving data (getting large amount of symbol data) your browser will keep the data that wasn't even requested by the user. If your symbol list has more than a few items, please consider supporting symbol search / individual symbol resolve instead.
 
 ### Symbol resolve
 
 Request: `GET /symbols?symbol=<symbol>`
 
-1. `symbol`: string. Symbol name or ticker.
+* `symbol`: string. Symbol name or ticker.
 
 Example: `GET /symbols?symbol=AAL`, `GET /symbols?symbol=NYSE:MSFT`
 
 A JSON response of the same structure as [SymbolInfo](Symbology#symbolinfo-structure)
 
-**Remark**: This call will be requested if your data feed sent `supports_group_request: false` and `supports_search: true` in the configuration data.
+**Note:** this call will be requested if your data feed sent `supports_group_request: false` and `supports_search: true` in the configuration data.
 
 ### Symbol search
 
@@ -143,7 +144,7 @@ Example: `GET /search?query=AA&type=stock&exchange=NYSE&limit=15`
 
 A response is expected to be an array of symbol objects as in [respective JS API call](JS-Api#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback)
 
-**Remark**: This call will be requested if your data feed sent `supports_group_request: false` and `supports_search: true` in the configuration data.
+**Note:** this call will be requested if your data feed sent `supports_group_request: false` and `supports_search: true` in the configuration data.
 
 ### Bars
 
@@ -168,12 +169,13 @@ A response is expected to be an object with some properties listed below. Each p
 * `v`: Volume (optional)
 * `nextTime`: Time of the next bar if there is no data (status code is `no_data`) in the requested period (optional)
 
-**Remark**: Bar time for daily bars should be 00:00 UTC and is expected to be a trading day (not a day when the session starts).
-Charting Library aligns the time according to the [Session](Symbology#session) from SymbolInfo.
+**Notes:**
 
-**Remark**: Bar time for monthly bars should be 00:00 UTC and is the first trading day of the month.
+1. Bar time for daily bars should be 00:00 UTC and is expected to be a trading day (not a day when the session starts). Charting Library aligns the time according to the [Session](Symbology#session) from SymbolInfo.
 
-**Remark**: Prices should be passed as numbers and not as strings in quotation marks.
+2. Bar time for monthly bars should be 00:00 UTC and is the first trading day of the month.
+
+3. Prices should be passed as numbers and not as strings in quotation marks.
 
 Example:
 
@@ -243,7 +245,7 @@ This object is similar to [respective response](JS-Api#getmarkssymbolinfo-from-t
 }
 ```
 
-**Remark**: This call will be requested if your data feed sent `supports_marks: true` in the configuration data.
+**Note:** this call will be requested if your data feed sent `supports_marks: true` in the configuration data.
 
 ### Timescale marks
 
@@ -262,7 +264,7 @@ A response is expected to be an array of objects with properties listed below.
 * `time`: unix time
 * `tooltip`: tooltip text
 
-**Remark**: This call will be requested if your data feed sent `supports_timescale_marks: true` in the configuration data.
+**Note:** this call will be requested if your data feed sent `supports_timescale_marks: true` in the configuration data.
 
 ### Server time
 

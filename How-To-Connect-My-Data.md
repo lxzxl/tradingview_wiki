@@ -35,4 +35,4 @@ The pictures above illustrate the difference between UDF and JSAPI. Mandatory Ch
 
 A sample implementation of **UDF-compatible** (case #2 described below) server-side wrapper is available [on github](https://github.com/tradingview/yahoo_datafeed). It uses Quandl data.
 
-A sample of **JS API** implementation (and UDF client-side at the same time) is a part of Charting Library package (see `/datafeeds/udf/` folder).
+A sample of **JS API** implementation (and UDF client-side at the same time) is a part of Charting Library package (see [/datafeeds/udf/](https://github.com/tradingview/charting_library/tree/master/datafeeds/udf) folder).
