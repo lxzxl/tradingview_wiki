@@ -1,4 +1,4 @@
-# Wiki Content
+# Documentation
 
 1. [Overview](Home)
 1. Getting Started
