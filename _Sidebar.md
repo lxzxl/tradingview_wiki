@@ -1,4 +1,4 @@
-## Wiki Content
+# Wiki Content
 
 1. [Overview](Home)
 1. Getting Started
@@ -30,6 +30,7 @@
         1. [Indicators](Indicators)
         1. [Snapshots](Snapshots)
         1. [Drawings](Drawings)
+                1. tab
         1. [:chart: Watchlist](Watch-List)
         1. [:chart: News](News)
 1. Trading Terminal
