@@ -13,26 +13,6 @@
     1. [Symbology](Symbology)
     1. [Trading Sessions](Trading-Sessions)
     1. [Quotes](Quotes)
-1. Customization
-    1. API Reference
-        1. [Widget Constructor](Widget-Constructor)
-        1. [Widget Methods](Widget-Methods)
-        1. [Chart Methods](Chart-Methods)
-        1. [Featuresets](Featuresets)
-    1. Customisation by areas
-        1. [Global](Global)
-        1. [Toolbars](Toolbars)
-        1. [Chart](Chart)
-        1. [Symbol Search](Symbol-Search)
-        1. [Legend](Legend)
-        1. [Price Scale](Price-Scale)
-        1. [Time Scale](Time-Scale)
-        1. [Indicators](Indicators)
-        1. [Snapshots](Snapshots)
-        1. [Drawings](Drawings)
-                1. tab
-        1. [:chart: Watchlist](Watch-List)
-        1. [:chart: News](News)
 1. Trading Terminal
     1. [Brief Intro](Trading-Terminal)
     1. [Broker API](Broker-API)
