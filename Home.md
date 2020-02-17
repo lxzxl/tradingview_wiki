@@ -8,7 +8,7 @@ Charting library is a standalone solution that you download, host on your server
 
 2. Plug your data into Charting Library using [one of our APIs](How-To-Connect-My-Data).
 
-3. [Customize](Customization-Overview) your charts (optional).
+3. Customize your charts (optional).
 
 ### Integration Examples
 

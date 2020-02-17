@@ -851,7 +851,6 @@ Enables (if the parameter is true) or disables (if the parameter is false) scrol
 ## See Also
 
 * [Widget Methods](Widget-Methods)
-* [Customization Overview](Customization-Overview)
 * [Widget Constructor](Widget-Constructor)
 * [Saving and Loading Charts](Saving-and-Loading-Charts)
 * [Overriding Studies' Defaults](Studies-Overrides)

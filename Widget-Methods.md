@@ -437,10 +437,10 @@ Returns an array of IDs of all studies. They can be used to create a study.
 
 Returns an object with the state of the Undo/Redo stack. The object has the following keys:
 
-    * `enableUndo`: boolean flag that shows the undo action availability
-    * `undoText`: name of the next undo operation. If the undo stack is empty then it is undefined.
-    * `enableRedo`: boolean flag that shows the redo action availability
-    * `redoText`: name of the next redo operation. If the redo stack is empty then it is undefined.
+* `enableUndo`: boolean flag that shows the undo action availability
+* `undoText`: name of the next undo operation. If the undo stack is empty then it is undefined.
+* `enableRedo`: boolean flag that shows the redo action availability
+* `redoText`: name of the next redo operation. If the redo stack is empty then it is undefined.
 
 ## Customization
 
@@ -560,7 +560,6 @@ Returns the current layout name. If the current layout has not yet been saved th
 ## See Also
 
 * [Chart-Methods](Chart-Methods)
-* [Customization Overview](Customization-Overview)
 * [Widget Constructor](Widget-Constructor)
 * [Saving and Loading Charts](Saving-and-Loading-Charts)
 * [Overriding Default Properties of the Studies](Studies-Overrides)

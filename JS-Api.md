@@ -33,7 +33,6 @@ When you create an object that implements the described interface simply pass it
     1. `configurationData`: object (see below)
 
 This call is intended to provide the object filled with the configuration data.
-This data partially affects the chart behavior and is called [server-side customization](Customization-Overview#customization-done-through-data-stream).
 Charting Library assumes that you will call the callback function and pass your datafeed `configurationData` as an argument.
 Configuration data is an object; for now, the following properties are supported:
 

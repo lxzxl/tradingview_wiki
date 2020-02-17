@@ -496,7 +496,6 @@ Use this field to set the configuration flags for the Trading Terminal. [Read mo
 
 ## See Also
 
-* [Customization Overview](Customization-Overview)
 * [Widget Methods](Widget-Methods)
 * [Featuresets](Featuresets)
 * [Saving and Loading Charts](Saving-and-Loading-Charts)
