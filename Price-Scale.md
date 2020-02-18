@@ -9,4 +9,3 @@ You can also apply custom formatting using [numeric_formatting](Widget-Construct
 ### Style and default settings
 
 You can change the color of the price scale, its font and default options using the [overrides](Widget-Constructor#overrides). Look for `scalesProperties` in the [list of overrides](Overrides).
-
