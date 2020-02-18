@@ -11,7 +11,7 @@
 ***
 
 **Connecting Data**
-* [How To Connect My Data](How-To-Connect-My-Data)
+* [Overview](How-To-Connect-My-Data)
 * [JS API](JS-Api)
 * [UDF](UDF)
 * [Symbology](Symbology)
