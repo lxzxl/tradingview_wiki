@@ -1,6 +1,6 @@
 # Content
 
-**Getting Started**
+### Getting Started
 
 * [Overview](Home)
 * [Package Content](Package-Content)
