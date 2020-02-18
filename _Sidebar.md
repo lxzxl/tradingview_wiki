@@ -41,8 +41,8 @@ Customisation by areas
 * [Indicators](Indicators)
 * [Snapshots](Snapshots)
 * [Drawings](Drawings)
-* [:chart: Watchlist](Watch-List)
-* [:chart: News](News)
+* [Watchlist](Watch-List)
+* [News](News)
 
 [Saving/Loading Charts](Saving-and-Loading-Charts)
 
