@@ -56,7 +56,7 @@ Customisation by areas
 * [Broker API](Broker-API)
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)
-* [Trading Objects and Constants](Trading-Objects-and-Constants)
+* [Objects and Constants](Trading-Objects-and-Constants)
 
 ***
 
