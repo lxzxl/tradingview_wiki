@@ -4,7 +4,7 @@
 
 * [Overview](Home)
 * [Package Content](Package-Content)
-* [First Run](Running-Your-Charting-Library)
+* [First Start](Running-Your-Charting-Library)
 * [Best Practices](Best-Practices)
 * [FAQ](Frequently-Asked-Questions)
 
