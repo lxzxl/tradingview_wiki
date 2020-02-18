@@ -7,6 +7,7 @@
 * [First Start](Running-Your-Charting-Library)
 * [Best Practices](Best-Practices)
 * [FAQ](Frequently-Asked-Questions)
+* [Breaking changes](Breaking-Changes)
 
 ***
 
@@ -57,8 +58,3 @@ Customisation by areas
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)
 * [Trading Types](Trading-Objects-and-Constants)
-
-***
-
-[Breaking changes](Breaking-Changes)
-
