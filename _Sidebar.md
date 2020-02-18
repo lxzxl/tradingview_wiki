@@ -1,5 +1,3 @@
-# Content
-
 #### Getting Started
 
 * [Overview](Home)
