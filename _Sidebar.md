@@ -4,9 +4,9 @@
 
 * [Overview](Home)
 * [Package Content](Package-Content)
-* [Running Your Charting Library](Running-Your-Charting-Library)
+* [First Run](Running-Your-Charting-Library)
 * [Best Practices](Best-Practices)
-* [Frequently Asked Questions](Frequently-Asked-Questions)
+* [FAQ](Frequently-Asked-Questions)
 
 ***
 
