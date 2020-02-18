@@ -52,11 +52,11 @@ Customisation by areas
 
 **Trading Terminal**
 
-1. [Brief Intro](Trading-Terminal)
-1. [Broker API](Broker-API)
-1. [Trading Host](Trading-Host)
-1. [Account Manager](Account-Manager)
-1. [Trading Objects and Constants](Trading-Objects-and-Constants)
+* [Brief Intro](Trading-Terminal)
+* [Broker API](Broker-API)
+* [Trading Host](Trading-Host)
+* [Account Manager](Account-Manager)
+* [Trading Objects and Constants](Trading-Objects-and-Constants)
 
 ***
 
