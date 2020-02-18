@@ -1,13 +1,14 @@
 # Content
 
-[Overview](Home)
-
 **Getting Started**
 
+* [Overview](Home)
 * [Package Content](Package-Content)
 * [Running Your Charting Library](Running-Your-Charting-Library)
 * [Best Practices](Best-Practices)
 * [Frequently Asked Questions](Frequently-Asked-Questions)
+
+***
 
 **Connecting Data**
 * [How To Connect My Data](How-To-Connect-My-Data)
@@ -43,6 +44,12 @@ Customisation by areas
 * [:chart: Watchlist](Watch-List)
 * [:chart: News](News)
 
+[Saving/Loading Charts](Saving-and-Loading-Charts)
+
+[Creating Custom Studies](Creating-Custom-Studies)
+
+***
+
 **Trading Terminal**
 
 1. [Brief Intro](Trading-Terminal)
@@ -51,9 +58,7 @@ Customisation by areas
 1. [Account Manager](Account-Manager)
 1. [Trading Objects and Constants](Trading-Objects-and-Constants)
 
-[Saving/Loading Charts](Saving-and-Loading-Charts)
+***
 
-[Creating Custom Studies](Creating-Custom-Studies)
-
-[Breaking changes in versions](Breaking-Changes)
+[Breaking changes](Breaking-Changes)
 
