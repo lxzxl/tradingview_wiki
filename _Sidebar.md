@@ -1,4 +1,4 @@
-# Wiki Content
+# Content
 
 [Overview](Home)
 
@@ -10,12 +10,14 @@
 * [Frequently Asked Questions](Frequently-Asked-Questions)
 
 **Connecting Data**
-  1. [How To Connect My Data](How-To-Connect-My-Data)
-  1. [JS API](JS-Api)
-  1. [UDF](UDF)
-  1. [Symbology](Symbology)
-  1. [Trading Sessions](Trading-Sessions)
-  1. [Quotes](Quotes)
+* [How To Connect My Data](How-To-Connect-My-Data)
+* [JS API](JS-Api)
+* [UDF](UDF)
+* [Symbology](Symbology)
+* [Trading Sessions](Trading-Sessions)
+* [Quotes](Quotes)
+
+***
 
 **Customization**
 
