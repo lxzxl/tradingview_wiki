@@ -11,7 +11,8 @@
 
 ***
 
-**Connecting Data**
+#### Connecting Data
+
 * [Overview](How-To-Connect-My-Data)
 * [JS API](JS-Api)
 * [UDF](UDF)
@@ -21,7 +22,7 @@
 
 ***
 
-**Customization**
+#### Customization
 
 API Reference
 
@@ -51,9 +52,9 @@ Customisation by areas
 
 ***
 
-**Trading Terminal**
+#### Trading Terminal
 
-* [Overview](Trading-Terminal)
+* [Brief Intro](Trading-Terminal)
 * [Broker API](Broker-API)
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)
