@@ -34,9 +34,7 @@ If you still have questions, open [Demo Chart](https://charting-library.tradingv
 <b>2. Do you have an example of JS API implementation?</b>
 </summary><p>
 
-If you look at the picture below, you will see the UDF Adapter as an example of the JS API implementation. Its code is not minified and it is written in such a way that our clients can understand how it works.
-
-[Scheme](How-To-Connect-My-Data#udf-scheme)
+The UDF Adapter is an example of the JS API implementation. [Its code](https://github.com/tradingview/charting_library/tree/master/datafeeds/udf) is not minified and it is written in such a way that our clients can understand how it works.
 
 </details>
 
