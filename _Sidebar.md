@@ -52,7 +52,7 @@ Customisation by areas
 
 #### Trading Terminal
 
-* [Brief Intro](Trading-Terminal)
+* [Overview](Trading-Terminal)
 * [Broker API](Broker-API)
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)
