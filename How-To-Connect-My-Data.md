@@ -1,38 +1,26 @@
-**The Charting Library does NOT include market data.** You must provide your own data in the required format. Quandl historical data is used as a sample. The charts can receive data in two ways:
+# Overview
 
-1. Update in real-time with a PUSH type connection, for example through WebSocket.
-    This way your charts will auto update with new prices when they arrive.
-    To achieve this, you have to use the [JavaScript API](JS-Api) and have your own transport method ready.
+The Charting Library is meant to be used on your own site, with your own source of market data. It does NOT include any market data. If you want to display TradingView market data, please check our [widgets](https://www.tradingview.com/widget/).
 
-1. Update on a PULL/pulse/refresh basis (like most web-based charts today),
-    where the chart data is updating every X number of seconds (the chart client will ask the server emulating PUSH updates),
-    or only get reloaded manually by the user. For this, use the [UDF protocol](UDF) and write your own datafeed wrapper.
+Unlike simple charts, the primary aim of which is just displaying data, the Technical Analysis Charting Library gives users control over the chart.
+Thus, market data connection API is designed in such a way, that all interactions (data requests, symbol information requests and symbol search) are initiated by the user.
 
-### JavaScript API or UDF
+# JS API
 
-![images/udf_or_jsapi.png](images/udf_or_jsapi.png)
+Market data connection API ([JS API](JS-Api)) is a set of methods that must be implemented in JavaScript. 
 
-## UDF scheme
+All these methods are called by the library as needed.
 
-![images/udf.png](images/udf.png)
+The Charting Library expects to get an implementation of the JS API in the [datafeed](Widget-Constructor#datafeed) field of the constructor.
 
-## JSAPI scheme
+# UDF
 
-![images/jsapi.png](images/jsapi.png)
+If you don’t have sufficient JavaScript knowledge, or if you don’t yet have a Web-based server API that you can fetch data from, then you can use a ready-made [UDF adapter](UDF) that implements the [JS API](JS-Api) and makes simple HTTP(S) requests at the specified URL in a specific format. This adapter does not support data streaming out of the box (but it still can be added there).
 
-The pictures above illustrate the difference between UDF and JSAPI. Mandatory Charting Library parts are colored blue. Red parts (default data transport) are included in default package (having non-minimized source code) and may be replaced. You may see the default data transport implements JS API to interact with the chart. Also, default transport implements UDF protocol to communicate with a server.
+Also, the UDF adapter can be used as an **example** implementation of the JS API. You can copy [its code](https://github.com/tradingview/charting_library/tree/master/datafeeds/udf) and start editing it.
 
-1. **If you already have a data transport ready** (websocket streaming, pulling, or any other transport),
-    or if you don’t but need streaming data - use our [JavaScript API](JS-Api), which is extremely compact and simple to implement.
-    You will have to create a small **client-side data adapter** between your data transport and our charts using JavaScript.
+# Go ahead
 
-1. **If you don’t have any transports** and do not need streaming data (e.g., data pulsing is all you need),
-    then you will have to create (or use) at least a thin server-side datafeed wrapper.
-    You may use any language and technology for this purpose: it’s just necessary for your wrapper to support our data exchange protocol (we call it [UDF](UDF)) to be able to feed your Charting Library with data.
-    You will have to create a small **server-side data adapter** between your back-end and our charts using your favorite language.
+[Start implementing JS API if you have an existing Web API](JS-Api)
 
-### Examples
-
-A sample implementation of **UDF-compatible** (case #2 described below) server-side wrapper is available [on github](https://github.com/tradingview/yahoo_datafeed). It uses Quandl data.
-
-A sample of **JS API** implementation (and UDF client-side at the same time) is a part of Charting Library package (see [/datafeeds/udf/](https://github.com/tradingview/charting_library/tree/master/datafeeds/udf) folder).
+[Start with a predefined UDF adapter and implement a server-side API](UDF)
