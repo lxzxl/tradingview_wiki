@@ -24,7 +24,7 @@ Additionally, if you don't have a WEB API, you will need at least a server langu
 
 We’ve done lot of work to make the process of connecting data simple and clear.
 
-First, you need to read and understand this article: [How to connect my data](How-To-Connect-My-Data)
+First, you need to read and understand this article: [How to connect my data](Connecting-Data)
 
 If you still have questions, open [Demo Chart](https://charting-library.tradingview.com), then open Debugger-Network and filter requests by `demo_feed`. You will see all requests and corresponding responses in the [UDF](UDF) format.
 
@@ -42,7 +42,7 @@ The UDF Adapter is an example of the JS API implementation. [Its code](https://g
 <b>3. Do you have an example of a WebSocket data transport?</b>
 </summary><p>
 
-We don’t have an example of such integration, but we still hope to make this example in the future.
+You can find an example of WebSocket streaming in the [Tutorial](https://github.com/tradingview/charting-library-tutorial).
 
 </details>
 

@@ -1,6 +1,10 @@
-**What is UDF?** It's an HTTP-based protocol that is designed to deliver data to the Charting Library in a simple and efficient way.
+## What is UDF
 
-**How can I start using it?** You should create a tiny server-side HTTP service that will get the data from your storage and respond to Charting Library requests.
+It's a predifined JS API adapter that uses an HTTP-based UDF protocol designed to deliver data to the Charting Library in a simple and efficient way.
+
+## How to start
+
+You should create a server-side HTTP service that gets the data from your storage and responds to Charting Library requests.
 
 ## Response-as-a-table concept
 

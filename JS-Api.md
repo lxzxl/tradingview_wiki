@@ -1,10 +1,14 @@
-**What is JS API?**: A set of JS methods (specific public interface).
+## What is JS API
 
-**Which steps should I follow to start using it?**: You should create a JS object that will receive data by some way and respond to Charting Library requests.
+JS API is a set of JS methods that needs to be implemented in order to connect your data to the chart.
 
-Data caching (history & symbol info) is implemented in the Charting Library.
+## How to start
 
-When you create an object that implements the described interface simply pass it to Library widget constructor through [`datafeed` argument](Widget-Constructor#datafeed).
+You should create a JS object that fetches data from your server when the Charting Library calls its methods.
+
+When you create an object that implements the described interface simply pass it to Library widget constructor through the [datafeed](Widget-Constructor#datafeed) argument.
+
+The Charting Library caches historical data on its own. You don't need to implement a client-side cache by yourself.
 
 ## Methods
 

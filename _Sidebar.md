@@ -11,7 +11,7 @@
 
 #### Connecting Data
 
-* [Overview](How-To-Connect-My-Data)
+* [Overview](Connecting-Data)
 * [JS API](JS-Api)
 * [UDF](UDF)
 * [Symbology](Symbology)
@@ -52,7 +52,7 @@ Customisation by areas
 
 #### Trading Terminal
 
-* [Overview](Trading-Terminal)
+* [Brief Intro](Trading-Terminal)
 * [Broker API](Broker-API)
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)

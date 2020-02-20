@@ -6,7 +6,7 @@ Charting library is a standalone solution that you download, host on your server
 
 1. `git clone` your [copy of Charting Library](https://github.com/tradingview/charting_library) and then [run it](Running-Your-Charting-Library). You will get a working example of our chart running on your host.
 
-2. Plug your data into Charting Library using [one of our APIs](How-To-Connect-My-Data).
+2. Plug your data into Charting Library using [one of our APIs](Connecting-Data).
 
 3. Customize your charts (optional).
 
