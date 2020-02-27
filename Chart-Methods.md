@@ -230,23 +230,20 @@ When you call this method the Library removes all visible marks.
 
 Sets the main series style.
 
-```javascript
-STYLE_BARS = 0;
-STYLE_CANDLES = 1;
-STYLE_LINE = 2;
-STYLE_AREA = 3;
-STYLE_HEIKEN_ASHI = 8;
-STYLE_HOLLOW_CANDLES = 9;
-STYLE_BASELINE = 10;
-STYLE_HILO = 12;
-
-STYLE_RENKO* = 4;
-STYLE_KAGI* = 5;
-STYLE_PNF* = 6;
-STYLE_PB* = 7;
-```
-
-*- :chart: available in Trading Terminal
+| Style | JavaScript type | Typescript Enum | Charting Library | Trading Terminal |
+| --- | --- | --- | :---: | :---: |
+| Bar | 0 | ChartStyle.Bar | ✓ | ✓ |
+| Candle | 1 | ChartStyle.Candle | ✓ | ✓ |
+| Line | 2 | ChartStyle.Line | ✓ | ✓ |
+| Area | 3 | ChartStyle.Area | ✓ | ✓ |
+| Renko | 4 | ChartStyle.Renko | | ✓ |
+| Kagi | 5 | ChartStyle.Kagi | | ✓ |
+| PnF | 6 | ChartStyle.PnF | | ✓ |
+| Line Break | 7 | ChartStyle.LineBreak | | ✓ |
+| Heikin-Ashi | 8 | ChartStyle.HeikinAshi | ✓ | ✓ |
+| Hollow Candle | 9 | ChartStyle.HollowCandle | ✓ | ✓ |
+| Baseline | 10 | ChartStyle.Baseline | ✓ | ✓ |
+| Hi-Lo | 12 | ChartStyle.HiLo | ✓ | ✓ |
 
 ### closePopupsAndDialogs()
 

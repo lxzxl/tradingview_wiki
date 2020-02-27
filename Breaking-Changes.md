@@ -6,6 +6,12 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 1.17
+
+**Trading Terminal**
+
+- Starting with version 1.15, we pass the parent order to `modifyOrder` if it exists. If child order’s details are required while modifying the order you can get back this behavior by enabling `always_pass_called_order_to_modify` featureset.
+
 ## Version 1.16
 
 - Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.

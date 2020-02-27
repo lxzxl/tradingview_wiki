@@ -56,18 +56,24 @@ Shows/hides the main series.
 
 ### bringToFront()
 
-Places the main series on top of all other chart objects.
+Places main series on top of all other chart objects.
 
 ### sendToBack()
 
-Places the main series behind all other chart objects.
+Places main series behind all other chart objects.
 
 ### chartStyleProperties(chartStyle)
 
-Returns properties for specific chart style. See [this article](./Chart-Style-Properties) for returned type.
+1. `chartStyle` - number
+
+Returns properties for a specific [chart style](Chart-Methods#setChartTypetype). See [this article](Chart-Style-Properties) for a returned object.
 
 ### setChartStyleProperties(chartStyle, newPrefs)
 
-Sets properties for specific chart style.
-`newPrefs` should be subset of properties for `chartStyle` chart style.
-See [this article](./Chart-Style-Properties) for available values of properties for specific chart style.
+Sets properties for a specific chart style.
+
+1. `chartStyle` - number
+1. `newPrefs` - object
+
+`newPrefs` should be a subset of properties for a [chart style](Chart-Methods#setChartTypetype).
+See [this article](Chart-Style-Properties) for available values of properties for a specific chart style.
