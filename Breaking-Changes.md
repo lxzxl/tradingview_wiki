@@ -6,12 +6,6 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
-## Version 1.17
-
-**Trading Terminal**
-
-- Starting with version 1.15, we pass the parent order to `modifyOrder` if it exists. If child order’s details are required while modifying the order you can get back this behavior by enabling `always_pass_called_order_to_modify` featureset.
-
 ## Version 1.16
 
 - Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.
@@ -50,6 +44,8 @@ If you use your own order dialog then you still need to make changes in your bro
 - `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
   We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
   You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
+
+- We pass the parent order to `modifyOrder` if it exists. If child order’s details are required while modifying the order you can get back this behavior by enabling `always_pass_called_order_to_modify` featureset.
 
 ## Version 1.14
 
