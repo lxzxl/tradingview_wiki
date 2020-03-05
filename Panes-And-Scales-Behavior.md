@@ -9,9 +9,9 @@ First of all, all studies are divided into 2 groups: "price" studies and "non-pr
 
 The following table illustrates this
 
-| Value | Price Study, force_overlay=true | Price Study, force_overlay=false | Non-Price Study, force_overlay=true | Non-Price Study, force_overlay=false |
-|---|---|---|---|---|
-|left|place on a new left scale of the main pane|place on a new left scale of the main pane|place on a new left scale of the main pane|place on a new left scale of a new pane
-|right|place on a new right scale of the main pane|place on a new right scale of the main pane|place on a new right scale of the main pane|place on a new right scale of a new pane
-|no-scale|place as "no scale" on the main pane|place as "no scale" on the main pane|place as "no scale" on the main pane|place as "no scale" on a new pane
-|as-series|place on the same price scale as the main series|place on the same price scale as the main series|place on the same price scale as the main series|place on a separate pane on the right price scale
+| Value | Price Study or Non-Price Study with force_overlay=true | Non-Price Study with force_overlay=false |
+|---|---|---|
+|left|place on a new left scale of the main pane|place on a new left scale of a new pane
+|right|place on a new right scale of the main pane|place on a new right scale of a new pane
+|no-scale|place as "no scale" on the main pane|place as "no scale" on a new pane
+|as-series|place on the same price scale as the main series|place on a separate pane on the right price scale
