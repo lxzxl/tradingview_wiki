@@ -43,10 +43,11 @@ Unmerges the study down (if possible).
 ### changePriceScale(priceScale)
 
 1. `priceScale` should be a string with one of the following values:
-    * `left` - attach the study to the left price scale
-    * `right` - attach the study to the right price scale
-    * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
-    * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable if the study and the main series are located on the same pane)
+    * `"new-left"` - attach the study to the new left price scale
+    * `"new-right"` - attach the study to the new right price scale
+    * `"no-scale"` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
+    * `"as-series"` - attach the study to the price scale where the main series is attached (it is only applicable if the study and the main series are located on the same pane)
+    * `entityId` - attach the study to the same price axis as a study with a corresponding `id`
 
 Changes the price scale of the study. See [here](Panes-And-Scales-Behavior) more information about panes and scales behavior in relation to studies.
 

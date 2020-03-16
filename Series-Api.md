@@ -38,11 +38,14 @@ Pins the main series to a new price axis at left.
 
 Makes the main series to be an overlay source.
 
-### moveToOtherSourceScale(entityId)
+### changePriceScale(priceScale)
 
-1. `entityId`: object. Value that is returned when a study is created via API.
+1. `priceScale` should be a string with one of the following values:
+    * `"new-left"` - attach the main series to the new left price scale
+    * `"new-right"` - attach the main series to the new right price scale
+    * `entityId` - pin the main series to the same price axis as a study with a corresponding `id`
 
-Pins the main series to the same price axis as a study with a corresponding `entityId`.
+Changes the price scale of the main series.
 
 ### isVisible()
 

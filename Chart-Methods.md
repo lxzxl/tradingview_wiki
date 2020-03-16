@@ -313,10 +313,11 @@ Sets visibility of an entity with a passed ID.
 1. `options`: object with the the following keys:
     * `checkLimit` - if it is `true` then the study limit dialog will be shown if the limit is exceeded.
     * `priceScale` - preferred price scale for the study. Possible values are:
-        * `left` - attach the study to the left price scale
-        * `right` - attach the study to the right price scale
+        * `new-left` - attach the study to the new left price scale
+        * `new-right` - attach the study to the new right price scale
         * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
         * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable the study is added to the pane with the main series)
+        * `entityId` - attach the study to the same price axis as a study with a corresponding `id`
 
 See [here](Panes-And-Scales-Behavior) more information about panes and scales behavior in relation to studies.
 
@@ -328,8 +329,8 @@ Creates a study on the main symbol. Here are the examples:
 
 * `createStudy('MACD', false, false, [14, 30, "close", 9])`
 * `createStudy('Moving Average Exponential', false, false, [26])`
-* `createStudy('Stochastic', false, false, [26], null, {"%d.color" : "#FF0000"})`
-* `chart.createStudy('Moving Average', false, false, [26], null, {'Plot.linewidth': 10})`
+* `createStudy('Stochastic', false, false, [26], {"%d.color" : "#FF0000"})`
+* `createStudy('Price Channel', true, false, [26], null, {checkLimit: false, priceScale: 'new-left'})`
 
 **Remark**: The `Compare` study has 2 inputs: `[dataSource, symbol]`. Supported `dataSource` values are: `["close", "high", "low", "open"]`.
 
