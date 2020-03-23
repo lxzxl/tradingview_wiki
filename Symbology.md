@@ -48,6 +48,26 @@ Optional type of the instrument.
 
 Trading hours for this symbol. See the [Trading Sessions](Trading-Sessions) article to learn more details.
 
+## holidays
+
+List of holidays for this symbol. These dates are not displayed on the chart.
+It's a string in the following format:
+
+`YYYYMMDD[,YYYYMMDD]`.
+
+Example: `20181105,20181107,20181112`.
+
+## corrections
+
+List of corrections for this symbol. Corrections are days with specific trading sessions. They can be applied to holidays as well.
+It's a string in the following format:
+
+`SESSION:YYYYMMDD[,YYYYMMDD][;SESSION:YYYYMMDD[,YYYYMMDD]]`.
+
+Where `SESSION` has the same format as [Trading Sessions](Trading-Sessions).
+
+Example: `1900F4-2350F4,1000-1845:20181113;1000-1400:20181114`.
+
 ## exchange, listed_exchange
 
 Both of these fields are expected to have a short name of the exchange where this symbol is traded.
