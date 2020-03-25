@@ -343,4 +343,4 @@ Industry for stocks to be displayed in the Symbol Info.
 
 ## currency_code
 
-Currency to be displayed in the Symbol Info.
+The currency in which the instrument is traded. It is displayed in the Symbol Info dialog and on the price axes.

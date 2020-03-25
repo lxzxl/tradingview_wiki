@@ -62,6 +62,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_dom_first_time                      | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
 | hide_left_toolbar_by_default             | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
 | chart_style_hilo                         | off           | 1.15            | Adds Hi-Lo option to chart style controls |
+| pricescale_currency                      | on            | 1.16            | Displays the currency in which the instrument is traded on the price axes |
 
 ### Elements placement
 
