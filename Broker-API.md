@@ -28,7 +28,7 @@ This method is called by the Trading Terminal to request [trades](Trading-Object
 
 - `e` is a context object passed by a browser
 
-Chart can have a sub-menu `Trading` in the context menu. It returns the list of items in a sub-menu. The format is the same as in `buttonDropdownItems`.
+Chart can have a sub-menu `Trading` in the context menu. This method should return an array of [ActionMetainfo](Trading-Objects-and-Constants#actionmetainfo) elements, each of them representing one context menu item.
 
 ### connectionStatus()
 

@@ -364,16 +364,18 @@ Shows the properties dialog for specified study or shape for user interaction.
 
 ### createShape(point, options)
 
+This is a shorthand for [createMultipointShape](#createmultipointshapepoints-options) method, which can be used for [shapes](Shapes-and-Overrides) based on one point.
+
 1. `point`: object `{time, [price], [channel]}`
     * `time`: unix time. It's the only mandatory key in this function argument.
     * `price`: If you specify `price`, then the shape will be placed at the same price level.
         If not, then the shape will be placed close to the bar according the `channel` value.
     * `channel`: If the price is not set then `channel` value defines where the shape is placed relative to the bar. Possible values are `open`, `high`, `low`, `close`.
         If no channel is specified then 'open' is a default value.
-1. `options`: object `{shape, [text], [lock], [overrides]}`
-    * `shape` could be one of the following: `arrow_up`, `arrow_down`, `flag`, `vertical_line`, `horizontal_line`.
+1. `options`: object `{shape, [text], [lock], [overrides]}`, it is the same as in [createMultipointShape](#createmultipointshapepoints-options) method.
+    * `shape` may be one of the [identifiers](Shapes-and-Overrides) that require only one point.
         `flag` is the default value.
-    * `text` is an optional argument. It's the text that will be included in the shape if it's supported.
+    * `text` is an optional argument. It's the text that will be included in the shape if it's supported. Additional field `showLabel` in overrides may be necessary.
     * `lock` shows whether a user will be able to remove/change/hide the shape or not.
     * `disableSelection` prevents selecting of the shape
     * `disableSave` prevents saving the shape on the chart
@@ -399,7 +401,7 @@ This call creates a shape at a specific point on the chart provided that it's wi
         If no channel is specified, 'open' is a default value.
 1. `options`: object `{shape, [text], [lock], [overrides]}`
     * `shape` may be one of the [identifiers](Shapes-and-Overrides)
-    * `text` is an optional argument. It's the text that will be included in the shape if it's supported.
+    * `text` is an optional argument. It's the text that will be included in the shape if it's supported. Additional field `showLabel` in overrides may be necessary.
     * `lock` shows whether a user will be able to remove/change/hide the shape or not.
     * `disableSelection` prevents selecting of the shape
     * `disableSave` prevents saving the shape on the chart
