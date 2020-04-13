@@ -120,6 +120,11 @@ The Charting Library will call the callback function every time the crosshair po
 
 You can subscribe using [Subscription](Subscription) object returned by this function to be notified when visible time range is changed. You can also use the same object to unsubscribe from the event.
 
+When the event is fired it will provide the following arguments:
+
+1. `range`: object, `{from to}`
+    * `from`, `to`: unix timestamps, UTC.
+
 ## Chart Actions
 
 ### setVisibleRange(range, options)

@@ -13,6 +13,8 @@ Here is the list of breaking changes:
 - Series API method `moveToOtherSourceScale` has been renamed to `changePriceScale`. New argument options are added: `new-left`, `new-right`.
 - Study API method `changePriceScale` argument options have been changed. `left` and `right` have been renamed to `new-left` and `new-right`. New argument option `entityId` has been added, it pins the study to the same price axis as a study with a corresponding `id`.
 
+- Method `applyOverrides` of ChartWidget is disabled for "mainSeriesProperties.priceAxisProperties.*".
+
 ## Version 1.15
 
 - Featureset `show_logo_on_all_charts` has been removed.
