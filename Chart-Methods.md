@@ -75,9 +75,25 @@ Here is a list of methods supported by the chart.
 
 You can subscribe using [Subscription](Subscription) object returned by this function to be notified when new history bars are loaded. You can also use the same object to unsubscribe from the event.
 
+Example:
+
+```javascript
+widget.activeChart().onDataLoaded().subscribe(
+    null,
+    () => console.log('New history bars are loaded',
+    true
+);
+```
+
 ### onSymbolChanged()
 
 You can subscribe using [Subscription](Subscription) object returned by this function to be notified when the symbol is changed. You can also use the same object to unsubscribe from the event.
+
+Example:
+
+```javascript
+widget.activeChart().onSymbolChanged().subscribe(null, () => console.log('The symbol is changed');
+```
 
 ### onIntervalChanged()
 
@@ -85,7 +101,7 @@ You can subscribe using [Subscription](Subscription) object returned by this fun
 When the event is fired it will provide the following arguments:
 
 1. `interval`: new interval
-1. `timeframeParameters`: object with the only field `timeframe`.
+1. `timeframeObj`: object with the only field `timeframe`.
 
     It contains a timeframe if the interval is changed when the user clicks on the timeframe panel.
 
@@ -94,17 +110,34 @@ When the event is fired it will provide the following arguments:
 Example:
 
 ```javascript
-widget.chart().onIntervalChanged().subscribe(null, function(interval, obj) {
-    obj.timeframe = "12M";
-})
+widget.activeChart().onIntervalChanged().subscribe(null, (interval, timeframeObj) => timeframeObj.timeframe = "12M");
+```
+
+### dataReady()
+
+The function returns `true` if bars are already loaded and `false` otherwise.
+
+Example:
+
+```javascript
+if (widget.activeChart().dataReady()) {
+    /* do something */
+}
 ```
 
 ### dataReady(callback)
 
-1. `callback`: function(interval)
+1. `callback`: function(onReadyCallback)
 
 The Charting Library will immediately call the callback function if bars are already loaded or when the bars are received.
-The function returns `true` if bars are already loaded and `false` otherwise.
+
+Example:
+
+```javascript
+widget.activeChart().dataReady(() => {
+    /* draw shapes */
+});
+```
 
 ### crossHairMoved(callback)
 
@@ -113,6 +146,12 @@ The function returns `true` if bars are already loaded and `false` otherwise.
 1. `callback`: function({time, price})
 
 The Charting Library will call the callback function every time the crosshair position is changed.
+
+Example:
+
+```javascript
+widget.activeChart().crossHairMoved(({ time, price }) => console.log(time, price));
+```
 
 ### onVisibleRangeChanged()
 
@@ -125,13 +164,22 @@ When the event is fired it will provide the following arguments:
 1. `range`: object, `{from to}`
     * `from`, `to`: unix timestamps, UTC.
 
+Example:
+
+```javascript
+widget.activeChart().onVisibleRangeChanged().subscribe(
+    null,
+    ({ from, to }) => console.log(from, to)
+);
+```
+
 ## Chart Actions
 
 ### setVisibleRange(range, options)
 
-1. `range`: object, `{from to}`
+1. `range`: object, `{ from, to }`
     * `from`, `to`: unix timestamps, UTC
-1. `options`: `{applyDefaultRightMargin, percentRightMargin}`
+1. `options`: `{ applyDefaultRightMargin, percentRightMargin }`
     * `applyDefaultRightMargin`: indicates whether the library should apply the default right margin to the right border if it points on the last bar.
     * `percentRightMargin`: indicates whether the library should apply the percent right margin to the right border if it points on the last bar.
 
@@ -141,25 +189,44 @@ Returns a Promise object, which will be resolved after visible range is applied.
 
 This method was introduced in version `1.2`.
 
+```javascript
+widget.activeChart().setVisibleRange(
+    { from: 1420156800, to: 1451433600 },
+    { percentRightMargin: 20 }
+).then(() => console.log('New visible range is applied'));
+```
+
 ### setSymbol(symbol, callback)
 
 1. `symbol`: string
-1. `callback`: function()
+1. `callback`: function(), optional
 
 Makes the chart change its symbol. Callback function is called once the data for the new symbol is loaded.
+
+```javascript
+widget.activeChart().setSymbol('IBM');
+```
 
 ### setResolution(resolution, callback)
 
 1. `resolution`: string. Format is described in another [article](Resolution).
-1. `callback`: function()
+1. `callback`: function(), optional
 
 Makes the chart change its resolution. Callback function is called once new data is loaded.
+
+```javascript
+widget.activeChart().setResolution('2M');
+```
 
 ### resetData()
 
 Makes the chart re-request data from the data feed. The function is often called when chart's data has changed.
 
-Before calling this function you should call [onResetCacheNeededCallback](JS-Api#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback).
+Before calling this function you should call [onResetCacheNeededCallback] from `subscribeBars`.(JS-Api#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback).
+
+```javascript
+widget.activeChart().resetData();
+```
 
 ### executeActionById(actionId)
 
@@ -207,9 +274,9 @@ Examples:
 
 ```javascript
 // < ... >
-widget.chart().executeActionById("undo");
+widget.activeChart().executeActionById("undo");
 // < ... >
-widget.chart().executeActionById("drawingToolbarAction"); // hides or shows the drawing toolbar
+widget.activeChart().executeActionById("drawingToolbarAction"); // hides or shows the drawing toolbar
 // < ... >
 ```
 
@@ -221,13 +288,27 @@ widget.chart().executeActionById("drawingToolbarAction"); // hides or shows the 
 
 Get a checkable action state (e.g. `stayInDrawingModeAction`, `showSymbolLabelsAction`) according to its ID (see the IDs of actions above)
 
+```javascript
+if (widget.activeChart().getCheckableActionState("drawingToolbarAction")) {
+    /* do something */
+};
+```
+
 ### refreshMarks()
 
-When you call this method the Library requests visible marks once again.
+When you call this method the Library re-requests Bar marks and Timescale marks.
+
+```javascript
+widget.activeChart().refreshMarks();
+```
 
 ### clearMarks()
 
 When you call this method the Library removes all visible marks.
+
+```javascript
+widget.activeChart().clearMarks();
+```
 
 ### setChartType(type)
 
@@ -250,9 +331,9 @@ Sets the main series style.
 | Baseline | 10 | ChartStyle.Baseline | ✓ | ✓ |
 | Hi-Lo | 12 | ChartStyle.HiLo | ✓ | ✓ |
 
-### closePopupsAndDialogs()
-
-When you call this method a context menu or a dialog closes (if applicable).
+```javascript
+widget.activeChart().setChartType(12);
+```
 
 ### setTimezone(timezone)
 
@@ -274,17 +355,31 @@ Makes the chart change its timezone.
 
 Returns the current [timezone](Widget-Constructor#timezone) of the chart.
 
+```javascript
+console.log(widget.activeChart().getTimezone());
+```
+
 ### canZoomOut()
 
 *Since version 1.14.*
 
 When you call this method, the Library checks if there are any zoom events to undone.
 
+```javascript
+console.log(widget.activeChart().canZoomOut());
+```
+
 ### zoomOut()
 
 *Since version 1.14.*
 
 When you call this method, it simulates a click on the "Zoom Out" button. It works only if the chart is zoomed. Use `canZoomOut` to check if you can call this method.
+
+```javascript
+if(widget.activeChart().canZoomOut()) {
+    widget.activeChart().zoomOut();
+};
+```
 
 ## Studies And Shapes
 
@@ -295,6 +390,10 @@ Returns an array of all created shape objects. Each object has the following fie
 * `id`: id of a shape
 * `name`: name of a shape
 
+```javascript
+widget.activeChart().getAllShapes().forEach(({ name }) => console.log(name));
+```
+
 ### getAllStudies()
 
 Returns an array of all created shape objects. Each object has the following fields:
@@ -302,9 +401,17 @@ Returns an array of all created shape objects. Each object has the following fie
 * `id`: id of a study
 * `name`: name of a study
 
+```javascript
+widget.activeChart().getAllStudies().forEach(({ name }) => console.log(name));
+```
+
 ### setEntityVisibility(id, isVisible)
 
 Sets visibility of an entity with a passed ID.
+
+```javascript
+widget.activeChart().setEntityVisibility(id, false); // Hide the entity with id
+```
 
 **Deprecated**: Use a shape/study API instead (`getShapeById`/`getStudyById`). This is going to be removed in future releases.
 
@@ -332,23 +439,23 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Creates a study on the main symbol. Here are the examples:
 
-* `createStudy('MACD', false, false, [14, 30, "close", 9])`
-* `createStudy('Moving Average Exponential', false, false, [26])`
-* `createStudy('Stochastic', false, false, [26], {"%d.color" : "#FF0000"})`
-* `createStudy('Price Channel', true, false, [26], null, {checkLimit: false, priceScale: 'new-left'})`
+* `widget.activeChart().createStudy('MACD', false, false, [14, 30, "close", 9])`
+* `widget.activeChart().createStudy('Moving Average Exponential', false, false, [26])`
+* `widget.activeChart().createStudy('Stochastic', false, false, [26], {"%d.color" : "#FF0000"})`
+* `widget.activeChart().createStudy('Price Channel', true, false, [26], null, {checkLimit: false, priceScale: 'new-left'})`
 
 **Remark**: The `Compare` study has 2 inputs: `[dataSource, symbol]`. Supported `dataSource` values are: `["close", "high", "low", "open"]`.
 
 **Remark 2**: You use `Overlay` study when you choose to `Add` series on the chart. This study has a single input -- `symbol`. Here is an example of adding a symbol:
 
 ```javascript
-    widget.chart().createStudy('Overlay', false, false, ['AAPL']);
+widget.activeChart().createStudy('Overlay', false, false, ['AAPL']);
 ```
 
 **Remark 3**: You also use the `Compare` study when you choose to compare different financial instruments. This study has two inputs -- `source` and `symbol`. Here is an example:
 
 ```javascript
-    widget.chart().createStudy('Compare', false, false, ["open", 'AAPL']);
+widget.activeChart().createStudy('Compare', false, false, ["open", 'AAPL']);
 ```
 
 ### getStudyById(entityId)
@@ -357,15 +464,28 @@ Creates a study on the main symbol. Here are the examples:
 
 Returns an instance of the [StudyApi](Study-Api) that allows you to interact with the study.
 
+```javascript
+widget.activeChart().getStudyById(id).setVisible(false);
+```
+
 ### getSeries()
 
 Returns an instance of the [SeriesApi](Series-Api) that allows you to interact with the main series.
+
+```javascript
+widget.activeChart().getSeries().setVisible(false);
+```
 
 ### showPropertiesDialog(entityId)
 
 1. `entityId`: object. Value that is returned when a study or shape is created via API.
 
 Shows the properties dialog for specified study or shape for user interaction.
+
+```javascript
+const chart = widget.activeChart();
+chart.showPropertiesDialog(chart.getAllShapes()[0].id);`
+```
 
 ### createShape(point, options)
 
@@ -396,6 +516,10 @@ The function returns `entityId` - unique ID of the shape if the creation was suc
 
 This call creates a shape at a specific point on the chart provided that it's within the main series area.
 
+```javascript
+widget.activeChart().createShape({ time: 1514764800 }, { shape: 'vertical_line' });
+```
+
 ### createMultipointShape(points, options)
 
 1. `points`: is an array of object with the following keys `[{time, [price], [channel]},...]`
@@ -424,11 +548,32 @@ Check out [Shapes and Overrides](Shapes-and-Overrides) for more information.
 
 This call creates a shape at a specific point on the chart provided that it's within the main series area.
 
+```javascript
+const from = Date.now() / 1000 - 500 * 24 * 3600 * 1000; // 500 days ago
+const to = Date.now() / 1000;
+widget.activeChart().createMultipointShape(
+    [{ time: from, price: 150 }, { time: to, price: 150 }],
+    {
+        shape: "trend_line",
+        lock: true,
+        disableSelection: true,
+        disableSave: true,
+        disableUndo: true,
+        text: "text",
+    }
+);
+
+```
+
 ### getShapeById(entityId)
 
 1. `entityId`: object. The value that is returned when a shape is created via API
 
 Returns an instance of the [ShapeApi](Shape-Api) that allows you to interact with the shape.
+
+```javascript
+widget.activeChart().getShapeById(id).bringToFront();
+```
 
 ### removeEntity(entityId)
 
@@ -436,21 +581,41 @@ Returns an instance of the [ShapeApi](Shape-Api) that allows you to interact wit
 
 Removes the specified entity.
 
+```javascript
+widget.activeChart().removeEntity(id);
+```
+
 ### removeAllShapes()
 
 Removes all the shapes from the chart.
 
+```javascript
+widget.activeChart().removeAllShapes();
+```
+
 ### removeAllStudies()
 
-Removed all the studies from the chart.
+Removes all the studies from the chart.
+
+```javascript
+widget.activeChart().removeAllStudies();
+```
 
 ### getPanes()
 
 Returns an array of instances of the [PaneApi](Pane-Api) that allows you to interact with the panes.
 
+```javascript
+widget.activeChart().getPanes()[1].moveTo(0);
+```
+
 ### shapesGroupController()
 
 Returns an [API](Shapes-Group-Api) that can be used to work with groups of shapes.
+
+```javascript
+widget.activeChart().shapesGroupController().createGroupFromSelection();
+```
 
 ## Z-order operations
 
@@ -467,11 +632,19 @@ This structure has the following fields:
 * `sendBackwardEnabled`: true if one can send specified entities backward
 * `sendToBackEnabled`: true if one can send specified entities to back
 
+```javascript
+widget.activeChart().availableZOrderOperations([id]);
+```
+
 ### sendToBack(entities)
 
 1. `entities` is an array of identifiers
 
 Sends specified entities to back.
+
+```javascript
+widget.activeChart().sendToBack([id]);
+```
 
 ### bringToFront(entities)
 
@@ -479,11 +652,19 @@ Sends specified entities to back.
 
 Brings specified entities to front.
 
+```javascript
+widget.activeChart().bringToFront([id]);
+```
+
 ### bringForward(entities)
 
 1. `entities` is an array of identifiers
 
 Brings specified entities one step forward (makes it higher).
+
+```javascript
+widget.activeChart().bringForward([id]);
+```
 
 ### sendBackward(entities)
 
@@ -491,16 +672,24 @@ Brings specified entities one step forward (makes it higher).
 
 Sends specified entities one step backward (makes it lower).
 
+```javascript
+widget.activeChart().sendBackward([id]);
+```
+
 ## Study Templates
 
 ### createStudyTemplate(options)
 
-1. `options`: object `{saveInterval}`
+1. `options`: object `{ saveInterval }`
     * `saveInterval`: boolean
 
 Saves the study template to JS object. Charting Library will call your callback function and pass the state object as an argument.
 
 This call is a part of low-level [save/load API](Saving-and-Loading-Charts).
+
+```javascript
+const template = widget.activeChart().createStudyTemplate({ saveInterval: true });
+```
 
 ### applyStudyTemplate(template)
 
@@ -510,11 +699,15 @@ Loads the study template from the `template` object.
 
 This call is a part of low-level [save/load API](Saving-and-Loading-Charts).
 
+```javascript
+widget.activeChart().applyStudyTemplate(template);
+```
+
 ## Trading Primitives
 
 ### createOrderLine(options)
 
-1. `options` is an object with one possible key - `disableUndo` which can be `true` or `false`.
+1. `options` is a non-required object with one possible key - `disableUndo` which can be `true` or `false`.
     For compatibility reasons the default value is set to `false`.
 
 Creates a new trading order on the chart and returns an API-object that you can use to adjust its properties and behavior.
@@ -577,7 +770,7 @@ Cancel Button Icon Color|String|"rgb(255, 0, 0)"
 Example:
 
 ```javascript
-widget.chart().createOrderLine()
+widget.activeChart().createOrderLine()
     .setTooltip("Additional order information")
     .setModifyTooltip("Modify order")
     .setCancelTooltip("Cancel order")
@@ -678,7 +871,7 @@ widget.chart().createPositionLine()
     .setCloseTooltip("Close position")
     .setReverseTooltip("Reverse position")
     .setQuantity("8.235")
-    .setPrice(15.5)
+    .setPrice(160)
     .setExtendLeft(false)
     .setLineStyle(0)
     .setLineLength(25);
@@ -728,14 +921,14 @@ Arrow Color|String|"rgba(0, 0, 255)"
 Example:
 
 ```javascript
-widget.chart().createExecutionShape()
+widget.activeChart().createExecutionShape()
     .setText("@1,320.75 Limit Buy 1")
     .setTooltip("@1,320.75 Limit Buy 1")
     .setTextColor("rgba(0,255,0,0.5)")
     .setArrowColor("#0F0")
     .setDirection("buy")
-    .setTime(1413559061758)
-    .setPrice(15.5);
+    .setTime(widget.activeChart().getVisibleRange().from)
+    .setPrice(160);
 ```
 
 ## Getters
@@ -743,6 +936,10 @@ widget.chart().createExecutionShape()
 ### symbol()
 
 Returns the current symbol of the chart.
+
+```javascript
+console.log(widget.activeChart().symbol());
+```
 
 ### symbolExt()
 
@@ -754,13 +951,25 @@ Returns the current symbol information of the chart. The object has the followin
 * `description`: the description of the symbol
 * `type`: the type of the symbol
 
+```javascript
+console.log(widget.activeChart().symbolExt().full_name);
+```
+
 ### resolution()
 
 Returns the chart's time interval. The format is described in this [article](Resolution).
 
+```javascript
+console.log(widget.activeChart().resolution());
+```
+
 ### getVisibleRange()
 
 Returns the object `{from, to}`. `from` and `to` are Unix timestamps in the UTC timezone.
+
+```javascript
+console.log(widget.activeChart().getVisibleRange());
+```
 
 ### getVisiblePriceRange()
 
@@ -770,6 +979,10 @@ Deprecated, use [Price Scale API](Price-Scale-Api#getVisiblePriceRange) instead.
 
 Returns the object `{from, to}`. `from` and `to` are boundaries of the price scale visible range in main series area.
 
+```javascript
+console.log(widget.activeChart().getVisiblePriceRange());
+```
+
 ### scrollPosition()
 
 *Starting from version 1.15.*
@@ -777,19 +990,35 @@ Returns the object `{from, to}`. `from` and `to` are boundaries of the price sca
 Returns the distance from the right edge of the chart to the last bar, measured in bars.
 This is actually the current scrolling position of the chart, including the right margin.
 
+```javascript
+console.log(widget.activeChart().scrollPosition());
+```
+
 ### defaultScrollPosition()
 
 *Starting from version 1.15.*
 
 Returns the default distance from the right edge of the chart to the last bar, measured in bars.
 
+```javascript
+console.log(widget.activeChart().defaultScrollPosition());
+```
+
 ### priceFormatter()
 
 Returns the object with `format` function that you can use to format the prices.
 
+```javascript
+widget.activeChart().priceFormatter().format(123);
+```
+
 ### chartType()
 
 Returns the main series style type.
+
+```javascript
+console.log(widget.activeChart().chartType());
+```
 
 ## Other
 
@@ -827,13 +1056,13 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 
 **Examples:**
 
-1. `chart.exportData({ includeTime: false, includeSeries: true, includedStudies: [] })` - to export series' data only.
-1. `chart.exportData({ includeTime: true, includeSeries: true, includedStudies: [] })` - to export series' data with times.
-1. `chart.exportData({ includeTime: false, includeSeries: false, includedStudies: ['STUDY_ID'] })` - to export data for the study with the id `STUDY_ID`.
-1. `chart.exportData({ includeTime: true, includeSeries: true, includedStudies: 'all' })` - to export all available data from the chart.
-1. `chart.exportData({ includeTime: false, includeSeries: true, to: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data before `2018-01-01`.
-1. `chart.exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data in the range before `2018-01-01`.
-1. `chart.exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000, to: Date.UTC(2018, 1, 1) / 1000 })` - to export series' data in the range between `2018-01-01` and `2018-02-01`.
+1. `widget.activeChart().exportData({ includeTime: false, includeSeries: true, includedStudies: [] })` - to export series' data only.
+1. `widget.activeChart().exportData({ includeTime: true, includeSeries: true, includedStudies: [] })` - to export series' data with times.
+1. `widget.activeChart().exportData({ includeTime: false, includeSeries: false, includedStudies: ['STUDY_ID'] })` - to export data for the study with the id `STUDY_ID`.
+1. `widget.activeChart().exportData({ includeTime: true, includeSeries: true, includedStudies: 'all' })` - to export all available data from the chart.
+1. `widget.activeChart().exportData({ includeTime: false, includeSeries: true, to: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data before `2018-01-01`.
+1. `widget.activeChart().exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data in the range before `2018-01-01`.
+1. `widget.activeChart().exportData({ includeTime: false, includeSeries: true, from: Date.UTC(2018, 0, 1) / 1000, to: Date.UTC(2018, 1, 1) / 1000 })` - to export series' data in the range between `2018-01-01` and `2018-02-01`.
 
 ### selection()
 
@@ -841,17 +1070,29 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 
 Returns [SelectionApi](Selection-Api) to that can be used to change the chart selection and subscribe to chart selection changes.
 
+```javascript
+widget.activeChart().selection().clear();
+```
+
 ### setZoomEnabled(enabled)
 
 *Starting from version 1.15.*
 
 Enables (if the parameter is true) or disables (if the parameter is false) zooming of the chart.
 
+```javascript
+widget.activeChart().setZoomEnabled(false);
+```
+
 ### setScrollEnabled(enabled)
 
 *Starting from version 1.15.*
 
 Enables (if the parameter is true) or disables (if the parameter is false) scrolling of the chart.
+
+```javascript
+widget.activeChart().setScrollEnabled(false);
+```
 
 ## See Also
 

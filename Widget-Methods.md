@@ -53,6 +53,7 @@ widget.onChartReady(function() {
   * [getIntervals()](#getintervals)
   * [getStudiesList()](#getstudieslist)
   * [undoRedoState()](#undoredostate)
+  * [getTheme()](#gettheme)
 * [Customization](#customization)
   * [changeTheme(themeName)](#changethemethemename)
   * [addCustomCSSFile(url)](#addcustomcssfileurl)
@@ -442,6 +443,16 @@ Returns an object with the state of the Undo/Redo stack. The object has the foll
 * `undoText`: name of the next undo operation. If the undo stack is empty then it is undefined.
 * `enableRedo`: boolean flag that shows the redo action availability
 * `redoText`: name of the next redo operation. If the redo stack is empty then it is undefined.
+
+### getTheme()
+
+*Starting from version 1.16.*
+
+This method returns the chart theme name.
+
+```javascript
+console.log(widget.getTheme());
+```
 
 ## Customization
 
