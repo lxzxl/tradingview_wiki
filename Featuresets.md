@@ -4,7 +4,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 
 ### Visibility of controls and other visual elements
 
-[**Interactive Map of Featuresets**](http://tradingview.github.io/featuresets.html)
+[**Interactive Map of Featuresets**](https://charting-library.tradingview.com/featuresets.html)
 
 | ID                                      | Default State | Library Version | Description                                                |
 |-----------------------------------------|---------------|-----------------|-------------|
@@ -87,6 +87,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_market_minimized | on |                 | Relates to Indicators dialog and determines whether it is compact or contains a search bar along with the categories
 | study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
+| header_in_fullscreen_mode | off |    1.16         | Enables header widget DOM element in the fullscreen mode
 | same_data_requery             | off   |                 | Allows you to call `setSymbol` with the same symbol to refresh the data
 | disable_resolution_rebuild    | off   |                 | Shows bar time exactly as provided by the data feed with no adjustments.
 | chart_scroll                  | on    |   1.10          | Allows chart scrolling
