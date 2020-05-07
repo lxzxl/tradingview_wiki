@@ -68,6 +68,10 @@ widget.onChartReady(function() {
   * [layout()](#chart-layout)
   * [setLayout(layout)](#chart-setlayoutlayout)
   * [layoutName()](#chart-layoutName)
+  * [symbolSync()](#chart-symbolsync)
+  * [intervalSync()](#chart-intervalsync)
+  * [crosshairSync()](#chart-crosshairsync)
+  * [timeSync()](#chart-timesync)
 
 ## Subscribing To Chart Events
 
@@ -568,6 +572,40 @@ Changes the current chart layout.
 ### :chart: layoutName()
 
 Returns the current layout name. If the current layout has not yet been saved then it returns undefined.
+
+### :chart: symbolSync()
+
+Returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of symbol sync between charts.
+
+```javascript
+if (widget.symbolSync().value()) {
+    // Do something
+}
+```
+
+### :chart: intervalSync()
+
+Returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of interval sync between charts.
+
+```javascript
+widget.intervalSync().setValue(true);
+```
+
+### :chart: crosshairSync()
+
+Returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of crosshair sync between charts.
+
+```javascript
+widget.crosshairSync().setValue(true);
+```
+
+### :chart: timeSync()
+
+Returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the state of time sync between charts.
+
+```javascript
+widget.timeSync().setValue(true);
+```
 
 ## See Also
 

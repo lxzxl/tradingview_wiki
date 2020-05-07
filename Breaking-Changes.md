@@ -15,6 +15,8 @@ Here is the list of breaking changes:
 
 - Method `applyOverrides` of ChartWidget is disabled for "mainSeriesProperties.priceAxisProperties.*".
 
+- Creating a study using `createStudy` of ChartWidgetApi can be undone by the user from now. You can disable it using `disableUndo` in `options`.
+
 ## Version 1.15
 
 - Featureset `show_logo_on_all_charts` has been removed.
