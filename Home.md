@@ -20,4 +20,4 @@ We’ve got a [public GitHub repository](https://github.com/tradingview/charting
 
 ### Best Practices
 
-Reading [this article](Best-Practices) will prevent you from making the most common mistakes and will **save your time**.
+Reading the article with [Best Practices](Best-Practices) will prevent you from making the most common mistakes and will **save your time**. If you have a question, you can give a try to our thoroughly prepared [FAQ](Frequently-Asked-Questions) or [ask the community](https://github.com/tradingview/charting_library/issues/).

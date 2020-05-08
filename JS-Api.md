@@ -220,7 +220,7 @@ In all other cases the history depth will have the default value.
 1. `onDataCallback`: function(array of `mark`s)
 1. `resolution`: string
 
-The Library calls this function to get [marks](Marks-On-Bars) for visible bars range.
+The Library calls this function to get [marks](Marks#marks-on-bars) for visible bars range.
 
 The Library assumes that you will call `onDataCallback` only once per `getMarks` call.
 
@@ -248,7 +248,7 @@ A few marks per bar are allowed (for now, the maximum is `10`). Marks outside of
 1. `onDataCallback`: function(array of `mark`s)
 1. `resolution`: string
 
-The Library calls this function to get timescale marks for visible bars range.
+The Library calls this function to get [timescale marks](Marks#marks-on-the-timescale) for visible bars range.
 
 The Library assumes that you will call `onDataCallback` only once per `getTimescaleMarks` call.
 

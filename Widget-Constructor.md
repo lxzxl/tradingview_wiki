@@ -3,7 +3,7 @@ You may specify Charting library widget parameters when calling its constructor.
 ```javascript
 new TradingView.widget({
     symbol: 'A',
-    interval: 'D',
+    interval: '1D',
     timezone: "America/New_York",
     container_id: "tv_chart_container",
     locale: "ru",
@@ -11,24 +11,26 @@ new TradingView.widget({
 });
 ```
 
-Below is a complete list of supported parameters. Note that you can't change the parameters once the Charting Library is created. Use [Widget methods](Widget-Methods) if you wish to modify the parameters after the creation of the Charting Library.
+Below is a complete list of supported parameters. Use [Widget methods](Widget-Methods) if you wish to modify the parameters after the creation of the Charting Library.
 
-### symbol, interval
+`* - Required`
 
-The default symbol & time interval of your chart. The `interval` value is described in the [Section](Resolution). *Mandatory*
+### symbol, interval*
+
+The default symbol & time interval of your chart. The `interval` value is described in the [Section](Resolution).
+
+### container_id*
+
+`id` is an attribute of a DOM element inside which the iframe with the chart will be placed.
+
+### datafeed*
+
+JavaScript object that implements the ([JS API](JS-Api)) interface to supply the chart with data.
 
 ### timeframe
 
 Sets the default timeframe of the chart. Timeframe is a period of bars that will be loaded and shown on the screen.
 Valid timeframe is a number with a letter D for days and M for months.
-
-### container_id
-
-`id` is an attribute of a DOM element that you wish to include in the widget. *Mandatory*
-
-### datafeed
-
-JavaScript object that implements the ([JS API](JS-Api)) interface to supply the chart with data. *Mandatory*
 
 ### timezone
 

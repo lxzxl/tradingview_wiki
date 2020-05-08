@@ -38,6 +38,7 @@ Customisation by areas
 * [Legend](Legend)
 * [Price Scale](Price-Scale)
 * [Time Scale](Time-Scale)
+* [Marks](Marks)
 * [Indicators](Indicators)
 * [Snapshots](Snapshots)
 * [Drawings](Drawings)
