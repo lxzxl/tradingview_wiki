@@ -17,12 +17,12 @@ DESCRIPTION
 <b>1. How do I connect my data? How to add new ticker symbols?</b>
 </summary><p>
 
-The Charting Library should to be used by technical specialists.
+The Charting Library should be used by technical specialists.
 It requires advanced skills in JavaScript and deep knowledge of WEB protocols.
 You should know it yourself or have/hire people who know this.
 Additionally, if you don't have a WEB API, you will need at least a server language programmer and a system administrator to implement a WEB API on the server side.
 
-We’ve done lot of work to make the process of connecting data simple and clear.
+We’ve done a lot of work to make the process of connecting data simple and clear.
 
 First, you need to read and understand this article: [How to connect my data](Connecting-Data)
 
@@ -60,9 +60,9 @@ The only example of a back-end feed that we have is written on Javascript for No
 
 First of all, the Charting Library is not intended to display data from files. It is used to display bars data from a server. Secondly, you should keep in mind that according to the agreement you should use Charting Library on public websites only. If you still want to use a file as the source of data you will need to do the following steps:
 
-1. Write an application using any server language (.NET, PHP, NodeJS, Python etc.). This application should read the file and provide the data from it in [UDF](UDF) format over HTTP(S).
+1. Write an application using any server language (.NET, PHP, NodeJS, Python, etc.). This application should read the file and provide the data from it in [UDF](UDF) format over HTTP(S).
 
-    Note: You can provide data in another format or use a websocket to transfer it, but in this case you will need to implement a [JS-Api](JS-Api) adapter on a client.
+    Note: You can provide data in another format or use a WebSocket to transfer it, but in this case you will need to implement a [JS API](JS-Api) adapter on a client.
 1. You should either have a static IP or register a domain so a browser can send requests to your server.
 1. Open `index.html` and replace `demo_feed.tradingview.com` with the URL to your server.
 
@@ -84,7 +84,7 @@ Please read [Symbology](Symbology) thoroughly. Most of errors with data happen b
 <b>7. Charting Library is constantly asking for data. How to tell it that data is finished?</b>
 </summary><p>
 
-Specifically for this purpose there is a flag that can be added to the responses from your server that tells the library that there is no more data on the server.
+Specifically for this purpose, there is a flag that can be added to the responses from your server that tells the library that there is no more data on the server.
 It is called `no_data` for [UDF](UDF#bars) and `noData` for [JS API](JS-Api#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest)
 
 </details>
@@ -93,7 +93,7 @@ It is called `no_data` for [UDF](UDF#bars) and `noData` for [JS API](JS-Api#getb
 <b>8. How to change the number of decimal places of prices on a chart?</b>
 </summary><p>
 
-Please read [Symbology](Symbology) thoroughly. Number of decimal places is calculated based on `minmov` and `pricescale` values.
+Please read [Symbology](Symbology) thoroughly. The number of decimal places is calculated based on `minmov` and `pricescale` values.
 
 </details>
 
@@ -101,7 +101,7 @@ Please read [Symbology](Symbology) thoroughly. Number of decimal places is calcu
 <b>9. What if I have a single price for each timestamp?</b>
 </summary><p>
 
-You still can display your data if you have only one price for each timestamp, but obviously you will not be able to display the data as bars/candles. Since the library is intended to display different styles of data: candles, bars, histogram, you are supposed to provide Open, High, Low, Close and optional Volume for each timestamp. If you have only one price, you can pass `Open = High = Low = Close = price`. For better view of this data, you can change default chart style to “Line” (see GUI Questions).
+You still can display your data if you have only one price for each timestamp, but obviously you will not be able to display the data as bars/candles. Since the library is intended to display different styles of data: candles, bars, histogram, you are supposed to provide Open, High, Low, Close and optional Volume for each timestamp. If you have only one price, you can pass `Open = High = Low = Close = price`. For better view of this data, you can change the default chart style to “Line” (see GUI Questions).
 
 </details>
 
@@ -151,27 +151,27 @@ You need to use [overrides](Widget-Constructor#overrides) of the Widget Construc
 </summary><p>
 
 * Most of GUI elements can be hidden using [Featuresets](Featuresets). Please look at the [Interactive map of featuresets](http://tradingview.github.io/featuresets.html) to find what you need.
-* There are base elements that cannot be hidden, but if you still want to get rid of them you can use [CSS customization](Widget-Constructor#custom_css_url). Please note that the names, classes and identifiers of DOM elements may be changed in future versions of the product without any notifications.
+* There are base elements that cannot be hidden, but if you still want to get rid of them you can use [CSS customization](Widget-Constructor#custom_css_url). Please note that the names, classes, and identifiers of DOM elements may be changed in future versions of the product without any notifications.
 
 </details>
 
 ## Other Questions
 
 <details><summary>
-<b>1. What is the the difference between Widget, Charting Library and Trading Terminal?</b>
+<b>1. What is the the difference between Widget, Charting Library, and Trading Terminal?</b>
 </summary><p>
 
-* [Widget](https://tradingview.com/widget/) is connected to TradingView data. Perfect for websites, blogs and forums where you need a fast & free solution.
+* [Widget](https://tradingview.com/widget/) is connected to TradingView data. Perfect for websites, blogs, and forums where you need a fast & free solution.
 
     Integration is simply cutting & pasting pre-made iframe code. It has lots of display modes.
 
-* [Charting Library](https://www.tradingview.com/HTML5-stock-forex-bitcoin-charting-library/) is a chart with your own data.
+* [Charting Library](https://www.tradingview.com/HTML5-stock-forex-bitcoin-charting-library/) is a chart with your data.
 
-    This is a standalone solution that you download, host on your servers, connect your own data & use in your site/app for free.
+    This is a standalone solution that you download, host on your servers, connect your data & use in your site/app for free.
 
 * [Trading Terminal](https://www.tradingview.com/trading-terminal/) is a standalone product that is licensed to brokers.
 
-    It includes all features available in the Charting Library, but it also has trading functionality, multiple chart layouts, watchlists, details, news widgets and other advanced tools.
+    It includes all features available in the Charting Library, but it also has trading functionality, multiple chart layouts, watchlists, details, news widgets, and other advanced tools.
 
     It has its own licensing fees associated with it.
 
