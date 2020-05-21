@@ -5,6 +5,7 @@
 * [First Start](Running-Your-Charting-Library)
 * [Best Practices](Best-Practices)
 * [FAQ](Frequently-Asked-Questions)
+* [Shortcuts](Shortcuts)
 * [Breaking changes](Breaking-Changes)
 
 ***
