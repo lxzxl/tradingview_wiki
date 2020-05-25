@@ -425,11 +425,10 @@ widget.activeChart().setEntityVisibility(id, false); // Hide the entity with id
 1. `options`: object with the the following keys:
     * `checkLimit` - if it is `true` then the study limit dialog will be shown if the limit is exceeded.
     * `priceScale` - preferred price scale for the study. Possible values are:
-        * `new-left` - attach the study to the new left price scale
-        * `new-right` - attach the study to the new right price scale
+        * `new-left` - attach the study to a new left price scale
+        * `new-right` - attach the study to a new right price scale
         * `no-scale` - do not attach the study to any price scale. The study will be added in 'No Scale' mode
         * `as-series` - attach the study to the price scale where the main series is attached (it is only applicable the study is added to the pane with the main series)
-        * `entityId` - attach the study to the same price axis as a study with a corresponding `id`
     * `disableUndo` - prevents adding of the action to the undo stack
 
 See [here](Panes-And-Scales-Behavior) more information about panes and scales behavior in relation to studies.

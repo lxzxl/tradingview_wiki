@@ -9,9 +9,9 @@ Here is the list of breaking changes:
 ## Version 1.16
 
 - Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.
-- Chart method `createStudy` options for `priceScale` have been changed. `left` and `right` have been renamed to `new-left` and `new-right`. New option `entityId` has been added, it pins the study to the same price axis as a study with a corresponding `id`.
-- Series API method `moveToOtherSourceScale` has been renamed to `changePriceScale`. New argument options are added: `new-left`, `new-right`.
-- Study API method `changePriceScale` argument options have been changed. `left` and `right` have been renamed to `new-left` and `new-right`. New argument option `entityId` has been added, it pins the study to the same price axis as a study with a corresponding `id`.
+- Chart method `createStudy` options for `priceScale` have been changed. `left` and `right` have been renamed to `new-left` and `new-right`.
+- Series API method `moveToOtherSourceScale` has been renamed to `changePriceScale`. New argument options are added: `new-left`, `new-right`, `no-scale`.
+- Study API method `changePriceScale` argument options have been changed. `left` and `right` have been renamed to `new-left` and `new-right`. New argument option `entityId` has been added, it pins the study to the same price axis as a study with a corresponding `entityId`.
 
 - Method `applyOverrides` of ChartWidget is disabled for "mainSeriesProperties.priceAxisProperties.*".
 

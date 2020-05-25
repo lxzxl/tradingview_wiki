@@ -43,7 +43,8 @@ Makes the main series to be an overlay source.
 1. `priceScale` should be a string with one of the following values:
     * `"new-left"` - attach the main series to the new left price scale
     * `"new-right"` - attach the main series to the new right price scale
-    * `entityId` - pin the main series to the same price axis as a study with a corresponding `id`
+    * `"no-scale"` - hide the main series price scale if there are another scales on the main pane
+    * `entityId` - pin the main series to the same price axis as a study with a corresponding `entityId`
 
 Changes the price scale of the main series.
 
