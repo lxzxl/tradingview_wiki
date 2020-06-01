@@ -11,7 +11,7 @@ studies_overrides: {
     "volume.volume ma.color": "#FF0000",
     "volume.volume ma.transparency": 30,
     "volume.volume ma.linewidth": 5,
-    "volume.show ma": true,
+    "volume.volume ma.visible": true,
     "bollinger bands.median.color": "#33FF88",
     "bollinger bands.upper.linewidth": 7
 }
@@ -100,7 +100,7 @@ Format: `indicator_name.input_name`
 * **indicator_name**: use the name as you see it in the `Indicators` dialog.
 * **input_name**: use the name as you see it in the indicator's properties dialog (for example, `show ma`)
 
-Examples: `volume.show ma`, `bollinger bands.length`
+Examples: `volume.volume ma.visible`, `bollinger bands.length`
 
 ### Plot property
 
@@ -111,6 +111,7 @@ Format: `indicator_name.plot_name.property_name`
 * **property_name**: one of the following:
   * **transparency**
   * **linewidth**
+  * **visible**: boolean
   * **plottype**. Supported plot types are:
     * `line`
     * `histogram`
