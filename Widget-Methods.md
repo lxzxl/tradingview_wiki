@@ -55,7 +55,7 @@ widget.onChartReady(function() {
   * [undoRedoState()](#undoredostate)
   * [getTheme()](#gettheme)
 * [Customization](#customization)
-  * [changeTheme(themeName)](#changethemethemename)
+  * [changeTheme(themeName, options)](#changethemethemename-options)
   * [addCustomCSSFile(url)](#addcustomcssfileurl)
   * [applyOverrides(overrides)](#applyoverridesoverrides)
   * [applyStudiesOverrides(overrides)](#applystudiesoverridesoverrides)
@@ -460,11 +460,13 @@ console.log(widget.getTheme());
 
 ## Customization
 
-### changeTheme(themeName)
+### changeTheme(themeName, options)
 
 *Starting from version 1.13.*
 
 1. `themeName` should be `"Light"` | `"Dark"`
+1. `options` is an *optional* object added in version 1.17 with one field:
+    * `disableUndo` - boolean flag that shows the undo action availability.
 
 This method changes the chart theme without reloading the chart.
 

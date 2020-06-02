@@ -110,7 +110,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | end_of_period_timescale_marks | off | 1.16 | Toggles the timeline marks to display the bar's end time
 | cropped_tick_marks | on | 1.16 | If disabled, partially visible price labels on price axis will be hidden
 
-### "Important features"
+### Important features
 
 | ID | Default State | Library Version | Description
 |-------|---------------|-----------------|------------

@@ -2,7 +2,7 @@
 
 Set custom formatters for time and date
 
-[customFormatters](Widget-Constructor#customformatters)
+[custom_formatters](Widget-Constructor#custom_formatters)
 
 ### Timeframes at the bottom of the chart
 

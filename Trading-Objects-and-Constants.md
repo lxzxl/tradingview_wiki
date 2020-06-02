@@ -6,7 +6,7 @@
 
 ### configFlags: object
 
-This is an object that should be passed in the constructor of the Trading Terminal to [brokerConfig](Widget-Constructor#brokerConfig). Each field should have a boolean value (`true`/`false`):
+This is an object that should be passed in the constructor of the Trading Terminal to [broker_config](Widget-Constructor#broker_config). Each field should have a boolean value (`true`/`false`):
 
 * `supportReversePosition`
 

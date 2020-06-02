@@ -179,5 +179,5 @@ Once this method is called the broker should stop providing `pipValue` updates.
 
 ## See Also
 
-- [How to connect](Widget-Constructor#brokerfactory) your trading controller to the chart
+- [How to connect](Widget-Constructor#broker_factory) your trading controller to the chart
 - [Trading Host](Trading-Host)

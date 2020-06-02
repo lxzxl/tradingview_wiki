@@ -80,7 +80,7 @@ Example:
 ```javascript
 widget.activeChart().onDataLoaded().subscribe(
     null,
-    () => console.log('New history bars are loaded',
+    () => console.log('New history bars are loaded'),
     true
 );
 ```
