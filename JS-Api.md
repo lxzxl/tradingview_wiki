@@ -50,7 +50,7 @@ An array of exchange descriptors. Exchange descriptor is an object `{value, name
 
 An array of filter descriptors. Filter descriptor is an object `{name, value}`. `value` will be passed as `symbolType` argument to [searchSymbols](#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback).
 
-`symbolsTypes = []`  leads to the absence of filter types in Symbol Search list. Use `value = ""` if you wish to include all filter types.
+`symbols_types = []`  leads to the absence of filter types in Symbol Search list. Use `value = ""` if you wish to include all filter types.
 
 #### supported_resolutions
 
@@ -121,27 +121,28 @@ Charting Library will call this function when it needs to get [SymbolInfo](Symbo
 1. `resolution`: string
 1. `from`: unix timestamp, leftmost required bar time
 1. `to`: unix timestamp, rightmost required bar time
-1. `onHistoryCallback`: function(array of `bar`s, `meta` = `{ noData = false }`)
-    1. `bar`: object `{time, close, open, high, low, volume}`
-    1. `meta`: object `{noData = true | false, nextTime - unix time}`
-1. `onErrorCallback`: function(reason)
-1. `firstDataRequest`: boolean to identify the first call of this method for the particular symbol resolution.
+1. `onHistoryCallback`: callback function for historical data. It should be called **just once**. This function has 2 arguments:
+    1. Array of `bars`. See below.
+    1. `Meta information`: See below.
+1. `onErrorCallback`: callback function for errors. The only argument of this function is a text error message. This message is not displayed and is reserved for the future.
+1. `firstDataRequest`: boolean to identify the first call of this method.
     When it is set to `true` you can ignore `to` (which depends on browser's `Date.now()`) and return bars up to the latest bar.
 
 This function is called when the chart needs a history fragment defined by dates range.
 
-The charting library assumes `onHistoryCallback` to be called **just once**.
+`Bar` is an object with the following fields:
 
-**Important**: `nextTime` is a time of the next bar in the history. It should be set if the requested period represents a gap in the data. Hence there is available data prior to the requested period.
+1. `time`: number. Amount of **milliseconds** since Unix epoch start in **UTC** timezone. `time` for daily bars is expected to be a trading day (not session start day) at 00:00 UTC. Charting Library adjusts time according to [Session](Symbology#session) from SymbolInfo.  `time` for monthly bars is the first trading day of the month without the time part.
+1. `open`: number. Bar's open value
+1. `high`: number. Bar's high value
+1. `low`: number. Bar's low value
+1. `close`: number. Bar's close value
+1. `volume`: number. Bar's volume value
 
-**Important**: `noData` should be set if there is no data in the requested period.
+`Meta information` is an object with the following fields:
 
-**Remark**: `bar.time` is expected to be the amount of milliseconds since Unix epoch start in **UTC** timezone.
-
-**Remark**: `bar.time` for daily bars is expected to be a trading day (not session start day) at 00:00 UTC.
-Charting Library adjusts time according to [Session](Symbology#session) from SymbolInfo
-
-**Remark**: `bar.time` for monthly bars is the first trading day of the month without the time part
+1. `noData`: boolean. This flag should be set if there is no data in the requested period.
+1. `nextTime`: unix timestamp (UTC). Time of the next bar in the history. It should be set if the requested period represents a gap in the data. Hence there is available data prior to the requested period.
 
 ### subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback)
 
