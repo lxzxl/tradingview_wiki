@@ -446,76 +446,7 @@ favorites: {
 
 ### save_load_adapter
 
-*Starting from version 1.12.*
-
-An object containing the save/load functions. If it is available it should have the following methods:
-
-**Chart layouts:**
-
- 1. `getAllCharts(): Promise<ChartMetaInfo[]>`
-
-    A function to get all saved charts.
-
-    `ChartMetaInfo` is an object with the following fields:
-     * `id` - unique ID of the chart.
-     * `name` - name of the chart.
-     * `symbol` - symbol of the chart.
-     * `resolution` - resolution of the chart.
-     * `timestamp` - last modified date (number of milliseconds since midnight `01/01/1970` UTC) of the chart.
-
- 1. `removeChart(chartId): Promise<void>`
-
-     A function to remove a chart. `chartId` is a unique ID of the chart (see `getAllCharts` above).
-
- 1. `saveChart(chartData: ChartData): Promise<ChartId>`
-
-     A function to save a chart.
-
-    `ChartData` is an object with the following fields:
-     * `id` - unique ID of the chart (may be `undefined` if it wasn't saved before).
-     * `name` - name of the chart.
-     * `symbol` - symbol of the chart.
-     * `resolution` - resolution of the chart.
-     * `content` - content of the chart.
-
-    `ChartId` - unique ID of the chart (string)
-
- 1. `getChartContent(chartId): Promise<ChartContent>`
-
-     A function to load the chart from the server.
-
-    `ChartContent` is a string with the chart content (see `ChartData::content` field in `saveChart` function).
-
-**Study Templates:**
-
- 1. `getAllStudyTemplates(): Promise<StudyTemplateMetaInfo[]>`
-
-     A function to get all saved study templates.
-
-    `StudyTemplateMetaInfo` is an object with the following fields:
-     * `name` - name of the study template.
-
- 1. `removeStudyTemplate(studyTemplateInfo: StudyTemplateMetaInfo): Promise<void>`
-
-     A function to remove a study template.
-
- 1. `saveStudyTemplate(studyTemplateData: StudyTemplateData): Promise<void>`
-
-     A function to save a study template.
-
-    `StudyTemplateData` is an object with the following fields:
-     * `name` - name of the study template.
-     * `content` - content of the study template.
-
- 1. `getStudyTemplateContent(studyTemplateInfo: StudyTemplateMetaInfo): Promise<StudyTemplateContent>`
-
-     A function to load a study template from the server.
-
-    `StudyTemplateContent` - content of the study template (string)
-
- If both `charts_storage_url` and `save_load_adapter` are available  then `save_load_adapter` will be used.
-
- **IMPORTANT:** All functions should return a `Promise` (or `Promise`-like objects).
+An object containing the save/load functions. It is used to customize the `Save` button behaviour. Please see details and example on [Saving and Loading Charts page](Saving-and-Loading-Charts#save_load_adapter).
 
 ### settings_adapter
 

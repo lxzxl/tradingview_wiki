@@ -1,14 +1,16 @@
-The Charting Library supports saving/loading charts and study templates using 2 levels of API:
+The Charting Library supports saving/loading charts and study templates using UI and API:
 
-1. **Low-Level**: save/load functionality is enabled by widget's `save()` / `load()` [methods](Widget-Methods#savecallback) and `createStudyTemplate()` / `applyStudyTemplate()` [methods](Chart-Methods#createstudytemplateoptions).
-    One should take of the storage on the server.
+1. **API**: Content of charts and study templates can be directly accessed using widget's [save() / load() methods](Widget-Methods#savecallback) and [createStudyTemplate() / applyStudyTemplate() methods](Chart-Methods#createstudytemplateoptions).
     You are able to save the JSONs where you wish. For example, you may embed them to your saved pages or user's working area etc.
 
-1. **High-Level**: Charting Library is able to save / load charts and study templates from the storage that you'll point it to.
-    We created a tiny storage sample with Python and PostgreSQL that can be found in [our GitHub](https://github.com/tradingview/saveload_backend).
-    You can use it and run on your own server so that you'll be able to have control over all your users' saved data.
+1. **Save button**: Charting Library has save/load UI for charts and study templates. You can use [predefined server requests](#predefined-server-requests) or implement [save_load_adapter](#save_load_adapter) and process save/load by yourself.
 
-## Using High-Level Save/Load
+## Predefined server requests
+
+### Example
+
+We created a tiny storage sample with Python and PostgreSQL that can be found in [our GitHub](https://github.com/tradingview/saveload_backend).
+You can use it and run on your own server so that you'll be able to have control over all your users' saved data.
 
 Here are a few steps for those who want to have their own chart storage:
 
@@ -25,12 +27,12 @@ Here are a few steps for those who want to have their own chart storage:
 
 **Remark**: Manual database filling/editing is not the intended usage. Please avoid doing this as you you may hurt the Django infrastructure.
 
-## Developing your own backend
+### Developing your own backend
 
 * Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id`. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
 * You should implement the processing of 4 requests: save chart / load chart / delete chart / list charts.
 
-### LIST CHARTS
+#### LIST CHARTS
 
 GET REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id`
 
@@ -44,7 +46,7 @@ RESPONSE: JSON Object
     1. `id`: unique integer identifier of the chart (example, `9163`)
     1. `name`: chart name (example, `Test`)
 
-### SAVE CHART
+#### SAVE CHART
 
 POST REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id`
 
@@ -58,7 +60,7 @@ RESPONSE: JSON Object
 1. `status`: `ok` or `error`
 1. `id`: unique integer identifier of the chart (example, `9163`)
 
-### SAVE AS CHART
+#### SAVE AS CHART
 
 POST REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id&chart=chart_id`
 
@@ -71,7 +73,7 @@ RESPONSE: JSON Object
 
 1. `status`: `ok` or `error`
 
-### LOAD CHART
+#### LOAD CHART
 
 GET REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id&chart=chart_id`
 
@@ -84,7 +86,7 @@ RESPONSE: JSON Object
     1. `id`: unique integer identifier of the chart (example, `9163`)
     1. `name`: name of the chart
 
-### DELETE CHART
+#### DELETE CHART
 
 DELETE REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id&chart=chart_id`
 
@@ -92,14 +94,14 @@ RESPONSE: JSON Object
 
 1. `status`: `ok` or `error`
 
-## Using Demo Charts and Study Templates Storage
+### Using Demo Charts and Study Templates Storage
 
 We're running a demo chart storage service to let you save/load charts as soon as you build your Charting Library.
 Here is the link <http://saveload.tradingview.com>. Note that it's provided as-is since it's a demo.
 
 We do not guarantee its stability. Also, note that we delete the data in the storage on a regular basis.
 
-## Managing Access to Saved Charts
+### Managing Access to Saved Charts
 
 You are responsible for the charts that your users are able to see and load.
 A user can see/load charts that have the same `client_id` and `user_id` that the user has.
@@ -117,3 +119,164 @@ Here are a few examples:
 Your site URL or other link|Unique user ID|Each user has a private chart storage that other users can't see.
 Your site URL or other link|The same value for all users|Each user can see and load any saved chart.
 Your site URL or other link|Unique user ID for registered users along with a separate setting for anonymous users|Each registered user has a private chart storage that other users can't see. All anonymous users share a single storage.
+
+## save_load_adapter
+
+*Starting from version 1.12.*
+
+One of the parameters in [Widget Construcor](Widget-Constructor#save_load_adapter), this is basically an object containing the save/load functions. It is used to customize the `Save` button behaviour. If it is available, it should have the following methods:
+
+### Chart layouts
+
+ 1. `getAllCharts(): Promise<ChartMetaInfo[]>`
+
+    A function to get all saved charts.
+
+    `ChartMetaInfo` is an object with the following fields:
+     * `id` - unique ID of the chart.
+     * `name` - name of the chart.
+     * `symbol` - symbol of the chart.
+     * `resolution` - resolution of the chart.
+     * `timestamp` - last modified date (number of milliseconds since midnight `01/01/1970` UTC) of the chart.
+
+ 1. `removeChart(chartId): Promise<void>`
+
+     A function to remove a chart. `chartId` is a unique ID of the chart (see `getAllCharts` above).
+
+ 1. `saveChart(chartData: ChartData): Promise<ChartId>`
+
+     A function to save a chart.
+
+    `ChartData` is an object with the following fields:
+     * `id` - unique ID of the chart (may be `undefined` if it wasn't saved before).
+     * `name` - name of the chart.
+     * `symbol` - symbol of the chart.
+     * `resolution` - resolution of the chart.
+     * `content` - content of the chart.
+
+    `ChartId` - unique ID of the chart (string)
+
+ 1. `getChartContent(chartId): Promise<ChartContent>`
+
+     A function to load the chart from the server.
+
+    `ChartContent` is a string with the chart content (see `ChartData::content` field in `saveChart` function).
+
+### Study Templates
+
+ 1. `getAllStudyTemplates(): Promise<StudyTemplateMetaInfo[]>`
+
+     A function to get all saved study templates.
+
+    `StudyTemplateMetaInfo` is an object with the following fields:
+     * `name` - name of the study template.
+
+ 1. `removeStudyTemplate(studyTemplateInfo: StudyTemplateMetaInfo): Promise<void>`
+
+     A function to remove a study template.
+
+ 1. `saveStudyTemplate(studyTemplateData: StudyTemplateData): Promise<void>`
+
+     A function to save a study template.
+
+    `StudyTemplateData` is an object with the following fields:
+     * `name` - name of the study template.
+     * `content` - content of the study template.
+
+ 1. `getStudyTemplateContent(studyTemplateInfo: StudyTemplateMetaInfo): Promise<StudyTemplateContent>`
+
+     A function to load a study template from the server.
+
+    `StudyTemplateContent` - content of the study template (string)
+
+ If both `charts_storage_url` and `save_load_adapter` are available  then `save_load_adapter` will be used.
+
+ **IMPORTANT:** All functions should return a `Promise` (or `Promise`-like objects).
+
+In-memory example for testing purposes:
+
+```javascript
+save_load_adapter: {
+    charts: [],
+    studyTemplates: [],
+    getAllCharts: function() {
+        return Promise.resolve(this.charts);
+    },
+
+    removeChart: function(id) {
+        for (var i = 0; i < this.charts.length; ++i) {
+            if (this.charts[i].id === id) {
+                this.charts.splice(i, 1);
+                return Promise.resolve();
+            }
+        }
+
+        return Promise.reject();
+    },
+
+    saveChart: function(chartData) {
+        if (!chartData.id) {
+            chartData.id = Math.random().toString();
+        } else {
+            this.removeChart(chartData.id);
+        }
+
+        chartData.timestamp = new Date().valueOf();
+
+        this.charts.push(chartData);
+
+        return Promise.resolve(chartData.id);
+    },
+
+    getChartContent: function(id) {
+        for (var i = 0; i < this.charts.length; ++i) {
+            if (this.charts[i].id === id) {
+                return Promise.resolve(this.charts[i].content);
+            }
+        }
+
+        console.error('error');
+
+        return Promise.reject();
+    },
+
+    removeStudyTemplate: function(studyTemplateData) {
+        for (var i = 0; i < this.studyTemplates.length; ++i) {
+            if (this.studyTemplates[i].name === studyTemplateData.name) {
+                this.studyTemplates.splice(i, 1);
+                return Promise.resolve();
+            }
+        }
+
+        return Promise.reject();
+    },
+
+    getStudyTemplateContent: function(studyTemplateData) {
+        for (var i = 0; i < this.studyTemplates.length; ++i) {
+            if (this.studyTemplates[i].name === studyTemplateData.name) {
+                return Promise.resolve(this.studyTemplates[i].content);
+            }
+        }
+
+        console.error('st: error');
+
+        return Promise.reject();
+    },
+
+    saveStudyTemplate: function(studyTemplateData) {
+        for (var i = 0; i < this.studyTemplates.length; ++i) {
+            if (this.studyTemplates[i].name === studyTemplateData.name) {
+                this.studyTemplates.splice(i, 1);
+                break;
+            }
+        }
+
+        this.studyTemplates.push(studyTemplateData);
+        return Promise.resolve();
+    },
+
+    getAllStudyTemplates: function() {
+        return Promise.resolve(this.studyTemplates);
+    },
+}
+```
