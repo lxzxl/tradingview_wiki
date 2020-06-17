@@ -255,13 +255,11 @@ Executes an action according to its id.
 * `studyHide`
 * `lineToggleLock`
 * `lineHide`
-* `showLeftAxis`
-* `showRightAxis`
 * `scaleSeriesOnly`
 * `drawingToolbarAction`
 * `stayInDrawingModeAction`
 * `hideAllMarks`
-* `showCountdown`
+* `showCountdown` - for intraday resolutions only
 * `showSeriesLastValue`
 * `showSymbolLabelsAction`
 * `showStudyLastValue`
