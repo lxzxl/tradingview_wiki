@@ -28,6 +28,10 @@ Here is the list of breaking changes:
 - [Pane-Api](Pane-Api) method `getRightPriceScale` is removed and replaced with `getRightPriceScales` that returns an array of scales instead a single element.
 - [setVisibleRange](Chart-Methods#setvisiblerangerange-options) method now returns a Promise object and don't accept a callback as the last argument.
 - Priority of the [symbol](Widget-Constructor#symbol-interval) option has been made higher than the priority of the symbol from the [saved_data](Widget-Constructor#saved_data) option. Do not assign a value to the [symbol](Widget-Constructor#symbol-interval) option, if you don't want to override the symbol from [saved_data](Widget-Constructor#saved_data).
+- Override `symbolWatermarkProperties` is not supported anymore. You can use [settings_adapter](Widget-Constructor#settings_adapter) with `symbolWatermark` key.
+- `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
+  We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
+  You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
 
 **Trading Terminal**
 
@@ -45,12 +49,6 @@ If you use your own order dialog then you still need to make changes in your bro
 - Argument `handler` was removed from `showPositionBracketsDailog` method of the [Trading Host](Trading-Host).
 
 - `supportCustomPlaceOrderTradableCheck` flag is no longer supported.
-
-- Override `symbolWatermarkProperties` is not supported anymore. You can use [settings_adapter](Widget-Constructor#settings_adapter) with `symbolWatermark` key.
-
-- `indicators_file_name` constructor option was removed. Use [custom_indicators_getter](Widget-Constructor#custom_indicators_getter) instead.
-  We made this change to speed up the loading of the library and get rid of possible vulnerabilities that may occur when loading a file.
-  You just need to move the code of your custom indicators from the JS file to the widget constructor, wrapping them in a function and a Promise
 
 - We pass the parent order to `modifyOrder` if it exists. If child order’s details are required while modifying the order you can get back this behavior by enabling `always_pass_called_order_to_modify` featureset.
 
