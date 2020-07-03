@@ -5,11 +5,9 @@ Example:
 
 ```javascript
 studies_overrides: {
-    "volume.volume.color.0": "#00FFFF",
+    "volume.volume.color.0": "rgba(0, 255, 255, 0.8)",
     "volume.volume.color.1": "#0000FF",
-    "volume.volume.transparency": 70,
-    "volume.volume ma.color": "#FF0000",
-    "volume.volume ma.transparency": 30,
+    "volume.volume ma.color": "rgba(255, 0, 0, 0.7)",
     "volume.volume ma.linewidth": 5,
     "volume.volume ma.visible": true,
     "bollinger bands.median.color": "#33FF88",
@@ -109,7 +107,6 @@ Format: `indicator_name.plot_name.property_name`
 * **indicator_name**:  < ... >
 * **plot_name**: as you see it in the indicator's properties dialog (for example, `Volume` or `Plot`)
 * **property_name**: one of the following:
-  * **transparency**
   * **linewidth**
   * **visible**: boolean
   * **plottype**. Supported plot types are:
@@ -122,7 +119,7 @@ Format: `indicator_name.plot_name.property_name`
     * `line_with_breaks`
     * `area_with_breaks`
 
-Examples: `volume.volume.transparency`, `bollinger bands.median.linewidth`
+Examples: `volume.volume.linewidth`, `bollinger bands.median.linewidth`
 
 ### Plot colors
 
