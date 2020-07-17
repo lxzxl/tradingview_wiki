@@ -4,7 +4,7 @@ Internet Explorer 11 browser is no longer supported. Features that are described
 
 Important: this functionality is currently being developed. Any variable and selector names can be changed or removed in future versions completely.
 
-*Starting from version 1.16*.
+*Starting from version 16*.
 
 You can change the colors of light/dark theme for certain UI elements by connecting your [CSS files](Widget-Constructor#custom_css_url). For your convenience, some elements have CSS Custom Properties that can be overridden.
 

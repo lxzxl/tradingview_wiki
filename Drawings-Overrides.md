@@ -2,7 +2,6 @@ The complete list of drawings overrides with default values is presented here. Y
 
 ```javascript
 linetoolicon: {
-    singleChartOnly: true,
     color: 'rgba( 61, 133, 198, 1)',
     snapTo45Degrees:true,
     size: 40,
@@ -92,7 +91,6 @@ linetoolsineline: {
     linestyle: LINESTYLE_SOLID
 },
 linetooltrendangle: {
-    singleChartOnly: true,
     linecolor: 'rgba( 21, 153, 128, 1)',
     linewidth: 1.0,
     linestyle: LINESTYLE_SOLID,
@@ -379,7 +377,6 @@ linetooltext: {
     wordWrapWidth: 400
 },
 linetooltextabsolute: {
-    singleChartOnly: true,
     color: 'rgba( 102, 123, 139, 1)',
     text: $.t('Text'),
     font: 'Verdana',
@@ -423,12 +420,6 @@ linetoolpolyline: {
     transparency: 50,
     filled: false
 },
-linetoolarrowmark: {
-    color: 'rgba( 120, 120, 120, 1)',
-    text: '',
-    fontsize: 20,
-    font: 'Verdana'
-},
 linetoolarrowmarkleft: {
     color: 'rgba( 120, 120, 120, 1)',
     text: '',
@@ -471,7 +462,6 @@ linetoolnote: {
 },
 
 linetoolnoteabsolute: {
-    singleChartOnly: true,
     markerColor: 'rgba( 46, 102, 255, 1)',
     textColor: 'rgba( 0, 0, 0, 1)',
     backgroundColor: 'rgba( 255, 255, 255, 1)',
@@ -524,7 +514,6 @@ linetoolarc: {
     linewidth: 1.0
 },
 linetoolprediction: {
-    singleChartOnly: true,
     linecolor: 'rgba( 28, 115, 219, 1)',
     linewidth: 2.0,
 
@@ -614,14 +603,12 @@ linetoolelliottdoublecombo: {
     linewidth: 1
 },
 linetoolbarspattern: {
-    singleChartOnly: true,
     color:'rgba( 80, 145, 204, 1)',
     mode:BARS_MODE,
     mirrored:false,
     flipped:false
 },
 linetoolghostfeed: {
-    singleChartOnly: true,
     averageHL: 20,
     variance: 50,
     candleStyle: {
@@ -837,7 +824,6 @@ linetoolheadandshoulders: {
     linewidth: 2.0
 },
 linetoolfibwedge: {
-    singleChartOnly: true,
     showCoeffs: true,
     font: 'Verdana',
     fillBackground:true,

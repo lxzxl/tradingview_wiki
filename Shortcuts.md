@@ -9,8 +9,8 @@
 | Save Chart Layout | Ctrl + s |
 | Undo | Ctrl + z |
 | Redo | Ctrl + y |
-| Change symbol | Symbol |
-| Change Interval | Number or , |
+| Change symbol | Double-Shift |
+| Change Interval | , |
 | Move chart 1 bar to the left | ⇦ |
 | Move chart 1 bar to the right | ⇨ |
 | Move further to the left | Ctrl + ⇦ |

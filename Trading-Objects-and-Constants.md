@@ -114,6 +114,13 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     This flag can be used to change "Amount" to "Quantity" in the order dialog
 
+* `supportCryptoExchangeOrderTicket`
+
+    *Default:* `false`
+
+    Whether the account is used to exchange(trade) crypto currencies.
+    This flag switches the Order Ticket to the Crypto Exchange mode. It adds second currency quantity control, currency labels etc.
+
 * `supportLevel2Data`
 
     *Default:* `false`
@@ -172,7 +179,7 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     *Default:* `false`
 
-    Using this flag you can disable adding brackets to the existing order. It is enabled by default.
+    Used for crypto currencies only. Allows to get crypto balances for an account. Balances are displayed as the first table of the Account Summary tab.
 
 * `cancellingBracketCancelsParentOrder`
 
@@ -188,6 +195,13 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Broker provides the estimated commission, fees, margin and other information for the order without it actually being placed.
 
+* `supportOrdersHistory`
+
+    *Default:* `false`
+
+    Broker supports orders history. If it is set to `true`, there will be an additional tab in the Account Manager - Orders History.
+    The `ordersHistory` method should be implemented. It should return a list of orders with the `filled`, `cancelled` and `rejected` statuses from previous trade sessions.
+
 * `closePositionCancelsOrders`
 
     *Default:* `false`
@@ -200,15 +214,28 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     `Stop Loss` and `Take Profit` are added or removed only together.
 
+* `durationForMarketOrders`
+
+    *Default:* `false`
+
+    Broker supports durations for market order. If it is set to `true`, then the Durations control for market orders will be displayed.
+
 ### durations: array of objects
 
 List of expiration options of orders. It is optional. Do not set it if you don't want the durations to be displayed in the order ticket.
-The objects have the following keys: `{ name, value, hasDatePicker?, hasTimePicker?, default? }`.
+The objects have the following keys: `{ name, value, hasDatePicker?, hasTimePicker?, default?, supportedOrderTypes? }`.
+
+* `name`: String. Localized title of the duration. The title will be displayed in the Durataion control of the Order Ticket.
+* `value`: String. Duration identifier.
+* `hasDatePicker`: Boolean. If it is set to `true`, then the Display date control in the Order Ticket for this duration type will be dispalyed.
+* `hasTimePicker`: Boolean. If it is set to `true`, then the Display time control in the Order Ticket for this duration type will be dispalyed.
+* `default`: Boolean. Default duration. Only one duration object in the durations array can have a `true` value for this field. The default duration will be used when the user places orders in the silent mode and it will be the selected one when the user opens the order dialog for the first time.
+* `supportedOrderTypes`: Array of [OrderType](#ordertype). A list of types of orders for which this duration type will be displayed in the Duration control of the Order Ticket.
 
 Example:
 
 ```javascript
-durations: [{ name: 'DAY', value: 'DAY' }, { name: 'WEEK', value: 'WEEK', default: true }, { name: 'GTC', value: 'GTC' }]
+durations: [{ name: 'DAY', value: 'DAY' }, { name: 'WEEK', value: 'WEEK', default: true }, { name: 'GTC', value: 'GTC' }, { name: 'FOK', value: 'FOK', supportedOrderTypes: [OrderType.Market] }]
 ```
 
 ### customNotificationFields: array of strings
@@ -282,7 +309,6 @@ Describes a single order.
 
 * `id` : String
 * `symbol` : String
-* `brokerSymbol` : String. Can be empty if broker symbol is the same as TV symbol.
 * `type` : [OrderType](#ordertype)
 * `side` : [Side](#side)
 * `qty` : Double
@@ -303,7 +329,6 @@ Describes a single position.
 
 * `id`: String. Usually id should be equal to brokerSymbol
 * `symbol` : String
-* `brokerSymbol` : String. Can be empty if broker symbol is the same as TV symbol.
 * `qty` : positive number
 * `side`: [Side](#side)
 * `avgPrice` : number
@@ -315,7 +340,6 @@ Describes a single trade (individual position).
 * `id`: String. Usually id should be equal to brokerSymbol
 * `symbol` : String
 * `date`: number (UNIX timestamp in milliseconds)
-* `brokerSymbol` : String. Can be empty if broker symbol is the same as TV symbol.
 * `qty` : Double positive
 * `side`: [Side](#side)
 * `price` : number
@@ -325,7 +349,6 @@ Describes a single trade (individual position).
 Describes a single execution. Execution is a mark on a chart that displays trade information.
 
 * `symbol` : String
-* `brokerSymbol` : String. Can be empty if broker symbol is the same as TV symbol.
 * `price` : number
 * `time`: Date
 * `side` : [Side](#side)
@@ -406,6 +429,16 @@ Duration or expiration of an order.
 * `type`: string identifier from the list that you pass to [durations](#orderduration)
 * `datetime`: number
 
+## CryptoBalance
+
+Object that describes a single crypto balance.
+
+* `symbol`: string;
+* `total`: number;
+* `available`: number;
+* `longName?`: string;
+* `btcValue?`: number;
+
 ## DOMEObject
 
 Object that describes a single DOM response.
@@ -433,6 +466,7 @@ OrderTicketFocusControl.LimitPrice = 1 // focus limit price for orders
 OrderTicketFocusControl.StopPrice = 2 // focus stop price for orders
 OrderTicketFocusControl.TakeProfit = 3 // focus take profit control
 OrderTicketFocusControl.StopLoss = 4 // focus stop loss control
+OrderTicketFocusControl.Quantity = 5 // focus quantity for orders
 ```
 
 ## Brackets

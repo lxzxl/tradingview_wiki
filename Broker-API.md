@@ -16,6 +16,10 @@ This method is called by the Trading Terminal to request [positions](Trading-Obj
 
 This method is called by the Trading Terminal to request [orders](Trading-Objects-and-Constants#order).
 
+### ordersHistory : Promise<Order[]>
+
+This method is called by the Trading Terminal to request orders history. It is expected that returned [orders](Trading-Objects-and-Constants#order) will have a final status (`rejected`, `filled`, `cancelled`). This method is optional. If you don't support orders history, please set `supportOrdersHistory` flag to `false`.
+
 ### executions(symbol) : Promise<Execution[]>
 
 This method is called by the Trading Terminal to request [executions](Trading-Objects-and-Constants#execution).
@@ -130,7 +134,10 @@ The result is an object with the following data:
 - `marginRate` - the margin requirement for the instrument. A 3% margin rate should be represented as 0.03.
 - `stopPriceStep` - minimal price change for stop price field of the Stop and Stop Limit order. If set it will override the minTick value.
 - `limitPriceStep` - minimal price change for limit price field of the Limit and Stop Limit order. If set it will override the minTick value.
-- `allowedDurations` - array of srtings with valid duration values. You can check that in the order dialog.
+- `allowedDurations` - array of strings with valid duration values. You can check that in the order dialog.
+- `currency` - instrument currency that is displayed in the order ticket
+- `baseCurrency` - the first currency quoted in a currency pair. Used for crypto currencies only.
+- `quoteCurrency` - the second currency quoted in a currency pair. Used for crypto currencies only.
 
 ### accountInfo() : Deferred (or Promise)
 

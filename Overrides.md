@@ -139,27 +139,27 @@ mainSeriesProperties.barStyle.dontDrawOpen: false
 // Line styles
 mainSeriesProperties.lineStyle.color: "#2196f3"
 mainSeriesProperties.lineStyle.linestyle: LINESTYLE_SOLID
-mainSeriesProperties.lineStyle.linewidth: 3
+mainSeriesProperties.lineStyle.linewidth: 2
 mainSeriesProperties.lineStyle.priceSource: "close"
 
 // Area styles
-mainSeriesProperties.areaStyle.color1: "#2196f3"
+mainSeriesProperties.areaStyle.color1: "rgba(33, 150, 243, 0.28)"
 mainSeriesProperties.areaStyle.color2: "#2196f3"
 mainSeriesProperties.areaStyle.linecolor: "#2196f3"
 mainSeriesProperties.areaStyle.linestyle: LINESTYLE_SOLID
-mainSeriesProperties.areaStyle.linewidth: 1
+mainSeriesProperties.areaStyle.linewidth: 2
 mainSeriesProperties.areaStyle.priceSource: "close"
 
 // Baseline styles
 mainSeriesProperties.baselineStyle.baselineColor: "rgba( 117, 134, 150, 1)"
-mainSeriesProperties.baselineStyle.topFillColor1: "rgba( 38, 166, 154, 0.05)"
+mainSeriesProperties.baselineStyle.topFillColor1: "rgba( 38, 166, 154, 0.28)"
 mainSeriesProperties.baselineStyle.topFillColor2: "rgba( 38, 166, 154, 0.05)"
 mainSeriesProperties.baselineStyle.bottomFillColor1: "rgba( 239, 83, 80, 0.05)"
-mainSeriesProperties.baselineStyle.bottomFillColor2: "rgba( 239, 83, 80, 0.05)"
+mainSeriesProperties.baselineStyle.bottomFillColor2: "rgba( 239, 83, 80, 0.28)"
 mainSeriesProperties.baselineStyle.topLineColor: "rgba( 38, 166, 154, 1)"
 mainSeriesProperties.baselineStyle.bottomLineColor: "rgba( 239, 83, 80, 1)"
-mainSeriesProperties.baselineStyle.topLineWidth: 3
-mainSeriesProperties.baselineStyle.bottomLineWidth: 3
+mainSeriesProperties.baselineStyle.topLineWidth: 2
+mainSeriesProperties.baselineStyle.bottomLineWidth: 2
 mainSeriesProperties.baselineStyle.priceSource: "close"
 mainSeriesProperties.baselineStyle.transparency: 50
 mainSeriesProperties.baselineStyle.baseLevelPercentage: 50

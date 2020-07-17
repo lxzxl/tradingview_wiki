@@ -9,13 +9,14 @@ You can create more than 50 different shapes using [createMultipointShape(points
 | callout           | #991515         |                        | FALSE | #991515     | #FFFFFF |            |                |           | Verdana | 12       | FALSE  | Text    | FALSE    | 400           |             |           | 2         | 50           |            |
 | balloon           | #fffece         |                        |       | #8c8c8c     | #667b8b |            |                |           | Arial   | 12       |        | Comment |          |               |             |           |           | 30           | bold       |
 
-| shape       | backgroundColor | borderColor | color   | font    | fontsize | text | transparency | fontWeight |
-|-------------|-----------------|-------------|---------|---------|----------|------|--------------|------------|
+| shape       | backgroundColor | borderColor | color   | font    | fontsize | text | transparency | fontWeight | textColor
+|-------------|-----------------|-------------|---------|---------|----------|------|--------------|------------|-----------
 | arrow_up    |                 |             | #787878 | Verdana | 20       | text |              |            |
 | arrow_down  |                 |             | #787878 | Verdana | 20       | text |              |            |
 | arrow_left  |                 |             | #787878 | Verdana | 20       | text |              |            |
 | arrow_right |                 |             | #787878 | Verdana | 20       | text |              |            |
 | price_label | #ffffff         | #8c8c8c     | #667b8b | Arial   | 11       |      | 30           | bold       |
+| arrow_marker| #1E88E5         |             |         | Arial   | 16       |      |              | bold       | #1E88E5
 | flag        |                 |             |         |         |          |      |              |            |
 
 | shape              | backgroundColor | bold  | color   | fillBackground | font    | fontsize | italic | linewidth | textcolor | transparency |
@@ -110,9 +111,9 @@ You can create more than 50 different shapes using [createMultipointShape(points
 |------------|------------|---------|----------------|--------------|---------|---------|-----------|-------------------|-----------------|---------------------|--------------|----------------|------------------|------------------|--------------|
 | projection | TRUE       | Verdana | TRUE           | 80           | #008000 | #FF0000 | 1         | TRUE              | #808080         | 0                   | #808080      | TRUE           | 1                | 0                | 1            |
 
-| shape    | linecolor | linewidth | centersColor | failureBackground | failureTextColor | intermediateBackColor | intermediateTextColor | singleChartOnly | sourceBackColor | sourceStrokeColor | sourceTextColor | successBackground | successTextColor | targetBackColor | targetStrokeColor | targetTextColor | transparency |
-|----------|-----------|-----------|--------------|-------------------|------------------|-----------------------|-----------------------|-----------------|-----------------|-------------------|-----------------|-------------------|------------------|-----------------|-------------------|-----------------|--------------|
-| forecast | #1c73db   | 2         | #202020      | #e74545           | #ffffff          | #ead289               | #6d4d22               | TRUE            | #f1f1f1         | #6e6e6e           | #6e6e6e         | #36a02a           | #ffffff          | #0b6fde         | #2fa8ff           | #ffffff         | 10           |
+| shape    | linecolor | linewidth | centersColor | failureBackground | failureTextColor | intermediateBackColor | intermediateTextColor | sourceBackColor | sourceStrokeColor | sourceTextColor | successBackground | successTextColor | targetBackColor | targetStrokeColor | targetTextColor | transparency |
+|----------|-----------|-----------|--------------|-------------------|------------------|-----------------------|-----------------------|-----------------|-------------------|-----------------|-------------------|------------------|-----------------|-------------------|-----------------|--------------|
+| forecast | #1c73db   | 2         | #202020      | #e74545           | #ffffff          | #ead289               | #6d4d22               | #f1f1f1         | #6e6e6e           | #6e6e6e         | #36a02a           | #ffffff          | #0b6fde         | #2fa8ff           | #ffffff         | 10           |
 
 | shape      | averageHL | variance | transparency | candleStyle.upColor | candleStyle.downColor | candleStyle.drawWick | candleStyle.drawBorder | candleStyle.borderColor | candleStyle.borderUpColor | candleStyle.borderDownColor | candleStyle.wickColor |
 |------------|-----------|----------|--------------|---------------------|-----------------------|----------------------|------------------------|-------------------------|---------------------------|-----------------------------|-----------------------|

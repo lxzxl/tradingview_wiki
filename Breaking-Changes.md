@@ -6,7 +6,11 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
-## Version 1.16
+## Version 17
+
+- The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).
+
+## Version 16 (changed versioning)
 
 - Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.
 - Chart method `createStudy` options for `priceScale` have been changed. `left` and `right` have been renamed to `new-left` and `new-right`.

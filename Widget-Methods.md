@@ -171,8 +171,8 @@ widget.onShortcut("alt+s", function() {
 | `onMarkClick` | | User clicked a [mark on a bar](Marks#marks-on-bars). Mark ID will be passed as an argument |
 | `onTimescaleMarkClick` | | User clicked a [timescale mark](Marks#marks-on-the-timescale). Mark ID will be passed as an argument |
 | `onSelectedLineToolChanged` | | Selected line tool is changed |
-| `study_event` | 1.15 | An event related to the study. The callback function receives two arguments: a study ID and an event type (currently possible values for this argument are `remove` and at version 1.16 - `price_scale_changed`) |
-| `series_event` | 1.16 | An event related to the series. The callback function receives an argument - an event type (currently the only possible value for this argument is `price_scale_changed`) |
+| `study_event` | 1.15 | An event related to the study. The callback function receives two arguments: a study ID and an event type (currently possible values for this argument are `remove` and at version 16 - `price_scale_changed`) |
+| `series_event` | 16 | An event related to the series. The callback function receives an argument - an event type (currently the only possible value for this argument is `price_scale_changed`) |
 | `drawing_event` | 1.15 | Drawing was hidden, shown, moved, removed, or clicked. The callback function will receive two arguments: a drawing ID and an event type. Possible values of the event type argument are `hide`, `show`, `move`, `remove`, `click` |
 | `study_properties_changed` | 1.14 | Study properties are changed. Entity ID will be passed as an argument |
 | `series_properties_changed` | 1.15 | Main series properties are changed. |
@@ -450,7 +450,7 @@ Returns an object with the state of the Undo/Redo stack. The object has the foll
 
 ### getTheme()
 
-*Starting from version 1.16.*
+*Starting from version 16.*
 
 This method returns the chart theme name.
 
@@ -465,7 +465,7 @@ console.log(widget.getTheme());
 *Starting from version 1.13.*
 
 1. `themeName` should be `"Light"` | `"Dark"`
-1. `options` is an *optional* object added in version 1.17 with one field:
+1. `options` is an *optional* object added in version 17 with one field:
     * `disableUndo` - boolean flag that shows the undo action availability.
 
 This method changes the chart theme without reloading the chart.
@@ -511,6 +511,8 @@ Returns an object to manage the watchlist. The object has the following methods:
 
 1. `getList(id?: string)` - allows you to get a list of symbols. If the `id` parameter is not provided then the current list will be returned. If there is no WatchList then `null` will be returned.
 
+1. `setActiveList(id: string)` - allows you to make a list with the `id` active.
+
 1. `getActiveListId()` - allows you to get the ID of the current list. If there is no WatchList then `null` will be returned.
 
 1. `getAllLists()` - allows you to get all lists. If there is no WatchList then `null` will be returned.
@@ -535,7 +537,7 @@ Returns an object to manage the watchlist. The object has the following methods:
 
 1. `deleteList(listId: string)` - allows you to delete a list of symbols.
 
-1. `onListChanged()` - you can use this method to be notified when the symbols of the active watchlist are changed. You can subscribe and unsubscribe using the [[Subscription]] object returned by this function.
+1. `onListChanged(listId: string)` - you can use this method to be notified when the symbols of the active watchlist are changed. You can subscribe and unsubscribe using the [[Subscription]] object returned by this function.
 
 1. `onActiveListChanged()` - you can use this method to be notified when a different list of the watchlist is selected. You can subscribe and unsubscribe using the [[Subscription]] object returned by this function.
 

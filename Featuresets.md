@@ -62,7 +62,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_dom_first_time                      | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
 | hide_left_toolbar_by_default             | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
 | chart_style_hilo                         | off           | 1.15            | Adds Hi-Lo option to chart style controls |
-| pricescale_currency                      | on            | 1.16            | Displays the currency in which the instrument is traded on the price axes |
+| pricescale_currency                      | on            | 16            | Displays the currency in which the instrument is traded on the price axes |
 
 ### Elements placement
 
@@ -87,18 +87,18 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_market_minimized | on |                 | Relates to Indicators dialog and determines whether it is compact or contains a search bar along with the categories
 | study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
-| header_in_fullscreen_mode | off |    1.16         | Enables header widget DOM element in the fullscreen mode
+| header_in_fullscreen_mode | off |    16         | Enables header widget DOM element in the fullscreen mode
 | same_data_requery             | off   |                 | Allows you to call `setSymbol` with the same symbol to refresh the data
 | disable_resolution_rebuild    | off   |                 | Shows bar time exactly as provided by the data feed with no adjustments.
 | chart_scroll                  | on    |   1.10          | Allows chart scrolling
 | chart_zoom                    | on    |   1.10          | Allows chart zooming
-| horz_touch_drag_scroll        | on    |   1.16          | If enabled, the chart handles horizontal pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
-| vert_touch_drag_scroll        | on    |   1.16          | If enabled, the chart handles vertical pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
-| mouse_wheel_scroll            | on    |   1.16          | If enabled, chart scrolling with horizontal mouse wheel is enabled.
-| pressed_mouse_move_scroll     | on    |   1.16          | If enabled, chart scrolling with left mouse button pressed is allowed.
-| mouse_wheel_scale             | on    |   1.16          | If enabled, series scaling with a mouse wheel is enabled.
-| pinch_scale                   | on    |   1.16          | If enabled, series scaling with pinch/zoom gestures (this option is supported on touch devices) is enabled.
-| axis_pressed_mouse_move_scale | on    |   1.16          | If enabled, axis scaling with left mouse button pressed is allowed.
+| horz_touch_drag_scroll        | on    |   16          | If enabled, the chart handles horizontal pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
+| vert_touch_drag_scroll        | on    |   16          | If enabled, the chart handles vertical pointer movements on touch screens. In this case the webpage is not scrolled. If disabled, the webpage is scrolled instead. Keep in mind that if the user starts scrolling the chart vertically or horizontally, scrolling is continued in any direction until the user releases the finger.
+| mouse_wheel_scroll            | on    |   16          | If enabled, chart scrolling with horizontal mouse wheel is enabled.
+| pressed_mouse_move_scroll     | on    |   16          | If enabled, chart scrolling with left mouse button pressed is allowed.
+| mouse_wheel_scale             | on    |   16          | If enabled, series scaling with a mouse wheel is enabled.
+| pinch_scale                   | on    |   16          | If enabled, series scaling with pinch/zoom gestures (this option is supported on touch devices) is enabled.
+| axis_pressed_mouse_move_scale | on    |   16          | If enabled, axis scaling with left mouse button pressed is allowed.
 | high_density_bars             | off   |   1.11          | Allows zooming out to show more than 60000 bars on a single screen
 | low_density_bars              | off   |   1.15          | Allows zooming in to show up to one bar in the viewport
 | uppercase_instrument_names    | on    | 1.12            | Disabling this feature allows a user to enter case-sensitive symbols
@@ -107,8 +107,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | lock_visible_time_range_on_resize | off   | 1.14        | Prevents changing visible time area on chart resizing
 | shift_visible_range_on_new_bar  | on   | 1.15        | If disabled, adding a new bar zooms out the chart preserving the first visible point. Otherwise the chart is scrolled one point to the left when a new bar comes.
 | custom_resolutions            | off   | 1.15            | If enabled, there is a possibility to add custom resolutions
-| end_of_period_timescale_marks | off | 1.16 | Toggles the timeline marks to display the bar's end time
-| cropped_tick_marks | on | 1.16 | If disabled, partially visible price labels on price axis will be hidden
+| end_of_period_timescale_marks | off | 16 | Toggles the timeline marks to display the bar's end time
+| cropped_tick_marks | on | 16 | If disabled, partially visible price labels on price axis will be hidden
 
 ### Important features
 

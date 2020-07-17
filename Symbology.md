@@ -341,6 +341,10 @@ Sector for stocks to be displayed in the Symbol Info.
 
 Industry for stocks to be displayed in the Symbol Info.
 
+## original_currency_code
+
+The currency in which the instrument is traded.
+
 ## currency_code
 
-The currency in which the instrument is traded. It is displayed in the Symbol Info dialog and on the price axes.
+The currency in which the instrument is traded or some other currency if currency conversion is enabled. It is displayed in the Symbol Info dialog and on the price axes.

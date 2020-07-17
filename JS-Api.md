@@ -14,7 +14,7 @@ The Charting Library caches historical data on its own. You don't need to implem
 
 1. [onReady](#onreadycallback)
 1. [searchSymbols](#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback)
-1. [resolveSymbol](#resolvesymbolsymbolname-onsymbolresolvedcallback-onresolveerrorcallback)
+1. [resolveSymbol](#resolvesymbolsymbolname-onsymbolresolvedcallback-onresolveerrorcallback-extension)
 1. [getBars](#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest)
 1. [subscribeBars](#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback)
 1. [unsubscribeBars](#unsubscribebarssubscriberuid)
@@ -59,6 +59,12 @@ An array of supported resolutions. Resolution must be a string. Format is descri
 `supported_resolutions = undefined` or `supported_resolutions = []` leads to resolution widget including the default content.
 
 Example: `["1", "15", "240", "D", "6M"]` will give you "1 minute, 15 minutes, 4 hours, 1 day, 6 months" in resolution widget.
+
+#### currency_codes
+
+An array of supported currencies for currency conversion.
+
+Example: `["USD", "EUR", "GBP"]`.
 
 #### supports_marks
 
@@ -107,11 +113,14 @@ This call is intended to provide the list of symbols that match the user's searc
 
 If no symbols are found, then callback should be called with an empty array. See more details about `ticker` value [here](Symbology#ticker)
 
-### resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback)
+### resolveSymbol(symbolName, onSymbolResolvedCallback, onResolveErrorCallback, extension)
 
 1. `symbolName`: string. Symbol name or `ticker` if provided.
 1. `onSymbolResolvedCallback`: function([SymbolInfo](Symbology#symbolinfo-structure))
 1. `onResolveErrorCallback`: function(reason)
+1. `extension`: optional object with additional parameters. It has the following fields:
+    1. `currencyCode`: string. It may be provided to indicate the currency for conversion if `currency_codes` configuration
+    field is set and `currency_code` is provided in the original symbol information.
 
 Charting Library will call this function when it needs to get [SymbolInfo](Symbology#symbolinfo-structure) by symbol name.
 

@@ -349,25 +349,24 @@ studies_overrides: {
 
 ### time_frames
 
-List of visible timeframes that can be selected at the bottom of the chart.
+List of visible timeframes that can be selected at the bottom of the chart. See [this topic](Time-Frames) to learn more about timeframes. Timeframe is an object containing following properties:
+
+* `text` - a string with the following format: `<integer><y|m|d>` ( \d+(y|m|d) as Regex ). It defines the range to be set.
+* `resolution` - a string with the format described [here](Resolution). It defines the resolution to be set.
+* `description` (optional) - a string that is displayed in the pop-up menu. If it isn't set then the `title` property is used.
+* `title` (optional) - a string representation of the time frame. If it is not set then the title is generated based on the `text` property.
 
 Example:
 
 ```javascript
 time_frames: [
     { text: "50y", resolution: "6M", description: "50 Years" },
-    { text: "3y", resolution: "W", description: "3 Years", title: "3yr" },
-    { text: "8m", resolution: "D", description: "8 Month" },
+    { text: "3y", resolution: "1W", description: "3 Years", title: "3yr" },
+    { text: "8m", resolution: "1D", description: "8 Month" },
     { text: "3d", resolution: "5", description: "3 Days" },
-    { text: "1000y", resolution: "W", description: "All", title: "All" },
+    { text: "1000y", resolution: "1W", description: "All", title: "All" },
 ]
 ```
-
-Timeframe is an object containing the `text` and `resolution` properties. The `text` property should have the following format: `<integer><y|m|d>` ( \d+(y|m|d) as Regex ). Resolution is a string and its format is described here - [here](Resolution). See [this topic](Time-Frames) to learn more about timeframes.
-
-The `description` property was added in v 1.7 and is displayed in the pop-up menu. This parameter is optional. If it isn't specified then the `title` or `text` property is used as a description.
-
-The `title` property was added in v 1.9 and its value will override the default title generated based on the `text` property. This parameter is optional.
 
 ### charts_storage_url, client_id, user_id
 

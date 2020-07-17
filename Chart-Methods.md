@@ -678,7 +678,8 @@ widget.activeChart().sendBackward([id]);
 
 ### createStudyTemplate(options)
 
-1. `options`: object `{ saveInterval }`
+1. `options`: object `{ saveSymbol, saveInterval }`
+    * `saveSymbol`: boolean
     * `saveInterval`: boolean
 
 Saves the study template to JS object. Charting Library will call your callback function and pass the state object as an argument.
@@ -686,7 +687,8 @@ Saves the study template to JS object. Charting Library will call your callback 
 This call is a part of low-level [save/load API](Saving-and-Loading-Charts).
 
 ```javascript
-const template = widget.activeChart().createStudyTemplate({ saveInterval: true });
+const options = { saveSymbol: true, saveInterval: true };
+const template = widget.activeChart().createStudyTemplate(options);
 ```
 
 ### applyStudyTemplate(template)

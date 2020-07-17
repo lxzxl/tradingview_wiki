@@ -38,13 +38,13 @@ Sets current visible price range of the price scale, `range` is an object with `
 
 ### getStudies()
 
-*Starting from version 1.16.*
+*Starting from version 16.*
 
 Returns an array of IDs of all studies attached to the price scale.
 
 ### hasMainSeries()
 
-*Starting from version 1.16.*
+*Starting from version 16.*
 
 Returns `true` if the price scale contains the main series.
 

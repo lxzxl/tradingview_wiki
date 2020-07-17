@@ -191,6 +191,10 @@ Call this method when a broker connection has received an equity update. This me
 
 Call this method when a broker connection has received a margin available update. This method is required by the standard order dialog to display the margin meter. This method should be used when `supportMargin` flag is set in `configFlags`. The Trading Terminal subscribes to margin available updates using [subscribeMarginAvailable](Broker-API#subscribemarginavailable).
 
+### cryptoBalanceUpdate(balance)
+
+Call this method when a broker connection has received a balance update. This method is required by the crypto order dialog. It should be implemented when `supportBalances` flag is set in `configFlags`.
+
 ### tradeUpdate ([trade](Trading-Objects-and-Constants#trade))
 
 Call this method when a trade is added or changed.
