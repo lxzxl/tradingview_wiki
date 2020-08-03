@@ -52,6 +52,7 @@ scalesProperties.showSeriesPrevCloseValue: false
 scalesProperties.showStudyLastValue: false
 scalesProperties.showStudyPlotLabels: false
 scalesProperties.showSymbolLabels: false
+scalesProperties.showCurrency: true
 
 timeScale.rightOffset: 5
 
