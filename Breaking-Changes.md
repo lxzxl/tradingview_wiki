@@ -10,6 +10,10 @@ Here is the list of breaking changes:
 
 - The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).
 
+**Trading Terminal**
+
+- Flag `supportBottomWidget` has been removed from Broker Configuration `configFlags` object. To remove the Account Manager the `trading_account_manager` featureset should be used.
+
 ## Version 16 (changed versioning)
 
 - Action `tmzProperties` from [executeActionById](Chart-Methods#executeactionbyidactionid) and [getCheckableActionState](Chart-Methods#getcheckableactionstateactionid) methods is removed.

@@ -63,6 +63,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | hide_left_toolbar_by_default             | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
 | chart_style_hilo                         | off           | 1.15            | Adds Hi-Lo option to chart style controls |
 | pricescale_currency                      | on            | 16            | Displays the currency in which the instrument is traded on the price axes |
+| scales_date_format                      | on            | 17            | Displays Date Format selector in Chart Settings |
 
 ### Elements placement
 
@@ -132,3 +133,4 @@ Please note that the leading `-` characters are not part of the featureset name 
 | multiple_watchlists | on | 1.12 | Enables creating of multiple watchlists
 | show_trading_notifications_history | on | 1.13 | Enables the Notifications Log tab in the bottom panel
 | always_pass_called_order_to_modify | off | 1.15 | If a bracket order is modified, the terminal passes its parent order to `modifyOrder`. The featureset disables this behavior.
+| trading_account_manager | on | 17 | Shows Account Manager Widget
