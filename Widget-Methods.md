@@ -21,7 +21,7 @@ widget.onChartReady(function() {
   * [unsubscribe(event, callback)](#unsubscribeevent-callback)
 * [Chart Actions](#chart-actions)
   * [chart()](#chart)
-  * [setLanguage(locale)](#setlanguagelocale)
+  * [getLanguage()](#getlanguage)
   * [setSymbol(symbol, interval, callback)](#setsymbolsymbol-interval-callback)
   * [remove()](#remove)
   * [closePopupsAndDialogs()](#closepopupsanddialogs)
@@ -198,11 +198,11 @@ Unsubscribes a previously subscribed `callback` function from a given `event` (t
 
 Returns a chart object that you can use to call [Chart-Methods](Chart-Methods)
 
-### setLanguage(locale)
+### getLanguage()
 
-1. `locale`: [language code](Localization)
+*Starting from version 17.*
 
-Sets the language of the widget. For now, this call reloads the chart. **Please avoid using it**.
+Returns the [language](Localization) of the widget.
 
 ### setSymbol(symbol, interval, callback)
 

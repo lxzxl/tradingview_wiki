@@ -9,6 +9,7 @@ Here is the list of breaking changes:
 ## Version 17
 
 - The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).
+- [Widget Method](Widget-Methods) `setLanguage(locale)` has been removed.
 
 **Trading Terminal**
 

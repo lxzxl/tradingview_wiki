@@ -76,7 +76,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | ID  | Default State | Library Version | Description
 |-------|---------------|-----------------|------------
 | **use_localstorage_for_settings** | on |                 | Allows storing all properties (including favorites) to the localstorage
-| - items_favoriting | on |                 | Disabling this feature hides all "Favorite this item" buttons
+| - items_favoriting | on |                 | Disabling this feature hides "Favorite this item" icon for Drawings and Intervals
 | - save_chart_properties_to_local_storage | on |                 |  Can be disabled to forbid storing chart properties to the localstorage while allowing to save other properties. The other properties are favorites in the Charting Library and Watchlist symbols and some panels states in the Trading Terminal.
 | create_volume_indicator_by_default | on |                 |
 | create_volume_indicator_by_default_once | on |                  |
@@ -85,7 +85,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | constraint_dialogs_movement | on |                 | Keeps the dialogs within the chart
 | charting_library_debug_mode | off |                 | Enables logs
 | show_dialog_on_snapshot_ready | on |                 | Disabling this feature allows you to make a snapshot silently
-| study_market_minimized | on |                 | Relates to Indicators dialog and determines whether it is compact or contains a search bar along with the categories
 | study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
 | header_in_fullscreen_mode | off |    16         | Enables header widget DOM element in the fullscreen mode

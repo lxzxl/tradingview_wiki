@@ -54,6 +54,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [favorites](#favorites)
   * [save_load_adapter](#save_load_adapter)
   * [settings_adapter](#settings_adapter)
+  * [compare_symbols](#compare_symbols)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
   * [rss_news_feed](#rss_news_feed)
@@ -471,6 +472,24 @@ settings_adapter: {
     setValue: function(key, value) { ... },
     removeValue: function(key) { ... },
 }
+```
+
+### compare_symbols
+
+*Starting from version 17.*
+
+An optional field containing an array of custom compare symbols for the Compare window.
+Each symbol info should contain the following fields:
+
+* `symbol` - a string that defines a symbol to compare
+* `title` - a string, the name of instrument that will be displayed near the corresponding checkbox
+
+```javascript
+compare_symbols: [
+    { symbol: 'DAL', title: 'Delta Air Lines' },
+    { symbol: 'VZ', title: 'Verizon' },
+    ...
+];
 ```
 
 ## Trading Terminal only
