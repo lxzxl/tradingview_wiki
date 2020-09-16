@@ -40,7 +40,7 @@ RESPONSE: JSON Object
 
 1. `status`: `ok` or `error`
 1. `data`: Array of Objects
-    1. `timestamp`: UNIX time when the chart was saved (example, `144908432`1)
+    1. `timestamp`: UNIX time when the chart was saved (example, `1449084321`)
     1. `symbol`: base symbol of the chart (example, `AA`)
     1. `resolution`: resolution of the chart (example, `D`)
     1. `id`: unique integer identifier of the chart (example, `9163`)
@@ -137,7 +137,7 @@ One of the parameters in [Widget Construcor](Widget-Constructor#save_load_adapte
      * `name` - name of the chart.
      * `symbol` - symbol of the chart.
      * `resolution` - resolution of the chart.
-     * `timestamp` - last modified date (number of milliseconds since midnight `01/01/1970` UTC) of the chart.
+     * `timestamp` - UNIX time when the chart was last modified.
 
  1. `removeChart(chartId): Promise<void>`
 

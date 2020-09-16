@@ -119,9 +119,9 @@ You can create more than 50 different shapes using [createMultipointShape(points
 |------------|-----------|----------|--------------|---------------------|-----------------------|----------------------|------------------------|-------------------------|---------------------------|-----------------------------|-----------------------|
 | ghost_feed | 20        | 50       | 50           | #6BA583             | #D75442               | TRUE                 | TRUE                   | #378658                 | #225437                   | #5B1A13                     | #737375               |
 
-| shape      | color   | size | angle (rad) | scale | icon*   |
+| shape      | color   | size | angle ([rad](https://en.wikipedia.org/wiki/Radian)) | scale | icon*   |
 |------------|---------|------|-------------|-------|---------|
-| icon       | #3d85c6 | 40   | 1,571       | 1     | 0x263A  |
+| icon       | #3d85c6 | 40   | 1.571       | 1     | 0x263A  |
 
 <!-- markdownlint-disable no-inline-html -->
 

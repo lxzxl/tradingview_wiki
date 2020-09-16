@@ -185,4 +185,12 @@ At the moment there is only one way to add custom indicators. It is described in
 
 </details>
 
+<details><summary>
+<b>3. Does Charting Library support `rocket-loader` by CloudFlare?</b>
+</summary><p>
+
+No, it doesn't. Please avoid using it.
+
+</details>
+
 <!-- markdownlint-enable no-inline-html -->
