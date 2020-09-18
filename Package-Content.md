@@ -8,11 +8,11 @@ You can check the Charting Library version by entering the `TradingView.version(
 
 ```
     +/charting_library
-        + /static
-        - charting_library.min.js
-        - charting_library.min.d.ts
+        + /bundles
+        - charting_library.js
+        - charting_library.d.ts
         - datafeed-api.d.ts
-    + /datafeeds
+    +/datafeeds
         + /udf
     - index.html
     - mobile_black.html
@@ -21,11 +21,11 @@ You can check the Charting Library version by entering the `TradingView.version(
 ```
 
 * `/charting_library` contains all the Charting Library files.
-* `/charting_library/charting_library.min.js` contains an external Charting Library widget interface. This file is not supposed to be edited.
-* `/charting_library/charting_library.min.d.ts` contains TypeScript definitions for the widget interface.
+* `/charting_library/charting_library.js` contains an external Charting Library widget interface. This file is not supposed to be edited.
+* `/charting_library/charting_library.d.ts` contains TypeScript definitions for the widget interface.
 * `/charting_library/datafeed-api.d.ts` contains TypeScript definitions for the data feed interface.
+* `/charting_library/bundles` stores Charting Library internal content and is not intended for other purposes, it should be like "black box" for you so it could be changed anytime without a notice.
 * `/charting_library/datafeeds/udf/` contains [UDF-compatible](UDF) datafeed wrapper (implements [JS API](JS-Api) to connect to Charting Library and UDF to connect to datafeed). Sample datafeed wrapper implements pulse real-time emulation. You are free to edit its code.
-* `/charting_library/static` folder stores Charting Library internal content and is not intended for other purposes.
 * `/index.html` is an example of using Charting Library widget on your web page.
 * `/test.html` is an example of using different Charting Library customization features.
 * `/mobile*.html` are also examples of Widget customization.

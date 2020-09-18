@@ -10,6 +10,9 @@ Here is the list of breaking changes:
 
 - The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).
 - [Widget Method](Widget-Methods) `setLanguage(locale)` has been removed.
+- `charting_library/charting_library.min.js` and `charting_library/charting_library.min.d.ts` files have been renamed to `charting_library/charting_library.js` and `charting_library/charting_library.d.ts` accordingly.
+- The argument of `onIntervalChanged` event have been modified: type of `timeframe` field has been changed to [TimeFrameValue](Chart-Methods#onIntervalChanged).
+- Featureset `same_data_requery` has been removed, please use [resetData() method](Chart-Methods#resetdata) to refresh the data.
 
 **Trading Terminal**
 

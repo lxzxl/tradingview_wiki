@@ -88,7 +88,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
 | header_in_fullscreen_mode | off |    16         | Enables header widget DOM element in the fullscreen mode
-| same_data_requery             | off   |                 | Allows you to call `setSymbol` with the same symbol to refresh the data
 | disable_resolution_rebuild    | off   |                 | Shows bar time exactly as provided by the data feed with no adjustments.
 | chart_scroll                  | on    |   1.10          | Allows chart scrolling
 | chart_zoom                    | on    |   1.10          | Allows chart zooming
