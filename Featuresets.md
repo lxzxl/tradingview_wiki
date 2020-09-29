@@ -57,13 +57,14 @@ Please note that the leading `-` characters are not part of the featureset name 
 | timezone_menu                           | on            | 1.5             | Disables timezone context menu    |
 | snapshot_trading_drawings               | off           | 1.6             | Includes orders/positions/executions in the screenshot |
 | source_selection_markers                | on            | 1.11            | Disables selection markers for series and indicators |
-| go_to_date | on            | 1.11            | Allows you to jump to a particular bar using 'Go to' dialog |
-| adaptive_logo | on            | 1.11            | Allows you to hide 'charts by TradingView' text on small-screen devices |
-| show_dom_first_time                      | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
-| hide_left_toolbar_by_default             | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
-| chart_style_hilo                         | off           | 1.15            | Adds Hi-Lo option to chart style controls |
-| pricescale_currency                      | on            | 16            | Displays the currency in which the instrument is traded on the price axes |
-| scales_date_format                      | on            | 17            | Displays Date Format selector in Chart Settings |
+| go_to_date                              | on            | 1.11            | Allows you to jump to a particular bar using 'Go to' dialog |
+| adaptive_logo                           | on            | 1.11            | Allows you to hide 'charts by TradingView' text on small-screen devices |
+| show_dom_first_time                     | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
+| hide_left_toolbar_by_default            | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
+| chart_style_hilo                        | off           | 1.15            | Adds Hi-Lo option to chart style controls |
+| pricescale_currency                     | on            | 16              | Displays the currency in which the instrument is traded on the price axes |
+| scales_date_format                      | on            | 17              | Displays Date Format selector in Chart Settings |
+| popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
 
 ### Elements placement
 
