@@ -36,7 +36,7 @@ Here is a list of methods supported by the chart.
   * [createShape(point, options)](#createshapepoint-options)
   * [createMultipointShape(points, options)](#createmultipointshapepoints-options)
   * [getShapeById(entityId)](#getshapebyidentityid)
-  * [removeEntity(entityId)](#removeentityentityid)
+  * [removeEntity(entityId)](#removeentityentityid-options)
   * [removeAllShapes()](#removeallshapes)
   * [removeAllStudies()](#removeallstudies)
   * [getPanes()](#getpanes)
@@ -573,9 +573,11 @@ Returns an instance of the [ShapeApi](Shape-Api) that allows you to interact wit
 widget.activeChart().getShapeById(id).bringToFront();
 ```
 
-### removeEntity(entityId)
+### removeEntity(entityId, options)
 
 1. `entityId`: object. It's the value that was returned when the entity (shape or study) was created.
+1. `options` is an *optional* object added in version 17 with one field:
+    * `disableUndo` - boolean flag that shows the undo action availability.
 
 Removes the specified entity.
 
