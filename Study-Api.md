@@ -78,6 +78,10 @@ Applies `overrides` to the study.
 Note: `overrides` object keys don’t need to start with the study name. The key is applied to a particular study.
 For example, you should use `style` instead of `Overlay.style` to override the current style of the Overlay study.
 
+### :chart: applyToEntireLayout()
+
+Copies the study to all charts of the layout.
+
 ## Primitive types
 
 ### StudyInputInfo

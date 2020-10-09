@@ -21,21 +21,9 @@ The following information should be returned by [accountManagerInfo](Broker-API#
 
 ## Account Manager header
 
-Account Manager's header includes the name of the broker and an account name or a list of accounts.
+Account Manager's header includes the name of the broker.
 
 ### accountTitle: String
-
-### accountsList: array of AccountInfo
-
-### account: [WatchedValue](WatchedValue) of AccountInfo
-
-`AccountInfo` is an object with the following keys:
-
-1. `id` - account id
-1. `name` - account name
-1. `currency` - account currency
-
-If the `currency` key is not set, `USD` will be used as a default value.
 
 ## Orders Page
 

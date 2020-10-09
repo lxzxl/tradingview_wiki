@@ -32,7 +32,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | **edit_buttons_in_legend**              | on            |                 |                                                            |
 | - show_hide_button_in_legend            | on            |       1.7       |                                                            |
 | - format_button_in_legend               | on            |       1.7       |                                                            |
-| - study_buttons_in_legend               | on            |       1.7       |                                                            |
 | - delete_button_in_legend               | on            |       1.7       |                                                            |
 | **context_menus**                       | on            |                 |                                                            |
 | - pane_context_menu                     | on            |                 |                                                            |
@@ -41,12 +40,9 @@ Please note that the leading `-` characters are not part of the featureset name 
 | main_series_scale_menu                  | on            |       1.7       | Displays the settings button in the bottom right corner of the chart |
 | display_market_status                   | on            |                 |                                                            |
 | remove_library_container_border         | on            |                 |                                           |
-| chart_property_page_style               | on            |                 |                                           |
 | property_pages                          | on            | 1.11            | Disables all property pages                |
 | show_chart_property_page                | on            | 1.6             | Turning this feature off disables Properties        |
 | chart_property_page_scales              | on            |                 |                                           |
-| chart_property_page_background          | on            |                 |                                           |
-| chart_property_page_timezone_sessions   | on            |                 |                                           |
 | chart_property_page_trading             | on            |                 | This feature is for the Trading Terminal only           |
 | chart_property_page_right_margin_editor | on            | 1.15            | Shows the right margin editor in the setting dialog |
 | countdown                               | on            | 1.4             | Displays a countdown label on a price scale         |

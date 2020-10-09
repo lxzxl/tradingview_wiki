@@ -33,6 +33,8 @@ widget.onChartReady(function() {
   * [hideAllDrawingTools](#hidealldrawingtools)
   * [magnetEnabled](#magnetenabled)
   * [magnetMode](#magnetmode)
+  * [startFullscreen](#startfullscreen)
+  * [exitFullscreen](#exitfullscreen)
 * [Saving/Loading Charts](#savingloading-charts)
   * [save(callback)](#savecallback)
   * [load(state)](#loadstate)
@@ -267,6 +269,14 @@ Available modes:
 
 * `0` - weak magnet mode
 * `1` - strong magnet mode
+
+### startFullscreen()
+
+This method enters full-screen mode.
+
+### exitFullscreen()
+
+This method exits full-screen mode.
 
 ## Saving/Loading Charts
 

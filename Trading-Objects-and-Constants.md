@@ -29,6 +29,18 @@ This is an object that should be passed in the constructor of the Trading Termin
     Broker supports closing of a position.
     If it is not supported by broker, Chart will have the close button, but it will place a closing order.
 
+* `supportPartialClosePosition`
+
+    *Default:* `false`
+
+    Broker supports partial closing of a position.
+
+* `supportPartialCloseTrade`
+
+    *Default:* `false`
+
+    Broker supports partial closing of a trade.
+
 * `supportReducePosition`
 
     *Default:* `false`

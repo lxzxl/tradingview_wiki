@@ -27,13 +27,6 @@ Shows a confirmation dialog and executes handler if YES/OK is pressed.
 
 Shows a confirmation dialog and executes handler if YES/OK is pressed.
 
-### showClosePositionDialog([positionId](Trading-Objects-and-Constants#position), handler) : Promise
-
-1. `positionId` identifier of a position to be closed
-1. `handler` is a function to process position close. It should return Promise
-
-Shows a confirmation dialog and executes handler if YES/OK is pressed.
-
 ### showReversePositionDialog([position](Trading-Objects-and-Constants#position), handler) : Promise
 
 1. `position` to be reversed
@@ -97,9 +90,9 @@ Returns quotes of a symbol.
 
 ## Getters and Setters
 
-### floatingTradingPanelVisibility: [WatchedValue](WatchedValue)
+### sellBuyButtonsVisibility: [WatchedValue](WatchedValue)
 
-Returns whether the floating trading panel is visible or not.
+Returns whether the buy/sell buttons are visible or not.
 
 ### domVisibility: [WatchedValue](WatchedValue)
 
@@ -142,7 +135,7 @@ Provides default buy/sell, show properties actions to be returned as a default b
 Provides default dropdown list of actions. You can use default actions in [setButtonDropdownActions](#setButtonDropdownActionsactions).
 You can add/remove default action from the result using `options`:
 
-1. `showFloatingToolbar`: boolean;
+1. `showSellBuyButtons`: boolean;
 1. `tradingProperties`: boolean;
 1. `selectAnotherBroker`: boolean;
 1. `disconnect`: boolean;
@@ -175,9 +168,9 @@ It should be used only if you want to display custom fields in the [Account Mana
 
 Call this method when an execution is added.
 
-### fullUpdate()
+### currentAccountUpdate()
 
-Call this method when all data has been changed. For example, user account has been changed.
+Call this method when user account has been changed synchronously. The terminal will re-request all displayed information.
 
 ### plUpdate(positionId, pl)
 

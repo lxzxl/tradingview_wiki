@@ -103,14 +103,26 @@ When the event is fired it will provide the following arguments:
 1. `interval`: new interval
 1. `timeframeObj`: object with the only field `timeframe`.
 
-    It contains a timeframe if the interval is changed when the user clicks on the timeframe panel.
+    It contains a timeframe or dates range. It presents if the user clicks on the timeframe panel or changes the dates range.
 
-    Otherwise `timeframe` is `undefined` and you can change it to display a certain range of bars. Valid timeframe is a number with letter `D` for days and `M` for months.
+    Otherwise `timeframe` is `undefined` and you can change it to display a certain range of bars. Valid timeframe is a `TimeFrameValue` object.
+
+    `TimeFrameValue` can be:
+    1. a timeframe object, `{type, value}`:
+        * `type`: `period-back`.
+        * `value`: valid timeframe is a number with letter D for days and M for months.
+    2. a range object, `{type, from, to}`
+        * `type`: `time-range`.
+        * `from`, `to`: UNIX timestamps, UTC.
 
 Example:
 
 ```javascript
-widget.activeChart().onIntervalChanged().subscribe(null, (interval, timeframeObj) => timeframeObj.timeframe = "12M");
+widget.activeChart().onIntervalChanged().subscribe(null, (interval, timeframeObj) => timeframeObj.timeframe = { value: "12M", type: "period-back" });
+
+widget.activeChart().onIntervalChanged().subscribe(null,
+    (interval, timeframeObj) => timeframeObj.timeframe = { from: new Date('2015-01-01').getTime() / 1000, to: new Date('2017-01-01').getTime() / 1000, type: "time-range" }
+);
 ```
 
 ### dataReady()
@@ -547,7 +559,7 @@ Check out [Shapes and Overrides](Shapes-and-Overrides) for more information.
 This call creates a shape at a specific point on the chart provided that it's within the main series area.
 
 ```javascript
-const from = Date.now() / 1000 - 500 * 24 * 3600 * 1000; // 500 days ago
+const from = Date.now() / 1000 - 500 * 24 * 3600; // 500 days ago
 const to = Date.now() / 1000;
 widget.activeChart().createMultipointShape(
     [{ time: from, price: 150 }, { time: to, price: 150 }],

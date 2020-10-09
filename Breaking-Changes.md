@@ -6,13 +6,27 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 18
+
+**Trading Terminal**
+
+- `accountsList` and `account` have been removed from Account Manager Info. They have been replaced with methods `currentAccount`, `setCurrentAccount` and `accountsMetainfo` in broker's API.
+
+- Method `fullUpdate` in the Trading Host has been renamed to `currentAccountUpdate`.
+
+- Method `showClosePositionDialog` has been removed.
+
+- [Trading Host](Trading-Host) method `floatingTradingPanelVisibility` has been renamed to `sellBuyButtonsVisibility`.
+
+- [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Option `showFloatingToolbar` has been renamed to `showSellBuyButtons`.
+
 ## Version 17
 
 - The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).
 - [Widget Method](Widget-Methods) `setLanguage(locale)` has been removed.
-- `charting_library/charting_library.min.js` and `charting_library/charting_library.min.d.ts` files have been renamed to `charting_library/charting_library.js` and `charting_library/charting_library.d.ts` accordingly.
 - The argument of `onIntervalChanged` event have been modified: type of `timeframe` field has been changed to [TimeFrameValue](Chart-Methods#onIntervalChanged).
 - Featureset `same_data_requery` has been removed, please use [resetData() method](Chart-Methods#resetdata) to refresh the data.
+- `charting_library/charting_library.min.js` and `charting_library/charting_library.min.d.ts` files have been renamed to `charting_library/charting_library.js` and `charting_library/charting_library.d.ts` accordingly.
 - The Chart Method [removeEntity](Chart-Methods#removeentityentityid-options) now can be undone by the user by default. To disable this, please use `disableUndo` field in the new argument `options`.
 
 **Trading Terminal**

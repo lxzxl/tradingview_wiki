@@ -50,7 +50,13 @@ ConnectionStatus.Error = 4
 
 This function is required for the Floating Trading Panel. The ability to trade via the panel depends on the result of this function: `true` or `false`. You don't need to implement this method if all symbols can be traded.
 
-If you want to show a custom message with the reason why the symbol cannot be traded then you can return an object `IsTradableResult`. It has only two keys: tradable (`true` or `false`) and reason (`string`).
+If you want to show a custom message with the reason why the symbol cannot be traded then you can return an object `IsTradableResult`. It has the following keys: tradable (`true` or `false`), solutions(`TradableSolutions`), reason (`string`) and shortReason(`string`). Reason is displayed in the order ticket while the shortReason is displayed in the legend.
+
+`TradableSolutions` has one of the following keys:
+
+- `changeAccount` - id of a sub-account suitable for trading the symbol
+
+- `changeSymbol` - the symbol suitable for trading with current sub-account
 
 ### accountManagerInfo()
 
@@ -97,9 +103,11 @@ This method is called to cancel multiple orders for a `symbol` and `side`.
 
 This method is called if `supportPositionBrackets` configuration flag is on. It shows a dialog that enables `take profit` and `stop loss` editing.
 
-### closePosition(positionId)
+### closePosition(positionId, amount)
 
 This method is called if `supportClosePosition` configuration flag is on. It allows to close the position by id.
+
+The amount is specified if `supportPartialClosePosition` is `true` and the user wants to close only part of the position.
 
 ### reversePosition(positionId)
 
@@ -112,9 +120,11 @@ This method is called if `supportNativeReversePosition` configuration flag is on
 
 This method is called if `supportTradeBrackets` configuration flag is on. It displays a dialog that enables take profit and stop loss editing.
 
-### closeTrade(tradeId)
+### closeTrade(tradeId, amount)
 
 This method is called if `supportCloseTrade` configuration flag is on. It allows to close the trade by id.
+
+The amount is specified if `supportPartialCloseTrade` is `true` and the user wants to close only part of the trade.
 
 ### symbolInfo(symbol) : Deferred (or Promise)
 
@@ -139,14 +149,25 @@ The result is an object with the following data:
 - `baseCurrency` - the first currency quoted in a currency pair. Used for crypto currencies only.
 - `quoteCurrency` - the second currency quoted in a currency pair. Used for crypto currencies only.
 
-### accountInfo() : Deferred (or Promise)
+### accountsMetainfo() : or Promise
 
-This method is called by the internal Order Dialog to get the account information.
-It should return only one field for now:
+This method is called to get the accounts list.
+The result contains an array of objects with the following fields:
 
-1. currencySign: string - which is a sign of account currency
+1. `id`: AccountId - account id
+1. `name`: string - account name
+1. `currency`?: string - account currency
+1. `currencySign`?: string which is a sign of account currency
 
-Once this method is called the broker should stop providing profit/loss.
+### currentAccount() : AccountId
+
+This method is called to get the id of current account.
+
+### setCurrentAccount(id)
+
+1. `id` is an ID of an existing sub-account
+
+This method is called to change current account. If the account is changed synchronously `currentAccountUpdate` should be called, otherwise the connection status should be set to Connecting for the period of the account switching.
 
 ### subscribeEquity()
 
