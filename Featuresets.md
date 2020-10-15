@@ -131,3 +131,4 @@ Please note that the leading `-` characters are not part of the featureset name 
 | trading_account_manager | on | 17 | Shows Account Manager Widget
 | order_panel | on | 17 | Shows Order Panel
 | order_info | on | 17 | Shows Order info
+| buy_sell_buttons | on | 18 | Shows Buy/Sell Buttons in Legend
