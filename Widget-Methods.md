@@ -28,7 +28,7 @@ widget.onChartReady(function() {
   * [selectLineTool(drawingId)](#selectlinetooldrawingid)
   * [selectedLineTool()](#selectedlinetool)
   * [takeScreenshot()](#takescreenshot)
-  * [takeClientScreenshot()](#takeclientscreenshot)
+  * [takeClientScreenshot()](#takeclientscreenshotoptions)
   * [lockAllDrawingTools](#lockalldrawingtools)
   * [hideAllDrawingTools](#hidealldrawingtools)
   * [magnetEnabled](#magnetenabled)
@@ -245,9 +245,13 @@ This method creates a snapshot of the chart and uploads it to the server.
 When it is done the [onScreenshotReady](#subscribeevent-callback) callback function is called.
 The URL of the snapshot will be passed as an argument to the callback function.
 
-### takeClientScreenshot()
+### takeClientScreenshot(options)
 
 This method takes a snapshot of the chart layout and returns it as an HTML canvas element in a `Promise`.
+
+`options` is an *optional* object that has one field:
+
+* `backgroundColor`: background color
 
 ### lockAllDrawingTools()
 
