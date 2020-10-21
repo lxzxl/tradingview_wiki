@@ -288,6 +288,8 @@ The boolean value showing whether the library should generate empty bars in the 
 
 I.e., if your session is `0900-1600` and your data has gaps between `11:00` and `12:00` and your `has_empty_bars` is `true`, then the Library will fill the gaps with bars for this time.
 
+Flag `has_emtpy_bars` = `true` cannot be used if featureset `disable_resolution_rebuild` is enabled.
+
 ## force_session_rebuild
 
 *Default:* `true`
