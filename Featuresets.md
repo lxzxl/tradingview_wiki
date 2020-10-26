@@ -129,6 +129,10 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_trading_notifications_history | on | 1.13 | Enables the Notifications Log tab in the bottom panel
 | always_pass_called_order_to_modify | off | 1.15 | If a bracket order is modified, the terminal passes its parent order to `modifyOrder`. The featureset disables this behavior.
 | trading_account_manager | on | 17 | Shows Account Manager Widget
+| right_toolbar | on | 17 | Shows right trading toolbar
 | order_panel | on | 17 | Shows Order Panel
 | order_info | on | 17 | Shows Order info
 | buy_sell_buttons | on | 18 | Shows Buy/Sell Buttons in Legend
+| show_order_panel_on_start | off | 17 | Order Panel is visible when the chart opens
+| order_panel_close_button | on | 17 | Shows close Order Panel button
+| order_panel_undock | on | 17 | Shows Undock button in Order Panel Settings

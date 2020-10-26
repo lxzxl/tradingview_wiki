@@ -68,6 +68,7 @@ Here is a list of methods supported by the chart.
   * [selection()](#selection)
   * [setZoomEnabled(enabled)](#setzoomenabledenabled)
   * [setScrollEnabled(enabled)](#setscrollenabledenabled)
+  * [getTimeScale()](#gettimescale)
 
 ## Subscribing To Chart Events
 
@@ -1106,6 +1107,16 @@ Enables (if the parameter is true) or disables (if the parameter is false) scrol
 
 ```javascript
 widget.activeChart().setScrollEnabled(false);
+```
+
+### getTimeScale()
+
+*Starting from version 18.*
+
+Returns an instance of the [TimeScaleApi](Time-Scale-Api) with methods associated with the time axis.
+
+```javascript
+var time = widget.activeChart().getTimeScale().coordinateToTime(100);
 ```
 
 ## See Also
