@@ -29,8 +29,8 @@ Here are a few steps for those who want to have their own chart storage:
 
 ### Developing your own backend
 
-* Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id`. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
-* You should implement the processing of 4 requests: save chart / load chart / delete chart / list charts.
+* Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id` for charts and `charts_storage_url/charts_storage_api_version/study_templates?client=client_id&user=user_id` for study templates. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
+* You should implement the processing of 4 requests: save / load / delete / list.
 
 #### LIST CHARTS
 
@@ -42,7 +42,7 @@ RESPONSE: JSON Object
 1. `data`: Array of Objects
     1. `timestamp`: UNIX time when the chart was saved (example, `1449084321`)
     1. `symbol`: base symbol of the chart (example, `AA`)
-    1. `resolution`: resolution of the chart (example, `D`)
+    1. `resolution`: resolution of the chart (example, `1D`)
     1. `id`: unique integer identifier of the chart (example, `9163`)
     1. `name`: chart name (example, `Test`)
 
@@ -53,7 +53,7 @@ POST REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=clien
 1. `name`: name of the chart
 1. `content`: content of the chart
 1. `symbol`: chart symbol (example, `AA`)
-1. `resolution`: chart resolution (example, `D`)
+1. `resolution`: chart resolution (example, `1D`)
 
 RESPONSE: JSON Object
 
@@ -67,7 +67,7 @@ POST REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=clien
 1. `name`: name of the chart
 1. `content`: content of the chart
 1. `symbol`: chart symbol (example, `AA`)
-1. `resolution`: chart resolution (example, `D`)
+1. `resolution`: chart resolution (example, `1D`)
 
 RESPONSE: JSON Object
 
@@ -89,6 +89,50 @@ RESPONSE: JSON Object
 #### DELETE CHART
 
 DELETE REQUEST: `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id&chart=chart_id`
+
+RESPONSE: JSON Object
+
+1. `status`: `ok` or `error`
+
+#### LIST STUDY TEMPLATES
+
+GET REQUEST: `charts_storage_url/charts_storage_api_version/study_tempates?client=client_id&user=user_id`
+
+RESPONSE: JSON Object
+
+1. `status`: `ok` or `error`
+1. `data`: Array of Objects
+    1. `name`: template name (example, `Test`)
+
+#### SAVE STUDY TEMPLATE
+
+POST REQUEST: `charts_storage_url/charts_storage_api_version/study_tempates?client=client_id&user=user_id`
+
+1. `name`: name of the template
+1. `content`: content of the template
+
+RESPONSE: JSON Object
+
+1. `status`: `ok` or `error`
+
+#### LOAD STUDY TEMPLATE
+
+GET REQUEST: `charts_storage_url/charts_storage_api_version/study_tempates?client=client_id&user=user_id&chart=chart_id&template=name`
+
+1. `name`: name of the template
+
+RESPONSE: JSON Object
+
+1. `status`: `ok` or `error`
+1. `data`: Object
+    1. `name`: name of the template
+    1. `content`: saved content of the template
+
+#### DELETE STUDY TEMPLATES
+
+DELETE REQUEST: `charts_storage_url/charts_storage_api_version/study_tempates?client=client_id&user=user_id&template=name`
+
+1. `name`: name of the template
 
 RESPONSE: JSON Object
 
@@ -124,7 +168,7 @@ Your site URL or other link|Unique user ID for registered users along with a sep
 
 *Starting from version 1.12.*
 
-One of the parameters in [Widget Construcor](Widget-Constructor#save_load_adapter), this is basically an object containing the save/load functions. It is used to customize the `Save` button behaviour. If it is available, it should have the following methods:
+One of the parameters in [Widget Constructor](Widget-Constructor#save_load_adapter), this is basically an object containing the save/load functions. It is used to customize the `Save` button behaviour. If it is available, it should have the following methods:
 
 ### Chart layouts
 
@@ -183,100 +227,12 @@ One of the parameters in [Widget Construcor](Widget-Constructor#save_load_adapte
      * `name` - name of the study template.
      * `content` - content of the study template.
 
- 1. `getStudyTemplateContent(studyTemplateInfo: StudyTemplateMetaInfo): Promise<StudyTemplateContent>`
+ 1. `getStudyTemplateContent(studyTemplateInfo: StudyTemplateMetaInfo): Promise<string>`
 
      A function to load a study template from the server.
 
-    `StudyTemplateContent` - content of the study template (string)
-
  If both `charts_storage_url` and `save_load_adapter` are available  then `save_load_adapter` will be used.
 
- **IMPORTANT:** All functions should return a `Promise` (or `Promise`-like objects).
+**IMPORTANT:** All functions should return a `Promise` (or `Promise`-like objects).
 
-In-memory example for testing purposes:
-
-```javascript
-save_load_adapter: {
-    charts: [],
-    studyTemplates: [],
-    getAllCharts: function() {
-        return Promise.resolve(this.charts);
-    },
-
-    removeChart: function(id) {
-        for (var i = 0; i < this.charts.length; ++i) {
-            if (this.charts[i].id === id) {
-                this.charts.splice(i, 1);
-                return Promise.resolve();
-            }
-        }
-
-        return Promise.reject();
-    },
-
-    saveChart: function(chartData) {
-        if (!chartData.id) {
-            chartData.id = Math.random().toString();
-        } else {
-            this.removeChart(chartData.id);
-        }
-
-        chartData.timestamp = new Date().valueOf();
-
-        this.charts.push(chartData);
-
-        return Promise.resolve(chartData.id);
-    },
-
-    getChartContent: function(id) {
-        for (var i = 0; i < this.charts.length; ++i) {
-            if (this.charts[i].id === id) {
-                return Promise.resolve(this.charts[i].content);
-            }
-        }
-
-        console.error('error');
-
-        return Promise.reject();
-    },
-
-    removeStudyTemplate: function(studyTemplateData) {
-        for (var i = 0; i < this.studyTemplates.length; ++i) {
-            if (this.studyTemplates[i].name === studyTemplateData.name) {
-                this.studyTemplates.splice(i, 1);
-                return Promise.resolve();
-            }
-        }
-
-        return Promise.reject();
-    },
-
-    getStudyTemplateContent: function(studyTemplateData) {
-        for (var i = 0; i < this.studyTemplates.length; ++i) {
-            if (this.studyTemplates[i].name === studyTemplateData.name) {
-                return Promise.resolve(this.studyTemplates[i].content);
-            }
-        }
-
-        console.error('st: error');
-
-        return Promise.reject();
-    },
-
-    saveStudyTemplate: function(studyTemplateData) {
-        for (var i = 0; i < this.studyTemplates.length; ++i) {
-            if (this.studyTemplates[i].name === studyTemplateData.name) {
-                this.studyTemplates.splice(i, 1);
-                break;
-            }
-        }
-
-        this.studyTemplates.push(studyTemplateData);
-        return Promise.resolve();
-    },
-
-    getAllStudyTemplates: function() {
-        return Promise.resolve(this.studyTemplates);
-    },
-}
-```
+[In-memory example](Save-Load-Adapter-Example) for testing purposes.

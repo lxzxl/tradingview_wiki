@@ -73,9 +73,14 @@ These types of charts will be available out-of-the-box, just like Heikin-Ashi is
 
 This study will require some server-side support. We'll provide more details when it's ready.
 
-### Drawing Tools Templates :clock4:
+### Drawing Tools Templates
 
-This functionality will require the support from your backend. We'll update our open-source data backend to support this feature also, so consider using it to minimize the efforts from your side.
+*Starting from version 17*
+This functionality will require the support from your backend. Our open-source data backend supports this feature also, so consider using it to minimize the efforts from your side for testing purposes.
+
+**Read more about this feature:**
+
+* [Drawing Templates](Drawing-Templates)
 
 <!-- markdownlint-enable no-trailing-punctuation -->
 

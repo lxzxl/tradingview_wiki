@@ -59,3 +59,4 @@ Customisation by areas
 * [Trading Host](Trading-Host)
 * [Account Manager](Account-Manager)
 * [Trading Types](Trading-Objects-and-Constants)
+* [Drawing Templates](Drawing-Templates)
