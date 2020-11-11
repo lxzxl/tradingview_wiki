@@ -11,7 +11,11 @@ You can check the Charting Library version by entering the `TradingView.version(
         + /bundles
         - charting_library.js
         - charting_library.d.ts
+        - charting_library.cjs.js
+        - charting_library.esm.js
+        - charting_library.standalone.js
         - datafeed-api.d.ts
+        - package.json
     +/datafeeds
         + /udf
     - index.html
@@ -21,8 +25,12 @@ You can check the Charting Library version by entering the `TradingView.version(
 ```
 
 * `/charting_library` contains all the Charting Library files.
-* `/charting_library/charting_library.js` contains an external Charting Library widget interface. This file is not supposed to be edited.
-* `/charting_library/charting_library.d.ts` contains TypeScript definitions for the widget interface.
+* `/charting_library/charting_library*` files contain an external Charting Library widget interface, they is not supposed to be edited.
+  * `.js` is an [UMD](https://github.com/umdjs/umd) module (for backward compatibility).
+  * `.esm.js` is an native JavaScript module, see [import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+  * `.cjs.js` is an [CommonJS](https://en.wikipedia.org/wiki/CommonJS) module.
+  * `.standalone.js` is an [iife](https://en.wikipedia.org/wiki/Immediately_invoked_function_expression) module.
+  * `.d.ts` contains TypeScript definitions for the widget interface.
 * `/charting_library/datafeed-api.d.ts` contains TypeScript definitions for the data feed interface.
 * `/charting_library/bundles` stores Charting Library internal content and is not intended for other purposes, it should be like "black box" for you so it could be changed anytime without a notice.
 * `/charting_library/datafeeds/udf/` contains [UDF-compatible](UDF) datafeed wrapper (implements [JS API](JS-Api) to connect to Charting Library and UDF to connect to datafeed). Sample datafeed wrapper implements pulse real-time emulation. You are free to edit its code.

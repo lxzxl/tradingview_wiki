@@ -68,9 +68,9 @@ We do not guarantee CSS selectors' backward compatibility.
 
 This is the common best practice for static HTML content. Gzipping the Library's HTML file will decrease your users' waiting time.
 
-### 15. Set minimum expiration time for charting_library.min.js
+### 15. Set minimum expiration time for charting_library.js
 
-All files in the Charting Library contain hash in their names, except for `charting_library.min.js` that you add to your HTML files.
+All files in the Charting Library contain hash in their names, except for `charting_library.js` that you add to your HTML files.
 When you update the Charting Library to a newer version all file names are changed as well.
-If a browser loads `charting_library.min.js` from the cache, then all the links in this file are going to be broken.
+If a browser loads `charting_library.js` from the cache, then all the links in this file are going to be broken.
 The expiration time for this file should be set to the minimum in order to make sure that it’s not cached by the browser.
