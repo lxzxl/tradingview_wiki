@@ -249,9 +249,13 @@ The URL of the snapshot will be passed as an argument to the callback function.
 
 This method takes a snapshot of the chart layout and returns it as an HTML canvas element in a `Promise`.
 
-`options` is an *optional* object that has one field:
+`options` is an *optional* object that has the following fields:
 
 * `backgroundColor`: background color
+* `font`: legend text font family
+* `fontSize`: legend text font size
+* `legendMode`: `vertical` or `horizontal`
+* `hideResolution`: if true resolution of the chart is hidden
 
 ### lockAllDrawingTools()
 
