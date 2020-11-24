@@ -172,6 +172,7 @@ widget.onShortcut("alt+s", function() {
 | `onAutoSaveNeeded` | | User changed the chart. `Chart change` means any user action that can be undone. The callback function will not be called more than once every 5 seconds. See also [auto_save_delay](Widget-Constructor#auto_save_delay) |
 | `onScreenshotReady` | | A screenshot URL is returned by the server |
 | `onMarkClick` | | User clicked a [mark on a bar](Marks#marks-on-bars). Mark ID will be passed as an argument |
+| `onPlusClick` | | User clicked the "plus" button on the price scale. The callback function will receive an object containing coordinates, `price` and `symbol` |
 | `onTimescaleMarkClick` | | User clicked a [timescale mark](Marks#marks-on-the-timescale). Mark ID will be passed as an argument |
 | `onSelectedLineToolChanged` | | Selected line tool is changed |
 | `study_event` | 1.15 | An event related to the study. The callback function receives two arguments: a study ID and an event type (currently possible values for this argument are `remove` and at version 16 - `price_scale_changed`) |
