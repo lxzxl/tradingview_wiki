@@ -38,7 +38,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | - scales_context_menu                   | on            |                 |                                                            |
 | - legend_context_menu                   | on            |                 |                                                            |
 | main_series_scale_menu                  | on            |       1.7       | Displays the settings button in the bottom right corner of the chart |
-| chart_crosshair_menu                    | on            | 1.7             | Enables the "plus" button on the price scale for quick trading |
+| chart_crosshair_menu                    | on (terminal) | 1.7             | Enables the "plus" button on the price scale for quick trading |
 | display_market_status                   | on            |                 |                                                            |
 | remove_library_container_border         | on            |                 |                                           |
 | property_pages                          | on            | 1.11            | Disables all property pages                |
