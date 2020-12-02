@@ -1,3 +1,19 @@
+# Table of contents
+
+- [Overview](#overview)
+  - [What is a chart layout](#what-is-a-chart-layout)
+  - [What is a study template](#what-is-a-study-template)
+- [Saving of chart layouts and study templates](#saving-of-chart-layouts-and-study-templates)
+  - [Predefined REST API](#predefined-rest-api)
+    - [Example of a storage](#example-of-a-storage)
+    - [Developing your own backend](#developing-your-own-backend)
+    - [Using Demo Charts and Study Templates Storage](#using-demo-charts-and-study-templates-storage)
+    - [Managing Access to Saved Charts](#managing-access-to-saved-charts)
+  - [API proxy methods](#api-proxy-methods)
+    - [Chart layouts](#chart-layouts)
+    - [Study Templates](#study-templates)
+  - [Low-level API](#low-level-api)
+
 # Overview
 
 From this article you will know how to save users' chart layouts and study templates and restore them when users get back.
