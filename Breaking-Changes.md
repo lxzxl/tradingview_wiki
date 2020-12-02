@@ -20,6 +20,8 @@ Here is the list of breaking changes:
 
 - [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Option `showFloatingToolbar` has been renamed to `showSellBuyButtons`.
 
+- Method [setPoints](Shape-Api#setpointspoints) now behaves the same way as [createMultipointShape](Chart-Methods#createmultipointshapepoints-options) for all tools. Previously it could change some other properties like width instead on moving points to their new places.
+
 ## Version 17
 
 - The orders response has been split into [orders](Broker-API#orders-promiseorder) and [ordersHistory](Broker-API#ordershistory-promiseorder).

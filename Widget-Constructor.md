@@ -289,11 +289,11 @@ You can override most of the Charting Library properties (which also may be edit
 
 ```javascript
 overrides: {
-    "mainSeriesProperties.style": 0
+    "mainSeriesProperties.style": 2
 }
 ```
 
-This code will make the watermark 100% opaque (invisible). All customizable properties are listed in [separate article](Overrides). You can use [Drawings-Overrides](Drawings-Overrides) starting from v 1.5.
+This code will change the default series style to "line". All customizable properties are listed in [separate article](Overrides). You can use [Drawings-Overrides](Drawings-Overrides) starting from v 1.5.
 
 ### disabled_features, enabled_features
 
