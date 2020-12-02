@@ -35,7 +35,7 @@ In the case of one possible chart layout you can consider using of LocalStorage.
 To simplify development of a storage for chart layouts and study templates, the library includes 3 layers:
 
 1. predefined REST API and a sample server-side storage in case you want to save chart layouts and study templates on a server and you don't have a general purpose storage that can be used for this
-1. API proxy methods to handle save/load commands coming from GUI
+1. API handlers allows you to add custom processing of save/load commands coming from GUI
 1. low-level API to get/set current chart layout / study templates content
 
 ## Predefined REST API
@@ -203,9 +203,10 @@ Your site URL or other link|Unique user ID|Each user has a private chart storage
 Your site URL or other link|The same value for all users|Each user can see and load any saved chart.
 Your site URL or other link|Unique user ID for registered users along with a separate setting for anonymous users|Each registered user has a private chart storage that other users can't see. All anonymous users share a single storage.
 
-## API proxy methods
+## API handlers
 
-[save_load_adapter](Widget-Constructor#save_load_adapter) is an object containing the save/load functions. It is used to customize the `Save` button behavior. If it is available, it should have the following methods:
+Prefer using the API handlers if you have your own back-end service that you can use for storing chart layouts and study templates.
+[save_load_adapter](Widget-Constructor#save_load_adapter) is an object containing the save/load API handlers. Using of the API handlers prevents the library from sending the REST requests. These functions are called by the library when users click on save/load UI elements.
 
 ### Chart layouts
 
@@ -279,3 +280,5 @@ Your site URL or other link|Unique user ID for registered users along with a sep
 Content of charts and study templates can be directly accessed using widget's [save() / load() methods](Widget-Methods#savecallback) and [createStudyTemplate() / applyStudyTemplate() methods](Chart-Methods#createstudytemplateoptions).
 
 You are able to save the JSONs where you wish. For example, you may embed them to your saved pages or user's working area etc.
+
+Commonly you might want to hide the save/load GUI elements if you use the Low-level API. You can disable [header_saveload featureset](Featuresets) to hide the save/load GUI elements from the header toolbar.
