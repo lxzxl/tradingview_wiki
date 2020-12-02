@@ -1,13 +1,32 @@
-The Charting Library supports saving/loading charts and study templates using UI and API:
+# Overview
 
-1. **API**: Content of charts and study templates can be directly accessed using widget's [save() / load() methods](Widget-Methods#savecallback) and [createStudyTemplate() / applyStudyTemplate() methods](Chart-Methods#createstudytemplateoptions).
-    You are able to save the JSONs where you wish. For example, you may embed them to your saved pages or user's working area etc.
+From this article you will know how to save users' chart layouts and study templates and restore them when users get back.
 
-1. **Save button**: Charting Library has save/load UI for charts and study templates. You can use [predefined server requests](#predefined-server-requests) or implement [save_load_adapter](#save_load_adapter) and process save/load by yourself.
+## What is a chart layout
 
-## Predefined server requests
+Chart layout is a group of charts (in Trading Terminal) or a single chart (in Charting Library). Chart layout content includes drawings, indicators and chart settings like colors, styles etc.
 
-### Example
+## What is a study template
+
+Study template is a set of applied indicators and their settings (inputs and styles).
+
+# Saving of chart layouts and study templates
+
+Usually if your use cases assume using of drawings, you'll need to think about storing users' chart layouts. Enabling of study templates on the chart requires implementing a storage.
+It is recommended to store chart layouts on a server, unless you want the users to have the only one chart layout.
+In the case of one possible chart layout you can consider using of LocalStorage. Otherwise, you shouldn't use LocalStorage, because its size is limited.
+
+To simplify development of a storage for chart layouts and study templates, the library includes 3 layers:
+
+1. predefined REST API and a sample server-side storage in case you want to save chart layouts and study templates on a server and you don't have a general purpose storage that can be used for this
+1. API proxy methods to handle save/load commands coming from GUI
+1. low-level API to get/set current chart layout / study templates content
+
+## Predefined REST API
+
+The library supports a predefined REST API to save chart layouts and study templates on your server. It sends requests in a certain format that is described below. We provide an example of the server-side storage that is a good point to start from.
+
+### Example of a storage
 
 We created a tiny storage sample with Python and PostgreSQL that can be found in [our GitHub](https://github.com/tradingview/saveload_backend).
 You can use it and run on your own server so that you'll be able to have control over all your users' saved data.
@@ -27,7 +46,11 @@ Here are a few steps for those who want to have their own chart storage:
 
 **Remark**: Manual database filling/editing is not the intended usage. Please avoid doing this as you you may hurt the Django infrastructure.
 
+**Remark**: This example doesn't support an authorization so we do not recommend to use it without adding this layout of security in production.
+
 ### Developing your own backend
+
+If you decided to develop your own storage that accepts predefined REST API requests, here is the description of the end-points that you'll need to implement.
 
 * Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id` for charts and `charts_storage_url/charts_storage_api_version/study_templates?client=client_id&user=user_id` for study templates. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
 * You should implement the processing of 4 requests: save / load / delete / list.
@@ -164,11 +187,9 @@ Your site URL or other link|Unique user ID|Each user has a private chart storage
 Your site URL or other link|The same value for all users|Each user can see and load any saved chart.
 Your site URL or other link|Unique user ID for registered users along with a separate setting for anonymous users|Each registered user has a private chart storage that other users can't see. All anonymous users share a single storage.
 
-## save_load_adapter
+## API proxy methods
 
-*Starting from version 1.12.*
-
-One of the parameters in [Widget Constructor](Widget-Constructor#save_load_adapter), this is basically an object containing the save/load functions. It is used to customize the `Save` button behaviour. If it is available, it should have the following methods:
+[save_load_adapter](Widget-Constructor#save_load_adapter) is an object containing the save/load functions. It is used to customize the `Save` button behavior. If it is available, it should have the following methods:
 
 ### Chart layouts
 
@@ -236,3 +257,9 @@ One of the parameters in [Widget Constructor](Widget-Constructor#save_load_adapt
 **IMPORTANT:** All functions should return a `Promise` (or `Promise`-like objects).
 
 [In-memory example](Save-Load-Adapter-Example) for testing purposes.
+
+## Low-level API
+
+Content of charts and study templates can be directly accessed using widget's [save() / load() methods](Widget-Methods#savecallback) and [createStudyTemplate() / applyStudyTemplate() methods](Chart-Methods#createstudytemplateoptions).
+
+You are able to save the JSONs where you wish. For example, you may embed them to your saved pages or user's working area etc.
