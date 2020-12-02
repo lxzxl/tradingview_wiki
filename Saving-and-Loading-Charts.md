@@ -28,9 +28,9 @@ Study template is a set of applied indicators and their settings (inputs and sty
 
 # Saving of chart layouts and study templates
 
-Usually if your use cases assume using of drawings, you'll need to think about storing users' chart layouts. Enabling of study templates on the chart requires implementing a storage.
+Usually if your use cases assume the use of drawings, you'll need to think about storing users' chart layouts. Enabling study templates on the chart requires implementing a storage.
 It is recommended to store chart layouts on a server, unless you want the users to have the only one chart layout.
-In the case of one possible chart layout you can consider using of LocalStorage. Otherwise, you shouldn't use LocalStorage, because its size is limited.
+In the case of one possible chart layout you can consider using LocalStorage. Otherwise, you shouldn't use LocalStorage, because its size is limited.
 
 To simplify development of a storage for chart layouts and study templates, the library includes 3 layers:
 
@@ -40,7 +40,7 @@ To simplify development of a storage for chart layouts and study templates, the 
 
 ## Predefined REST API
 
-The library supports a predefined REST API to save chart layouts and study templates on your server. It sends requests in a certain format that is described below. We provide an example of the server-side storage that is a good point to start from.
+The library supports a predefined REST API to save chart layouts and study templates on your server. It sends requests in a certain format that is described below. We provide an example of server-side storage that is a good point to start from.
 
 ### Example of a storage
 
@@ -56,11 +56,11 @@ Here are a few steps for those who want to have their own chart storage:
     1. Go to you chart storage folder and run `pip install -r requirements.txt`
     1. Go to charting_library_charts folder and set up your database connection in settings.py (see `DATABASES` @ line #12). Please remember to create the appropriate database in your PostgreSQL.
     1. Run `python manage.py migrate` . This will create the database schema without any data.
-    1. Run `python manage.py runserver` to run a TEST instance of your database. Don't use the command above in production environment. Use some other program (i.e., Gunicorn).
+    1. Run `python manage.py runserver` to run a TEST instance of your database. Don't use the command above in the production environment. Use some other program (i.e., Gunicorn).
 1. Set up your Charting Library page: set `charts_storage_url = url-of-your-charts-storage`, also set `client_id` and `user_id` (see details below) in the widget constructor.
 1. Enjoy!
 
-**Remark**: Manual database filling/editing is not the intended usage. Please avoid doing this as you you may hurt the Django infrastructure.
+**Remark**: Manual database filling/editing is not the intended usage. Please avoid doing this as you may hurt the Django infrastructure.
 
 **Remark**: This example doesn't support an authorization so we do not recommend to use it without adding this layout of security in production.
 
@@ -188,7 +188,7 @@ We do not guarantee its stability. Also, note that we delete the data in the sto
 
 You are responsible for the charts that your users are able to see and load.
 A user can see/load charts that have the same `client_id` and `user_id` that the user has.
-`client_id` is an identifier of user's group.
+`client_id` is an identifier of the user's group.
 The intended use is when you have a few groups of users or when you have a few sites that use the same chart storage.
 So the common practice is to set `client_id = your-site's-URL`. It's up to you to decide.
 
