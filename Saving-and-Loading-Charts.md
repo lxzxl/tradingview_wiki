@@ -9,7 +9,7 @@
     - [Developing your own backend](#developing-your-own-backend)
     - [Using Demo Charts and Study Templates Storage](#using-demo-charts-and-study-templates-storage)
     - [Managing Access to Saved Charts](#managing-access-to-saved-charts)
-  - [API proxy methods](#api-proxy-methods)
+  - [API handlers](#api-handlers)
     - [Chart layouts](#chart-layouts)
     - [Study Templates](#study-templates)
   - [Low-level API](#low-level-api)
