@@ -1,32 +1,33 @@
-# Table of contents
+## Table of contents
 
 - [Overview](#overview)
   - [What is a chart layout](#what-is-a-chart-layout)
   - [What is a study template](#what-is-a-study-template)
 - [Saving of chart layouts and study templates](#saving-of-chart-layouts-and-study-templates)
-  - [Predefined REST API](#predefined-rest-api)
-    - [Example of a storage](#example-of-a-storage)
-    - [Developing your own backend](#developing-your-own-backend)
-    - [Using Demo Charts and Study Templates Storage](#using-demo-charts-and-study-templates-storage)
-    - [Managing Access to Saved Charts](#managing-access-to-saved-charts)
-  - [API handlers](#api-handlers)
-    - [Chart layouts](#chart-layouts)
-    - [Study Templates](#study-templates)
-  - [Low-level API](#low-level-api)
+- [Predefined REST API](#predefined-rest-api)
+  - [Example of a storage](#example-of-a-storage)
+  - [Developing your own backend](#developing-your-own-backend)
+  - [Using Demo Charts and Study Templates Storage](#using-demo-charts-and-study-templates-storage)
+  - [Managing Access to Saved Charts](#managing-access-to-saved-charts)
+- [API handlers](#api-handlers)
+  - [Chart layouts](#chart-layouts)
+  - [Study Templates](#study-templates)
+- [Low-level API](#low-level-api)
+- [Save charts automatically](#save-charts-automatically)
 
-# Overview
+## Overview
 
 From this article you will know how to save users' chart layouts and study templates and restore them when users get back.
 
-## What is a chart layout
+### What is a chart layout
 
 Chart layout is a group of charts (in Trading Terminal) or a single chart (in Charting Library). Chart layout content includes drawings, indicators and chart settings like colors, styles etc.
 
-## What is a study template
+### What is a study template
 
 Study template is a set of applied indicators and their settings (inputs and styles).
 
-# Saving of chart layouts and study templates
+## Saving of chart layouts and study templates
 
 Usually if your use cases assume the use of drawings, you'll need to think about storing users' chart layouts. Enabling study templates on the chart requires implementing a storage.
 It is recommended to store chart layouts on a server, unless you want the users to have the only one chart layout.
@@ -68,8 +69,8 @@ Here are a few steps for those who want to have their own chart storage:
 
 If you decided to develop your own storage that accepts predefined REST API requests, here is the description of the end-points that you'll need to implement.
 
-* Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id` for charts and `charts_storage_url/charts_storage_api_version/study_templates?client=client_id&user=user_id` for study templates. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
-* You should implement the processing of 4 requests: save / load / delete / list.
+- Charting Library sends HTTP/HTTPS commands to `charts_storage_url/charts_storage_api_version/charts?client=client_id&user=user_id` for charts and `charts_storage_url/charts_storage_api_version/study_templates?client=client_id&user=user_id` for study templates. `charts_storage_url`, `charts_storage_api_version`, `client_id` and `user_id` are the arguments of the [widget constructor](Widget-Constructor).
+- You should implement the processing of 4 requests: save / load / delete / list.
 
 #### LIST CHARTS
 
@@ -215,11 +216,11 @@ Prefer using the API handlers if you have your own back-end service that you can
     A function to get all saved charts.
 
     `ChartMetaInfo` is an object with the following fields:
-     * `id` - unique ID of the chart.
-     * `name` - name of the chart.
-     * `symbol` - symbol of the chart.
-     * `resolution` - resolution of the chart.
-     * `timestamp` - UNIX time when the chart was last modified.
+     - `id` - unique ID of the chart.
+     - `name` - name of the chart.
+     - `symbol` - symbol of the chart.
+     - `resolution` - resolution of the chart.
+     - `timestamp` - UNIX time when the chart was last modified.
 
  1. `removeChart(chartId): Promise<void>`
 
@@ -230,11 +231,11 @@ Prefer using the API handlers if you have your own back-end service that you can
      A function to save a chart.
 
     `ChartData` is an object with the following fields:
-     * `id` - unique ID of the chart (may be `undefined` if it wasn't saved before).
-     * `name` - name of the chart.
-     * `symbol` - symbol of the chart.
-     * `resolution` - resolution of the chart.
-     * `content` - content of the chart.
+     - `id` - unique ID of the chart (may be `undefined` if it wasn't saved before).
+     - `name` - name of the chart.
+     - `symbol` - symbol of the chart.
+     - `resolution` - resolution of the chart.
+     - `content` - content of the chart.
 
     `ChartId` - unique ID of the chart (string)
 
@@ -251,7 +252,7 @@ Prefer using the API handlers if you have your own back-end service that you can
      A function to get all saved study templates.
 
     `StudyTemplateMetaInfo` is an object with the following fields:
-     * `name` - name of the study template.
+     - `name` - name of the study template.
 
  1. `removeStudyTemplate(studyTemplateInfo: StudyTemplateMetaInfo): Promise<void>`
 
@@ -262,8 +263,8 @@ Prefer using the API handlers if you have your own back-end service that you can
      A function to save a study template.
 
     `StudyTemplateData` is an object with the following fields:
-     * `name` - name of the study template.
-     * `content` - content of the study template.
+     - `name` - name of the study template.
+     - `content` - content of the study template.
 
  1. `getStudyTemplateContent(studyTemplateInfo: StudyTemplateMetaInfo): Promise<string>`
 
@@ -282,3 +283,11 @@ Content of charts and study templates can be directly accessed using widget's [s
 You are able to save the JSONs where you wish. For example, you may embed them to your saved pages or user's working area etc.
 
 Commonly you might want to hide the save/load GUI elements if you use the Low-level API. You can disable [header_saveload featureset](Featuresets) to hide the save/load GUI elements from the header toolbar.
+
+## Save charts automatically
+
+You might want to automatically save chart layouts. Here are the steps to implement it:
+
+1. Set a [threshold delay](Widget-Constructor#auto_save_delay) in seconds that is used to reduce the number of onAutoSaveNeeded calls.
+1. Subscribe to [onAutoSaveNeeded](Widget-Methods#subscribeevent-callback).
+1. Call the [saveChartToServer](Widget-Methods#savecharttoserveroncompletecallback-onfailcallback-options) method.
