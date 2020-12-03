@@ -13,7 +13,9 @@
   - [Chart layouts](#chart-layouts)
   - [Study Templates](#study-templates)
 - [Low-level API](#low-level-api)
-- [Save charts automatically](#save-charts-automatically)
+- [Additional use cases](#additional-use-cases)
+  - [Saving charts automatically](#saving-charts-automatically)
+  - [Restoring last saved chart](#restoring-last-saved-chart)
 
 ## Overview
 
@@ -284,10 +286,16 @@ You are able to save the JSONs where you wish. For example, you may embed them t
 
 Commonly you might want to hide the save/load GUI elements if you use the Low-level API. You can disable [header_saveload featureset](Featuresets) to hide the save/load GUI elements from the header toolbar.
 
-## Save charts automatically
+## Additional use cases
+
+### Saving charts automatically
 
 You might want to automatically save chart layouts. Here are the steps to implement it:
 
 1. Set a [threshold delay](Widget-Constructor#auto_save_delay) in seconds that is used to reduce the number of onAutoSaveNeeded calls.
 1. Subscribe to [onAutoSaveNeeded](Widget-Methods#subscribeevent-callback).
 1. Call the [saveChartToServer](Widget-Methods#savecharttoserveroncompletecallback-onfailcallback-options) method.
+
+### Restoring last saved chart
+
+Usually users open an empty chart and load their chart layouts using the "Load Chart Layout..." dialog. But you may want to open the last saved chart layout on start. If you use the Low-level API, you can set the chart layout content to the [saved_data](Widget-Constructor#saved_data) field in the widget constructor. Otherwise, it is enough to assign `true` to the [load_last_chart](Widget-Constructor#load_last_chart) field.
