@@ -120,7 +120,7 @@ If no symbols are found, then callback should be called with an empty array. See
 1. `onResolveErrorCallback`: function(reason)
 1. `extension`: optional object with additional parameters. It has the following fields:
     1. `currencyCode`: string. It may be provided to indicate the currency for conversion if `currency_codes` configuration
-    field is set and `currency_code` is provided in the original symbol information.
+    field is set and `currency_code` is provided in the original symbol information. Read more about [currency conversion](Price-Scale#currency-conversion).
 
 Charting Library will call this function when it needs to get [SymbolInfo](Symbology#symbolinfo-structure) by symbol name.
 
