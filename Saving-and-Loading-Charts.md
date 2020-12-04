@@ -19,7 +19,7 @@
 
 ## Overview
 
-From this article you will know how to save users' chart layouts and study templates and restore them when users get back.
+From this article you will know how to save users' chart layouts and study templates, and restore them when users get back.
 
 ### What is a chart layout
 
@@ -31,15 +31,15 @@ Study template is a set of applied indicators and their settings (inputs and sty
 
 ## Saving of chart layouts and study templates
 
-Usually if your use cases assume the use of drawings, you'll need to think about storing users' chart layouts. Enabling study templates on the chart requires implementing a storage.
+Usually, if your use cases assume the use of drawings, you'll need to think about storing users' chart layouts. Enabling study templates on the chart requires implementing a storage.
 It is recommended to store chart layouts on a server, unless you want the users to have the only one chart layout.
 In the case of one possible chart layout you can consider using LocalStorage. Otherwise, you shouldn't use LocalStorage, because its size is limited.
 
 To simplify development of a storage for chart layouts and study templates, the library includes 3 layers:
 
-1. predefined REST API and a sample server-side storage in case you want to save chart layouts and study templates on a server and you don't have a general purpose storage that can be used for this
+1. Predefined REST API and a sample server-side storage in case you want to save chart layouts and study templates on a server and you don't have a general purpose storage that can be used for this
 1. API handlers allows you to add custom processing of save/load commands coming from GUI
-1. low-level API to get/set current chart layout / study templates content
+1. Low-level API to get/set current chart layout / study templates content
 
 ## Predefined REST API
 
