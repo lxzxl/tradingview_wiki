@@ -446,7 +446,7 @@ favorites: {
 
 ### save_load_adapter
 
-An object containing the save/load functions. It is used to customize the `Save` button behaviour. Please see details and example on [Saving and Loading Charts page](Saving-and-Loading-Charts#save_load_adapter).
+An object containing the save/load functions. It is used to implement a custom save/load algorithm. Please see details and an example on [Saving and Loading Charts page](Saving-and-Loading-Charts#api-handlers).
 
 ### settings_adapter
 
