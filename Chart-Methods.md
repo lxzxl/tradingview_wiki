@@ -69,6 +69,9 @@ Here is a list of methods supported by the chart.
   * [setZoomEnabled(enabled)](#setzoomenabledenabled)
   * [setScrollEnabled(enabled)](#setscrollenabledenabled)
   * [getTimeScale()](#gettimescale)
+  * [isSelectBarRequested()](#isselectbarrequested)
+  * [requestSelectBar()](#requestselectbar)
+  * [cancelSelectBar()](#cancelselectbar)
 
 ## Subscribing To Chart Events
 
@@ -1117,6 +1120,44 @@ Returns an instance of the [TimeScaleApi](Time-Scale-Api) with methods associate
 
 ```javascript
 var time = widget.activeChart().getTimeScale().coordinateToTime(100);
+```
+
+### isSelectBarRequested()
+
+*Starting from version 18.*
+
+Returns whether the bar selection mode is active or not.
+
+```javascript
+var isRequested = widget.activeChart().isSelectBarRequested();
+```
+
+### requestSelectBar()
+
+*Starting from version 18.*
+
+Switches the chart state to the bar selection mode. For example, it is used to start Bar Replay.
+
+Returns a Promise object, which will be resolved with a time (unix timestamp) of the bar selected by a user, or will be rejected if the bar selection was either already requested or cancelled (by a user action or by the [`cancelSelectBar()`](#cancelselectbar) method).
+
+```javascript
+widget.activeChart().requestSelectBar()
+    .then(function(time) {
+        console.log('user selects bar with time', time);
+    })
+    .catch(function() {
+        console.log('bar selection was rejected');
+    });
+```
+
+### cancelSelectBar()
+
+*Starting from version 18.*
+
+Cancels active select bar request if it exists, or do nothing otherwise.
+
+```javascript
+widget.activeChart().cancelSelectBar();
 ```
 
 ## See Also
