@@ -97,18 +97,17 @@ Account Summary table metainfo is an object with the following fields:
 
     Each row is an object. Keys of this object are column names with the corresponding values.
 
-    There is a predefined field `isTotalRow` which can be used to mark a row that should be at the bottom of a table.
+    There is a predefined field `isTotalRow` which can be used to mark a row that should be at the bottom of the table.
 
 1. `changeDelegate` : [Delegate](Delegate)
 
-    This delegate is used to watch the data changes and update the table. Pass new account manager data to `fire` method of the delegate.
+    This delegate is used to watch the data changes and update the table. Pass new account manager data row by row to the `fire` method of the delegate.
 
 1. `initialSorting`: [SortingParameters](#sortingparameters)
 
     Optional sorting of the table. If it is not set, the table is sorted by the first column.
 
-**NOTE**: if you have more than 1 row in a table and want to update a row using `changeDelegate` make sure that you have `id` field in each row to identify it.
-It is not necessary if you have only 1 row in a table.
+**NOTE**: if you have more than 1 row in a table and want to update a row using `changeDelegate` make sure that you have a unique `id` field in each row to identify it.
 
 #### SortingParameters
 
