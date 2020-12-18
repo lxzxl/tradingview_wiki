@@ -29,7 +29,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | control_bar                             | on            |                 | Relates to the navigation buttons at the bottom of the chart            |
 | timeframes_toolbar                      | on            |                 |                                                            |
 | legend_widget                           | on            |      1.15       | Disabling this feature hides the legend widget             |
-| always-display-legend-values            | off           |       18        |                                                            |
+| display_legend_on_all_charts            | off           |       18        | Display legend on all diagrams regardless of crosshair synchronization |
+| object_tree_legend_mode                 | on            |       18        | Display object tree button in the legend at a small width  |
 | **edit_buttons_in_legend**              | on            |                 |                                                            |
 | - show_hide_button_in_legend            | on            |       1.7       |                                                            |
 | - format_button_in_legend               | on            |       1.7       |                                                            |
