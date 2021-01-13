@@ -64,6 +64,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | pricescale_currency                     | on            | 16              | Displays the currency in which the instrument is traded on the price axes |
 | scales_date_format                      | on            | 17              | Displays Date Format selector in Chart Settings |
 | popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
+| save_shortcut                           | on            |       18        | Enables the save shortcut |
 
 ### Elements placement
 
