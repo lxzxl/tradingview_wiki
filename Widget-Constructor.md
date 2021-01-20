@@ -35,6 +35,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [studies_access](#studies_access)
   * [drawings_access](#drawings_access)
   * [saved_data](#saved_data)
+  * [saved_data_meta_info](#saved_data_meta_info)
   * [locale](#locale)
   * [numeric_formatting](#numeric_formatting)
   * [custom_formatters](#custom_formatters)
@@ -235,6 +236,14 @@ drawings_access: {
 ### saved_data
 
 JS object containing saved chart content. Use this parameter when creating the widget if you have a saved chart already. If you want to load the chart content when the chart is initialized then use [load() method](https://github.com/tradingview/charting_library/wiki/Widget-Methods#loadstate) of the widget.
+
+### saved_data_meta_info
+
+JS object containing saved chart content meta info. This object should have the following fields:
+
+* `uid`: unique integer identifier of the chart
+* `name`: saved chart name
+* `description`: saved chart description
 
 ### locale
 
