@@ -65,6 +65,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | scales_date_format                      | on            | 17              | Displays Date Format selector in Chart Settings |
 | popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
 | save_shortcut                           | on            |       18        | Enables the save shortcut |
+| show_right_widgets_panel_by_default     | on            |       18        | Opens right widget toolbar on first launch |
 
 ### Elements placement
 
