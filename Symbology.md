@@ -48,6 +48,10 @@ Optional type of the instrument.
 
 Trading hours for this symbol. See the [Trading Sessions](Trading-Sessions) article to learn more details.
 
+## session_display
+
+The session value to display in the UI. If not specified, then `session` is used.
+
 ## holidays
 
 List of holidays for this symbol. These dates are not displayed on the chart.
