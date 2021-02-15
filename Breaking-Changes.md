@@ -8,6 +8,8 @@ Here is the list of breaking changes:
 
 ## Version 18
 
+- Field `futures_regex` from [configurationData](JS-Api#onreadycallback) has been removed, please use [symbols_grouping](JS-Api#symbols_grouping) instead.
+
 **Trading Terminal**
 
 - `accountsList` and `account` have been removed from Account Manager Info. They have been replaced with methods `currentAccount`, `setCurrentAccount` and `accountsMetainfo` in broker's API.

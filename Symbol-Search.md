@@ -13,9 +13,9 @@ In case of JS API, you need to implement [searchSymbols](JS-Api#searchsymbolsuse
 The search window has predefined UI to filter symbols based on [symbol types](JS-Api#symbols_types) and [exchanges](JS-Api#exchanges).
 Both filters are optional. You can use any string as a symbol type.
 
-## Grouping of futures
+## Grouping of symbols
 
-The search window displays futures grouped by a root. To enable grouping you need to [provide a regular expression](JS-Api#futures_regex) to parse instrument names and set `futures` as a type.
+The search window displays symbols grouped by a root. To enable grouping you need to [provide a object with regular expressions](JS-Api#symbols_grouping) to parse instrument names.
 
 ## Hiding the Symbol Search
 

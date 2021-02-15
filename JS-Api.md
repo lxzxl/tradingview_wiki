@@ -78,11 +78,20 @@ Boolean showing whether your datafeed supports timescale marks or not.
 
 Set this one to `true` if your datafeed provides server time (unix time). It is used to adjust Countdown on the Price scale.
 
-#### futures_regex
+#### symbols_grouping
 
-Set it if you want to group futures in the symbol search. This REGEX should divide an instrument name into 2 parts: a root and an expiration.
+Set it if you want to group symbols in the symbol search. Represents an object where keys are symbol types and values ​​are regular expressions (each regular expression should divide an instrument name into 2 parts: a root and an expiration).
 
-Sample regex: : `/^(.+)([12]!|[FGHJKMNQUVXZ]\d{1,2})$/`. It will be applied to the instruments with `futures` as a `type`.
+Sample:
+
+```javascript
+    {
+      "futures": `/^(.+)([12]!|[FGHJKMNQUVXZ]\d{1,2})$/`,
+      "stock": `/^(.+)([12]!|[FGHJKMNQUVXZ]\d{1,2})$/`,
+    }
+```
+
+It will be applied to the instruments with `futures` and `stock` as a `type`.
 
 ### searchSymbols(userInput, exchange, symbolType, onResultReadyCallback)
 
