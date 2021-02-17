@@ -507,12 +507,14 @@ compare_symbols: [
 
 :chart: *applies to [Trading Terminal](Trading-Terminal) only*
 
-The object that contains settings for the widget panel on the right side of the chart. Watchlist, news and details widgets on the right side of the chart can be enabled using the `widgetbar` field in Widget constructor:
+The object that contains settings for the widget panel on the right side of the chart. Watchlist, news, details and data window widgets on the right side of the chart can be enabled using the `widgetbar` field in Widget constructor:
 
 ```javascript
 widgetbar: {
     details: true,
     watchlist: true,
+    news: true,
+    datawindow: true,
     watchlist_settings: {
         default_symbols: ["NYSE:AA", "NYSE:AAL", "NASDAQ:AAPL"],
         readonly: false
@@ -522,6 +524,8 @@ widgetbar: {
 
 * `details` (*default:* `false`): Enables details widget in the widget panel on the right.
 * `watchlist` (*default:* `false`): Enables watchlist widget in the widget panel on the right.
+* `news` (*default:* `false`): Enables news widget in the widget panel on the right.
+* `datawindow` (*default:* `false`): Enables data window widget in the widget panel on the right.
 * `watchlist_settings.default_symbols` (*default:* `[]`): Sets the list of default symbols for watchlist.
 * `watchlist_settings.readonly` (*default:* `false`): Enables read-only mode for the watchlist.
 
