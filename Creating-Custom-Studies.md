@@ -89,7 +89,7 @@ The instruction below explains how to display chart data as an indicator. Please
                 //    var symbol = "#EQUITY";
                 //    var symbol = PineJS.Std.ticker(this._context) + "#TEST";
                 var symbol = "<TICKER>";
-                this._context.new_sym(symbol, PineJS.Std.period(this._context), PineJS.Std.period(this._context));
+                this._context.new_sym(symbol, PineJS.Std.period(this._context));
             };
 
             this.main = function(context, inputCallback) {
@@ -203,7 +203,7 @@ Let's assume that you wish to display the equity curve on the chart. You will ha
             this._input = inputCallback;
 
             var symbol = "#EQUITY";
-            this._context.new_sym(symbol, PineJS.Std.period(this._context), PineJS.Std.period(this._context));
+            this._context.new_sym(symbol, PineJS.Std.period(this._context));
         };
 
         this.main = function(context, inputCallback) {

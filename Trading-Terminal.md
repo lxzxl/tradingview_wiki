@@ -16,7 +16,7 @@ You can trade right from the chart, and all you have to do to make this work is 
 
 ### Advanced Order Dialog
 
-Fully customizable order dialog allows to place Market/Limit/Stop/Stop Limit orders, enter Stop Loss and Take Profit prices,
+Fully customizable Order Dialog allows to place Market/Limit/Stop/Stop Limit orders, enter Stop Loss and Take Profit prices,
 choose expiration and calculate risks.
 
 ![images/tt_orderdialog.png](images/tt_orderdialog.png)

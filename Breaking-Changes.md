@@ -6,11 +6,57 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 19
+
+**Trading Terminal**
+
+- [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.
+
+- The return value of the method `buttonDropdownActions` in the [Trading Host](Trading-Host) has been changed from `BindPopupMenuActionDescription[]` to array of [ActionMetaInfo](Trading-Objects-and-Constants#ActionMetaInfo).
+
+- The `orderDialogOptions` object has been removed from the Broker's Configuration. Please use the `getOrderDialogOptions` method to customize the Order dialog.
+- The `className` field has been removed from the [Account Manager column description](Account-Manager#Column-description). Use the [alignment](Account-Manager#alignment) field to control the alignment of the cell value.
+- `force_session_rebuild` field in the symbol info has been removed
+
+- Count and type of [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback) arguments has been changed - `from`, `to` and `firstDataRequest` arguments have been combined into the `periodParams` object.
+    To quickly switch to the new version, you need to replace the following code
+
+    ```javascript
+        // ...
+
+        getBars(symbolInfo, resolution, from, to, onHistoryCallback, onErrorCallback, firstDataRequest) {
+            // your code here
+        }
+
+        // ...
+    ```
+
+     with the following code:
+
+    ```javascript
+        // ...
+
+        getBars(symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback) {
+            let { from, to, firstDataRequest } = periodParams;
+            // your code here
+        }
+
+        // ...
+    ```
+
+- The `to` date in [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback) is not inclusive from now. The `from` date is still inclusive. It means that you don't need to include bars with `time == to` in the response.
+
+- Arguments of `ctx.new_sym` method in custom indicators have been changed and now you don't need to pass the third argument (it might break the indicator).
+    To quickly fix this up, find all use cases for the `new_sym` method and make sure that only 2 arguments are passed to it (instead of three or more).
+    For example, if you previously had `ctx.new_sym(newSym, PineJS.Std.period(this._context), PineJS.Std.period(this._context))`, you need to replace it with `ctx.new_sym(newSym, PineJS.Std.period(this._context))`.
+
 ## Version 18
 
 - Field `futures_regex` from [configurationData](JS-Api#onreadycallback) has been removed, please use [symbols_grouping](JS-Api#symbols_grouping) instead.
 
 **Trading Terminal**
+
+- `contextMenuEvent` type in `contextMenuActions` in `AccountManagerInfo` interface has been changed from JQueryEventObject to MouseEvent.
 
 - `accountsList` and `account` have been removed from Account Manager Info. They have been replaced with methods `currentAccount`, `setCurrentAccount` and `accountsMetainfo` in broker's API.
 
@@ -21,6 +67,8 @@ Here is the list of breaking changes:
 - [Trading Host](Trading-Host) method `floatingTradingPanelVisibility` has been renamed to `sellBuyButtonsVisibility`.
 
 - [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Option `showFloatingToolbar` has been renamed to `showSellBuyButtons`.
+
+- Flag `supportOrderPreview` has been renamed to `supportPlaceOrderPreview`.
 
 - Method [setPoints](Shape-Api#setpointspoints) now behaves the same way as [createMultipointShape](Chart-Methods#createmultipointshapepoints-options) for all tools. Previously it could change some other properties like width instead on moving points to their new places.
 
@@ -71,7 +119,7 @@ We've changed the broker's interaction flow. Please read the following carefully
 Till now the Trading Terminal called broker adapter's methods (e.g. `placeOrder`, `modifyOrder`) when user clicked on Buy/Sell/Modify buttons. When calling these methods the Trading Terminal passed a `silently` argument. When `silently` was set to `true`, the broker adapter could send an order without showing the dialog. When it was set to `false`, the broker adapter had to invoke a method from the `host` to show the order ticket (or the Edit Position dialog).
 
 Starting from 1.15 the Trading Terminal shows all dialogs by itself and invokes broker adapter's methods to send an order or a position to the broker's server. The reason for this change is that we've added an order panel that can be used to place an order at any time.
-If you use your own order dialog then you still need to make changes in your broker adapter's methods, but additionally you need to use `metainfo` to pass the dialog constructor to the Trading Terminal.
+If you use your own Order dialog then you still need to make changes in your broker adapter's methods, but additionally you need to use `metainfo` to pass the dialog constructor to the Trading Terminal.
 
 - Argument `silently` was removed from `placeOrder`, `modifyOrder`, `reversePosition`, `closePosition`, `closeTrade`, `cancelOrder`, `cancelOrders` methods of the [Broker API](Broker-API).
 

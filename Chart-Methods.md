@@ -10,6 +10,7 @@ Here is a list of methods supported by the chart.
   * [onDataLoaded()](#ondataloaded)
   * [onSymbolChanged()](#onsymbolchanged)
   * [onIntervalChanged()](#onintervalchanged)
+  * [onChartTypeChanged()](#oncharttypechanged)
   * [dataReady(callback)](#datareadycallback)
   * [crossHairMoved(callback)](#crosshairmovedcallback)
   * [onVisibleRangeChanged()](#onvisiblerangechanged)
@@ -96,7 +97,7 @@ You can subscribe using [Subscription](Subscription) object returned by this fun
 Example:
 
 ```javascript
-widget.activeChart().onSymbolChanged().subscribe(null, () => console.log('The symbol is changed');
+widget.activeChart().onSymbolChanged().subscribe(null, () => console.log('The symbol is changed'));
 ```
 
 ### onIntervalChanged()
@@ -127,6 +128,17 @@ widget.activeChart().onIntervalChanged().subscribe(null, (interval, timeframeObj
 widget.activeChart().onIntervalChanged().subscribe(null,
     (interval, timeframeObj) => timeframeObj.timeframe = { from: new Date('2015-01-01').getTime() / 1000, to: new Date('2017-01-01').getTime() / 1000, type: "time-range" }
 );
+```
+
+### onChartTypeChanged()
+
+You can subscribe using [Subscription](Subscription) object returned by this function to be notified when the chart type is changed. You can also use the same object to unsubscribe from the event.
+When the event is fired it will provide the `chartType` argument, possible values are described [here](#setcharttypetype).
+
+Example:
+
+```javascript
+widget.activeChart().onChartTypeChanged().subscribe(null, (chartType) => console.log('The type of chart is changed'));
 ```
 
 ### dataReady()
@@ -753,6 +765,7 @@ Modify Tooltip|String|String|""
 Cancel Tooltip|String|String|""
 Quantity|String|String|""
 Editable|Boolean|Boolean|true
+Cancellable|Boolean|Boolean|true
 
 **Horizontal line properties**:
 

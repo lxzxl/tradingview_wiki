@@ -15,10 +15,9 @@ The Charting Library caches historical data on its own. You don't need to implem
 1. [onReady](#onreadycallback)
 1. [searchSymbols](#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback)
 1. [resolveSymbol](#resolvesymbolsymbolname-onsymbolresolvedcallback-onresolveerrorcallback-extension)
-1. [getBars](#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest)
+1. [getBars](#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback)
 1. [subscribeBars](#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback)
 1. [unsubscribeBars](#unsubscribebarssubscriberuid)
-1. [calculateHistoryDepth](#calculatehistorydepthresolution-resolutionback-intervalback)
 1. [getMarks](#getmarkssymbolinfo-from-to-ondatacallback-resolution)
 1. [getTimescaleMarks](#gettimescalemarkssymbolinfo-from-to-ondatacallback-resolution)
 1. [getServerTime](#getservertimecallback)
@@ -133,18 +132,20 @@ If no symbols are found, then callback should be called with an empty array. See
 
 Charting Library will call this function when it needs to get [SymbolInfo](Symbology#symbolinfo-structure) by symbol name.
 
-### getBars(symbolInfo, resolution, from, to, onHistoryCallback, onErrorCallback, firstDataRequest)
+### getBars(symbolInfo, resolution, periodParams, onHistoryCallback, onErrorCallback)
 
 1. `symbolInfo`: [SymbolInfo](Symbology#symbolinfo-structure) object
 1. `resolution`: string
-1. `from`: unix timestamp, leftmost required bar time
-1. `to`: unix timestamp, rightmost required bar time
+1. `periodParams`: object with the following fields:
+    1. `from` - unix timestamp, leftmost required bar time (inclusive end)
+    1. `countBack` - the exact amount of bars to load, should be considered a higher priority than `from` if your datafeed supports it (see below). It may not be specified if the user requests a specific time period.
+    1. `to`: unix timestamp, rightmost required bar time (not inclusive)
+    1. `firstDataRequest`: boolean to identify the first call of this method.
+        When it is set to `true` you can ignore `to` (which depends on browser's `Date.now()`) and return bars up to the latest bar.
 1. `onHistoryCallback`: callback function for historical data. It should be called **just once**. This function has 2 arguments:
     1. Array of `bars`. See below.
     1. `Meta information`: See below.
 1. `onErrorCallback`: callback function for errors. The only argument of this function is a text error message. This message is not displayed and is reserved for the future.
-1. `firstDataRequest`: boolean to identify the first call of this method.
-    When it is set to `true` you can ignore `to` (which depends on browser's `Date.now()`) and return bars up to the latest bar.
 
 This function is called when the chart needs a history fragment defined by dates range.
 
@@ -161,6 +162,22 @@ This function is called when the chart needs a history fragment defined by dates
 
 1. `noData`: boolean. This flag should be set if there is no data in the requested period.
 1. `nextTime`: unix timestamp (UTC). Time of the next bar in the history. It should be set if the requested period represents a gap in the data. Hence there is available data prior to the requested period.
+
+#### Note about `periodParams`
+
+Since 18 version the library provides `countBack` parameter, that could be used to improve data load performance.
+
+`from` parameter was and remains inaccurate, since it does not fully take into account the trading session of the symbol. The reason for an inaccurate calculation is speed (an accurate calculation has a linear time complexity, and an inaccurate calculation has a constant complexity).
+
+`countBack` the minimum number of bars that the chart needs (it can be slightly larger) to fill the visible range (except for Japanese charts), and along with the `to` date (which is the date of the last loaded bar), you can easily provide required data in just one request.
+
+If your data provider can return the exact amount of bars, it is preferable to use `countBack` over the `from` date for greater efficiency:
+
+    - Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
+        If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
+
+    - Example 2: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
+        If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
 
 ### subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback)
 
@@ -192,42 +209,6 @@ You'll get an error if you call this function when trying to update a historical
 1. `subscriberUID`: object
 
 Charting Library calls this function when it doesn't want to receive updates for this subscriber any more. `subscriberUID` will be the same object that Library passed to `subscribeBars` before.
-
-### calculateHistoryDepth(resolution, resolutionBack, intervalBack)
-
-*Optional.*
-
-1. `resolution`: requested symbol resolution
-1. `resolutionBack`: time period types. Supported values are: `D` | `M`
-1. `intervalBack`: amount of `resolutionBack` periods that the Charting Library is going to request
-
-Charting Library calls this function when it is going to request some historical data to give you an ability to override the amount of bars requested.
-
-It passes some arguments so that you are aware of the amount of bars it's going to get. Here are some examples:
-
-* `calculateHistoryDepth("D", "M", 12)` called: the Library is going to request 12 months of daily bars
-* `calculateHistoryDepth("60", "D", 15)` called: the Library is going to request 15 days of hourly bars
-
-This function should return `undefined` if you do not wish to override anything.
-If you do, it should return an object `{resolutionBack, intervalBack}`.
-
-Example:
-
-Let's assume that the implementation is as follows
-
-```javascript
-Datafeed.prototype.calculateHistoryDepth = function(resolution, resolutionBack, intervalBack) {
-    if (resolution === "1D") {
-        return {
-            resolutionBack: 'M',
-            intervalBack: 6
-        };
-    }
-}
-```
-
-When the Charting Library requests the data for `1D` resolution, the history will be 6 months deep.
-In all other cases the history depth will have the default value.
 
 ### getMarks(symbolInfo, from, to, onDataCallback, resolution)
 

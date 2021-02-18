@@ -32,7 +32,7 @@ This method is called by the Trading Terminal to request [trades](Trading-Object
 
 - `e` is a context object passed by a browser
 
-Chart can have a sub-menu `Trading` in the context menu. This method should return an array of [ActionMetainfo](Trading-Objects-and-Constants#actionmetainfo) elements, each of them representing one context menu item.
+Chart can have a sub-menu `Trading` in the context menu. This method should return an array of [ActionMetaInfo](Trading-Objects-and-Constants#actionmetainfo) elements, each of them representing one context menu item.
 
 ### connectionStatus()
 
@@ -50,7 +50,7 @@ ConnectionStatus.Error = 4
 
 This function is required for the Floating Trading Panel. The ability to trade via the panel depends on the result of this function: `true` or `false`. You don't need to implement this method if all symbols can be traded.
 
-If you want to show a custom message with the reason why the symbol cannot be traded then you can return an object `IsTradableResult`. It has the following keys: tradable (`true` or `false`), solutions(`TradableSolutions`), reason (`string`) and shortReason(`string`). Reason is displayed in the order ticket while the shortReason is displayed in the legend.
+If you want to show a custom message with the reason why the symbol cannot be traded then you can return an object `IsTradableResult`. It has the following keys: tradable (`true` or `false`), solutions(`TradableSolutions`), reason (`string`) and shortReason(`string`). Reason is displayed in the Order dialog while the shortReason is displayed in the legend.
 
 `TradableSolutions` has one of the following keys:
 
@@ -60,18 +60,18 @@ If you want to show a custom message with the reason why the symbol cannot be tr
 
 ### accountManagerInfo()
 
-This function should return the information that will be used to build an account manager.
-See [Account Manager](Account-Manager) for more information.
+This function should return the information that will be used to build an Account manager.
+See [Account manager](Account-Manager) for more information.
 
 ### placeOrder([order](Trading-Objects-and-Constants#order), confirmId)
 
 Method is called when a user wants to place an order. Order is pre-filled with partial or complete information.
 
-`confirmId` is passed if `supportOrderPreview` configuration flag is on.
+`confirmId` is passed if `supportPlaceOrderPreview` configuration flag is on.
 
 ### previewOrder([order](Trading-Objects-and-Constants#order))
 
-Returns estimated commission, fees, margin and other information for the order without it actually being placed. The method is called if `supportOrderPreview` configuration flag is on.
+Returns estimated commission, fees, margin and other information for the order without it actually being placed. The method is called if `supportPlaceOrderPreview` configuration flag is on.
 The result will be an object with the following fields:
 
 - `confirmId` - a unique identifier that should be passed to `placeOrder` method
@@ -82,6 +82,8 @@ The result will be an object with the following fields:
 1. `order` is an order object to modify
 
 Method is called when a user wants to modify an existing order.
+
+`confirmId` is passed if `supportModifyOrderPreview` configuration flag is on.
 
 ### cancelOrder(orderId)
 
@@ -130,7 +132,7 @@ The amount is specified if `supportPartialCloseTrade` is `true` and the user wan
 
 1. `symbol` - symbol string
 
-This method is called by the internal Order Dialog, DOM panel and floating trading panel to get symbol information.
+This method is called by the internal Order dialog, DOM panel and floating trading panel to get symbol information.
 
 The result is an object with the following data:
 
@@ -139,13 +141,13 @@ The result is an object with the following data:
 - `pipValue` - value of 1 pip for the instrument in the account currency.
 - `minTick` - minimal price change (e.g., 0.00001 for EURUSD). Used for price fields.
 - `description` - a description to be displayed in the dialog.
-- `type` - instrument type, only `forex` matters - it enables negative pips. You can check that in the order dialog.
+- `type` - instrument type, only `forex` matters - it enables negative pips. You can check that in the Order dialog.
 - `domVolumePrecision` - number of decimal places of DOM asks/bids volume (optional, 0 by default).
 - `marginRate` - the margin requirement for the instrument. A 3% margin rate should be represented as 0.03.
 - `stopPriceStep` - minimal price change for stop price field of the Stop and Stop Limit order. If set it will override the minTick value.
 - `limitPriceStep` - minimal price change for limit price field of the Limit and Stop Limit order. If set it will override the minTick value.
-- `allowedDurations` - array of strings with valid duration values. You can check that in the order dialog.
-- `currency` - instrument currency that is displayed in the order ticket
+- `allowedDurations` - array of strings with valid duration values. You can check that in the Order dialog.
+- `currency` - instrument currency that is displayed in the Order dialog
 - `baseCurrency` - the first currency quoted in a currency pair. Used for crypto currencies only.
 - `quoteCurrency` - the second currency quoted in a currency pair. Used for crypto currencies only.
 
@@ -171,39 +173,90 @@ This method is called to change current account. If the account is changed synch
 
 ### subscribeEquity()
 
-The method should be implemented if you use the standard order dialog and support stop loss. Equity is used to calculate Risk in Percent.
+The method should be implemented if you use the standard Order dialog and support stop loss. Equity is used to calculate Risk in Percent.
 
 Once this method is called the broker should provide equity (Balance + P/L) updates via [equityUpdate](Trading-Host#equityupdateequity) method.
 
 ### unsubscribeEquity()
 
-The method should be implemented if you use the standard order dialog and support stop loss.
+The method should be implemented if you use the standard Order dialog and support stop loss.
 
 Once this method is called the broker should stop providing equity updates.
 
 ### subscribeMarginAvailable()
 
-The method should be implemented if you use the standard order dialog and want to show the margin meter.
+The method should be implemented if you use the standard Order dialog and want to show the margin meter.
 
 Once this method is called the broker should provide margin available updates via [marginAvailableUpdate](Trading-Host#marginavailableupdatemarginavailable) method.
 
 ### unsubscribeMarginAvailable()
 
-The method should be implemented if you use the standard order dialog want to show the margin meter.
+The method should be implemented if you use the standard Order dialog want to show the margin meter.
 
 Once this method is called the broker should stop providing margin available updates.
 
 ### subscribePipValue()
 
-The method should be implemented if you use a standard order dialog. `pipValues` is displayed in the Order info and it is used to calculate the Trade Value and risks. If this method is not implemented then `pipValue` from the `symbolInfo` is used in the order panel/dialog.
+The method should be implemented if you use a standard Order dialog. `pipValues` is displayed in the Order info and it is used to calculate the Trade Value and risks. If this method is not implemented then `pipValue` from the `symbolInfo` is used in the order panel/dialog.
 
 Once this method is called the broker should provide `pipValue` updates via [pipValueUpdate](Trading-Host#pipvalueupdatesymbol-pipValues) method.
 
 ### unsubscribePipValue()
 
-The method should be implemented if you use a standard order dialog and implement `subscribePipValue`.
+The method should be implemented if you use a standard Order dialog and implement `subscribePipValue`.
 
 Once this method is called the broker should stop providing `pipValue` updates.
+
+## Optional methods
+
+### getOrderDialogOptions(symbol): OrderDialogOptions
+
+1. `symbol` - symbol string.
+
+The method can be implemented if you use the standard Order dialog and want to customize it.
+
+Use the `symbol` parameter to return customization options for a particular symbol.
+
+The result is an object with options for the Order dialog:
+
+- `showTotal`: boolean
+
+    Using this flag you can change `Trade Value` to `Total` in the Order Info section of the Order dialog.
+
+- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+
+    Using `customFields` you can add additional input fields to the Order dialog.
+
+Example:
+
+```javascript
+customFields: [
+    {
+        inputType: 'TextWithCheckBox',
+        id: '2410',
+        title: 'Digital Signature',
+        placeHolder: 'Enter your personal digital signature',
+        value: {
+            text: '',
+            checked: false,
+        },
+        customInfo: {
+            asterix: true,
+            checkboxTitle: 'Save',
+        },
+    }
+]
+```
+
+### getPositionDialogOptions(): PositionDialogOptions
+
+The method can be implemented if you want to customize the position dialog.
+
+The result is an object with options for the position dialog.
+
+- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+
+    Using `customFields` you can add additional input fields to the position dialog.
 
 ## See Also
 

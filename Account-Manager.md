@@ -138,18 +138,14 @@ The most valuable part of Account Manager description is a description of its co
 
 Column title. It will be displayed in the table's header row.
 
-### className
+### alignment
 
-Optional `className` is added to the html tag of each value cell.
-You can use it to customize table's style.
+Horizontal alignment of the cell value. The default value is `left`.
 
-Here is a list of predefined classes:
-
-| class name   |   description  |
+| alignment    |   description  |
 |--------------|----------------|
-| `tv-data-table__cell--symbol-cell` | Special formatter for a symbol field |
-| `tv-data-table__cell--right-align` | It aligns cell value to the right |
-| `tv-data-table__cell--buttons-cell` | Cell with a buttons |
+| left         | It aligns the cell value to the left |
+| right        | It aligns the cell value to the right |
 
 ### formatter
 
@@ -160,21 +156,23 @@ Here is the list of default formatters:
 
 | name | description |
 | ---- | ----------- |
-| `symbol` | It is used for a symbol field. It displays `brokerSymbol`, but when you click on a symbol the chart changes according to the `symbol` field. `property` key is ignored.|
-| `side` | It is used to display the side: Sell or Buy. |
-| `type` | It is used to display the type of order: Limit/Stop/StopLimit/Market. |
-| `formatPrice` | Symbol price formatting. |
+| `date` | Displays the date or time. |
+| `dateOrDateTime` | Displays the date or date and time. This formatter accepts an object `{value: number, hasTime: boolean}`. If `hasTime` is set to `true` then the date and time are displayed. Otherwise only the date is displayed.|
+| `fixed` | Displays a number with 2 decimal places. |
+| `formatPrice` | Displays symbol's price. |
 | `formatQuantity` | Displays an integer or floating point quantity, separates thousands groups with a space. |
 | `formatPriceForexSup` | The same as `formatPrice`, but it makes the last character of the price superscripted. It works only if instrument type is set to `forex`.|
-| `status` | It is used to format the `status`. |
-| `date` | Displays the date or time. |
 | `localDate` | Displays the local date or time. |
-| `dateOrDateTime` | Displays the date or date and time. This formatter accepts an object `{value: number, hasTime: boolean}`. If `hasTime` is set to `true` then the date and time are displayed. Otherwise only the date is displayed.|
 | `localDateOrDateTime` | The same as `dateOrDateTime`, but it displays time in the local timezone. |
-| `fixed` | Displays a number with 2 decimal places. |
-| `variablePrecision` | Displays a number with variable precision. |
 | `pips` | Displays a number with 1 decimal place. |
 | `profit` | Displays profit. It also adds the `+` sign, separates thousands and changes the cell text color to red or green. |
+| `side` | It is used to display the side: Sell or Buy. |
+| `status` | It is used to format the `status`. |
+| `symbol` | It is used for a symbol field. It displays `brokerSymbol`, but when you click on a symbol the chart changes according to the `symbol` field. `property` key is ignored.|
+| `text` | Displays a text value. |
+| `textNoWrap` | Displays a text value without word wrapping. |
+| `type` | It is used to display the type of order: Limit/Stop/StopLimit/Market. |
+| `variablePrecision` | Displays a number with variable precision. |
 
 There are some special formatters that are used to add buttons to the table:
 
@@ -212,6 +210,10 @@ Optional `notSortable` can be set to prevent column sorting.
 
 If it is `true` then the column width will not be changed when the cell value is decreased.
 
+### showOnMobile
+
+If it is `false` then the column will not be shown on mobile.
+
 ### supportedStatusFilters
 
 An optional numeric array of order statuses that is applied to order columns only. If it is available then the column will be displayed in the specified tabs of the status filter only.
@@ -227,11 +229,11 @@ Here is the list of possible order statuses:
 
 ## Context Menu
 
-### contextMenuActions(e, activePageItems)
+### contextMenuActions(contextMenuEvent, activePageActions)
 
-`e`: context object passed by a browser
+`contextMenuEvent`: MouseEvent object passed by a browser
 
-`activePageItems`: array of `ActionMetainfo` items for the current page
+`activePageActions`: array of `ActionMetaInfo` items for the current page
 
 Optional function to create a custom context menu.
-It should return `Promise` that is resolved with an array of `ActionMetainfo`.
+It should return `Promise` that is resolved with an array of `ActionMetaInfo`.

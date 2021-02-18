@@ -135,6 +135,14 @@ You can create more than 50 different shapes using [createMultipointShape(points
 |--------------|---------|---------|----------|------|
 | bars_pattern | #5091CC | FALSE   | FALSE    | 0    |
 
+| shape       | color     |
+|-------------|-----------|
+| highlighter | #ec407a26 |
+
+| shape      | showLabel  | horzLabelsAlign | vertLabelsAlign | textcolor | fontsize | bold  | italic |
+|------------|------------|-----------------|-----------------|-----------|----------|------ |--------|
+| price_note | FALSE      | center          | bottom          | #2196f3   | 14       | FALSE | FALSE  |
+
 Possible values of some properties:
 
 * `linestyle`: `[0 (solid), 1 (dotted), 2 (dashed), 3 (large dashed)]`

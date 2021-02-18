@@ -9,7 +9,7 @@ Trading Host is an API for interaction between [Broker API](Broker-API) and the 
 1. `order` to be placed or modified
 1. `focus` - [Focus constant](Trading-Objects-and-Constants#orderticketfocuscontrol).
 
-Shows standard order dialog to create or modify an order and executes handler if Buy/Sell/Modify is pressed.
+Shows standard Order Dialog to create or modify an order and executes handler if Buy/Sell/Modify is pressed.
 
 ### showCancelOrderDialog(orderId, handler) : Promise
 
@@ -124,7 +124,7 @@ It is to synchronize quantity in the Floating Trading Panel and in the dialogs.
 
 Bottom Trading Panel has a button with a list of dropdown items. This method can be used to replace existing items.
 
-1. `actions` is an array of [ActionMetainfo](Trading-Objects-and-Constants#actionmetainfo), each of them representing one dropdown item.
+1. `actions` is an array of [ActionMetaInfo](Trading-Objects-and-Constants#actionmetainfo), each of them representing one dropdown item.
 
 ### defaultContextMenuActions()
 
@@ -137,8 +137,6 @@ You can add/remove default action from the result using `options`:
 
 1. `showSellBuyButtons`: boolean;
 1. `tradingProperties`: boolean;
-1. `selectAnotherBroker`: boolean;
-1. `disconnect`: boolean;
 1. `showDOM`: boolean;
 1. `showOrderPanel`: boolean;
 
@@ -178,15 +176,15 @@ Call this method when a broker connection has received a PL update. This method 
 
 ### equityUpdate(equity)
 
-Call this method when a broker connection has received an equity update. This method is required by the standard order dialog to calculate risks.
+Call this method when a broker connection has received an equity update. This method is required by the standard Order Dialog to calculate risks.
 
 ### marginAvailableUpdate(marginAvailable)
 
-Call this method when a broker connection has received a margin available update. This method is required by the standard order dialog to display the margin meter. This method should be used when `supportMargin` flag is set in `configFlags`. The Trading Terminal subscribes to margin available updates using [subscribeMarginAvailable](Broker-API#subscribemarginavailable).
+Call this method when a broker connection has received a margin available update. This method is required by the standard Order Dialog to display the margin meter. This method should be used when `supportMargin` flag is set in `configFlags`. The Trading Terminal subscribes to margin available updates using [subscribeMarginAvailable](Broker-API#subscribemarginavailable).
 
 ### cryptoBalanceUpdate(balance)
 
-Call this method when a broker connection has received a balance update. This method is required by the crypto order dialog. It should be implemented when `supportBalances` flag is set in `configFlags`.
+Call this method when a broker connection has received a balance update. This method is required by the crypto Order Dialog. It should be implemented when `supportBalances` flag is set in `configFlags`.
 
 ### tradeUpdate ([trade](Trading-Objects-and-Constants#trade))
 

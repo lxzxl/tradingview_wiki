@@ -241,14 +241,14 @@ Supported resolutions affect available timeframes too. The timeframe will not be
 *Default:* `[]`
 
 Array of resolutions (in minutes) supported directly by the data feed.
-Each such resolution may be passed to, and should be implemented by, [getBars](JS-Api#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest).
+Each such resolution may be passed to, and should be implemented by, [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback).
 The default of `[]` means that the data feed supports aggregating by any number of minutes.
 
-If the data feed only supports certain minute resolutions but not the requested resolution, [getBars](JS-Api#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest) will be called (repeatedly if needed) with a higher resolution as a parameter, in order to build the requested resolution.
+If the data feed only supports certain minute resolutions but not the requested resolution, [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback) will be called (repeatedly if needed) with a higher resolution as a parameter, in order to build the requested resolution.
 
 For example, if the data feed only supports minute resolution, set `intraday_multipliers` to `['1']`.
 
-When the user wants to see 5-minute data, [getBars](JS-Api#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest) will be called with the resolution set to 1 until the library builds all the 5-minute resolution by itself.
+When the user wants to see 5-minute data, [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback) will be called with the resolution set to 1 until the library builds all the 5-minute resolution by itself.
 
 ## has_seconds
 
@@ -267,6 +267,14 @@ If it is set to `true`, all resolutions that are supplied directly by the data f
 It is an array containing resolutions that include seconds (excluding postfix) that the data feed provides.
 
 E.g., if the data feed supports resolutions such as `["1S", "5S", "15S"]`, but has 1-second bars for some symbols then you should set `seconds_multipliers` of this symbol to `[1]`. This will make Charting Library build 5S and 15S resolutions by itself.
+
+## has_ticks
+
+*Default:* `false`
+
+Boolean value showing whether the symbol includes ticks in the historical data.
+
+If it's `false` then all buttons for resolutions that include ticks will be disabled for this particular symbol.
 
 ## has_daily
 
@@ -293,16 +301,6 @@ The boolean value showing whether the library should generate empty bars in the 
 I.e., if your session is `0900-1600` and your data has gaps between `11:00` and `12:00` and your `has_empty_bars` is `true`, then the Library will fill the gaps with bars for this time.
 
 Flag `has_emtpy_bars` = `true` cannot be used if featureset `disable_resolution_rebuild` is enabled.
-
-## force_session_rebuild
-
-*Default:* `true`
-
-The boolean value showing whether the library should filter bars using the current trading session.
-
-If `false`, bars will be filtered only when the library builds data from another resolution or if `has_empty_bars` was set to `true`.
-
-If `true`, then the Library will remove bars that don't belong to the trading session from your data.
 
 ## has_no_volume
 

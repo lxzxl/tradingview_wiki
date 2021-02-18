@@ -85,7 +85,7 @@ Please read [Symbology](Symbology) thoroughly. Most of errors with data happen b
 </summary><p>
 
 Specifically for this purpose, there is a flag that can be added to the responses from your server that tells the library that there is no more data on the server.
-It is called `no_data` for [UDF](UDF#bars) and `noData` for [JS API](JS-Api#getbarssymbolinfo-resolution-from-to-onhistorycallback-onerrorcallback-firstdatarequest)
+It is called `no_data` for [UDF](UDF#bars) and `noData` for [JS API](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback)
 
 </details>
 

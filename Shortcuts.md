@@ -9,8 +9,8 @@
 | Save Chart Layout | Ctrl + s |
 | Undo | Ctrl + z |
 | Redo | Ctrl + y |
-| Change symbol | Double-Shift |
-| Change Interval | , |
+| Change symbol | Symbol |
+| Change Interval | Number or , |
 | Move chart 1 bar to the left | ⇦ |
 | Move chart 1 bar to the right | ⇨ |
 | Move further to the left | Ctrl + ⇦ |
@@ -36,9 +36,14 @@
 | Copy selected object | Ctrl + c |
 | Paste object | Ctrl + v |
 | Temporary turn on/off magnet mode | Ctrl + Move a point |
-| Clone a drawing tool | Ctrl + Drag |
+| Hide all drawings | Ctrl + Alt + h |
+| Clone a drawing | Ctrl + Drag |
 | Drawings multiselect | Hold Ctrl + Click |
-| Move a drawing tool horizontally or vertically | Drag + Shift |
+| Move a drawing horizontally or vertically | Drag + Shift |
+| Move selected drawing left | ⇦ |
+| Move selected drawing right | ⇨ |
+| Move selected drawing up | ⇧ |
+| Move selected drawing down | ⇩ |
 | Trend line | Alt + t |
 | Horizontal line | Alt + h |
 | Vertical line | Alt + v |

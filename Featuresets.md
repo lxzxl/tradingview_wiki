@@ -118,6 +118,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_templates | off | |
 | datasource_copypaste | on | | Enables copying of drawings and studies
 | seconds_resolution| off | 1.4 | Enables the support of resolutions that start from 1 second
+| tick_resolution | off | 18 | Enables the support of tick resolution
 
 ## :chart: Trading Terminal
 
@@ -137,7 +138,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | right_toolbar | on | 17 | Shows the right buttons toolbar
 | order_panel | on | 17 | Shows the Order Panel
 | order_info | on | 17 | Shows the Order info section in the Order dialog
-| buy_sell_buttons | on | 18 | Shows the Buy/Sell Buttons in Legend
+| **buy_sell_buttons** | on | 18 | Shows the Buy/Sell Buttons in Legend
+| - broker_button | on | 19 | Shows the Broker Button in Legend
 | show_order_panel_on_start | off | 17 | Order Panel is visible when the chart opens
 | order_panel_close_button | on | 17 | Shows close Order Panel button
 | order_panel_undock | on | 17 | Shows the Undock button in the Order Panel Settings

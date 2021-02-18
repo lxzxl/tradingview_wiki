@@ -152,14 +152,15 @@ A response is expected to be an array of symbol objects as in [respective JS API
 
 ### Bars
 
-Request: `GET /history?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timestamp>&resolution=<resolution>`
+Request: `GET /history?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timestamp>&resolution=<resolution>&countback=<countback>`
 
 * `symbol`: symbol name or ticker.
 * `from`: unix timestamp (UTC) of leftmost required bar
-* `to`: unix timestamp (UTC) of rightmost required bar
+* `to`: unix timestamp (UTC) of rightmost required bar (not inclusive)
 * `resolution`: string
+* `countback`: number of bars (higher priority than `from`) starting with `to`. If `countback` is set, `from` should be ignored.
 
-Example: `GET /history?symbol=BEAM~0&resolution=D&from=1386493512&to=1395133512`
+Example: `GET /history?symbol=BEAM~0&resolution=D&from=1386493512&to=1395133512&countback=500`
 
 A response is expected to be an object with some properties listed below. Each property is treated as a table column, as described above.
 
@@ -177,38 +178,41 @@ A response is expected to be an object with some properties listed below. Each p
 
 1. Bar time for daily bars should be 00:00 UTC and is expected to be a trading day (not a day when the session starts). Charting Library aligns the time according to the [Session](Symbology#session) from SymbolInfo.
 
-2. Bar time for monthly bars should be 00:00 UTC and is the first trading day of the month.
+1. 1. Bar time for monthly bars should be 00:00 UTC and be the first trading day of the month.
 
-3. Prices should be passed as numbers and not as strings in quotation marks.
+1. Prices should be passed as numbers and not as strings in quotation marks.
 
-Example:
+    Example:
 
-```javascript
-{
-   s: "ok",
-   t: [1386493512, 1386493572, 1386493632, 1386493692],
-   c: [42.1, 43.4, 44.3, 42.8]
-}
-```
+    ```javascript
+    {
+       s: "ok",
+       t: [1386493512, 1386493572, 1386493632, 1386493692],
+       c: [42.1, 43.4, 44.3, 42.8]
+    }
+    ```
 
-```javascript
-{
-   s: "no_data",
-   nextTime: 1386493512
-}
-```
+    ```javascript
+    {
+       s: "no_data",
+       nextTime: 1386493512
+    }
+    ```
 
-```javascript
-{
-   s: "ok",
-   t: [1386493512, 1386493572, 1386493632, 1386493692],
-   c: [42.1, 43.4, 44.3, 42.8],
-   o: [41.0, 42.9, 43.7, 44.5],
-   h: [43.0, 44.1, 44.8, 44.5],
-   l: [40.4, 42.1, 42.8, 42.3],
-   v: [12000, 18500, 24000, 45000]
-}
-```
+    ```javascript
+    {
+       s: "ok",
+       t: [1386493512, 1386493572, 1386493632, 1386493692],
+       c: [42.1, 43.4, 44.3, 42.8],
+       o: [41.0, 42.9, 43.7, 44.5],
+       h: [43.0, 44.1, 44.8, 44.5],
+       l: [40.4, 42.1, 42.8, 42.3],
+       v: [12000, 18500, 24000, 45000]
+    }
+    ```
+
+1. If it is possible, it would be better to handle `countback` parameter for performance reasons.
+    Basically, if you handle `countback`, you don't have to worry about passing `nextTime`, because `countBack` helps to avoid empty responses for ranges with no data.
 
 #### How `nextTime` works
 

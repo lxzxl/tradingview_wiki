@@ -65,7 +65,14 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `false`
 
     Broker supports brackets (take profit and stop loss) for orders.
-    If this flag is set to `true` the Chart will display additional fields in the order ticket and Modify button on a chart and in the Account Manager.
+    If this flag is set to `true` the Chart will display additional fields in the Order Dialog and Modify button on a chart and in the Account Manager.
+
+* `supportCryptoBrackets`
+
+    *Default:* `false`
+
+    Broker supports brackets (take profit and stop loss) for crypto orders.
+    If this flag is set to `true` the Chart will display additional fields in the order ticket.
 
 * `supportPositionBrackets`
 
@@ -86,7 +93,7 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `false`
 
     Broker supports trailing stop orders.
-    If this flag is set to `true`, then the chart displays trailing stop orders and a user can place a trailing stop order using the Order Ticket.
+    If this flag is set to `true`, then the chart displays trailing stop orders and a user can place a trailing stop order using the Order Dialog.
 
 * `supportPositions`
 
@@ -124,14 +131,14 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     *Default:* `false`
 
-    This flag can be used to change "Amount" to "Quantity" in the order dialog
+    This flag can be used to change "Amount" to "Quantity" in the Order Dialog
 
 * `supportCryptoExchangeOrderTicket`
 
     *Default:* `false`
 
     Whether the account is used to exchange(trade) crypto currencies.
-    This flag switches the Order Ticket to the Crypto Exchange mode. It adds second currency quantity control, currency labels etc.
+    This flag switches the Order Dialog to the Crypto Exchange mode. It adds second currency quantity control, currency labels etc.
 
 * `supportLevel2Data`
 
@@ -143,55 +150,73 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     *Default:* `true`
 
-    This flag adds market orders type to the order dialog.
+    This flag adds market orders type to the Order Dialog.
 
 * `supportLimitOrders`
 
     *Default:* `true`
 
-    This flag adds limit orders type to the order dialog.
+    This flag adds limit orders type to the Order Dialog.
 
 * `supportStopOrders`
 
     *Default:* `true`
 
-    This flag adds stop orders type to the order dialog.
+    This flag adds stop orders type to the Order Dialog.
+
+* `supportStopOrdersInBothDirections`
+
+    *Default:* `false`
+
+    Whether stop orders should behave like Market-if-touched in both directions. Enabling this flag removes the direction check from the order dialog.
 
 * `supportStopLimitOrders`
 
     *Default:* `false`
 
-    This flag adds stop-limit orders type to the order dialog.
+    This flag adds stop-limit orders type to the Order Dialog.
 
 * `supportMarketBrackets`
 
     *Default:* `true`
 
-    Using this flag you can disable brackets for market orders. It is enabled by default.
+    Using this flag you can disable brackets for market orders.
 
 * `supportModifyDuration`
 
     *Default:* `false`
 
-    Using this flag you can enable modification of the duration of the existing order. It is disabled by default.
+    Using this flag you can enable modification of the duration of the existing order.
 
 * `supportModifyOrder`
 
     *Default:* `true`
 
-    Using this flag you can disable modification of the existing order. It is enabled by default.
+    Using this flag you can disable modification of the existing order.
+
+* `supportModifyTrailingStop`
+
+    *Default:* `true`
+
+    Broker supports modifying trailing stop orders.
 
 * `supportAddBracketsToExistingOrder`
 
     *Default:* `true`
 
-    Using this flag you can disable adding brackets to the existing order. It is enabled by default.
+    Using this flag you can disable adding brackets to the existing order.
 
 * `supportBalances`
 
     *Default:* `false`
 
     Used for crypto currencies only. Allows to get crypto balances for an account. Balances are displayed as the first table of the Account Summary tab.
+
+* `supportDisplayBrokerNameInSymbolSearch`
+
+    *Default:* `true`
+
+    Display broker symbol name in the symbol search. You may usually want to disable it if broker symbols are the same or you are using internal numbers as broker symbol names.
 
 * `cancellingBracketCancelsParentOrder`
 
@@ -201,11 +226,17 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Broker cancels the second protection order (stop loss or take profit) as well if the first one is cancelled by a user.
 
-* `supportOrderPreview`
+* `supportPlaceOrderPreview`
 
     *Default:* `false`
 
-    Broker provides the estimated commission, fees, margin and other information for the order without it actually being placed.
+    Broker provides the estimated commission, fees, margin and other order information before placing the order without actually placing it.
+
+* `supportModifyOrderPreview`
+
+    *Default:* `false`
+
+    Broker provides the estimated commission, fees, margin and other order information before modifying the order without actually modifying it.
 
 * `supportOrdersHistory`
 
@@ -232,17 +263,23 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Broker supports durations for market order. If it is set to `true`, then the Durations control for market orders will be displayed.
 
+* `showNotificationsLog`
+
+    *Default:* `true`
+
+    Using this flag you can show/hide the `Notifications log` tab in the account manager.
+
 ### durations: array of objects
 
-List of expiration options of orders. It is optional. Do not set it if you don't want the durations to be displayed in the order ticket.
+List of expiration options of orders. It is optional. Do not set it if you don't want the durations to be displayed in the Order Dialog.
 The objects have the following keys: `{ name, value, hasDatePicker?, hasTimePicker?, default?, supportedOrderTypes? }`.
 
-* `name`: String. Localized title of the duration. The title will be displayed in the Durataion control of the Order Ticket.
+* `name`: String. Localized title of the duration. The title will be displayed in the Durataion control of the Order Dialog.
 * `value`: String. Duration identifier.
-* `hasDatePicker`: Boolean. If it is set to `true`, then the Display date control in the Order Ticket for this duration type will be dispalyed.
-* `hasTimePicker`: Boolean. If it is set to `true`, then the Display time control in the Order Ticket for this duration type will be dispalyed.
-* `default`: Boolean. Default duration. Only one duration object in the durations array can have a `true` value for this field. The default duration will be used when the user places orders in the silent mode and it will be the selected one when the user opens the order dialog for the first time.
-* `supportedOrderTypes`: Array of [OrderType](#ordertype). A list of types of orders for which this duration type will be displayed in the Duration control of the Order Ticket.
+* `hasDatePicker`: Boolean. If it is set to `true`, then the Display date control in the Order Dialog for this duration type will be dispalyed.
+* `hasTimePicker`: Boolean. If it is set to `true`, then the Display time control in the Order Dialog for this duration type will be dispalyed.
+* `default`: Boolean. Default duration. Only one duration object in the durations array can have a `true` value for this field. The default duration will be used when the user places orders in the silent mode and it will be the selected one when the user opens the Order Dialog for the first time.
+* `supportedOrderTypes`: Array of [OrderType](#ordertype). A list of types of orders for which this duration type will be displayed in the Duration control of the Order Dialog.
 
 Example:
 
@@ -260,50 +297,9 @@ For example, if you have field `additionalType` in orders and you want the chart
 customNotificationFields: ['additionalType']
 ```
 
-### orderDialogOptions
-
-Optional field. An object with options for the order ticket. Using these options you can customize the order ticket.
-
-* `showTotal`: boolean
-
-    Using this flag you can change `Trade Value` to `Total` in the Order Info section of the order ticket.
-
-* `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
-
-    Using `customFields` you can add additional input fields to the order ticket.
-
-Example:
-
-```javascript
-customFields: [
-    {
-        inputType: 'TextWithCheckBox',
-        id: '2410',
-        title: 'Digital Signature',
-        placeHolder: 'Enter your personal digital signature',
-        value: {
-            text: '',
-            checked: false,
-        },
-        customInfo: {
-            asterix: true,
-            checkboxTitle: 'Save',
-        },
-    }
-]
-```
-
-### positionDialogOptions
-
-Optional field. An object with options for the position ticket. Using these options you can customize the position ticket.
-
-* `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
-
-    Using `customFields` you can add additional input fields to the position ticket.
-
 ### customUI
 
-This optional field can be used to replace the standard Order Ticket and the Add Protection dialogs with your own.
+This optional field can be used to replace the standard Order Dialog and the Add Protection dialogs with your own.
 Values of the following two fields are functions that are called by the Trading Terminal to show the dialogs. Each function shows a dialog and returns a ```Promise``` object that should be resolved when the operation is finished or cancelled.
 
 **NOTE:** The returned ```Promise``` object should be resolved with either `true` or `false` value.
@@ -366,13 +362,14 @@ Describes a single execution. Execution is a mark on a chart that displays trade
 * `side` : [Side](#side)
 * `qty` : number
 
-## ActionMetainfo
+## ActionMetaInfo
 
 Describes a single action to put it into a dropdown or a context menu. It is a structure.
 
 * `text` : String
 * `checkable` : Boolean. Set it to true if you need a checkbox.
 * `checked` : Boolean. Value of the checkbox.
+* `checkedStateSource`: function. Getter is executed to get current checkbox value.
 * `enabled`: Boolean
 * `action`: function. Action is executed when user clicks the item. It has 1 argument - value of the checkbox if exists.
 
@@ -538,13 +535,13 @@ Using `asterix` property you can manage input type. If `asterix` is set to `true
 ## CustomComboBoxMetaInfo
 
 An object that describes a custom combobox.
-The value of ComboBox will be saved and will be used as a default value the next time you open the order dialog or panel, if `saveToSettings` is set to `true`.
+The value of ComboBox will be saved and will be used as a default value the next time you open the Order Dialog or panel, if `saveToSettings` is set to `true`.
 
 * `inputType`: 'ComboBox'
 * `id`: string
 * `title`: string
 * `items`: CustomComboBoxItem[]
-* `saveToSettings?`: boolean;
+* `saveToSettings?`: boolean
 
 ## CustomComboBoxItem
 
