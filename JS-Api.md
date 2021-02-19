@@ -171,6 +171,8 @@ Since 18 version the library provides `countBack` parameter, that could be used 
 
 `countBack` the minimum number of bars that the chart needs (it can be slightly larger) to fill the visible range (except for Japanese charts), and along with the `to` date (which is the date of the last loaded bar), you can easily provide required data in just one request.
 
+It is recommended to consider the priority of `countBack` higher than the priority of `from`, i.e. you must return data in the range `[from, to)`, but the number of bars should not be less than `countBack`. If the number of bars is less than `countBack`, the chart will call `getBars` again.
+
 If your data provider can return the exact amount of bars, it is preferable to use `countBack` over the `from` date for greater efficiency:
 
     - Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
