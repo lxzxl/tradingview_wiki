@@ -3,11 +3,11 @@ The Charting Library uses your own data where you define the symbology yourself.
 But there are some fine points that you should be aware of:
 
 1. Our own symbology assumes that symbol names use `EXCHANGE:SYMBOL` format.
-    The Library supports this by default. You may continue using if it meets your requirements.
+   The Library supports this by default. You may continue using if it meets your requirements.
 1. If you already have or considering a different symbology then you might want to use the `ticker` field.
 
-    `ticker` is the unique identifier of the symbol that is used **only** inside the Library. Your users will never be able to see it.
-    Simply enter the `ticker` values in all of your SymbolInfo objects and Symbol Search results and expect that the Charting Library will request the data based on those values.
+   `ticker` is the unique identifier of the symbol that is used **only** inside the Library. Your users will never be able to see it.
+   Simply enter the `ticker` values in all of your SymbolInfo objects and Symbol Search results and expect that the Charting Library will request the data based on those values.
 
 # SymbolInfo Structure
 
@@ -278,7 +278,7 @@ If it's `false` then all buttons for resolutions that include ticks will be disa
 
 ## has_daily
 
-*Default:* `false`
+*Default:* `true`
 
 The boolean value showing whether data feed has its own daily resolution bars or not.
 

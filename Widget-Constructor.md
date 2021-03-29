@@ -7,7 +7,8 @@ new TradingView.widget({
     timezone: "America/New_York",
     container_id: "tv_chart_container",
     locale: "ru",
-    datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com")
+    datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
+    library_path: "charting_library/"
 });
 ```
 
@@ -21,10 +22,10 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [symbol, interval*](#symbol-interval)
   * [container_id*](#container_id)
   * [datafeed*](#datafeed)
+  * [library_path*](#library_path)
   * [timeframe](#timeframe)
   * [timezone](#timezone)
   * [debug](#debug)
-  * [library_path](#library_path)
   * [width, height](#width-height)
   * [fullscreen](#fullscreen)
   * [autosize](#autosize)
@@ -596,13 +597,18 @@ An object that specifies the news provider. It may contain the following propert
     * `link` (optional) - URL to the news story.
     * `fullDescription` (optional) - full description (body) of a news item.
 
-    **NOTE:** When a user clicks on a news item a new tab with the `link` URL will be opened. If `link` is not specified then a pop-up dialog with `fullDescription` will be shown.
+    **NOTE:** Only `title` and `published` are the main properties
+    used to compare what has already been published and what's new.
 
-    **NOTE 2:** If both `news_provider` and `rss_news_feed` are available then the `rss_news_feed` will be ignored.
+    **NOTE 2:** When a user clicks on a news item a new tab with the `link` URL will be opened. If `link` is not specified then a pop-up dialog with `fullDescription` will be shown.
+
+    **NOTE 3:** If both `news_provider` and `rss_news_feed` are available then the `rss_news_feed` will be ignored.
 
 Example:
 
 ```javascript
+const dateOfPublication = new Date().valueOf();
+
 news_provider: {
     is_news_generic: true,
     get_news: function(symbol, callback) {
@@ -611,7 +617,7 @@ news_provider: {
                 title: 'News for symbol ' + symbol,
                 shortDescription: 'Short description of the news item',
                 fullDescription: 'Full description of the news item',
-                published: new Date().valueOf(),
+                published: dateOfPublication,
                 source: 'My own source of news',
                 link: 'https://www.tradingview.com/'
             },
@@ -619,7 +625,7 @@ news_provider: {
                 title: 'Another news for symbol ' + symbol,
                 shortDescription: 'Short description of the news item',
                 fullDescription: 'Full description of the news item. Long text here.',
-                published: new Date().valueOf(),
+                published: dateOfPublication,
                 source: 'My own source of news',
             }
         ]);

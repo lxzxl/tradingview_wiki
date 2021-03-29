@@ -82,7 +82,32 @@ mainSeriesProperties.showPrevClosePriceLine: false
 mainSeriesProperties.prevClosePriceLineWidth: 1
 mainSeriesProperties.prevClosePriceLineColor: 'rgba( 85, 85, 85, 1)'
 mainSeriesProperties.lockScale: false
-mainSeriesProperties.minTick: "default"
+
+mainSeriesProperties.minTick: minTick value is a string of 3 CSV: pricescale, minmove, fractional.
+Look [here](Symbology#minmov-pricescale-minmove2-fractional) for more information about these values.
+
+Below is a list of all possible values, represented as an object for better readability.
+
+{ priceScale: 1, minMove: 1, frac: false },
+{ priceScale: 10, minMove: 1, frac: false },
+{ priceScale: 100, minMove: 1, frac: false },
+{ priceScale: 1000, minMove: 1, frac: false },
+{ priceScale: 10000, minMove: 1, frac: false },
+{ priceScale: 100000, minMove: 1, frac: false },
+{ priceScale: 1000000, minMove: 1, frac: false },
+{ priceScale: 10000000, minMove: 1, frac: false },
+{ priceScale: 100000000, minMove: 1, frac: false },
+{ priceScale: 2, minMove: 1, frac: true },
+{ priceScale: 4, minMove: 1, frac: true },
+{ priceScale: 8, minMove: 1, frac: true },
+{ priceScale: 16, minMove: 1, frac: true },
+{ priceScale: 32, minMove: 1, frac: true },
+{ priceScale: 64, minMove: 1, frac: true },
+{ priceScale: 128, minMove: 1, frac: true },
+{ priceScale: 320, minMove: 1, frac: true },
+
+For example:
+tvWidget.applyOverrides({"mainSeriesProperties.minTick": '10000,1,false'}) for { priceScale: 10000, minMove: 1, frac: false }
 
 mainSeriesProperties.priceAxisProperties.autoScale:true             (see #749)
 mainSeriesProperties.priceAxisProperties.autoScaleDisabled:false    (see #749)
