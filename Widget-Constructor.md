@@ -5,7 +5,7 @@ new TradingView.widget({
     symbol: 'A',
     interval: '1D',
     timezone: "America/New_York",
-    container_id: "tv_chart_container",
+    container: "tv_chart_container",
     locale: "ru",
     datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
     library_path: "charting_library/"
@@ -20,7 +20,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
 
 * Library and Trading Terminal
   * [symbol, interval*](#symbol-interval)
-  * [container_id*](#container_id)
+  * [container*](#container)
   * [datafeed*](#datafeed)
   * [library_path*](#library_path)
   * [timeframe](#timeframe)
@@ -75,12 +75,18 @@ symbol: 'A',
 interval: '1D',
 ```
 
-### container_id*
+### container*
 
-`id` is an attribute of a DOM element inside which the iframe with the chart will be placed.
+The `container` can either be a reference to an attribute of a DOM element inside which the iframe with the chart will be placed or the `HTMLElement` itself.
 
 ```javascript
-container_id: "tv_chart_container",
+container: "tv_chart_container",
+```
+
+or
+
+```javascript
+container: document.getElementById("tv_chart_container"),
 ```
 
 ### datafeed*

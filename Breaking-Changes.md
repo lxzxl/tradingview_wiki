@@ -8,6 +8,8 @@ Here is the list of breaking changes:
 
 ## Version 19
 
+_Note: container_id has been marked deprecated. It's now preferable to switch to/use container instead. Container can now be either still be an id or be an HTMLElement you'd like the widget to be attached to._
+
 **Trading Terminal**
 
 - [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.

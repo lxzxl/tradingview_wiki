@@ -64,6 +64,8 @@ Here is a list of methods supported by the chart.
   * [defaultScrollPosition()](#defaultscrollposition)
   * [priceFormatter()](#priceformatter)
   * [chartType()](#charttype)
+  * [getPriceToBarRatio()](#getpricetobarratio)
+  * [isPriceToBarRatioLocked()](#ispricetobarratiolocked)
 * [Other](#other)
   * [exportData(options)](#exportdataoptions)
   * [selection()](#selection)
@@ -73,6 +75,8 @@ Here is a list of methods supported by the chart.
   * [isSelectBarRequested()](#isselectbarrequested)
   * [requestSelectBar()](#requestselectbar)
   * [cancelSelectBar()](#cancelselectbar)
+  * [setPriceToBarRatio(value, options)](#setpricetobarratiovalue-options)
+  * [setPriceToBarRatioLocked(value, options)](#setpricetobarratiolockedvalue-options)
 
 ## Subscribing To Chart Events
 
@@ -1051,6 +1055,22 @@ Returns the main series style type.
 console.log(widget.activeChart().chartType());
 ```
 
+### getPriceToBarRatio()
+
+Returns the Price To Bar ratio or null if none is defined.
+
+```javascript
+console.log(widget.activeChart().getPriceToBarRatio());
+```
+
+### isPriceToBarRatioLocked()
+
+Returns the state of the Price to Bar ratio option.
+
+```javascript
+console.log(widget.activeChart().isPriceToBarRatioLocked());
+```
+
 ## Other
 
 ### exportData(options)
@@ -1171,6 +1191,28 @@ Cancels active select bar request if it exists, or do nothing otherwise.
 
 ```javascript
 widget.activeChart().cancelSelectBar();
+```
+
+### setPriceToBarRatio(value, options)
+
+1. `value` is the new ratio to set (number)
+2. `options` is an object only containing the `disableUndo` boolean property
+
+Set a new ratio along with some options.
+
+```javascript
+widget.activeChart().setPriceToBarRatio(0.4567, { disableUndo: true });
+```
+
+### setPriceToBarRatioLocked(value, options)
+
+1. `value` is used to lock/unlock the Price To Bar Ratio (boolean)
+2. `options` is an object only containing the `disableUndo` boolean property
+
+Set/unset the lock property along with some options.
+
+```javascript
+widget.activeChart().setPriceToBarRatioLocked(true, { disableUndo: false });
 ```
 
 ## See Also
