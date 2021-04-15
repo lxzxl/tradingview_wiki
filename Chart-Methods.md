@@ -66,6 +66,8 @@ Here is a list of methods supported by the chart.
   * [chartType()](#charttype)
   * [getPriceToBarRatio()](#getpricetobarratio)
   * [isPriceToBarRatioLocked()](#ispricetobarratiolocked)
+  * [getAllPanesHeight()](#getAllPanesHeight)
+  * [setAllPanesHeight(heights)](#setAllPanesHeightheights)
 * [Other](#other)
   * [exportData(options)](#exportdataoptions)
   * [selection()](#selection)
@@ -1069,6 +1071,24 @@ Returns the state of the Price to Bar ratio option.
 
 ```javascript
 console.log(widget.activeChart().isPriceToBarRatioLocked());
+```
+
+### getAllPanesHeight()
+
+Returns all panes' heights in an array.
+
+```javascript
+console.log(widget.activeChart().getAllPanesHeight());
+```
+
+### setAllPanesHeight(heights)
+
+1. `heights` is an array of numbers
+
+Set the height for each panes in the order provided by the array.
+
+```javascript
+console.log(widget.activeChart().setAllPanesHeight([250, 400, 200]));
 ```
 
 ## Other
