@@ -21,6 +21,7 @@ The Charting Library caches historical data on its own. You don't need to implem
 1. [getMarks](#getmarkssymbolinfo-from-to-ondatacallback-resolution)
 1. [getTimescaleMarks](#gettimescalemarkssymbolinfo-from-to-ondatacallback-resolution)
 1. [getServerTime](#getservertimecallback)
+1. [getVolumeProfileResolutionForPeriod](#getvolumeprofileresolutionforperiodcurrentresolution-from-to-symbolinfo)
 
 :chart: [Trading Terminal](Trading-Terminal) specific:
 
@@ -279,6 +280,19 @@ The time is provided without milliseconds.
 It is used to display Countdown on the price scale.
 
 Example: `1445324591`.
+
+### getVolumeProfileResolutionForPeriod(currentResolution, from, to, symbolInfo)
+
+*Optional.*
+
+1. `currentResolution`: string. Currently selected resolution on the chart
+1. `from`: unix timestamp (UTC). Time of the leftmost visible bar
+1. `to`: unix timestamp (UTC). Time of the rightmost visible bar
+1. `symbolInfo`: [SymbolInfo](Symbology#symbolinfo-structure) object
+
+The library calls this function to get the resolution that will be used to calculate the Volume Profile Visible Range indicator. Usually you might want to implement this method to calculate the indicator more accurately. The implementation really depends on how much data you can transfer to the library and the depth of data in your data feed.
+
+**Remark**: If this function is not provided the library uses `currentResolution`.
 
 ## [Trading Terminal](Trading-Terminal) specific
 
