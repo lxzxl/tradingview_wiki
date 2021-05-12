@@ -65,6 +65,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
 | save_shortcut                           | on            |       18        | Enables the save shortcut |
 | show_right_widgets_panel_by_default     | on            |       18        | Opens right widget toolbar on first launch |
+| show_object_tree                        | on            |       18        | Shows the object tree button in the left or right panel depending on the product and configuration |
 
 ### Elements placement
 
@@ -142,4 +143,3 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_order_panel_on_start | off | 17 | Order Panel is visible when the chart opens
 | order_panel_close_button | on | 17 | Shows close Order Panel button
 | order_panel_undock | on | 17 | Shows the Undock button in the Order Panel Settings
-| show_object_tree | on | 18 | Shows the object tree button in the right panel
