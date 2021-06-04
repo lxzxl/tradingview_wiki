@@ -12,7 +12,7 @@ Here is a list of methods supported by the chart.
   * [onIntervalChanged()](#onintervalchanged)
   * [onChartTypeChanged()](#oncharttypechanged)
   * [dataReady(callback)](#datareadycallback)
-  * [crossHairMoved(callback)](#crosshairmovedcallback)
+  * [crossHairMoved()](#crosshairmoved)
   * [onVisibleRangeChanged()](#onvisiblerangechanged)
 * [Chart Actions](#chart-actions)
   * [setVisibleRange(range, options)](#setvisiblerangerange-options)
@@ -173,18 +173,23 @@ widget.activeChart().dataReady(() => {
 });
 ```
 
-### crossHairMoved(callback)
+### crossHairMoved()
 
-*Since version 1.5.*
+You can subscribe using [Subscription](Subscription) object returned by this function to be notified when visible time range is changed. You can also use the same object to unsubscribe from the event.
 
-1. `callback`: function({time, price})
+When the event is fired it will provide the following arguments:
 
-The Charting Library will call the callback function every time the crosshair position is changed.
+1. `params`: object `{time price}`
+    * `time`: unix timestamps, UTC.
+    * `price`: number.
 
 Example:
 
 ```javascript
-widget.activeChart().crossHairMoved(({ time, price }) => console.log(time, price));
+widget.activeChart().crossHairMoved().subscribe(
+    null,
+    ({ time, price }) => console.log(time, price)
+);
 ```
 
 ### onVisibleRangeChanged()

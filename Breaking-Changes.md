@@ -10,6 +10,9 @@ Here is the list of breaking changes:
 
 _Note: container_id has been marked deprecated. It's now preferable to switch to/use container instead. Container can now be either still be an id or be an HTMLElement you'd like the widget to be attached to._
 
+- [crossHairMoved](Chart-Methods#crossHairMoved) has been changed from a _callback_ parameter to `crossHairMoved()` with a `Subscription` model.
+It will still return the same object `params: {time, price}`.
+
 **Trading Terminal**
 
 - [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.
