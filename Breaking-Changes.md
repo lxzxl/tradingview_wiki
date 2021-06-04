@@ -6,6 +6,21 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 20
+
+**Trading Terminal**
+
+- `unixTimeAgo` formatter has been removed.
+
+- [Account Manager](Account-Manager) format function's property `$container: JQuery` has been replaced with `container: HTMLElement`. Format function returns `string | HTMLElement` instead of `string | JQuery`.
+
+- Options `showOrderPanel`, `showDOM` and `showSellBuyButtons` have been removed from the `defaultDropdownMenuActions` options list.
+
+- The return value of the method `getOrderDialogOptions` has been made a Promise.
+- [Trading Host](Trading-Host) `symbolSnapshot` method has been removed.
+
+- `cancellingBracketCancelsParentOrder` and `cancellingOnePositionBracketsCancelsOther` flags have been removed. They can be partially replaced with the `supportCancellingBothBracketsOnly` flag.
+
 ## Version 19
 
 _Note: container_id has been marked deprecated. It's now preferable to switch to/use container instead. Container can now be either still be an id or be an HTMLElement you'd like the widget to be attached to._

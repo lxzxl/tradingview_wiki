@@ -352,3 +352,15 @@ The currency in which the instrument is traded.
 ## currency_code
 
 The currency in which the instrument is traded or some other currency if currency conversion is enabled. It is displayed in the Symbol Info dialog and on the price axes.
+
+## original_unit_id
+
+A unique identifier of a unit in which the instrument is traded.
+
+## unit_id
+
+A unique identifier of a unit in which the instrument is traded or some other identifier if unit conversion is enabled. It is displayed on the price axes.
+
+## unit_conversion_types
+
+Allowed unit conversion group names. See also [units](JS-Api#units).

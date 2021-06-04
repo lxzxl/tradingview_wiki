@@ -66,6 +66,25 @@ An array of supported currencies for currency conversion.
 
 Example: `["USD", "EUR", "GBP"]`.
 
+#### units
+
+An object that lists supported unit groups. Each group can have several unit objects. Each unit object should have the following fields:
+
+* `id`: string. Unique id.
+* `name`: string. Short name.
+* `description`: string. Description.
+
+Example:
+
+```javascript
+{
+    weight: [
+        { id: 'kg', name: 'kg', description: 'Kilograms' },
+        { id: 'lb', name: 'lb', description: 'Pounds'},
+    ]
+}
+```
+
 #### supports_marks
 
 Boolean showing whether your datafeed supports marks on bars or not.
@@ -130,6 +149,8 @@ If no symbols are found, then callback should be called with an empty array. See
 1. `extension`: optional object with additional parameters. It has the following fields:
     1. `currencyCode`: string. It may be provided to indicate the currency for conversion if `currency_codes` configuration
     field is set and `currency_code` is provided in the original symbol information. Read more about [currency conversion](Price-Scale#currency-conversion).
+    1. `unitId`: string. It may be provided to indicate the unit for conversion if `units` configuration
+        field is set and `unit_id` is provided in the original symbol information.
 
 Charting Library will call this function when it needs to get [SymbolInfo](Symbology#symbolinfo-structure) by symbol name.
 
@@ -176,11 +197,11 @@ It is recommended to consider the priority of `countBack` higher than the priori
 
 If your data provider can return the exact amount of bars, it is preferable to use `countBack` over the `from` date for greater efficiency:
 
-    - Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
-        If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
+* Example 1: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
+    If you have only 250 bars in the requested period (`[2019-06-01T00:00:00..2020-01-01T00:00:00]`) and you return these 250 bars, the chart will make another request to load 50 more bars preceding `2019-06-01T00:00:00` date.
 
-    - Example 2: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
-        If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
+* Example 2: let's say the chart requests 300 bars with the range `[2019-06-01T00:00:00..2020-01-01T00:00:00]` in the request.
+    If you don't have bars in the requested period, you don't need to return `noData: true` with the `nextTime` parameter equal to the next available data. You can simply return 300 bars prior to `2020-01-01T00:00:00` even if this data is before the `from` date.
 
 ### subscribeBars(symbolInfo, resolution, onRealtimeCallback, subscriberUID, onResetCacheNeededCallback)
 

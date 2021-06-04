@@ -218,13 +218,11 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Display broker symbol name in the symbol search. You may usually want to disable it if broker symbols are the same or you are using internal numbers as broker symbol names.
 
-* `cancellingBracketCancelsParentOrder`
+* `supportCancellingBothBracketsOnly`
 
-    Broker cancels the base order if a stop loss or a take profit is cancelled.
+    *Default:* `false`
 
-* `cancellingOnePositionBracketsCancelsOther`
-
-    Broker cancels the second protection order (stop loss or take profit) as well if the first one is cancelled by a user.
+    Cancelling a bracket (take profit or stop loss) cancels it's pair.
 
 * `supportPlaceOrderPreview`
 
@@ -268,6 +266,18 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `true`
 
     Using this flag you can show/hide the `Notifications log` tab in the account manager.
+
+* `positionPLInInstrumentCurrency`
+
+    *Default:* `false`
+
+    Using this flag you can display PL in instrument currency.
+
+* `supportConfirmations`
+
+    *Default:* `false`
+
+    With this flag you can show a checkbox to disable the confirmation dialog display
 
 ### durations: array of objects
 
@@ -330,6 +340,7 @@ Describes a single order.
 * `stopType`: [StopType](#stoptype) It should be set to 1 (StopType.TrailingStop) for trailing stop orders.
 * `duration`: [OrderDuration](#orderduration)
 * `customFields`: [CustomInputFieldsValues](#custominputfieldsvalues)
+* `isClose`: Boolean. It is set to `true`, if the order closes a position.
 
 ## Position
 
@@ -373,12 +384,19 @@ Describes a single action to put it into a dropdown or a context menu. It is a s
 * `enabled`: Boolean
 * `action`: function. Action is executed when user clicks the item. It has 1 argument - value of the checkbox if exists.
 
-## OrderPreviewInfoItem
+## OrderPreviewSection
 
-Describes information for the order.
+Describes a single order preview section. Order preview can have multiple sections that are divided by separators and may have titles.
 
-* `title` : String
-* `value` : String
+* `rows` - array of order preview items [OrderPreviewSectionRow](#OrderPreviewSectionRow)[]. Each item is a row of the.section table.
+* `header` - optional title of the section.
+
+## OrderPreviewSectionRow
+
+OrderPreviewSectionRow - Describes a single row of a section table of the order preview.
+
+* `title` - Description of the item.
+* `value` - Formatted value of the item.
 
 ## OrderType
 

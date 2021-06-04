@@ -46,7 +46,7 @@ ConnectionStatus.Disconnected = 3
 ConnectionStatus.Error = 4
 ```
 
-### isTradable(symbol): Promise<boolean | IsTradableResult>
+### isTradable(symbol): Promise\<boolean | IsTradableResult>
 
 This function is required for the Floating Trading Panel. The ability to trade via the panel depends on the result of this function: `true` or `false`. You don't need to implement this method if all symbols can be traded.
 
@@ -74,8 +74,12 @@ Method is called when a user wants to place an order. Order is pre-filled with p
 Returns estimated commission, fees, margin and other information for the order without it actually being placed. The method is called if `supportPlaceOrderPreview` configuration flag is on.
 The result will be an object with the following fields:
 
-- `confirmId` - a unique identifier that should be passed to `placeOrder` method
-- `info` - information about the order, which is a table that has the following structure: [OrderPreviewInfoItem](Trading-Objects-and-Constants#OrderPreviewInfoItem)[].
+`OrderPreviewResult` - Describes the result of the order preview.
+
+- `sections` : array of order preview sections, [OrderPreviewSection](Trading-Objects-and-Constants#OrderPreviewSection)[].
+- `confirmId` : a unique identifier that should be passed to `placeOrder` method
+- `warnings` : optional array of text warnings
+- `errors` : optional array of text errors
 
 ### modifyOrder([order](Trading-Objects-and-Constants#order))
 
@@ -209,7 +213,7 @@ Once this method is called the broker should stop providing `pipValue` updates.
 
 ## Optional methods
 
-### getOrderDialogOptions(symbol): OrderDialogOptions
+### getOrderDialogOptions(symbol): Promise\<OrderDialogOptions | undefined>
 
 1. `symbol` - symbol string.
 

@@ -84,9 +84,17 @@ Creates a [WatchedValue](WatchedValue) object.
 
 Creates a price [Formatter](Trading-Objects-and-Constants#formatter). The arguments of this function are described in [another article](Symbology#minmov-pricescale-minmove2-fractional).
 
-### symbolSnapshot(symbol) : Promise
+### showMessageDialog(caption, message)
 
-Returns quotes of a symbol.
+Displays a message dialog to a user.
+
+### showConfirmDialog(title, content, mainButtonText?, cancelButtonText?, showDisableConfirmationsCheckbox?): Promise\<boolean>
+
+Displays a confirmation dialog to a user and returns a Promise to the result.
+
+### showSimpleConfirmDialog(title, content, mainButtonText?, cancelButtonText?, showDisableConfirmationsCheckbox?): Promise\<boolean>
+
+Displays a simple confirmation dialog to a user and returns a Promise to the result.
 
 ## Getters and Setters
 
@@ -135,10 +143,13 @@ Provides default buy/sell, show properties actions to be returned as a default b
 Provides default dropdown list of actions. You can use default actions in [setButtonDropdownActions](#setButtonDropdownActionsactions).
 You can add/remove default action from the result using `options`:
 
-1. `showSellBuyButtons`: boolean;
 1. `tradingProperties`: boolean;
-1. `showDOM`: boolean;
-1. `showOrderPanel`: boolean;
+1. `showHowToUse`: boolean;
+1. `restoreConfirmations`: boolean;
+
+### getSymbolMinTick(symbol)
+
+Returns symbol `minTick`.
 
 ## Data Updates
 

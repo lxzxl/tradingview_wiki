@@ -53,6 +53,7 @@ scalesProperties.showStudyLastValue: false
 scalesProperties.showStudyPlotLabels: false
 scalesProperties.showSymbolLabels: false
 scalesProperties.showCurrency: true
+scalesProperties.showUnit: true
 
 timeScale.rightOffset: 5
 
@@ -83,32 +84,7 @@ mainSeriesProperties.prevClosePriceLineWidth: 1
 mainSeriesProperties.prevClosePriceLineColor: 'rgba( 85, 85, 85, 1)'
 mainSeriesProperties.lockScale: false
 
-mainSeriesProperties.minTick: minTick value is a string of 3 CSV: pricescale, minmove, fractional.
-Look [here](Symbology#minmov-pricescale-minmove2-fractional) for more information about these values.
-
-Below is a list of all possible values, represented as an object for better readability.
-
-{ priceScale: 1, minMove: 1, frac: false },
-{ priceScale: 10, minMove: 1, frac: false },
-{ priceScale: 100, minMove: 1, frac: false },
-{ priceScale: 1000, minMove: 1, frac: false },
-{ priceScale: 10000, minMove: 1, frac: false },
-{ priceScale: 100000, minMove: 1, frac: false },
-{ priceScale: 1000000, minMove: 1, frac: false },
-{ priceScale: 10000000, minMove: 1, frac: false },
-{ priceScale: 100000000, minMove: 1, frac: false },
-{ priceScale: 2, minMove: 1, frac: true },
-{ priceScale: 4, minMove: 1, frac: true },
-{ priceScale: 8, minMove: 1, frac: true },
-{ priceScale: 16, minMove: 1, frac: true },
-{ priceScale: 32, minMove: 1, frac: true },
-{ priceScale: 64, minMove: 1, frac: true },
-{ priceScale: 128, minMove: 1, frac: true },
-{ priceScale: 320, minMove: 1, frac: true },
-
-For example:
-tvWidget.applyOverrides({"mainSeriesProperties.minTick": '10000,1,false'}) for { priceScale: 10000, minMove: 1, frac: false }
-
+mainSeriesProperties.minTick: minTick value is a string representation of 3 values: pricescale, minmove, fractional (see below)
 mainSeriesProperties.priceAxisProperties.autoScale:true             (see #749)
 mainSeriesProperties.priceAxisProperties.autoScaleDisabled:false    (see #749)
 mainSeriesProperties.priceAxisProperties.percentage:false
@@ -116,7 +92,7 @@ mainSeriesProperties.priceAxisProperties.percentageDisabled:false
 mainSeriesProperties.priceAxisProperties.log:false
 mainSeriesProperties.priceAxisProperties.logDisabled:false
 
-// possible values are: description, ticker.
+// possible values are: description, ticker, ticker-and-description
 mainSeriesProperties.statusViewStyle.symbolTextSource: 'description'
 
 symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
@@ -208,4 +184,45 @@ LINESTYLE_SOLID = 0
 LINESTYLE_DOTTED = 1
 LINESTYLE_DASHED = 2
 LINESTYLE_LARGE_DASHED = 3
+```
+
+### Mintick
+
+Look [here](Symbology#minmov-pricescale-minmove2-fractional) for more information about `minTick` values.
+
+Below is a list of all possible values, represented as an object for better readability:
+
+```text
+{ priceScale: 1, minMove: 1, frac: false },
+{ priceScale: 10, minMove: 1, frac: false },
+{ priceScale: 100, minMove: 1, frac: false },
+{ priceScale: 1000, minMove: 1, frac: false },
+{ priceScale: 10000, minMove: 1, frac: false },
+{ priceScale: 100000, minMove: 1, frac: false },
+{ priceScale: 1000000, minMove: 1, frac: false },
+{ priceScale: 10000000, minMove: 1, frac: false },
+{ priceScale: 100000000, minMove: 1, frac: false },
+{ priceScale: 2, minMove: 1, frac: true },
+{ priceScale: 4, minMove: 1, frac: true },
+{ priceScale: 8, minMove: 1, frac: true },
+{ priceScale: 16, minMove: 1, frac: true },
+{ priceScale: 32, minMove: 1, frac: true },
+{ priceScale: 64, minMove: 1, frac: true },
+{ priceScale: 128, minMove: 1, frac: true },
+{ priceScale: 320, minMove: 1, frac: true },
+```
+
+In additional to values above, there is a special value for the default minTick - `'default'`.
+
+For example:
+
+```javascript
+// reset minTick to default
+tvWidget.applyOverrides({ 'mainSeriesProperties.minTick': 'default' });
+
+// set series' minTick to { priceScale: 10000, minMove: 1, frac: false }
+tvWidget.applyOverrides({ 'mainSeriesProperties.minTick': '10000,1,false' });
+
+// set default minTick for overlay studies to { priceScale: 10000, minMove: 1, frac: false }
+tvWidget.applyStudiesOverrides({ 'overlay.minTick': '10000,1,false' });
 ```

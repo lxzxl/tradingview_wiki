@@ -165,8 +165,10 @@ Here is the list of default formatters:
 | `localDate` | Displays the local date or time. |
 | `localDateOrDateTime` | The same as `dateOrDateTime`, but it displays time in the local timezone. |
 | `pips` | Displays a number with 1 decimal place. |
-| `profit` | Displays profit. It also adds the `+` sign, separates thousands and changes the cell text color to red or green. |
+| `profit` | Displays profit in account currency. It also adds the `+` sign, separates thousands and changes the cell text color to red or green. |
+| `profitInInstrumentCurrency` | Displays profit in instrument currency. It also adds the `+` sign, separates thousands and changes the cell text color to red or green. |
 | `side` | It is used to display the side: Sell or Buy. |
+| `positionSide` | It is used to display the position side: Short or Long. |
 | `status` | It is used to format the `status`. |
 | `symbol` | It is used for a symbol field. It displays `brokerSymbol`, but when you click on a symbol the chart changes according to the `symbol` field. `property` key is ignored.|
 | `text` | Displays a text value. |
@@ -213,6 +215,14 @@ If it is `true` then the column width will not be changed when the cell value is
 ### showOnMobile
 
 If it is `false` then the column will not be shown on mobile.
+
+### showTooltipOnCell
+
+If it is `true`, the tooltip is displayed when you hover over the cell. See `tooltipProperty` also.
+
+### tooltipProperty
+
+`tooltipProperty` is a key of the row object that is used to get the tooltip to display when hovering over a cell. The tooltip property refers to an object whose keys are property names and values are the corresponding tooltips.
 
 ### supportedStatusFilters
 

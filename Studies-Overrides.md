@@ -41,7 +41,7 @@ For instance:
   "compare.source": "high"
   ```
 
-- `compare.minTick` to override the 'Min Tick' default value (set to `Default`).
+- `compare.minTick` to override the 'Min Tick' value (see [here](Overrides#minTick) for more information).
 
 ### Overlay
 
@@ -50,6 +50,7 @@ Starting from V 1.12 you may use the following properties to customize `Overlay`
 ```javascript
 Overlay.style: (bars = 0, candles = 1, line = 2, area = 3, heiken ashi = 8, hollow candles = 9)
 Overlay.showPriceLine: boolean
+Overlay.allowExtendTimeScale: boolean (whether an overlay should extend time axis, the property is used only when 'secondary_series_extend_time_scale' featureset is enabled)
 
 Overlay.candleStyle.upColor: color
 Overlay.candleStyle.downColor: color
@@ -88,33 +89,10 @@ Overlay.areaStyle.linestyle: (solid = 0; dotted = 1; dashed = 2; large dashed = 
 Overlay.areaStyle.linewidth: integer
 Overlay.areaStyle.priceSource: open/high/low/close
 
-Overlay.minTick: minTick value is a string of 3 CSV: pricescale, minmove, fractional.
-Look [here](Symbology#minmov-pricescale-minmove2-fractional) for more information about these values.
-
-Below is a list of all possible values, represented as an object for better readability.
-
-{ priceScale: 1, minMove: 1, frac: false },
-{ priceScale: 10, minMove: 1, frac: false },
-{ priceScale: 100, minMove: 1, frac: false },
-{ priceScale: 1000, minMove: 1, frac: false },
-{ priceScale: 10000, minMove: 1, frac: false },
-{ priceScale: 100000, minMove: 1, frac: false },
-{ priceScale: 1000000, minMove: 1, frac: false },
-{ priceScale: 10000000, minMove: 1, frac: false },
-{ priceScale: 100000000, minMove: 1, frac: false },
-{ priceScale: 2, minMove: 1, frac: true },
-{ priceScale: 4, minMove: 1, frac: true },
-{ priceScale: 8, minMove: 1, frac: true },
-{ priceScale: 16, minMove: 1, frac: true },
-{ priceScale: 32, minMove: 1, frac: true },
-{ priceScale: 64, minMove: 1, frac: true },
-{ priceScale: 128, minMove: 1, frac: true },
-{ priceScale: 320, minMove: 1, frac: true },
-
-For example:
-tvWidget.applyStudiesOverrides({"overlay.minTick": '10000,1,false'}) for { priceScale: 10000, minMove: 1, frac: false }
-
+Overlay.minTick: minTick value
 ```
+
+_(See [here](Overrides#minTick) for more information about minTick value)_
 
 ## Syntax
 

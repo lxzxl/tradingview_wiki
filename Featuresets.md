@@ -60,7 +60,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_dom_first_time                     | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
 | hide_left_toolbar_by_default            | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
 | chart_style_hilo                        | off           | 1.15            | Adds Hi-Lo option to chart style controls |
-| pricescale_currency                     | on            | 16              | Displays the currency in which the instrument is traded on the price axes |
+| pricescale_currency                     | off            | 16              | Displays the currency in which the instrument is traded on the price axes |
+| pricescale_unit                         | off            | 19              | Displays the unit in which the instrument is traded on the price axes |
 | scales_date_format                      | on            | 17              | Displays Date Format selector in Chart Settings |
 | popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
 | save_shortcut                           | on            |       18        | Enables the save shortcut |
@@ -119,6 +120,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | datasource_copypaste | on | | Enables copying of drawings and studies
 | seconds_resolution| off | 1.4 | Enables the support of resolutions that start from 1 second
 | tick_resolution | off | 18 | Enables the support of tick resolution
+| secondary_series_extend_time_scale | off | 20 | Enables a feature to allow an additional series to extend the time scale
 
 ## :chart: Trading Terminal
 
