@@ -70,6 +70,8 @@ It will still return the same object `params: {time, price}`.
     To quickly fix this up, find all use cases for the `new_sym` method and make sure that only 2 arguments are passed to it (instead of three or more).
     For example, if you previously had `ctx.new_sym(newSym, PineJS.Std.period(this._context), PineJS.Std.period(this._context))`, you need to replace it with `ctx.new_sym(newSym, PineJS.Std.period(this._context))`.
 
+- `calculateHistoryDepth` method from [JS-Api](JS-Api) has been removed. Consider to switch to usage of [`countBack`](JS-Api#note-about-periodparams) instead.
+
 ## Version 18
 
 - Field `futures_regex` from [configurationData](JS-Api#onreadycallback) has been removed, please use [symbols_grouping](JS-Api#symbols_grouping) instead.
