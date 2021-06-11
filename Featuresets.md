@@ -67,6 +67,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | save_shortcut                           | on            |       18        | Enables the save shortcut |
 | show_right_widgets_panel_by_default     | on            |       18        | Opens right widget toolbar on first launch |
 | show_object_tree                        | on            |       18        | Shows the object tree button in the left or right panel depending on the product and configuration |
+| show_spread_operators                   | off           |       20        | Shows the spread operators in the Symbol Search dialog |
 
 ### Elements placement
 
