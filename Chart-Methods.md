@@ -261,7 +261,7 @@ widget.activeChart().setResolution('2M');
 
 Makes the chart re-request data from the data feed. The function is often called when chart's data has changed.
 
-Before calling this function you should call [onResetCacheNeededCallback] from `subscribeBars`.(JS-Api#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback).
+Before calling this function you should call [`onResetCacheNeededCallback` from `subscribeBars`](JS-Api#subscribebarssymbolinfo-resolution-onrealtimecallback-subscriberuid-onresetcacheneededcallback).
 
 ```javascript
 widget.activeChart().resetData();
