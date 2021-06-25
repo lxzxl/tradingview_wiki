@@ -112,6 +112,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | custom_resolutions            | off   | 1.15            | If enabled, there is a possibility to add custom resolutions
 | end_of_period_timescale_marks | off | 16 | Toggles the timeline marks to display the bar's end time
 | cropped_tick_marks | on | 16 | If disabled, partially visible price labels on price axis will be hidden
+| auto_enable_symbol_labels  | on | 20 | Displays Symbol Name Label when comparing Symbols
 
 ### Important features
 
