@@ -112,6 +112,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | custom_resolutions            | off   | 1.15            | If enabled, there is a possibility to add custom resolutions
 | end_of_period_timescale_marks | off | 16 | Toggles the timeline marks to display the bar's end time
 | cropped_tick_marks | on | 16 | If disabled, partially visible price labels on price axis will be hidden
+| study_overlay_compare_legend_option | off | 20 | Applies symbol display mode (ticker/description) to overlay/compare studies in the status line
+| study_symbol_ticker_description | off | 20 | Applies symbol display mode (ticker/description) to indicator inputs in the status line
 | auto_enable_symbol_labels  | on | 20 | Displays Symbol Name Label when comparing Symbols
 
 ### Important features
