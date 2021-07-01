@@ -57,6 +57,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [save_load_adapter](#save_load_adapter)
   * [settings_adapter](#settings_adapter)
   * [compare_symbols](#compare_symbols)
+  * [additional_symbol_info_fields](#additional_symbol_info_fields)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
   * [rss_news_feed](#rss_news_feed)
@@ -506,6 +507,22 @@ compare_symbols: [
     { symbol: 'VZ', title: 'Verizon' },
     ...
 ];
+```
+
+### additional_symbol_info_fields
+
+An optional field containing an array of custom symbol info fields to be shown in the Symbol Info dialog.
+Each additional symbol info field should have the following properties:
+
+* `title` - a string that is used as the name of the new symbol info
+* `propertyName` - a string that is used to look up a property from the symbol info returned from the chart's datafeed
+
+See [Symbology](Symbology#SymbolInfo-Structure) for more information about symbol info.
+
+```javascript
+additional_symbol_info_fields: [
+    { title: 'Ticker', propertyName: 'ticker' }
+]
 ```
 
 ## Trading Terminal only
