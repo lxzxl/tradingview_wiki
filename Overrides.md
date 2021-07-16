@@ -12,7 +12,10 @@ volumePaneSize: "large"
 // fonts available in text editors (i.e., in `Text` drawing tool properties dialog)
 editorFontsList: ['Verdana', 'Courier New', 'Times New Roman', 'Arial']
 
+paneProperties.backgroundType: 'solid' // or 'gradient'
 paneProperties.background: "#ffffff"
+paneProperties.backgroundGradientStartColor: "#ffffff"
+paneProperties.backgroundGradientEndColor: "#ffffff"
 paneProperties.vertGridProperties.color: "#E6E6E6"
 paneProperties.vertGridProperties.style: LINESTYLE_SOLID
 paneProperties.horzGridProperties.color: "#E6E6E6"
