@@ -58,6 +58,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [settings_adapter](#settings_adapter)
   * [compare_symbols](#compare_symbols)
   * [additional_symbol_info_fields](#additional_symbol_info_fields)
+  * [header_widget_buttons_mode](#header_widget_buttons_mode)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
   * [rss_news_feed](#rss_news_feed)
@@ -523,6 +524,21 @@ See [Symbology](Symbology#SymbolInfo-Structure) for more information about symbo
 additional_symbol_info_fields: [
     { title: 'Ticker', propertyName: 'ticker' }
 ]
+```
+
+### header_widget_buttons_mode
+
+An additional optional field to change the look and feel of buttons on the top toolbar.
+Mode can be of the following:
+
+* `fullsize`: always full-size buttons on the top toolbar
+* `adaptive`: adaptive/auto mode (fullsize if the window width allows and icons on small windows).
+* `compact`: icons only buttons on the top toolbar (favorites won't be shown)
+
+By default (if option is omitted) header will be in adaptive mode (fullsize if the window width allows and icons on smaller windows).
+
+```javascript
+header_widget_buttons_mode: 'fullsize',
 ```
 
 ## Trading Terminal only

@@ -8,6 +8,8 @@ Here is the list of breaking changes:
 
 ## Version 20
 
+- Featureset `caption_buttons_text_if_possible` has been removed and has been replaced by a new parameter [`header_widget_buttons_mode`](Widget-Constructor#header_widget_buttons_mode)
+
 **Trading Terminal**
 
 - `unixTimeAgo` formatter has been removed.

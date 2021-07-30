@@ -48,7 +48,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | chart_property_page_trading             | on            |                 | This feature is for the Trading Terminal only           |
 | chart_property_page_right_margin_editor | on            | 1.15            | Shows the right margin editor in the setting dialog |
 | countdown                               | on            | 1.4             | Displays a countdown label on a price scale         |
-| caption_buttons_text_if_possible        | off           | 1.4             | Shows text instead of icons on the Indicators and Compare buttons in the header when possible|
 | dont_show_boolean_study_arguments       | off           | 1.4             | Hides true/false study arguments |
 | hide_last_na_study_output               | off           | 1.4             | Hides last n/a study output data        |
 | symbol_info                             | on            | 1.5             | Enables the symbol info dialog                 |
