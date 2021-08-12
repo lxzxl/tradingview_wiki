@@ -103,7 +103,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | mouse_wheel_scale             | on    |   16          | If enabled, series scaling with a mouse wheel is enabled.
 | pinch_scale                   | on    |   16          | If enabled, series scaling with pinch/zoom gestures (this option is supported on touch devices) is enabled.
 | axis_pressed_mouse_move_scale | on    |   16          | If enabled, axis scaling with left mouse button pressed is allowed.
-| high_density_bars             | off   |   1.11          | Allows zooming out to show more than 60000 bars on a single screen
 | low_density_bars              | off   |   1.15          | Allows zooming in to show up to one bar in the viewport
 | uppercase_instrument_names    | on    | 1.12            | Disabling this feature allows a user to enter case-sensitive symbols
 | no_min_chart_width            | off   | 1.14            | Disables minimum chart width limitation

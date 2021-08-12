@@ -59,6 +59,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [compare_symbols](#compare_symbols)
   * [additional_symbol_info_fields](#additional_symbol_info_fields)
   * [header_widget_buttons_mode](#header_widget_buttons_mode)
+  * [time_scale](#time_scale)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
   * [rss_news_feed](#rss_news_feed)
@@ -539,6 +540,19 @@ By default (if option is omitted) header will be in adaptive mode (fullsize if t
 
 ```javascript
 header_widget_buttons_mode: 'fullsize',
+```
+
+### time_scale
+
+An additional optional field to add more bars on screen.
+At the moment the only sub-option available are:
+
+* `min_bar_spacing`: number - should be greater than 0.
+
+```javascript
+time_scale: {
+    min_bar_spacing: 10,
+}
 ```
 
 ## Trading Terminal only
