@@ -10,6 +10,8 @@ Here is the list of breaking changes:
 
 - Featureset `caption_buttons_text_if_possible` has been removed and has been replaced by a new parameter [`header_widget_buttons_mode`](Widget-Constructor#header_widget_buttons_mode)
 
+- Feature set `high_density_bars` has been removed and replaced by `min_bar_spacing`, a new parameter for [`time_scale`](Widget-Constructor#time_scale).
+
 **Trading Terminal**
 
 - `unixTimeAgo` formatter has been removed.
