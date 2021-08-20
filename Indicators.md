@@ -14,7 +14,7 @@
 
 [studies_overrides](Widget-Constructor#studies_overrides)
 
-### Change the default properties if indicators on the fly
+### Change the default properties of indicators on the fly
 
 [applyStudiesOverrides(overrides)](Widget-Methods#applystudiesoverridesoverrides)
 

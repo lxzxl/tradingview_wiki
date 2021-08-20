@@ -69,6 +69,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_spread_operators                   | off           |       20        | Shows the spread operators in the Symbol Search dialog |
 | hide_exponentiation_spread_operator     | off           |       20        | Hide exponentiation spread operator (^) in the Symbol Search dialog |
 | hide_reciprocal_spread_operator         | off           |       20        | Hide reciprocal spread operator (1/x) in the Symbol Search dialog |
+| hide_resolution_in_legend            | off            |       20        | Hide the interval (D, 2D, W, M, etc.) in the chart legend and the data window|
 
 ### Elements placement
 

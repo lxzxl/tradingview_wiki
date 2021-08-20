@@ -223,7 +223,7 @@ Example:
 1. Library finds out that the bar with the time `1419411578413` already exists and is the most recent one
 1. Library replaces the entire bar making the most recent bar `{1419411578413, 10, 14, 9, 14}`
 
-**Remark 2**: Is it possible either to update the most recent bar or to add a new one with `onRealtimeCallback`.
+**Remark 2**: It is possible either to update the most recent bar or to add a new one with `onRealtimeCallback`.
 You'll get an error if you call this function when trying to update a historical bar.
 
 **Remark 3**: There is no way to change historical bars once they've been received by the chart currently.
