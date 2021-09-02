@@ -12,6 +12,8 @@ Here is the list of breaking changes:
 
 - Featureset `high_density_bars` has been removed and replaced by `min_bar_spacing`, a new parameter for [`time_scale`](Widget-Constructor#time_scale).
 
+- Study `Moving Average Modified` has been removed. Use `Smoothed Moving Average` instead. Note that the default value for `length` input is different.
+
 **Trading Terminal**
 
 - `unixTimeAgo` formatter has been removed.
