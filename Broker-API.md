@@ -63,9 +63,9 @@ If you want to show a custom message with the reason why the symbol cannot be tr
 This function should return the information that will be used to build an Account manager.
 See [Account manager](Account-Manager) for more information.
 
-### placeOrder([order](Trading-Objects-and-Constants#order), confirmId)
+### placeOrder([order](Trading-Objects-and-Constants#order), confirmId): Promise\<PlaceOrderResult>
 
-Method is called when a user wants to place an order. Order is pre-filled with partial or complete information.
+Method is called when a user wants to place an order. Order is pre-filled with partial or complete information. This function returns an object with the order id.
 
 `confirmId` is passed if `supportPlaceOrderPreview` configuration flag is on.
 
@@ -140,7 +140,7 @@ This method is called by the internal Order dialog, DOM panel and floating tradi
 
 The result is an object with the following data:
 
-- `qty` - object with fields `min`, `max` and `step` that specifies Quantity, field step and boundaries.
+- `qty` - object [QuantityMetainfo](Trading-Objects-and-Constants#QuantityMetainfo).
 - `pipSize` - size of 1 pip (e.g., 0.0001 for EURUSD).
 - `pipValue` - value of 1 pip for the instrument in the account currency.
 - `minTick` - minimal price change (e.g., 0.00001 for EURUSD). Used for price fields.
@@ -154,6 +154,8 @@ The result is an object with the following data:
 - `currency` - instrument currency that is displayed in the Order dialog
 - `baseCurrency` - the first currency quoted in a currency pair. Used for crypto currencies only.
 - `quoteCurrency` - the second currency quoted in a currency pair. Used for crypto currencies only.
+- `bigPointValue` - The value represented by a full point of price movement in the contract currency. This value is used to calculate the Total Value (symbol currency) of the order.
+- `units` - Units of quantity or amount. Displayed instead of the Units label in the Quantity/Amount field.
 
 ### accountsMetainfo() : or Promise
 

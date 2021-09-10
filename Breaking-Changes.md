@@ -1,10 +1,40 @@
-We do our best to make every next version fully compatible with the previous one, but sometimes big changes requires you to make minor changes in your code when upgrading to a new version.
+We do our best to make every next version fully compatible with the previous one, but sometimes big changes require you to make minor changes in your code when upgrading to a new version.
 
 _Note: you can check the Charting Library version by executing `TradingView.version()` in a browser console._
 
 Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
+
+## Version 21
+
+- Featureset `show_dialog_on_snapshot_ready` has been removed. [takeScreenshot](Widget-Methods#takescreenshot) makes a snapshot silently, so you can use the URL from [onScreenshotReady](Widget-Methods#subscribeevent-callback) callback to show your own dialog instead.
+
+- Field `holidays` from [SymbolInfo](Symbology) has been renamed to [`session_holidays`](Symbology#session_holidays).
+
+**Trading Terminal**
+
+- `empty` formatter has been removed.
+
+- Flag `durationForMarketOrders` has been removed from Broker Configuration `configFlags` object. To use duration with market orders, add appropriate order type to `supportedOrderTypes` array.
+
+- `supportReducePosition` flag has been removed from the Broker Configuration `configFlags` object.
+
+- `supportExecutions` flag has been added. If broker supports executions you need to set the flag to `true`.
+
+- The default value of `asc` field of the [SortingParameters](Account-Manager#sortingparameters) has been changed to `true`.
+
+- The `customFormatters` field has been removed from the [accountManagerInfo](Broker-API#accountManagerInfo).
+
+- `id`, `modificationProperty`, `fixedWidth`, `showOnMobile` and `showTooltipOnCell` fields have been removed from the [Account Manager column description](Account-Manager#Column-description). The `property` field has been made mandatory, so you can use it instead of `id`.
+
+- The string `id` field has been made mandatory in each [table](Account-Manager#Table) row.
+
+- The return value of the method `placeOrder` in the [Broker API](Broker-API) has been changed from `Promise<void>` to [Promise\<PlaceOrderResult\>](Trading-Objects-and-Constants#PlaceOrderResult).
+
+- `contextMenuEvent` type in `contextMenuActions` in `AccountManagerInfo` interface has been changed from `MouseEvent` to `MouseEvent | TouchEvent`.
+
+- The shape of the `news_provider` property in the [Widget Constructor options](Widget-Constructor#news_provider) has changed. The `is_news_generic` and `get_news` properties have been replaced with a single function.
 
 ## Version 20
 
@@ -35,6 +65,8 @@ _Note: container_id has been marked deprecated. It's now preferable to switch to
 It will still return the same object `params: {time, price}`.
 
 **Trading Terminal**
+
+- The default value of the `supportPLUpdate` flag has been changed to `true`.
 
 - [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.
 

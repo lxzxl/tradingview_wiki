@@ -41,15 +41,9 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Broker supports partial closing of a trade.
 
-* `supportReducePosition`
-
-    *Default:* `false`
-
-    Broker supports changing of a position without orders.
-
 * `supportPLUpdate`
 
-    *Default:* `false`
+    *Default:* `true`
 
     Broker provides PL for a position. If the broker calculates profit/loss by itself it should call [plUpdate](Trading-Host#plupdatepositionid-pl) as soon as PL is changed.
     Otherwise Chart will calculate PL as a difference between the current trade and an average price of the position.
@@ -255,12 +249,6 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     `Stop Loss` and `Take Profit` are added or removed only together.
 
-* `durationForMarketOrders`
-
-    *Default:* `false`
-
-    Broker supports durations for market order. If it is set to `true`, then the Durations control for market orders will be displayed.
-
 * `showNotificationsLog`
 
     *Default:* `true`
@@ -279,6 +267,13 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     With this flag you can show a checkbox to disable the confirmation dialog display
 
+* `supportExecutions`
+
+    *Default:* `false`
+
+    Broker supports executions.
+    If this flag is set to `true` the Chart will display executions.
+
 ### durations: array of objects
 
 List of expiration options of orders. It is optional. Do not set it if you don't want the durations to be displayed in the Order Dialog.
@@ -289,7 +284,7 @@ The objects have the following keys: `{ name, value, hasDatePicker?, hasTimePick
 * `hasDatePicker`: Boolean. If it is set to `true`, then the Display date control in the Order Dialog for this duration type will be dispalyed.
 * `hasTimePicker`: Boolean. If it is set to `true`, then the Display time control in the Order Dialog for this duration type will be dispalyed.
 * `default`: Boolean. Default duration. Only one duration object in the durations array can have a `true` value for this field. The default duration will be used when the user places orders in the silent mode and it will be the selected one when the user opens the Order Dialog for the first time.
-* `supportedOrderTypes`: Array of [OrderType](#ordertype). A list of types of orders for which this duration type will be displayed in the Duration control of the Order Dialog.
+* `supportedOrderTypes`: Array of [OrderType](#ordertype). A list of types of orders for which this duration type will be displayed in the Duration control of the Order Dialog. Default value is `[OrderType.Limit, OrderType.Stop, OrderType.StopLimit]`.
 
 Example:
 
@@ -580,3 +575,19 @@ An object that describes a negative validation result.
 
 * `valid`: false
 * `errorMessage`: string
+
+## PlaceOrderResult
+
+An object that describes a place order result.
+
+* `orderId`: string
+
+## QuantityMetainfo
+
+An object that describes the quantity field step and boundaries.
+
+* `min`: number
+* `max`: number
+* `step`: number
+* `uiStep?`: number. Step for scrolling.
+* `default?`: number. It is a default quantity value.

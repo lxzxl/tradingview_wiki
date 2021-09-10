@@ -572,7 +572,7 @@ widgetbar: {
     watchlist_settings: {
         default_symbols: ["NYSE:AA", "NYSE:AAL", "NASDAQ:AAPL"],
         readonly: false
-    }
+    },
 }
 ```
 
@@ -636,55 +636,24 @@ rss_news_feed: {
 
 :chart: *applies to [Trading Terminal](Trading-Terminal) only*
 
-An object that specifies the news provider. It may contain the following properties:
+Use this property to set your own news getter function. Both the `symbol` and `callback` will be passed to the function.
 
-1. `is_news_generic` - if set to `true` then the title of the news widget will not include a symbol name (`Headlines` will be included only). Otherwise `for SYMBOL_NAME` will be added.
-1. `get_news` - use this property to set your own news getter function. Both the `symbol` and `callback` will be passed to the function.
+The callback function should be called with an object. The object should have two properties: `title` which is a optional string, and `newsItems` which is an array of news objects that have the following structure:
 
-    The callback function should be called with an array of news objects that have the following structure:
+* `title` (required) - the title of news item.
+* `published` (required) - the time of news item in ms (UTC).
+* `source` (optional) - source of the news item title.
+* `shortDescription` (optional) - Short description of a news item that will be displayed under the title.
+* `link` (optional) - URL to the news story.
+* `fullDescription` (optional) - full description (body) of a news item.
 
-    * `title` (required) - the title of news item.
-    * `published` (required) - the time of news item in ms (UTC).
-    * `source` (optional) - source of the news item title.
-    * `shortDescription` (optional) - Short description of a news item that will be displayed under the title.
-    * `link` (optional) - URL to the news story.
-    * `fullDescription` (optional) - full description (body) of a news item.
+**NOTE:** Only `title` and `published` are the main properties used to compare what has already been published and what's new.
 
-    **NOTE:** Only `title` and `published` are the main properties
-    used to compare what has already been published and what's new.
+**NOTE 2:** When a user clicks on a news item a new tab with the `link` URL will be opened. If `link` is not specified then a pop-up dialog with `fullDescription` will be shown.
 
-    **NOTE 2:** When a user clicks on a news item a new tab with the `link` URL will be opened. If `link` is not specified then a pop-up dialog with `fullDescription` will be shown.
+**NOTE 3:** If both `news_provider` and `rss_news_feed` are available then the `rss_news_feed` will be ignored.
 
-    **NOTE 3:** If both `news_provider` and `rss_news_feed` are available then the `rss_news_feed` will be ignored.
-
-Example:
-
-```javascript
-const dateOfPublication = new Date().valueOf();
-
-news_provider: {
-    is_news_generic: true,
-    get_news: function(symbol, callback) {
-        callback([
-            {
-                title: 'News for symbol ' + symbol,
-                shortDescription: 'Short description of the news item',
-                fullDescription: 'Full description of the news item',
-                published: dateOfPublication,
-                source: 'My own source of news',
-                link: 'https://www.tradingview.com/'
-            },
-            {
-                title: 'Another news for symbol ' + symbol,
-                shortDescription: 'Short description of the news item',
-                fullDescription: 'Full description of the news item. Long text here.',
-                published: dateOfPublication,
-                source: 'My own source of news',
-            }
-        ]);
-    }
-}
-```
+See [News API examples](News-Api-Examples) for usage examples.
 
 ### broker_factory
 

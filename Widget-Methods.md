@@ -64,6 +64,7 @@ widget.onChartReady(function() {
   * [applyStudiesOverrides(overrides)](#applystudiesoverridesoverrides)
 * :chart: [Trading Terminal only](#chart-trading-terminal-only)
   * [watchList()](#chart-watchlist)
+  * [news()](#chart-news)
 * :chart: [Multiple Charts Layout](#chart-multiple-charts-layout)
   * [chart(index)](#chart-chartindex)
   * [activeChart()](#chart-activechart)
@@ -253,6 +254,7 @@ This method takes a snapshot of the chart layout and returns it as an HTML canva
 `options` is an *optional* object that has the following fields:
 
 * `backgroundColor`: background color
+* `borderColor`: chart border color
 * `font`: legend text font family
 * `fontSize`: legend text font size
 * `legendMode`: `vertical` or `horizontal`
@@ -570,6 +572,24 @@ Returns an object to manage the watchlist. The object has the following methods:
 1. `onListRemoved()` - you can use this method to be notified when the list is removed from the watchlist. You can subscribe and unsubscribe using the [[Subscription]] object returned by this function.
 
 1. `onListRenamed()` - - you can use this method to be notified when the list is renamed in the watchlist. You can subscribe and unsubscribe using the [[Subscription]] object returned by this function.
+
+### :chart: news()
+
+*Starting from version 21.*
+
+Returns a Promise that resolves with an object used to control the news widget. The object has the following methods:
+
+1. `refresh()` - allow you to refresh the news list on-demand.
+
+```js
+const widget = new TradingView.widget(/* options */);
+
+widget.onChartReady(() => {
+    widget.news().then(newsApi => {
+        // newsApi is ready to use.
+    });
+});
+```
 
 ## :chart: Multiple Charts Layout
 

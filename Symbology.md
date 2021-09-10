@@ -52,7 +52,7 @@ Trading hours for this symbol. See the [Trading Sessions](Trading-Sessions) arti
 
 The session value to display in the UI. If not specified, then `session` is used.
 
-## holidays
+## session_holidays
 
 List of holidays for this symbol. These dates are not displayed on the chart.
 It's a string in the following format:

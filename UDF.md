@@ -86,6 +86,8 @@ The response structure is similar (but **not equal**) to [SymbolInfo](Symbology#
 * `ticker`
 * `timezone`
 * `session-regular` (mapped to `SymbolInfo.session`)
+* `session-holidays`
+* `corrections`
 * `supported-resolutions`
 * `force-session-rebuild`
 * `has-daily`

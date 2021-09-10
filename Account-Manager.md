@@ -34,7 +34,7 @@ You can display any field of an [order](Trading-Objects-and-Constants#order) or 
 
 ### orderColumnsSorting: [SortingParameters](#sortingparameters)
 
-Optional sorting of the table. If it is not set, the table is sorted by the first column.
+Optional sorting of the table.
 
 ### possibleOrderStatuses: array of [OrderStatus](Trading-Objects-and-Constants#orderstatus)
 
@@ -46,7 +46,7 @@ History page will be displayed if it exists. All orders from previous sessions w
 
 ### historyColumnsSorting: [SortingParameters](#sortingparameters)
 
-Optional sorting of the table. If it is not set, the table is sorted by the first column.
+Optional sorting of the table.
 
 ## Positions Page
 
@@ -105,30 +105,16 @@ Account Summary table metainfo is an object with the following fields:
 
 1. `initialSorting`: [SortingParameters](#sortingparameters)
 
-    Optional sorting of the table. If it is not set, the table is sorted by the first column.
+    Optional sorting of the table.
 
-**NOTE**: if you have more than 1 row in a table and want to update a row using `changeDelegate` make sure that you have a unique `id` field in each row to identify it.
+**NOTE**: make sure that you have a unique string `id` field in each row to identify it.
 
 #### SortingParameters
 
 Object with the following properties:
 
-    - `columnId` - `id` or `property` of the column that will be used for sorting.
-    - `asc` - (optional, default `false`) - If it is `true`, then initial sorting will be in ascending order.
-
-## Formatters
-
-### customFormatters: array of a column formatter description
-
-Optional array to define custom formatters. Each description is an object with the following fields:
-
-- `name`: unique identifier of a formatter.
-
-- `format(options)`: function that is used for formatting of a cell value. `options` is an object with the following keys:
-    1. `value` - value to be formatted
-    1. `priceFormatter` - standard formatter for price. You can use method `format(price)` to prepare price value.
-    1. `prevValue` - optional field. It is a previous value so you can compare and format accordingly. It exists if current column has the `highlightDiff: true` key.
-    1. `row` - object with all key/value pairs from the current row
+    - `columnId` - `property` of the column that will be used for sorting.
+    - `asc` - (optional, default `true`) - If it is `false`, then initial sorting will be in descending order.
 
 ## Column description
 
@@ -178,11 +164,11 @@ Here is the list of default formatters:
 
 There are some special formatters that are used to add buttons to the table:
 
-`orderSettings` adds Modify/Cancel buttons to the orders tab. Always set `modificationProperty` value to `status` for this formatter.
+`orderSettings` adds Modify/Cancel buttons to the orders tab.
 
-`posSettings` adds Edit/Close buttons to the Positions/Net Positions tab
+`posSettings` adds Edit/Close buttons to the Positions/Net Positions tab.
 
-`tradeSettings` adds Edit/Close buttons to the Individual Positions tab. Always set `modificationProperty` value to `canBeClosed` for this formatter.
+`tradeSettings` adds Edit/Close buttons to the Individual Positions tab.
 
 ### property
 
@@ -191,10 +177,6 @@ There are some special formatters that are used to add buttons to the table:
 ### sortProp
 
 Optional `sortProp` is a data object key that is used for data sorting.
-
-### modificationProperty
-
-If optional `modificationProperty` is set then the change of its value updates the table cell.
 
 ### notSortable
 
@@ -207,18 +189,6 @@ Optional `notSortable` can be set to prevent column sorting.
 ### highlightDiff
 
 `highlightDiff` can be set with `formatPrice` and `formatPriceForexSup` formatters only to highlight the changes of the field.
-
-### fixedWidth
-
-If it is `true` then the column width will not be changed when the cell value is decreased.
-
-### showOnMobile
-
-If it is `false` then the column will not be shown on mobile.
-
-### showTooltipOnCell
-
-If it is `true`, the tooltip is displayed when you hover over the cell. See `tooltipProperty` also.
 
 ### tooltipProperty
 
@@ -237,11 +207,19 @@ Here is the list of possible order statuses:
 1. 5 - Rejected,
 1. 6 - Working
 
+### isCapitalize
+
+If it is `true`, the first character of every word in the sentence in the column will be capitalized. The default value is `true`.
+
+### showZeroValues
+
+If it is `false`, the zero values will be hidden. The default value is `true`.
+
 ## Context Menu
 
 ### contextMenuActions(contextMenuEvent, activePageActions)
 
-`contextMenuEvent`: MouseEvent object passed by a browser
+`contextMenuEvent`: MouseEvent or TouchEvent object passed by a browser
 
 `activePageActions`: array of `ActionMetaInfo` items for the current page
 

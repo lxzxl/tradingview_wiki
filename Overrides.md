@@ -142,15 +142,15 @@ mainSeriesProperties.barStyle.barColorsOnPrevClose: false
 mainSeriesProperties.barStyle.dontDrawOpen: false
 
 // Line styles
-mainSeriesProperties.lineStyle.color: "#2196f3"
+mainSeriesProperties.lineStyle.color: "#2962FF"
 mainSeriesProperties.lineStyle.linestyle: LINESTYLE_SOLID
 mainSeriesProperties.lineStyle.linewidth: 2
 mainSeriesProperties.lineStyle.priceSource: "close"
 
 // Area styles
 mainSeriesProperties.areaStyle.color1: "rgba(33, 150, 243, 0.28)"
-mainSeriesProperties.areaStyle.color2: "#2196f3"
-mainSeriesProperties.areaStyle.linecolor: "#2196f3"
+mainSeriesProperties.areaStyle.color2: "#2962FF"
+mainSeriesProperties.areaStyle.linecolor: "#2962FF"
 mainSeriesProperties.areaStyle.linestyle: LINESTYLE_SOLID
 mainSeriesProperties.areaStyle.linewidth: 2
 mainSeriesProperties.areaStyle.priceSource: "close"
@@ -170,11 +170,11 @@ mainSeriesProperties.baselineStyle.transparency: 50
 mainSeriesProperties.baselineStyle.baseLevelPercentage: 50
 
 // Hi-Lo style
-mainSeriesProperties.hiloStyle.color: "#2196f3"
+mainSeriesProperties.hiloStyle.color: "#2962FF"
 mainSeriesProperties.hiloStyle.showBorders: true
-mainSeriesProperties.hiloStyle.borderColor: "#2196f3"
+mainSeriesProperties.hiloStyle.borderColor: "#2962FF"
 mainSeriesProperties.hiloStyle.showLabels: true
-mainSeriesProperties.hiloStyle.labelColor: "#2196f3"
+mainSeriesProperties.hiloStyle.labelColor: "#2962FF"
 mainSeriesProperties.hiloStyle.fontFamily: 'Trebuchet MS'
 mainSeriesProperties.hiloStyle.fontSize: 7
 

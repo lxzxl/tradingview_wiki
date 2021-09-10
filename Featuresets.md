@@ -69,6 +69,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_spread_operators                   | off           |       20        | Shows the spread operators in the Symbol Search dialog |
 | hide_exponentiation_spread_operator     | off           |       20        | Hide exponentiation spread operator (^) in the Symbol Search dialog |
 | hide_reciprocal_spread_operator         | off           |       20        | Hide reciprocal spread operator (1/x) in the Symbol Search dialog |
+| compare_symbol_search_spread_operators  | off           |       20        | Shows the spread operators in the Compare Search dialog - needs to be used in conjuction to show_spread_operators|
+| studies_symbol_search_spread_operators  | off           |       20        | Shows the spread operators for Studies - needs to be used in conjuction to show_spread_operators|
 | hide_resolution_in_legend            | off            |       20        | Hide the interval (D, 2D, W, M, etc.) in the chart legend and the data window|
 
 ### Elements placement
@@ -90,7 +92,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | right_bar_stays_on_scroll | on |                 | Determines the behavior of Zoom feature: bar under the mouse cursor stays in the same place if this feature is disabled
 | constraint_dialogs_movement | on |                 | Keeps the dialogs within the chart
 | charting_library_debug_mode | off |                 | Enables logs
-| show_dialog_on_snapshot_ready | on |                 | Disabling this feature allows you to make a snapshot silently
 | study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
 | header_in_fullscreen_mode | off |    16         | Enables header widget DOM element in the fullscreen mode
