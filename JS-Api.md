@@ -167,7 +167,7 @@ Charting Library will call this function when it needs to get [SymbolInfo](Symbo
 1. `onHistoryCallback`: callback function for historical data. It should be called **just once**. This function has 2 arguments:
     1. Array of `bars`. See below.
     1. `Meta information`: See below.
-1. `onErrorCallback`: callback function for errors. The only argument of this function is a text error message. This message is not displayed and is reserved for the future.
+1. `onErrorCallback`: callback function for errors. The only argument of this function is a text error message.
 
 This function is called when the chart needs a history fragment defined by dates range.
 
