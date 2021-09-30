@@ -1122,6 +1122,7 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
     * `type` (`'value'`)
     * `sourceType` (`'series'`)
     * `plotTitle` (`string`) - the name of the plot (open, high, low, close).
+    * `sourceTitle` (`string`) - title of the series
   * `StudyFieldDescriptor` - description of a study field. It contains the following fields:
     * `type` (`'value'`)
     * `sourceType` (`'study'`)
