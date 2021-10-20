@@ -117,6 +117,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_overlay_compare_legend_option | off | 20 | Applies symbol display mode (ticker/description) to overlay/compare studies in the status line
 | study_symbol_ticker_description | off | 20 | Applies symbol display mode (ticker/description) to indicator inputs in the status line
 | auto_enable_symbol_labels  | on | 20 | Displays Symbol Name Label when comparing Symbols
+| insert_indicator_dialog_shortcut  | on | 21 | Enables insert indicator dialog shortcut (/)
 
 ### Important features
 
