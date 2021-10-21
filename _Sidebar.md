@@ -48,7 +48,13 @@ Customisation by areas
 
 [Saving/Loading Charts](Saving-and-Loading-Charts)
 
-[Creating Custom Studies](Creating-Custom-Studies)
+Creating Custom Studies
+
+* [Overview](Creating-Custom-Studies)
+* [Metainfo](Custom-Studies-Metainfo)
+* [Constructor](Custom-Studies-Constructor)
+* [Pine JS functions](PineJS-Utility-Functions)
+* [Examples](Custom-Studies-Examples)
 
 ***
 
