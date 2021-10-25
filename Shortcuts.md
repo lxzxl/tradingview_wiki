@@ -13,6 +13,8 @@
 | Change Interval | Number or , |
 | Move chart 1 bar to the left | ⇦ |
 | Move chart 1 bar to the right | ⇨ |
+| Zoom in | Ctrl + ⇧ |
+| Zoom out | Ctrl + ⇩ |
 | Move further to the left | Ctrl + ⇦ |
 | Move further to the right | Ctrl + ⇨ |
 | Toggle maximize chart | Alt + Enter or Alt + Click |
