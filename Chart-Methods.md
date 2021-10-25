@@ -1112,6 +1112,7 @@ console.log(widget.activeChart().setAllPanesHeight([250, 400, 200]));
     * `includeSeries` (`boolean`, default `true`) - defines whether the exported data should contain the main series (open, high, low, close).
     * `includedStudies` - which studies should be included in the exported data
         (by default, the value is `'all'` which means that all studies are included, but if you want to export only some of them then you can assign an array of [studies' ids](#getallstudies)).
+    * `includeDisplayedValues` (`boolean`, default `false`) - returns formatted values for every value according to data source's formatter and params.
 
 Exports data from the chart, returns a Promise object. This method doesn't load data. The result has the following structure:
 
@@ -1143,6 +1144,7 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 1. `widget.activeChart().exportData({ includeTime: false, to: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data before `2018-01-01`.
 1. `widget.activeChart().exportData({ includeTime: false, from: Date.UTC(2018, 0, 1) / 1000 })` - to export series' data in the range before `2018-01-01`.
 1. `widget.activeChart().exportData({ includeTime: false, from: Date.UTC(2018, 0, 1) / 1000, to: Date.UTC(2018, 1, 1) / 1000 })` - to export series' data in the range between `2018-01-01` and `2018-02-01`.
+1. `widget.activeChart().exportData({ includeDisplayedValues: true })` - to export all displayed data on the chart.
 
 #### User time
 
