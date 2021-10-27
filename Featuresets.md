@@ -119,6 +119,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | study_symbol_ticker_description | off | 20 | Applies symbol display mode (ticker/description) to indicator inputs in the status line
 | auto_enable_symbol_labels  | on | 20 | Displays Symbol Name Label when comparing Symbols
 | insert_indicator_dialog_shortcut  | on | 21 | Enables insert indicator dialog shortcut (/)
+| two_character_bar_marks_labels | off | 22 | Display at most two characters in bar marks. The default behaviour is to only display one character.
 
 ### Important features
 

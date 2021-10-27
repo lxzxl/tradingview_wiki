@@ -241,7 +241,9 @@ Request: `GET /marks?symbol=<ticker_name>&from=<unix_timestamp>&to=<unix_timesta
 * `resolution`: string
 
 A response is expected to be an object with some properties listed below.
-This object is similar to [respective response](JS-Api#getmarkssymbolinfo-from-to-ondatacallback-resolution) in JS API, but each property is treated as a table column, as described above.
+This object is similar to [respective response](JS-Api#getmarkssymbolinfo-from-to-ondatacallback-resolution) in JS API, but each property is treated as a table column, as described above.  
+
+If the `two_character_bar_marks_labels` feature is enabled then at most the first two characters of the `label` text will be displayed. Otherwise only the first character will be displayed.
 
 ```javascript
 {
