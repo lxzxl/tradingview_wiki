@@ -254,7 +254,7 @@ The Library assumes that you will call `onDataCallback` only once per `getMarks`
 * `time`: unix time, UTC
 * `color`: `red` | `green` | `blue` | `yellow` | `{ border: '#ff0000', background: '#00ff00' }`
 * `text`: mark popup text. HTML supported
-* `label`: a letter to be printed on a mark. Single character
+* `label`: a letter to be printed on a mark. **Note:** the label text is only shown on marks with a diameter of at least 14 pixels. If you require that the label is always shown then use a `minSize` of at least 14 for all marks. Up to two characters can be displayed if the `two_character_bar_marks_labels` feature is enabled.
 * `labelFontColor`: color of a letter on a mark
 * `minSize`: minimum mark size (diameter, pixels) (default value is `5`)
 
