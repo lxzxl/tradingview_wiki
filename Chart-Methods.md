@@ -1134,6 +1134,10 @@ Exports data from the chart, returns a Promise object. This method doesn't load 
 * `data` is an array of [Float64Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array)s.
    Each `Float64Array` array has the same length as `schema` array and represents the associated field's item.
 
+* `displayedData` is an array of arrays of strings (i.e. `string[][]`).
+   Each inner array has the same length as `schema` array and represents the display value of the associated field element.
+   Note that this array will be empty if `includeDisplayedValues` option is `false`.
+
 **Examples:**
 
 1. `widget.activeChart().exportData({ includeTime: false, includedStudies: [] })` - to export series' data only.
