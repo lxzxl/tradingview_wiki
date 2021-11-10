@@ -3,6 +3,7 @@
 You can add your own buttons to the top toolbar.
 
 [createButton(options)](Widget-Methods#createbuttonoptions)
+[createDropdown(options)](Widget-Methods#createdropdownoptions)
 
 ### Styles
 

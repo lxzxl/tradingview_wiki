@@ -45,6 +45,7 @@ widget.onChartReady(function() {
 * [Custom UI Controls](#custom-ui-controls)
   * [onContextMenu(callback)](#oncontextmenucallback)
   * [createButton(options)](#createbuttonoptions)
+  * [createDropdown(options)](#createdropdownoptions)
 * [Dialogs](#dialogs)
   * [showNoticeDialog(params)](#shownoticedialogparams)
   * [showConfirmDialog(params)](#showconfirmdialogparams)
@@ -414,6 +415,48 @@ widget.headerReady().then(function() {
     button.addEventListener('click', function() { alert("My custom button pressed!"); });
     button.textContent = 'My custom button caption';
 });
+```
+
+### createDropdown(options)
+
+1. `options`: object that is mandatory
+
+`options` consists of:
+
+* `title` as a string. Title of the dropdown to be displayed in the header
+* `tooltip` optional string. Tooltip only for the dropdown button in the header
+* `icon` optional svg as a string. Icon to be displayed on the left hand side of the dropdown
+* `items` array of items to be inserted within the dropdown
+  * `title` string that represents the name of the item
+  * `onSelect` function to be invoked upon selecting the item
+* `align`: `right` | `left`. optional, default: `left`. Where to display the dropdown in the header
+
+Creates a dropdown element to be placed in the header toolbar at the top of the chart.
+
+Example:
+
+```javascript
+widget.createDropdown(
+    {
+        title: 'dropdown', 
+        tooltip: 'tooltip for this dropdown',
+        items: [
+            {
+                title: 'item#1',
+                onSelect: () => {console.log('1');},
+            },
+            {
+                title: 'item#2',
+                onSelect: () => {widget.setSymbol('IBM', '1D');},
+            },
+            {
+                title: 'item#3',
+                onSelect: () => {widget.activeChart().createStudy('MACD', false, false, [14, 30, 'close', 9]);},
+            }
+        ],
+        icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><g fill="none" stroke="currentColor"><circle cx="10" cy="10" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path stroke-linecap="square" d="M17.5 7.5l-7 13"/></g></svg>`,
+    }
+);
 ```
 
 ## Dialogs
