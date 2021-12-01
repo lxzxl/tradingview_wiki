@@ -137,12 +137,30 @@ widget.onChartReady(function() {
 1. `shortcut`
 1. `callback`: function(data)
 
-The Library will call the `callback` function every time the shortcut key is pressed.
+The Library will call the `callback` function every time the shortcut is pressed.
+
+The `shortcut` parameter accepts three different types. A number, a string, and an array of number and string.
+
+Use a string seperated by '+' for shortcuts using an alphabet character (A to Z) with optional modifiers (ctrl, shift, alt).
+
+Use a number for shortcuts using non-alphabet character without modifiers. If you don't know the key code you need you can use resources like [keycode.info](https://keycode.info), or [MDN](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode) to check.
+
+Use an array of literal key codes and modifier strings for shortcuts using non-alphabet characters with optional modifier strings.
 
 Example:
 
 ```javascript
 widget.onShortcut("alt+s", function() {
+  widget.chart().executeActionById("symbolSearch");
+});
+
+// F1
+widget.onShortcut(112, function() {
+  widget.chart().executeActionById("symbolSearch");
+});
+
+// ctrl+shift+\
+widget.onShortcut(['ctrl', 'shift', 220], function() {
   widget.chart().executeActionById("symbolSearch");
 });
 ```
