@@ -78,6 +78,34 @@ Applies `overrides` to the study.
 Note: `overrides` object keys don’t need to start with the study name. The key is applied to a particular study.
 For example, you should use `style` instead of `Overlay.style` to override the current style of the Overlay study.
 
+### onDataLoaded
+
+You can subscribe using [Subscription](Subscription) object returned by this function to be notified when the study data is loaded. You can also use the same object to unsubscribe from the event.
+
+Example:
+
+```javascript
+studyApi.onDataLoaded().subscribe(
+    null,
+    () => console.log('Study data is loaded'),
+    true
+);
+```
+
+### onStudyError
+
+You can subscribe using [Subscription](Subscription) object returned by this function to be notified when the study received an error. You can also use the same object to unsubscribe from the event.
+
+Example:
+
+```javascript
+studyApi.onStudyError().subscribe(
+    null,
+    () => console.log('Study error'),
+    true
+);
+```
+
 ### :chart: applyToEntireLayout()
 
 Copies the study to all charts of the layout.
