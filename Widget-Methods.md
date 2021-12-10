@@ -556,6 +556,14 @@ console.log(widget.getTheme());
     * `disableUndo` - boolean flag that shows the undo action availability.
 
 This method changes the chart theme without reloading the chart.
+It returns a Promise that resolves once the theme has been applied.
+You can apply other style modifications after the promise is fulfilled.
+
+```js
+widget.changeTheme('Dark').then(() => {
+    widget.chart().applyOverrides({ 'paneProperties.backgroundGradientStartColor': 'red' });
+});
+```
 
 You can also use the [theme](Widget-Constructor#theme) in the Widget Constructor to create the chart with a custom theme.
 

@@ -12,6 +12,8 @@ Here is the list of breaking changes:
 
 - Field `holidays` from [SymbolInfo](Symbology) has been renamed to [`session_holidays`](Symbology#session_holidays).
 
+- `changeTheme` from [Widget Methods](Widget-Methods#changethemethemename-options) now returns a Promise. You can apply other style modifications after the promise is fulfilled.
+
 **Trading Terminal**
 
 - `empty` formatter has been removed.

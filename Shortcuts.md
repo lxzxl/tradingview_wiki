@@ -20,7 +20,6 @@
 | Toggle maximize chart | Alt + Enter or Alt + Click |
 | Toggle maximize pane | Doubleclick |
 | Go to date | Alt + g |
-| Add text note for symbol | Alt + n |
 | Take snapshot | Alt + s |
 | Reset chart | Alt + r |
 | Invert series scale | Alt + i |
