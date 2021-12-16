@@ -14,6 +14,8 @@ Here is the list of breaking changes:
 
 - `changeTheme` from [Widget Methods](Widget-Methods#changethemethemename-options) now returns a Promise. You can apply other style modifications after the promise is fulfilled.
 
+- [Symbol type](Symbology#type) `bitcoin` has been renamed to `crypto`.
+
 **Trading Terminal**
 
 - `empty` formatter has been removed.

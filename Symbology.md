@@ -38,7 +38,7 @@ Optional type of the instrument.
 - `index`
 - `forex`
 - `futures`
-- `bitcoin`
+- `crypto`
 - `expression`
 - `spread`
 - `cfd`

@@ -131,7 +131,7 @@ This call is intended to provide the list of symbols that match the user's searc
         "description": "<symbol description>",
         "exchange": "<symbol exchange name>",
         "ticker": "<symbol ticker name, optional>",
-        "type": "stock" // or "futures" or "bitcoin" or "forex" or "index"
+        "type": "stock" // or "futures" or "crypto" or "forex" or "index"
     },
     {
         //    .....
