@@ -12,17 +12,21 @@ volumePaneSize: "large"
 // fonts available in text editors (i.e., in `Text` drawing tool properties dialog)
 editorFontsList: ['Verdana', 'Courier New', 'Times New Roman', 'Arial']
 
-paneProperties.backgroundType: 'solid' // or 'gradient'
+paneProperties.backgroundType: "solid" // or "gradient"
 paneProperties.background: "#ffffff"
 paneProperties.backgroundGradientStartColor: "#ffffff"
 paneProperties.backgroundGradientEndColor: "#ffffff"
-paneProperties.vertGridProperties.color: "#E6E6E6"
+
+paneProperties.vertGridProperties.color: "rgba(42, 46, 57, 0.06)"
 paneProperties.vertGridProperties.style: LINESTYLE_SOLID
-paneProperties.horzGridProperties.color: "#E6E6E6"
+ 
+paneProperties.horzGridProperties.color: "rgba(42, 46, 57, 0.06)"
 paneProperties.horzGridProperties.style: LINESTYLE_SOLID
-paneProperties.crossHairProperties.color: "#989898"
-paneProperties.crossHairProperties.width: 1
+ 
+paneProperties.crossHairProperties.color: "#9598A1"
 paneProperties.crossHairProperties.style: LINESTYLE_DASHED
+paneProperties.crossHairProperties.transparency: 0
+paneProperties.crossHairProperties.width: 1
 
 // Margins (percentage). Used for auto scaling.
 paneProperties.topMargin: 10
@@ -43,18 +47,20 @@ paneProperties.legendProperties.showSeriesTitle: true
 paneProperties.legendProperties.showSeriesOHLC: true
 paneProperties.legendProperties.showLegend: true
 paneProperties.legendProperties.showBarChange: true
-paneProperties.legendProperties.showOnlyPriceSource: true
+paneProperties.legendProperties.showBackground: true
+paneProperties.legendProperties.backgroundTransparency: 50
 
-scalesProperties.backgroundColor : "#ffffff"
-scalesProperties.fontSize: 11
-scalesProperties.lineColor : "#555"
-scalesProperties.textColor : "#555"
-scalesProperties.scaleSeriesOnly : false
+scalesProperties.backgroundColor: "#ffffff"
+scalesProperties.lineColor: "rgba(42, 46, 57, 0.14)"
+scalesProperties.textColor: "#131722"
+scalesProperties.fontSize: 12
+scalesProperties.scaleSeriesOnly: false
 scalesProperties.showSeriesLastValue: true
+scalesProperties.seriesLastValueMode: PriceAxisLastValueMode.LastValueAccordingToScale
 scalesProperties.showSeriesPrevCloseValue: false
 scalesProperties.showStudyLastValue: false
-scalesProperties.showStudyPlotLabels: false
 scalesProperties.showSymbolLabels: false
+scalesProperties.showStudyPlotLabels: false
 scalesProperties.showCurrency: true
 scalesProperties.showUnit: true
 
@@ -64,39 +70,46 @@ timezone: "Etc/UTC" # See supported timezones list (at Symbology#timezone page) 
 
 
 // Series style. See the supported values below
-// Bars = 0
-// Candles = 1
+// Bar = 0
+// Candle = 1
 // Line = 2
 // Area = 3
-// Heikin Ashi = 8
-// Hollow Candles = 9
 // Renko = 4
 // Kagi = 5
 // Point&Figure = 6
 // Line Break = 7
+// Heikin Ashi = 8
+// Hollow Candle = 9
 // Baseline = 10
+// Range = 11
+// HiLo = 12
+
 mainSeriesProperties.style: 1
 
-mainSeriesProperties.showCountdown: true
-mainSeriesProperties.visible:true
+mainSeriesProperties.visible: true
 mainSeriesProperties.showPriceLine: true
 mainSeriesProperties.priceLineWidth: 1
-mainSeriesProperties.priceLineColor: ''
+mainSeriesProperties.priceLineColor: ""
+mainSeriesProperties.baseLineColor: "#B2B5BE"
 mainSeriesProperties.showPrevClosePriceLine: false
 mainSeriesProperties.prevClosePriceLineWidth: 1
-mainSeriesProperties.prevClosePriceLineColor: 'rgba( 85, 85, 85, 1)'
-mainSeriesProperties.lockScale: false
+mainSeriesProperties.prevClosePriceLineColor: "rgba( 85, 85, 85, 1)"
+mainSeriesProperties.minTick: "default" // minTick value is a string representation of 3 values: pricescale, minmove, fractional (see below)
+mainSeriesProperties.showCountdown: true
 
-mainSeriesProperties.minTick: minTick value is a string representation of 3 values: pricescale, minmove, fractional (see below)
-mainSeriesProperties.priceAxisProperties.autoScale:true             (see #749)
-mainSeriesProperties.priceAxisProperties.autoScaleDisabled:false    (see #749)
-mainSeriesProperties.priceAxisProperties.percentage:false
-mainSeriesProperties.priceAxisProperties.percentageDisabled:false
-mainSeriesProperties.priceAxisProperties.log:false
-mainSeriesProperties.priceAxisProperties.logDisabled:false
 
+mainSeriesProperties.priceAxisProperties.autoScale: true            (see #749)
+mainSeriesProperties.priceAxisProperties.lockScale: false
+mainSeriesProperties.priceAxisProperties.percentage: false
+mainSeriesProperties.priceAxisProperties.indexedTo100: false
+mainSeriesProperties.priceAxisProperties.log: false
+mainSeriesProperties.priceAxisProperties.isInverted: false
+mainSeriesProperties.priceAxisProperties.alignLabels: true
+
+mainSeriesProperties.statusViewStyle.showExchange: true
+mainSeriesProperties.statusViewStyle.showInterval: true
 // possible values are: description, ticker, ticker-and-description
-mainSeriesProperties.statusViewStyle.symbolTextSource: 'description'
+mainSeriesProperties.statusViewStyle.symbolTextSource: "description"
 
 symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
 
@@ -110,36 +123,45 @@ mainSeriesProperties.candleStyle.drawBorder: true
 mainSeriesProperties.candleStyle.borderColor: "#378658"
 mainSeriesProperties.candleStyle.borderUpColor: "#26a69a"
 mainSeriesProperties.candleStyle.borderDownColor: "#ef5350"
+mainSeriesProperties.candleStyle.wickColor: "#737375"
 mainSeriesProperties.candleStyle.wickUpColor: "#26a69a"
 mainSeriesProperties.candleStyle.wickDownColor: "#ef5350"
 mainSeriesProperties.candleStyle.barColorsOnPrevClose: false
+mainSeriesProperties.candleStyle.drawBody: true
 
 // Hollow Candles styles
 mainSeriesProperties.hollowCandleStyle.upColor: "#26a69a"
 mainSeriesProperties.hollowCandleStyle.downColor: "#ef5350"
 mainSeriesProperties.hollowCandleStyle.drawWick: true
 mainSeriesProperties.hollowCandleStyle.drawBorder: true
-mainSeriesProperties.hollowCandleStyle.borderColor: "#378658"
+mainSeriesProperties.hollowCandleStyle.borderColor: "rgba( 55, 134, 88, 1)"
 mainSeriesProperties.hollowCandleStyle.borderUpColor: "#26a69a"
 mainSeriesProperties.hollowCandleStyle.borderDownColor: "#ef5350"
-mainSeriesProperties.hollowCandleStyle.wickColor: "#737375"
+mainSeriesProperties.hollowCandleStyle.wickColor: "rgba( 115, 115, 117, 1)"
+mainSeriesProperties.hollowCandleStyle.wickUpColor: "#26a69a"
+mainSeriesProperties.hollowCandleStyle.wickDownColor: "#ef5350"
+mainSeriesProperties.hollowCandleStyle.drawBody: true
 
 // Heikin Ashi styles
 mainSeriesProperties.haStyle.upColor: "#26a69a"
 mainSeriesProperties.haStyle.downColor: "#ef5350"
 mainSeriesProperties.haStyle.drawWick: true
 mainSeriesProperties.haStyle.drawBorder: true
-mainSeriesProperties.haStyle.borderColor: "#378658"
+mainSeriesProperties.haStyle.borderColor: "rgba( 55, 134, 88, 1)"
 mainSeriesProperties.haStyle.borderUpColor: "#26a69a"
 mainSeriesProperties.haStyle.borderDownColor: "#ef5350"
-mainSeriesProperties.haStyle.wickColor: "#737375"
+mainSeriesProperties.haStyle.wickColor: "rgba( 115, 115, 117, 1)"
+mainSeriesProperties.haStyle.wickUpColor: "#26a69a"
+mainSeriesProperties.haStyle.wickDownColor: "#ef5350"
 mainSeriesProperties.haStyle.barColorsOnPrevClose: false
+mainSeriesProperties.haStyle.drawBody: true
 
 // Bar styles
 mainSeriesProperties.barStyle.upColor: "#26a69a"
 mainSeriesProperties.barStyle.downColor: "#ef5350"
 mainSeriesProperties.barStyle.barColorsOnPrevClose: false
 mainSeriesProperties.barStyle.dontDrawOpen: false
+mainSeriesProperties.barStyle.thinBars: true
 
 // Line styles
 mainSeriesProperties.lineStyle.color: "#2962FF"
@@ -154,6 +176,7 @@ mainSeriesProperties.areaStyle.linecolor: "#2962FF"
 mainSeriesProperties.areaStyle.linestyle: LINESTYLE_SOLID
 mainSeriesProperties.areaStyle.linewidth: 2
 mainSeriesProperties.areaStyle.priceSource: "close"
+mainSeriesProperties.areaStyle.transparency: 100
 
 // Baseline styles
 mainSeriesProperties.baselineStyle.baselineColor: "rgba( 117, 134, 150, 1)"
@@ -169,15 +192,54 @@ mainSeriesProperties.baselineStyle.priceSource: "close"
 mainSeriesProperties.baselineStyle.transparency: 50
 mainSeriesProperties.baselineStyle.baseLevelPercentage: 50
 
-// Hi-Lo style
+// Hi-Lo styles
 mainSeriesProperties.hiloStyle.color: "#2962FF"
 mainSeriesProperties.hiloStyle.showBorders: true
 mainSeriesProperties.hiloStyle.borderColor: "#2962FF"
 mainSeriesProperties.hiloStyle.showLabels: true
 mainSeriesProperties.hiloStyle.labelColor: "#2962FF"
-mainSeriesProperties.hiloStyle.fontFamily: 'Trebuchet MS'
 mainSeriesProperties.hiloStyle.fontSize: 7
 
+// Line Break styles
+mainSeriesProperties.pbStyle.upColor: "#26a69a"
+mainSeriesProperties.pbStyle.downColor: "#ef5350"
+mainSeriesProperties.pbStyle.borderUpColor: "#26a69a"
+mainSeriesProperties.pbStyle.borderDownColor: "#ef5350"
+mainSeriesProperties.pbStyle.upColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.pbStyle.downColorProjection: "rgba( 245, 166, 174, 1)"
+mainSeriesProperties.pbStyle.borderUpColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.pbStyle.borderDownColorProjection: "rgba( 245, 166, 174, 1")
+
+// Renko styles
+mainSeriesProperties.renkoStyle.upColor: "#26a69a"
+mainSeriesProperties.renkoStyle.downColor: "#ef5350"
+mainSeriesProperties.renkoStyle.borderUpColor: "#26a69a"
+mainSeriesProperties.renkoStyle.borderDownColor: "#ef5350"
+mainSeriesProperties.renkoStyle.upColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.renkoStyle.downColorProjection: "rgba( 245, 166, 174, 1)"
+mainSeriesProperties.renkoStyle.borderUpColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.renkoStyle.borderDownColorProjection: "rgba( 245, 166, 174, 1)"
+mainSeriesProperties.renkoStyle.wickUpColor: "#26a69a"
+mainSeriesProperties.renkoStyle.wickDownColor: "#ef5350"
+
+// Kagi styles
+mainSeriesProperties.kagiStyle.upColor: "#26a69a"
+mainSeriesProperties.kagiStyle.downColor: "#ef5350"
+mainSeriesProperties.kagiStyle.upColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.kagiStyle.downColorProjection: "rgba( 245, 166, 174, 1)"
+
+// Point&Figure styles
+mainSeriesProperties.pnfStyle.upColor: "#26a69a"
+mainSeriesProperties.pnfStyle.downColor: "#ef5350"
+mainSeriesProperties.pnfStyle.upColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.pnfStyle.downColorProjection: "rgba( 245, 166, 174, 1)"
+
+// Range styles
+mainSeriesProperties.rangeStyle.upColor: "#26a69a"
+mainSeriesProperties.rangeStyle.downColor: "#ef5350"
+mainSeriesProperties.rangeStyle.thinBars: "true"
+mainSeriesProperties.rangeStyle.upColorProjection: "rgba( 169, 220, 195, 1)"
+mainSeriesProperties.rangeStyle.downColorProjection: "rgba( 245, 166, 174, 1)"
 ```
 
 #### LineStyles
@@ -187,6 +249,13 @@ LINESTYLE_SOLID = 0
 LINESTYLE_DOTTED = 1
 LINESTYLE_DASHED = 2
 LINESTYLE_LARGE_DASHED = 3
+```
+
+#### PriceAxisLastValueMode
+
+```javascript
+LastPriceAndPercentageValue = 0
+LastValueAccordingToScale = 1
 ```
 
 ### Mintick
