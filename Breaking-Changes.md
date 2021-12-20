@@ -6,6 +6,10 @@ Here is the list of breaking changes:
 
 <!-- markdownlint-disable no-emphasis-as-header -->
 
+## Version 22
+
+- The [`watchList`](Widget-Methods#chart-watchlist) method now returns a promise that resolves a watchlist API object when the watchlist widget has loaded.
+
 ## Version 21
 
 - Featureset `show_dialog_on_snapshot_ready` has been removed. [takeScreenshot](Widget-Methods#takescreenshot) makes a snapshot silently, so you can use the URL from [onScreenshotReady](Widget-Methods#subscribeevent-callback) callback to show your own dialog instead.

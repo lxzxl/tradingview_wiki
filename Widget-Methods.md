@@ -600,7 +600,7 @@ The following methods are available in [Trading Terminal](Trading-Terminal) only
 
 *Starting from version 1.9.*
 
-Returns an object to manage the watchlist. The object has the following methods:
+Returns a promise that resolves with an object to manage the watchlist. The object has the following methods:
 
 1. `defaultList()` - allows you to get a default list of symbols.
 
