@@ -213,7 +213,9 @@ Boolean value showing whether the symbol includes intraday (minutes) historical 
 
 If it's `false` then all buttons for intraday resolutions will be disabled for this particular symbol.
 
-If it is set to `true`, all resolutions that are supplied directly by the datafeed must be provided in `intraday_multipliers` array.
+If it is set to `true`, all intradays resolutions that are supplied directly by the datafeed must be provided in `intraday_multipliers` array.
+
+**WARNING** Any daily, weekly or monthly resolutions cannot be inferred from intraday resolutions!
 
 ## supported_resolutions
 
@@ -228,8 +230,8 @@ Resolution availability logic (pseudocode):
 ```javascript
 resolutionAvailable  =
     resolution.isIntraday
-        ? symbol.has_intraday && symbol.supports_resoluiton(resolution)
-        : symbol.supports_resoluiton(resolution);
+        ? symbol.has_intraday && symbol.supported_resolutions(resolution)
+        : symbol.supported_resolutions(resolution);
 ```
 
 In case of absence of `supported_resolutions` in a symbol info all DWM resolutions will be available. Intraday resolutions will be available if `has_intraday` is `true`.
@@ -282,7 +284,19 @@ If it's `false` then all buttons for resolutions that include ticks will be disa
 
 The boolean value showing whether data feed has its own daily resolution bars or not.
 
-If `has_daily` = `false` then Charting Library will build the respective resolutions using 1-minute bars by itself. If not, then it will request those bars from the data feed.
+If `has_daily` = `false` then Charting Library will build the respective resolutions using 1-minute bars by itself. If not, then it will request those bars from the data feed only if specified resolution belongs to `daily_multipliers`, otherwise an error will be thrown.
+
+## daily_multipliers
+
+*Default:* `['1']`
+
+Array (of strings) containing the [resolutions](Resolution#Days) (in days - without the suffix) supported by the data feed.
+
+For example it could be something like
+
+```javascript
+daily_multipliers = ['1', '3', '4', '6', '7'];
+```
 
 ## has_weekly_and_monthly
 
@@ -290,7 +304,31 @@ If `has_daily` = `false` then Charting Library will build the respective resolut
 
 The boolean value showing whether data feed has its own weekly and monthly resolution bars or not.
 
-If `has_weekly_and_monthly` = `false` then Charting Library will build the respective resolutions using daily bars by itself. If not, then it will request those bars from the data feed.
+If `has_weekly_and_monthly` = `false` then Charting Library will build the respective resolutions using daily bars by itself. If not, then it will request those bars from the data feed using either the `weekly_multipliers` or `monthly_multipliers` if specified. If resolution is not within either list an error will be raised.
+
+## weekly_multipliers
+
+*Default:* `['1']`
+
+Array (of strings) containing the [resolutions](Resolution#Weeks) (in weeks - without the suffix) supported by the data feed.
+
+For example it could be something like
+
+```javascript
+weekly_multipliers = ['1', '5', '10'];
+```
+
+## monthly_multipliers
+
+*Default:* `['1']`
+
+Array (of strings) containing the [resolutions](Resolution#Months) (in months - without the suffix) supported by the data feed.
+
+For example it could be something like
+
+```javascript
+monthly_multipliers = ['1', '3', '4', '5', '10'];
+```
 
 ## has_empty_bars
 
