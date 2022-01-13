@@ -276,10 +276,11 @@ numeric_formatting: { decimal_sign: "," },
 It is an object that contains the following fields:
 
 1. timeFormatter
-1. dateFormatter
+2. dateFormatter
+3. tickMarkFormatter
 
 You can use these formatters to adjust the display format of the date and time values.
-Both values are objects that include functions such as `format` and `formatLocal`:
+`timeFormatter` and `dateFormatter` are objects that include functions such as `format` and `formatLocal`:
 
 ```javascript
 function format(date)
@@ -288,18 +289,80 @@ function formatLocal(date)
 
 These functions should return the text that specifies date or time. `formatLocal` should convert date and time to local timezone.
 
+`tickMarkFormatter` is a function with the following signature:
+
+```typescript
+function tickMarkFormatter(date: Date, tickMarkType: TickMarkType): string
+
+/**
+ * Represents the type of a tick mark on the time axis.
+ */
+type TickMarkType =
+    /**
+     * The start of the year (e.g. it's the first tick mark in a year).
+     */
+    | 'Year'
+    /**
+     * The start of the month (e.g. it's the first tick mark in a month).
+     */
+    | 'Month'
+    /**
+     * A day of the month.
+     */
+    | 'DayOfMonth'
+    /**
+     * A time without seconds.
+     */
+    | 'Time'
+    /**
+     * A time with seconds.
+     */
+    | 'TimeWithSeconds'
+}
+```
+
 Example:
 
 ```javascript
 custom_formatters: {
-  timeFormatter: {
-    format: function(date) { var _format_str = '%h:%m'; return _format_str.replace('%h', date.getUTCHours(), 2). replace('%m', date.getUTCMinutes(), 2). replace('%s', date.getUTCSeconds(), 2); }
-  },
-  dateFormatter: {
-    format: function(date) { return date.getUTCFullYear() + '/' + (date.getUTCMonth() + 1) + '/' + date.getUTCDate(); }
-  }
+    timeFormatter: {
+        format: (date) => {
+            const _format_str = '%h:%m';
+            return _format_str
+                .replace('%h', date.getUTCHours(), 2)
+                .replace('%m', date.getUTCMinutes(), 2)
+                .replace('%s', date.getUTCSeconds(), 2);
+        }
+    },
+    dateFormatter: {
+        format: (date) => {
+            return date.getUTCFullYear() + '/' + (date.getUTCMonth() + 1) + '/' + date.getUTCDate();
+        }
+    },
+    tickMarkFormatter: (date, tickMarkType) => {
+        switch (tickMarkType) {
+            case 'Year':
+                return 'Y' + date.getUTCFullYear();
+
+            case 'Month':
+                return 'M' + (date.getUTCMonth() + 1);
+
+            case 'DayOfMonth':
+                return 'D' + date.getUTCDate();
+
+            case 'Time':
+                return 'T' + date.getUTCHours() + ':' + date.getUTCMinutes();
+
+            case 'TimeWithSeconds':
+                return 'S' + date.getUTCHours() + ':' + date.getUTCMinutes() + ':' + date.getUTCSeconds();
+        }
+
+        throw new Error('unhandled tick mark type ' + tickMarkType);
+    }
 }
 ```
+
+**Remark**: `tickMarkFormatter` must display the UTC date, and not the date corresponding to your local timezone.
 
 ### overrides
 

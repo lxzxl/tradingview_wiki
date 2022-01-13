@@ -71,17 +71,6 @@ _Note: container_id has been marked deprecated. It's now preferable to switch to
 
 - [crossHairMoved](Chart-Methods#crossHairMoved) has been changed from a _callback_ parameter to `crossHairMoved()` with a `Subscription` model.
 It will still return the same object `params: {time, price}`.
-
-**Trading Terminal**
-
-- The default value of the `supportPLUpdate` flag has been changed to `true`.
-
-- [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.
-
-- The return value of the method `buttonDropdownActions` in the [Trading Host](Trading-Host) has been changed from `BindPopupMenuActionDescription[]` to array of [ActionMetaInfo](Trading-Objects-and-Constants#ActionMetaInfo).
-
-- The `orderDialogOptions` object has been removed from the Broker's Configuration. Please use the `getOrderDialogOptions` method to customize the Order dialog.
-- The `className` field has been removed from the [Account Manager column description](Account-Manager#Column-description). Use the [alignment](Account-Manager#alignment) field to control the alignment of the cell value.
 - `force_session_rebuild` field in the symbol info has been removed
 
 - Count and type of [getBars](JS-Api#getbarssymbolinfo-resolution-periodparams-onhistorycallback-onerrorcallback) arguments has been changed - `from`, `to` and `firstDataRequest` arguments have been combined into the `periodParams` object.
@@ -117,6 +106,17 @@ It will still return the same object `params: {time, price}`.
     For example, if you previously had `ctx.new_sym(newSym, PineJS.Std.period(this._context), PineJS.Std.period(this._context))`, you need to replace it with `ctx.new_sym(newSym, PineJS.Std.period(this._context))`.
 
 - `calculateHistoryDepth` method from [JS-Api](JS-Api) has been removed. Consider switching to usage of [`countBack`](JS-Api#note-about-periodparams) instead.
+
+**Trading Terminal**
+
+- The default value of the `supportPLUpdate` flag has been changed to `true`.
+
+- [Trading Host](Trading-Host) `defaultDropdownMenuActions` options have been changed. Options `selectAnotherBroker` and `disconnect` have been removed.
+
+- The return value of the method `buttonDropdownActions` in the [Trading Host](Trading-Host) has been changed from `BindPopupMenuActionDescription[]` to array of [ActionMetaInfo](Trading-Objects-and-Constants#ActionMetaInfo).
+
+- The `orderDialogOptions` object has been removed from the Broker's Configuration. Please use the `getOrderDialogOptions` method to customize the Order dialog.
+- The `className` field has been removed from the [Account Manager column description](Account-Manager#Column-description). Use the [alignment](Account-Manager#alignment) field to control the alignment of the cell value.
 
 ## Version 18
 
