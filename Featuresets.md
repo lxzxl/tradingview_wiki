@@ -71,8 +71,9 @@ Please note that the leading `-` characters are not part of the featureset name 
 | hide_reciprocal_spread_operator         | off           |       20        | Hide reciprocal spread operator (1/x) in the Symbol Search dialog |
 | compare_symbol_search_spread_operators  | off           |       20        | Shows the spread operators in the Compare Search dialog - needs to be used in conjuction to show_spread_operators|
 | studies_symbol_search_spread_operators  | off           |       20        | Shows the spread operators for Studies - needs to be used in conjuction to show_spread_operators|
-| hide_resolution_in_legend            | off            |       20        | Hide the interval (D, 2D, W, M, etc.) in the chart legend and the data window|
-| hide_unresolved_symbols_in_legend       | off            |       21        | Hide unresolved symbols in the chart legend and the data window|
+| hide_resolution_in_legend               | off           |       20        | Hide the interval (D, 2D, W, M, etc.) in the chart legend and the data window|
+| hide_unresolved_symbols_in_legend       | off           |       21        | Hide unresolved symbols in the chart legend and the data window|
+| show_zoom_and_move_buttons_on_touch     | off           |       21        | On touch device show the zoom and move buttons at the bottom of the chart|
 
 ### Elements placement
 

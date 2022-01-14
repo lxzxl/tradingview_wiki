@@ -618,6 +618,25 @@ time_scale: {
 }
 ```
 
+### symbol_search_complete
+
+Use this property to set a function to override the symbol input from symbol search dialogs.
+
+For example for you may want to get additional input from the user before deciding which symbol should be resolved.
+
+The function should take one parameter: a `string` of input from the symbol search and should return a `Promise` that resolves with the new symbol string.
+
+**NOTE:** This override is not called when adding a symbol to the watchlist.
+
+```javascript
+symbol_search_complete: (symbol) => {
+    return new Promise((resolve) => {
+        let newSymbol = getNewSymbol(symbol);
+        resolve(newSymbol);
+    });
+}
+```
+
 ## Trading Terminal only
 
 ### widgetbar
