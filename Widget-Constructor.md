@@ -60,6 +60,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [additional_symbol_info_fields](#additional_symbol_info_fields)
   * [header_widget_buttons_mode](#header_widget_buttons_mode)
   * [time_scale](#time_scale)
+  * [symbol_search_complete](#symbol_search_complete)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
   * [rss_news_feed](#rss_news_feed)
