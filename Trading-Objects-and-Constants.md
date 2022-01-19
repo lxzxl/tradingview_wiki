@@ -304,7 +304,7 @@ customNotificationFields: ['additionalType']
 
 ### customUI
 
-This optional field can be used to replace the standard Order Dialog and the Add Protection dialogs with your own.
+This optional field can be used to replace the standard Order dialogs and the Add Protection dialogs with your own.
 Values of the following two fields are functions that are called by the Trading Terminal to show the dialogs. Each function shows a dialog and returns a ```Promise``` object that should be resolved when the operation is finished or cancelled.
 
 **NOTE:** The returned ```Promise``` object should be resolved with either `true` or `false` value.
@@ -313,6 +313,8 @@ Values of the following two fields are functions that are called by the Trading 
 customUI: {
     showOrderDialog?: (order: Order, focus?: OrderTicketFocusControl) => Promise<boolean>;
     showPositionDialog?: (position: Position | Trade, brackets: Brackets, focus?: OrderTicketFocusControl) => Promise<boolean>;
+    showCancelOrderDialog?: (order: Order) => Promise<boolean>;
+    showClosePositionDialog?: (position: Position) => Promise<boolean>;
 }
 ```
 
