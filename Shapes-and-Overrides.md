@@ -124,6 +124,10 @@ You can create more than 50 different shapes using [createMultipointShape(points
 |------------|---------|------|-------------|-------|---------|
 | icon       | #3d85c6 | 40   | 1.571       | 1     | 0x263A  |
 
+| shape            | `inputs.lower diviation` | `inputs.source` | `inputs.upper diviation` | `inputs.use lower diviation` | `inputs.use upper diviation` | `styles.upLine.visible` | `styles.upLine.color`  | `styles.upLine.linestyle` | `styles.downLine.visible` | `styles.downLine.color` | `styles.downLine.linestyle` | `styles.baseLine.visible` | `styles.baseLine.color` | `styles.baseLine.linestyle` | `styles.extendLines` | `styles.showPearsons` | `visible` |
+|------------------|--------------------------|-----------------|--------------------------|------------------------------|------------------------------|-------------------------|------------------------|---------------------------|---------------------------|-------------------------|-----------------------------|---------------------------|-------------------------|-----------------------------|----------------------|-----------------------|-----------|
+| regression_trend | -2                       | close           | 2                        | TRUE                         | TRUE                         | TRUE                    | rgba(41, 98, 255, 0.3) | 0                         | TRUE                      | rgba(41, 98, 255, 0.3)  | 0                           | TRUE                      | rgba(244, 67, 54, 0.3)  | 0                           | FALSE                | TRUE                  | TRUE      |
+
 <!-- markdownlint-disable no-inline-html -->
 
 <nowiki />* icon can be one of the following values:

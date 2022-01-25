@@ -55,7 +55,7 @@ linetooltrendline: {
 linetoolinfoline: {
     linecolor: 'rgba( 21, 153, 128, 1)',
     linewidth: 1.0,
-    linestyle: CanvasEx.LINESTYLE_SOLID,
+    linestyle: LINESTYLE_SOLID,
     extendLeft: false,
     extendRight: false,
     leftEnd: LineEnd.Normal,
@@ -322,7 +322,7 @@ linetoolvertline: {
 linetoolcrossline: {
     linecolor: 'rgba(6, 160, 227, 1)',
     linewidth: 1.0,
-    linestyle: CanvasEx.LINESTYLE_SOLID,
+    linestyle: LINESTYLE_SOLID,
     showPrice: true,
     showTime: true
 },
@@ -930,6 +930,27 @@ linetoolinsidepitchfork: {
         linestyle: LINESTYLE_SOLID
     },
     level0-8: LEVELS_TYPE_C
+}
+linetoolregressiontrend: {
+    styles: {
+        upLine: {
+            visible: true,
+            color: 'rgba(41, 98, 255, 0.3)',
+            linestyle: LINESTYLE_SOLID
+        },
+        downLine: {
+            visible: true,
+            color: 'rgba(41, 98, 255, 0.3)',
+            linestyle: LINESTYLE_SOLID
+        },
+        baseLine: {
+            visible: true,
+            color: 'rgba(244, 67, 54, 0.3)',
+            linestyle: LINESTYLE_SOLID
+        },
+        extendLines: false,
+        showPearsons: true
+    }
 }
 ```
 
