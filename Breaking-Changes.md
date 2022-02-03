@@ -20,6 +20,8 @@ Here is the list of breaking changes:
 
 - [Symbol type](Symbology#type) `bitcoin` has been renamed to `crypto`.
 
+- The symbol search dialog suggestions list uses the `full_name` instead of the `exchange` and `symbol` value. This data is provided by your implementation of [searchSymbols](JS-Api#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback).
+
 **Trading Terminal**
 
 - `empty` formatter has been removed.
