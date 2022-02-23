@@ -449,7 +449,7 @@ widget.headerReady().then(function() {
   * `onSelect` function to be invoked upon selecting the item
 * `align`: `right` | `left`. optional, default: `left`. Where to display the dropdown in the header
 
-Creates a dropdown element to be placed in the header toolbar at the top of the chart.
+Creates a dropdown element to be placed in the header toolbar at the top of the chart. Returns a promise that resolves with an [API object](#Custom-dropdown-API) that can be used to update the dropdown options.
 
 Example:
 
@@ -474,7 +474,29 @@ widget.createDropdown(
         ],
         icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><g fill="none" stroke="currentColor"><circle cx="10" cy="10" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path stroke-linecap="square" d="M17.5 7.5l-7 13"/></g></svg>`,
     }
-);
+).then(myDropdownApi => {
+    // Use myDropdownApi if you need to update the dropdown:
+    // myDropdownApi.applyOptions({
+    //     title: 'a new title!'
+    // });
+
+    // Or remove the dropdown:
+    // myDropdownApi.remove();
+});
+```
+
+#### Custom dropdown API
+
+The object returned from `createDropdown` implements the following methods:
+
+* `applyOptions(options)` Apply new options to the custom dropdown. The `options` parameter is an object with properties that are a subset of the options object passed to `createDropdown`.
+* `remove()` Remove the custom dropdown.
+
+**Note: the alignment (`align`) of a dropdown cannot be changed with `applyOptions`. If you need to change the alignment of a dropdown you can remove and recreate:**
+
+```javascript
+myCustomDropdownApi.remove();
+widget.createDropdown(optionsWithDifferentAlignment);
 ```
 
 ## Dialogs
