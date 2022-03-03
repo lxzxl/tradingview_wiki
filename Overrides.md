@@ -112,6 +112,7 @@ mainSeriesProperties.statusViewStyle.showInterval: true
 mainSeriesProperties.statusViewStyle.symbolTextSource: "description"
 
 symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
+symbolWatermarkProperties.visibility : true
 
 // Different chart types defaults
 
