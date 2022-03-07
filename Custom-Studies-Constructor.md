@@ -9,7 +9,7 @@ The `context` is an object, containing symbol info along with some useful method
 
 `* - required`
 
-* `new_sym(ticker*, period*, periodBase*, periodForRange)` - is used to load new ticker
+* `new_sym(ticker*, period*, currencyCode, unitId)` - is used to load new ticker
 * `select_sym(i*)` - switch context to the other symbol received trough `new_sym`, where `i` is an index of the symbol (`0` for the main series)
 * `new_var(value*)` - creates an in-memory temporary storage with depth defined by first call `new_var(value).get(n)`
 * `new_unlimited_var(value*)` - creates an in-memory temporary storage with unlimited depth
@@ -24,7 +24,7 @@ The `init` method is called only once during the lifetime of the study and desig
 this.init = function(context, inputCallback) {
     var symbol = '#EQUITY';
     var period = PineJS.Std.period(this._context);
-    context.new_sym(symbol, period, period);
+    context.new_sym(symbol, period);
 };
 ```
 

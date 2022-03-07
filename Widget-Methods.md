@@ -56,6 +56,7 @@ widget.onChartReady(function() {
   * [mainSeriesPriceFormatter()](#mainseriespriceformatter)
   * [getIntervals()](#getintervals)
   * [getStudiesList()](#getstudieslist)
+  * [getStudyInputs(studyName)](#getstudyinputsstudyname)
   * [undoRedoState()](#undoredostate)
   * [getTheme()](#gettheme)
 * [Customization](#customization)
@@ -547,6 +548,10 @@ Returns an array of supported resolutions. This was introduced in version 1.7.
 ### getStudiesList()
 
 Returns an array of IDs of all studies. They can be used to create a study.
+
+### getStudyInputs(studyName)
+
+Returns all inputs information for a provided study.
 
 ### undoRedoState()
 
