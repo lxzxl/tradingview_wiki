@@ -19,10 +19,10 @@ paneProperties.backgroundGradientEndColor: "#ffffff"
 
 paneProperties.vertGridProperties.color: "rgba(42, 46, 57, 0.06)"
 paneProperties.vertGridProperties.style: LINESTYLE_SOLID
- 
+
 paneProperties.horzGridProperties.color: "rgba(42, 46, 57, 0.06)"
 paneProperties.horzGridProperties.style: LINESTYLE_SOLID
- 
+
 paneProperties.crossHairProperties.color: "#9598A1"
 paneProperties.crossHairProperties.style: LINESTYLE_DASHED
 paneProperties.crossHairProperties.transparency: 0
@@ -68,6 +68,12 @@ timeScale.rightOffset: 5
 
 timezone: "Etc/UTC" # See supported timezones list (at Symbology#timezone page) for available values
 
+// session breaks
+
+sessions.vertlines.sessBreaks.color: '#4985e7'
+sessions.vertlines.sessBreaks.style: LINESTYLE_DASHED
+sessions.vertlines.sessBreaks.visible: false
+sessions.vertlines.sessBreaks.width: 1
 
 // Series style. See the supported values below
 // Bar = 0

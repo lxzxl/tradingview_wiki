@@ -35,6 +35,9 @@ widget.onChartReady(function() {
   * [magnetMode](#magnetmode)
   * [startFullscreen](#startfullscreen)
   * [exitFullscreen](#exitfullscreen)
+  * [navigationButtonsVisibility](#navigationbuttonsvisibility)
+  * [paneButtonsVisibility](#panebuttonsvisibility)
+  * [dateFormat](#dateformat)
 * [Saving/Loading Charts](#savingloading-charts)
   * [save(callback)](#savecallback)
   * [load(state)](#loadstate)
@@ -309,6 +312,46 @@ This method enters full-screen mode.
 
 This method exits full-screen mode.
 
+# navigationButtonsVisibility
+
+This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the visibility type of the navigation buttons.
+
+Valid values are:
+
+* `'alwaysOn'`
+* `'visibleOnMouseOver'`
+* `'alwaysOff'`
+
+# paneButtonsVisibility
+
+This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the visibility type of the pane buttons.
+
+Valid values are:
+
+* `'alwaysOn'`
+* `'visibleOnMouseOver'`
+* `'alwaysOff'`
+
+# dateFormat
+
+This method returns a [WatchedValue](WatchedValue) object that can be used to read/set/watch the date format.
+
+Valid values are:
+
+* `'dd MMM \'yy'`
+* `'MMM dd, yyyy'`
+* `'MMM dd'`
+* `'yyyy-MM-dd'`
+* `'yy-MM-dd'`
+* `'yy/MM/dd'`
+* `'yyyy/MM/dd'`
+* `'dd-MM-yyyy'`
+* `'dd-MM-yy'`
+* `'dd/MM/yy'`
+* `'dd/MM/yyyy'`
+* `'MM/dd/yy'`
+* `'MM/dd/yyyy'`
+
 ## Saving/Loading Charts
 
 ### save(callback)
@@ -457,7 +500,7 @@ Example:
 ```javascript
 widget.createDropdown(
     {
-        title: 'dropdown', 
+        title: 'dropdown',
         tooltip: 'tooltip for this dropdown',
         items: [
             {
