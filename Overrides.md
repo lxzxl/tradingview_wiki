@@ -12,6 +12,9 @@ volumePaneSize: "large"
 // fonts available in text editors (i.e., in `Text` drawing tool properties dialog)
 editorFontsList: ['Verdana', 'Courier New', 'Times New Roman', 'Arial']
 
+// supported values: left, right, auto
+priceScaleSelectionStrategyName: 'auto'
+
 paneProperties.backgroundType: "solid" // or "gradient"
 paneProperties.background: "#ffffff"
 paneProperties.backgroundGradientStartColor: "#ffffff"
@@ -33,7 +36,6 @@ paneProperties.topMargin: 10
 paneProperties.bottomMargin: 8
 
 paneProperties.axisProperties.autoScale: true
-paneProperties.axisProperties.lockScale: false
 paneProperties.axisProperties.percentage: false
 paneProperties.axisProperties.indexedTo100: false
 paneProperties.axisProperties.log: false
@@ -119,6 +121,11 @@ mainSeriesProperties.statusViewStyle.symbolTextSource: "description"
 
 symbolWatermarkProperties.color : "rgba(0, 0, 0, 0.00)"
 symbolWatermarkProperties.visibility : true
+
+mainSeriesProperties.highLowAvgPrice.highLowPriceLinesVisible: false
+mainSeriesProperties.highLowAvgPrice.highLowPriceLabelsVisible: false
+mainSeriesProperties.highLowAvgPrice.averageClosePriceLineVisible: false
+mainSeriesProperties.highLowAvgPrice.averageClosePriceLabelVisible: false
 
 // Different chart types defaults
 
