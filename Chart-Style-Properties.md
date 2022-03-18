@@ -78,6 +78,7 @@ To change properties, use [Series Api](./Series-Api).
 - `bottomFillColor2` (`string`)
 - `topLineColor` (`string`)
 - `bottomLineColor` (`string`)
+- `baselineColor` (`string`)
 - `topLineWidth` (`number`)
 - `bottomLineWidth` (`number`)
 - `transparency` (`number`)

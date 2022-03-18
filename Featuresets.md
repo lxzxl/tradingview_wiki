@@ -7,11 +7,11 @@ Please note that the leading `-` characters are not part of the featureset name 
 [**Interactive Map of Featuresets**](https://charting-library.tradingview.com/featuresets.html)
 
 | ID                                      | Default State | Library Version | Description                                                |
-|-----------------------------------------|---------------|-----------------|-------------|
+|-----------------------------------------|---------------|-----------------|------------------------------------------------------------|
 | **header_widget**                       | on            |                 |                                                            |
 | - header_widget_dom_node                | on            |                 | Disabling this feature hides the header widget DOM element |
 | - header_symbol_search                  | on            |                 |                                                            |
-| - symbol_search_hot_key                 | on            |       1.9       | Symbol search by pressing any key                               |
+| - symbol_search_hot_key                 | on            |       1.9       | Symbol search by pressing any key                          |
 | - header_resolutions                    | on            |                 |                                                            |
 | - - header_interval_dialog_button       | on            |                 |                                                            |
 | - - - show_interval_dialog_on_key_press | on            |                 |                                                            |
@@ -59,8 +59,8 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_dom_first_time                     | off           | 1.12            | Shows DOM panel when a user opens the Chart for the first time |
 | hide_left_toolbar_by_default            | off           | 1.12            | Hides left toolbar when a user opens the Chart for the first time |
 | chart_style_hilo                        | off           | 1.15            | Adds Hi-Lo option to chart style controls |
-| pricescale_currency                     | off            | 16              | Displays the currency in which the instrument is traded on the price axes |
-| pricescale_unit                         | off            | 19              | Displays the unit in which the instrument is traded on the price axes |
+| pricescale_currency                     | off           | 16              | Displays the currency in which the instrument is traded on the price axes |
+| pricescale_unit                         | off           | 19              | Displays the unit in which the instrument is traded on the price axes |
 | scales_date_format                      | on            | 17              | Displays Date Format selector in Chart Settings |
 | popup_hints                             | on            | 17              | Displays popup hints about possible mouse/shortcuts/UI actions |
 | save_shortcut                           | on            |       18        | Enables the save shortcut |
@@ -74,6 +74,7 @@ Please note that the leading `-` characters are not part of the featureset name 
 | hide_resolution_in_legend               | off           |       20        | Hide the interval (D, 2D, W, M, etc.) in the chart legend and the data window|
 | hide_unresolved_symbols_in_legend       | off           |       21        | Hide unresolved symbols in the chart legend and the data window|
 | show_zoom_and_move_buttons_on_touch     | off           |       21        | On touch device show the zoom and move buttons at the bottom of the chart|
+| hide_main_series_symbol_from_indicator_legend | on           |       22        | Hide the optional symbol input value from the indicator's legend if 'Main chart symbol' option is selected |
 
 ### Elements placement
 
@@ -94,7 +95,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | right_bar_stays_on_scroll | on |                 | Determines the behavior of Zoom feature: bar under the mouse cursor stays in the same place if this feature is disabled
 | constraint_dialogs_movement | on |                 | Keeps the dialogs within the chart
 | charting_library_debug_mode | off |                 | Enables logs
-| study_dialog_search_control   | on    | 1.6             | Displays the search control in the indicators dialog
 | side_toolbar_in_fullscreen_mode | off |                 | This enables Drawings Toolbar in the fullscreen mode
 | header_in_fullscreen_mode | off |    16         | Enables header widget DOM element in the fullscreen mode
 | disable_resolution_rebuild    | off   |                 | Shows bar time exactly as provided by the data feed with no adjustments.
@@ -139,7 +139,6 @@ Please note that the leading `-` characters are not part of the featureset name 
 | support_multicharts | on | | Enables context menu actions (Clone, Sync) related to Multiple Chart Layout
 | header_layouttoggle | on | | Shows the Select Layout button in the header
 | add_to_watchlist | on | 1.9 | Enables "Add symbol to Watchlist" item in the menu
-| footer_screenshot | on | 1.11 | Shows a screenshot button in the footer (Account Manager)
 | open_account_manager | on | 1.11 | Keeps the Account Manager opened by default
 | trading_notifications | on | 1.11 | Shows trading notifications on the chart
 | multiple_watchlists | on | 1.12 | Enables creating of multiple watchlists
@@ -155,3 +154,4 @@ Please note that the leading `-` characters are not part of the featureset name 
 | show_order_panel_on_start | off | 17 | Order Panel is visible when the chart opens
 | order_panel_close_button | on | 17 | Shows close Order Panel button
 | order_panel_undock | on | 17 | Shows the Undock button in the Order Panel Settings
+| chart_hide_close_position_button | off | 21 | Hide the close position button

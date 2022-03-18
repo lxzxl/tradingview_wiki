@@ -33,6 +33,7 @@ widget.onChartReady(function() {
   * [hideAllDrawingTools](#hidealldrawingtools)
   * [magnetEnabled](#magnetenabled)
   * [magnetMode](#magnetmode)
+  * [supportedChartTypes](#supportedcharttypes)
   * [startFullscreen](#startfullscreen)
   * [exitFullscreen](#exitfullscreen)
   * [navigationButtonsVisibility](#navigationbuttonsvisibility)
@@ -304,6 +305,10 @@ Available modes:
 * `0` - weak magnet mode
 * `1` - strong magnet mode
 
+### supportedChartTypes()
+
+This method returns a readonly [WatchedValue](WatchedValue) object that can be used to read/watch the current supported [chart types](Chart-Methods#setcharttypetype) by an active chart.
+
 ### startFullscreen()
 
 This method enters full-screen mode.
@@ -513,7 +518,19 @@ widget.createDropdown(
             },
             {
                 title: 'item#3',
-                onSelect: () => {widget.activeChart().createStudy('MACD', false, false, [14, 30, 'close', 9]);},
+                onSelect: () => {
+                    widget.activeChart().createStudy(
+                        'MACD',
+                        false,
+                        false,
+                        {
+                            in_0: 14,
+                            in_1: 30,
+                            in_3: 'close',
+                            in_2: 9
+                        }
+                    );
+                },
             }
         ],
         icon: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><g fill="none" stroke="currentColor"><circle cx="10" cy="10" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path stroke-linecap="square" d="M17.5 7.5l-7 13"/></g></svg>`,

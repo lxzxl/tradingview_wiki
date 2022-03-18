@@ -81,7 +81,8 @@ The response structure is similar (but **not equal**) to [SymbolInfo](Symbology#
 * `fractional`
 * `pricescale`
 * `has-intraday`
-* `has-no-volume`
+* `has-no-volume` (NOTE: `has-no-volume` is deprecated and will be removed in future releases, use `visible-plots-set` instead)
+* `visible-plots-set`
 * `type`
 * `ticker`
 * `timezone`

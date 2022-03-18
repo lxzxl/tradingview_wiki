@@ -8,7 +8,32 @@ Here is the list of breaking changes:
 
 ## Version 22
 
+- Methods [getTimezone](Chart-Methods#gettimezone) and [setTimezone](Chart-Methods#settimezonetimezone) have been deprecated and will be removed in future versions. Use [getTimezoneApi](Chart-Methods#gettimezoneapi) instead.
+
+- POST request data format sent to [snapshot_url](Widget-Constructor#snapshot_url) has been changed.
+Since this version this request contains `multipart/form-data` with the field `preparedImage` that represents binary data of the snapshot image in `image/png` format.
+
+- Optional `inputs` arguments for [createStudy](Chart-Methods#createstudyname-forceoverlay-lock-inputs-overrides-options) has been changed from using an array of ordered values to an object with named properties. You can still use array-like inputs but it will be removed in further releases.
+
+- The set of inputs for Moving Average study has been changed and the first input now is a symbol. If you used `createStudy` to create Moving Average study you will have to modify the list of inputs by simply adding an empty string as the first element:
+
+    ```javascript
+    tvWidget.activeChart().createStudy('Moving Average', true, false, ['', 9]);
+    ```
+
+    instead of
+
+    ```javascript
+    tvWidget.activeChart().createStudy('Moving Average', true, false, [9]);
+    ```
+
+- Study `Ichimoku` has been modified with some `Inputs` & `Style` properties renamed.
+
+**Trading Terminal**
+
 - The [`watchList`](Widget-Methods#chart-watchlist) method now returns a promise that resolves a watchlist API object when the watchlist widget has loaded.
+
+- `suggestedQty` has been removed from the [Trading Host](Trading-Host).
 
 ## Version 21
 
@@ -23,6 +48,8 @@ Here is the list of breaking changes:
 - The symbol search dialog suggestions list uses the `full_name` instead of the `exchange` and `symbol` value. This data is provided by your implementation of [searchSymbols](JS-Api#searchsymbolsuserinput-exchange-symboltype-onresultreadycallback).
 
 **Trading Terminal**
+
+- `supportModifyOrder` flag has been marked deprecated and will be removed in future versions. Use `supportModifyOrderPrice`, `supportEditAmount` and `supportModifyBrackets` instead.
 
 - `empty` formatter has been removed.
 

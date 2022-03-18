@@ -52,6 +52,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [load_last_chart](#load_last_chart)
   * [theme](#theme)
   * [custom_css_url](#custom_css_url)
+  * [custom_font_family](#custom_font_family)
   * [loading_screen](#loading_screen)
   * [favorites](#favorites)
   * [save_load_adapter](#save_load_adapter)
@@ -60,6 +61,7 @@ Below is a complete list of supported parameters. Use [Widget methods](Widget-Me
   * [additional_symbol_info_fields](#additional_symbol_info_fields)
   * [header_widget_buttons_mode](#header_widget_buttons_mode)
   * [time_scale](#time_scale)
+  * [custom_translate_function](#custom_translate_function)
   * [symbol_search_complete](#symbol_search_complete)
 * Trading Terminal only
   * [widgetbar](#widgetbar)
@@ -391,7 +393,10 @@ enabled_features: ["move_logo_to_main_pane"],
 
 ### snapshot_url
 
-This URL is used to send a POST request with base64-encoded chart snapshots when a user presses the snapshot button. This endpoint should return the full URL of the saved image in the the response.
+This URL is used to send a POST request with binary chart snapshots when a user presses the snapshot button.
+This POST request contains `multipart/form-data` with the field `preparedImage` that represents binary data of the snapshot image in `image/png` format.
+
+This endpoint should return the full URL of the saved image in the the response.
 
 ```javascript
 snapshot_url: "https://myserver.com/snapshot",
@@ -496,6 +501,23 @@ Adds your custom CSS to the chart. `url` should be an absolute or relative path 
 
 ```javascript
 custom_css_url: 'css/style.css',
+```
+
+### custom_font_family
+
+Change the font family used on the chart. The value should be in the same format as the `font-family` property in CSS.
+If you want to use a font that is not available by default on your system, you need to first load the font in your [custom CSS](#custom_css_url).
+
+E.g. importing a google font in your custom CSS:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap');
+```
+
+Add `custom_font_family` to your widget options:
+
+```javascript
+custom_font_family: "'Inconsolata', monospace",
 ```
 
 ### loading_screen
@@ -616,6 +638,27 @@ At the moment the only sub-option available are:
 ```javascript
 time_scale: {
     min_bar_spacing: 10,
+}
+```
+
+### custom_translate_function
+
+Use this property to set your own translation function. `key` and `options` will be passed to the function.
+
+You can use this function to provide custom translations for some strings.
+
+The function should return either a string with a new translation or `null` to fallback to the default translation.
+
+For example, if you want to rename "Trend Line" shape to "Line Shape", then you can do something like this:
+
+```javascript
+custom_translate_function: (key, options) => {
+    if (key === 'Trend Line') {
+        // patch the title of trend line
+        return 'Line Shape';
+    }
+
+    return null;
 }
 ```
 

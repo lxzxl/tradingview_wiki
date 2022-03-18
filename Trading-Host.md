@@ -118,16 +118,6 @@ Returns whether levels with empty volume (between min and max volume levels) are
 
 Returns if orders can be sent to the broker without showing the order ticket.
 
-### suggestedQty() : Object
-
-Returned object properties:
-
-1. value - use it to get the current value. It returns Promise.
-1. setValue - use it to set new value
-1. changed : [Subscription](Subscription)
-
-It is to synchronize quantity in the Floating Trading Panel and in the dialogs.
-
 ### setButtonDropdownActions(actions)
 
 Bottom Trading Panel has a button with a list of dropdown items. This method can be used to replace existing items.

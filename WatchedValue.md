@@ -6,7 +6,7 @@ Returns current value.
 
 ### setValue(value)
 
-Sets new value.
+Sets new value. Readonly WatchedValue object doesn't have this method.
 
 ### subscribe(callback, options)
 

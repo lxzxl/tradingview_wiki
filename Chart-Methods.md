@@ -26,6 +26,7 @@ Here is a list of methods supported by the chart.
   * [setChartType(type)](#setcharttypetype)
   * [setTimezone(timezone)](#settimezonetimezone)
   * [getTimezone()](#gettimezone)
+  * [getTimezoneApi()](#gettimezoneapi)
 * [Studies And Shapes](#studies-and-shapes)
   * [getAllShapes()](#getallshapes)
   * [getAllStudies()](#getallstudies)
@@ -386,6 +387,8 @@ widget.activeChart().setTimezone('Asia/Singapore');
 
 Makes the chart change its timezone.
 
+**Deprecated**: Use [setTimezone](Timezone-Api#settimezonetimezoneid-options) instead. This is going to be removed in future releases.
+
 ### getTimezone()
 
 *Since version 1.15.*
@@ -395,6 +398,14 @@ Returns the current [timezone](Widget-Constructor#timezone) of the chart.
 ```javascript
 console.log(widget.activeChart().getTimezone());
 ```
+
+**Deprecated**: Use [getTimezone](Timezone-Api#gettimezone) instead. This is going to be removed in future releases.
+
+### getTimezoneApi()
+
+*Since version 22.*
+
+Returns a [TimezoneApi](Timezone-Api) that allows you to interact with the chart's timezone.
 
 ### canZoomOut()
 
@@ -457,7 +468,8 @@ widget.activeChart().setEntityVisibility(id, false); // Hide the entity with id
 1. `name`: string, name of an indicator as shown in the `Indicators` widget
 1. `forceOverlay`: forces the Charting Library to place the created study on the main pane
 1. `lock`: boolean, shows whether a user will be able to remove/change/hide the study or not
-1. `inputs`: (starting from version `1.2`) an array of study inputs. This array is expected to contain input values in the same order as in the study properties dialog.
+1. `inputs`: (starting from version `1.2` **Deprecated**) an array of study inputs. This array is expected to contain input values in the same order as in the study properties dialog.
+**From version v22** it's an object containing named properties from the study properties dialog.
 1. `overrides`: (starting from version `1.2`) an object [containing properties](Studies-Overrides) you'd like to set for your new study. Note that you should not specify the study name. Start a property path with a plot name.
 1. `options`: object with the the following keys:
     * `checkLimit` - if it is `true` then the study limit dialog will be shown if the limit is exceeded.
@@ -476,10 +488,19 @@ Returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Refe
 
 Creates a study on the main symbol. Here are the examples:
 
+**Deprecated**:
+
 * `widget.activeChart().createStudy('MACD', false, false, [14, 30, "close", 9])`
 * `widget.activeChart().createStudy('Moving Average Exponential', false, false, [26])`
 * `widget.activeChart().createStudy('Stochastic', false, false, [26], {"%d.color" : "#FF0000"})`
 * `widget.activeChart().createStudy('Price Channel', true, false, [26], null, {checkLimit: false, priceScale: 'new-left'})`
+
+**From version 22**:
+
+* `widget.activeChart().createStudy('MACD', false, false, { in_0: 14, in_1: 30, in_3: 'close', in_2: 9 })`
+* `widget.activeChart().createStudy('Moving Average Exponential', false, false, { length: 26 })`
+* `widget.activeChart().createStudy('Stochastic', false, false, { in_0: 26 }, {"%d.color" : "#FF0000"})`
+* `widget.activeChart().createStudy('Price Channel', true, false, { in_0: 26 }, null, {checkLimit: false, priceScale: 'new-left'})`
 
 **Remark**: The `Compare` study has 2 inputs: `[dataSource, symbol]`. Supported `dataSource` values are: `["close", "high", "low", "open"]`.
 

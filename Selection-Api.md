@@ -71,7 +71,7 @@ Multiple selection works for shapes only using the following rules:
 ```javascript
 var chart = tvWidget.activeChart();
 chart.selection().onChanged().subscribe(null, s => console.log(chart.selection().allSources()));      // it will print all selection changes to the console
-var studyId = chart.createStudy("Moving Average", false, false, [10]);  // create a study and save its id
+var studyId = chart.createStudy("Moving Average", false, false, { length: 10 });  // create a study and save its id
 chart.selection().add(studyId);                                         // add the study to the selection ([<id>] is printed to the console)
 chart.selection().clear();                                              // clear the selection ([] is printed to the console)
 ```

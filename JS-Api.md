@@ -62,9 +62,19 @@ Example: `["1", "15", "240", "D", "6M"]` will give you "1 minute, 15 minutes, 4 
 
 #### currency_codes
 
-An array of supported currencies for currency conversion.
+An array of supported currencies for currency conversion. Each item might have one of the following types:
+
+* an object with properties `{ id: string, code: string, logoUrl?: string, description?: string }`.
+
+    Note that `id` and `code` fields are mandatory whereas `logoUrl` and `description` are optional.
+
+    `logoUrl` is a URL to an image of the currency. SVG logos are preferable, but please make sure that a provided image fits fine in the currency select control (for raster images the size of 24x24px is expected).
+
+* a string. The library will automatically convert it to `{ id: value, code: value }` object.
 
 Example: `["USD", "EUR", "GBP"]`.
+
+Example: `[{ id: "USD", code: "USD", description: "$" }, { id: "EUR", code: "EUR", description: "€" }]`.
 
 #### units
 

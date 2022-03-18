@@ -113,9 +113,11 @@ Timezone of the exchange for this symbol. We expect to get the name of the time 
 - `Asia/Hong_Kong`
 - `Asia/Jakarta`
 - `Asia/Jerusalem`
+- `Asia/Karachi`
 - `Asia/Kathmandu`
 - `Asia/Kolkata`
 - `Asia/Kuwait`
+- `Asia/Manila`
 - `Asia/Muscat`
 - `Asia/Qatar`
 - `Asia/Riyadh`
@@ -134,6 +136,9 @@ Timezone of the exchange for this symbol. We expect to get the name of the time 
 - `Europe/Athens`
 - `Europe/Belgrade`
 - `Europe/Berlin`
+- `Europe/Bratislava`
+- `Europe/Brussels`
+- `Europe/Bucharest`
 - `Europe/Copenhagen`
 - `Europe/Helsinki`
 - `Europe/Istanbul`
@@ -342,9 +347,21 @@ Flag `has_emtpy_bars` = `true` cannot be used if featureset `disable_resolution_
 
 ## has_no_volume
 
+NOTE: `has_no_volume` is deprecated and will be removed in future releases, you should use `visible_plots_set` instead.
+
 *Default:* `false`
 
 Boolean showing whether the symbol includes volume data or not.
+
+## visible_plots_set
+
+*Default:* `ohlcv`
+
+Represents what values are supported by the symbol. Possible values:
+
+- `ohlcv` - the symbol supports open, high, low, close and has volume
+- `ohlc` - the symbol supports open, high, low, close, but doesn't have volume
+- `c` - the symbol supports only close, it's displayed on the chart using line-based styles only
 
 ## volume_precision
 

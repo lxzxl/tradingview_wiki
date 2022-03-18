@@ -101,6 +101,20 @@ This method is called to cancel a single order with a given `id`.
 
 This method is called to cancel multiple orders for a `symbol` and `side`.
 
+### leverageInfo([leverageInfoParams](Trading-Objects-and-Constants#leverageInfoParams))
+
+This method is called to receive [leverageInfo](Trading-Objects-and-Constants#leverageInfo) from the broker.
+
+### setLeverage(leverageSetParams)
+
+1. `leverageSetParams` is an object similar to [leverageInfoParams](Trading-Objects-and-Constants#leverageInfoParams), but contains an additional `leverage: number` field, which holds the leverage value set by the user.
+
+This method is called to send user's leverage value to the broker. The value should be verified and corrected on the broker's side if required, and sent back in the response.
+
+### previewLeverage(leverageSetParams)
+
+This method is called to receive [leveragePreviewResult](Trading-Objects-and-Constants#leveragePreviewResult) object which holds messages about the leverage value set by the user.
+
 ### editPositionBrackets(positionId, [brackets](Trading-Objects-and-Constants#brackets), customFields)
 
 1. `positionId` is an ID of an existing position to be modified
@@ -229,7 +243,7 @@ The result is an object with options for the Order dialog:
 
     Using this flag you can change `Trade Value` to `Total` in the Order Info section of the Order dialog.
 
-- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo | CheckboxFieldMetaInfo)[];
 
     Using `customFields` you can add additional input fields to the Order dialog.
 
@@ -260,7 +274,7 @@ The method can be implemented if you want to customize the position dialog.
 
 The result is an object with options for the position dialog.
 
-- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo)[];
+- `customFields`: (TextWithCheckboxFieldMetaInfo | CustomComboBoxMetaInfo | CheckboxFieldMetaInfo)[];
 
     Using `customFields` you can add additional input fields to the position dialog.
 

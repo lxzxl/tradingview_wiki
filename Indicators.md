@@ -20,4 +20,4 @@
 
 ### Volume indicator
 
-Volume is added by default if the financial instrument supports it ([has_no_volume](Symbology#has_no_volume) is `true`). This behavior can be disabled using [create_volume_indicator_by_default](Featuresets).
+Volume is added by default if the financial instrument supports it ([visible_plots_set](Symbology#visible_plots_set) is `ohlcv`). This behavior can be disabled using [create_volume_indicator_by_default](Featuresets).

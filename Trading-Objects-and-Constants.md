@@ -59,7 +59,6 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `false`
 
     Broker supports brackets (take profit and stop loss) for orders.
-    If this flag is set to `true` the Chart will display additional fields in the Order Dialog and Modify button on a chart and in the Account Manager.
 
 * `supportCryptoBrackets`
 
@@ -176,17 +175,37 @@ This is an object that should be passed in the constructor of the Trading Termin
 
     Using this flag you can disable brackets for market orders.
 
+* `supportModifyOrder`
+
+    *Default:* `true`
+
+    **Deprecated** Using this flag you can disable modification of the existing order.
+
+* `supportModifyOrderPrice`
+
+    *Default:* `true`
+
+    Using this flag you can disable existing order's price modification.
+
+* `supportEditAmount`
+
+    *Default:* `true`
+
+    Using this flag you can disable existing order's quantity modification.
+
+* `supportModifyBrackets`
+
+    *Default:* `true`
+
+    Using this flag you can disable existing order's brackets modification. If you set it to `false`,
+    additional fields will be disabled in the Order Dialog on the chart,
+    and 'Modify' button will be hidden from the chart and in the Account Manager.
+
 * `supportModifyDuration`
 
     *Default:* `false`
 
     Using this flag you can enable modification of the duration of the existing order.
-
-* `supportModifyOrder`
-
-    *Default:* `true`
-
-    Using this flag you can disable modification of the existing order.
 
 * `supportModifyTrailingStop`
 
@@ -229,6 +248,12 @@ This is an object that should be passed in the constructor of the Trading Termin
     *Default:* `false`
 
     Broker provides the estimated commission, fees, margin and other order information before modifying the order without actually modifying it.
+
+* `supportLeverage`
+
+    *Default:* `false`
+
+    Broker supports leverage. If the flag is set to `true`, a leverage input field will appear in the Order Widget. Click on the input field will activate a dedicated Leverage Dialog.
 
 * `supportOrdersHistory`
 
@@ -453,6 +478,33 @@ Duration or expiration of an order.
 * `type`: string identifier from the list that you pass to [durations](#orderduration)
 * `datetime`: number
 
+## LeverageInfoParams
+
+Object with the values of the current order's settings. Used by the broker to provide [leverageInfo](#leverageInfo).
+
+* `symbol`: string;
+* `orderType`: [OrderType](#ordertype);
+* `side`: [Side](#side)
+* `customFields`?: [CustomInputFieldsValues](#CustomInputFieldsValues);
+
+## LeverageInfo
+
+Object with the leverage information for the current order.
+
+* `title`: string used as a Leverage Dialog's title.
+* `leverage`: number;
+* `min`: number;
+* `max`: number;
+* `step`: number;
+
+## LeveragePreviewResult
+
+Object with messages describing the leverage value set by the user.
+
+* `infos`?: string[];
+* `warnings`?: string[];
+* `errors`?: string [];
+
 ## CryptoBalance
 
 Object that describes a single crypto balance.
@@ -503,6 +555,18 @@ OrderTicketFocusControl.Quantity = 5 // focus quantity for orders
 
 An object with `format` method that can be used to format the number to a string.
 
+## CheckboxFieldMetaInfo
+
+An object that describes a custom checkbox field.
+
+* `inputType`: 'Checkbox'
+* `id`: string
+* `title`: string
+* `value`: boolean
+* `supportModify`: boolean
+* `help`: string
+* `saveToSettings`: boolean
+
 ## CustomInputFieldsValues
 
 An object that contains the results of broker specific user inputs (for example a digital signature). There are two possible kinds of custom fields: an input field with a checkbox and a custom combobox.
@@ -522,7 +586,7 @@ The result of a custom combobox is always a `string` that is entered by a user.
 
 ## TextWithCheckboxFieldMetaInfo
 
-An object that decribes a custom input field with a checkbox.
+An object that describes a custom input field with a checkbox.
 
 * `inputType`: 'TextWithCheckBox'
 * `id`: string
